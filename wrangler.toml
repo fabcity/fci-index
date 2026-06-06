@@ -1,0 +1,6 @@
+# FCI 3.0 — Cloudflare Pages project config (2026-06-06)
+# Deploy:  ./build.sh && wrangler pages deploy public --branch staging
+# Prod:    ./build.sh --prod && wrangler pages deploy public --branch main
+name = "fci-index"
+compatibility_date = "2026-06-01"
+pages_build_output_dir = "public"

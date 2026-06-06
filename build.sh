@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# FCI 3.0 — assembles the three static sites into one deployable tree (public/).
+#   ./build.sh           → staging build (no analytics)
+#   ./build.sh --prod    → production build (injects Plausible)
+# Routes:  /  = fci-3-prototype   /atlas = fci-matryoshka-viz   /operate = fci-ingestion-tool
+# Cross-links between the sites are relative (../fci-*/...) in source; rewritten to route paths here.
+# 2026-06-06 — see FCI_3.0_Deployment_Plan_2026-06-06.md §1.
+set -euo pipefail
+cd "$(dirname "$0")"
+SRC=".."                      # the FAB CITY workspace root, where the three site folders live
+OUT="${FCI_OUT:-public}"      # overridable for sandboxed verification runs
+
+PROD=0
+[ "${1:-}" = "--prod" ] && PROD=1
+
+for d in fci-3-prototype fci-matryoshka-viz fci-ingestion-tool; do
+  [ -d "$SRC/$d" ] || { echo "missing $SRC/$d — run from fci-index/ inside the FAB CITY workspace"; exit 1; }
+done
+
+rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
+mkdir -p "$OUT/atlas" "$OUT/operate"
+# tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
+tar -C "$SRC/fci-3-prototype"   --exclude='README.md' -cf - . | tar -C "$OUT" -xf -
+tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' -cf - . | tar -C "$OUT/atlas" -xf -
+tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' -cf - . | tar -C "$OUT/operate" -xf -
+
+# Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
+find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
+  perl -pi -e 's|\.\./fci-3-prototype/|/|g; s|\.\./fci-matryoshka-viz/|/atlas/|g; s|\.\./fci-ingestion-tool/|/operate/|g' "$f"
+done
+# Strategy-doc links that pointed at workspace .md files have no web home yet — route them to the methodology page
+grep -rl '\.\./FCI_3\.0_' "$OUT" --include='*.html' 2>/dev/null | while read -r f; do
+  perl -pi -e 's|\.\./FCI_3\.0_[A-Za-z_0-9.-]+\.md|/methodology.html|g' "$f"
+done
+
+# Beta feedback line on every page (tier-2 mechanism) + Plausible on --prod only.
+# python3, not perl: the strings contain @ and quotes that perl -e interpolates away.
+FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
+import os
+out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
+feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
+            'font-size:0.72rem;color:#8a857c;">methodology v0 · beta — comments: '
+            '<a href="mailto:index@fab.city" style="color:inherit;">index@fab.city</a></div>')
+plausible = '<script defer data-domain="index.fab.city" src="https://plausible.io/js/script.js"></script>'
+n = 0
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if not fn.endswith(".html"):
+            continue
+        p = os.path.join(dp, fn)
+        html = open(p, encoding="utf-8").read()
+        if "</body>" in html and "mailto:index@fab.city" not in html:
+            html = html.replace("</body>", feedback + "\n</body>", 1)
+        if prod and "</head>" in html and "plausible.io" not in html:
+            html = html.replace("</head>", plausible + "\n</head>", 1)
+        open(p, "w", encoding="utf-8").write(html)
+        n += 1
+print(f"injected feedback line into {n} pages" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
+PYEOF
+
+PAGES=$(find "$OUT" -name '*.html' | wc -l | tr -d ' ')
+LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' ')  # grep exits 1 on no-match; don't trip pipefail
+echo "assembled: ${PAGES} pages in ${OUT}/ · unrewritten cross-links: ${LEFTOVER} (must be 0) · prod=${PROD}"
+[ "$LEFTOVER" = "0" ] || { echo "FAIL: cross-links left unrewritten"; exit 1; }

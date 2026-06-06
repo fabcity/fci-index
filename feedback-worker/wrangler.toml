@@ -1,0 +1,5 @@
+name = "fci-feedback"
+main = "worker.js"
+compatibility_date = "2026-06-01"
+routes = [{ pattern = "index.fab.city/api/feedback", zone_name = "fab.city" }]
+# wrangler secret put AIRTABLE_TOKEN   (scoped PAT: data.records:write on the feedback base only)
