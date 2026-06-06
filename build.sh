@@ -58,6 +58,14 @@ for dp, _, fns in os.walk(out):
 print(f"injected feedback line into {n} pages" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
 PYEOF
 
+# Consolidation guard (CANONICAL.md): the build output must never be edited by hand
+cat > "$OUT/DO-NOT-EDIT.txt" <<'EOF'
+GENERATED TREE — do not edit anything in this folder.
+Source of truth: the fci-3-prototype, fci-matryoshka-viz and fci-ingestion-tool
+folders in the FAB CITY workspace root. Rebuild with: ./build.sh
+(see CANONICAL.md at the workspace root)
+EOF
+
 PAGES=$(find "$OUT" -name '*.html' | wc -l | tr -d ' ')
 LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' ')  # grep exits 1 on no-match; don't trip pipefail
 echo "assembled: ${PAGES} pages in ${OUT}/ · unrewritten cross-links: ${LEFTOVER} (must be 0) · prod=${PROD}"

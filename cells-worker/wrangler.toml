@@ -1,0 +1,8 @@
+name = "fci-cells"
+main = "worker.js"
+compatibility_date = "2026-06-01"
+# Production route activates once the Pages custom domain exists; staging uses the workers.dev URL.
+routes = [{ pattern = "index.fab.city/api/cells/*", zone_name = "fab.city" }]
+
+[vars]
+BASE_ID = "appXXXXXXXXXXXXXX" # ← paste the FCI Observations base id (S1 step 3)
