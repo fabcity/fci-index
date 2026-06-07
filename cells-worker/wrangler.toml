@@ -5,4 +5,4 @@ compatibility_date = "2026-06-01"
 routes = [{ pattern = "index.fab.city/api/cells/*", zone_name = "fab.city" }]
 
 [vars]
-BASE_ID = "appXXXXXXXXXXXXXX" # ← paste the FCI Observations base id (S1 step 3)
+BASE_ID = "appmNQaDGEFE9VcYh" # FCI Observations base — verified via Airtable connector, 2026-06-07
