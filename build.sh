@@ -29,7 +29,8 @@ find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
   perl -pi -e 's|\.\./fci-3-prototype/|/|g; s|\.\./fci-matryoshka-viz/|/atlas/|g; s|\.\./fci-ingestion-tool/|/operate/|g' "$f"
 done
 # Strategy-doc links that pointed at workspace .md files have no web home yet — route them to the methodology page
-grep -rl '\.\./FCI_3\.0_' "$OUT" --include='*.html' 2>/dev/null | while read -r f; do
+# (grep guarded: zero matches is the healthy state after the 2026-06-07e public-register pass, and pipefail would kill the build)
+{ grep -rl '\.\./FCI_3\.0_' "$OUT" --include='*.html' 2>/dev/null || true; } | while read -r f; do
   perl -pi -e 's|\.\./FCI_3\.0_[A-Za-z_0-9.-]+\.md|/methodology.html|g' "$f"
 done
 
