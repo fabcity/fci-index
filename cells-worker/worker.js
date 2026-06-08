@@ -16,7 +16,8 @@ function corsHeaders(origin) {
     origin &&
     (/^http:\/\/localhost(:\d+)?$/.test(origin) ||
       /^https:\/\/([a-z0-9-]+\.)?fci-index\.pages\.dev$/.test(origin) ||
-      origin === "https://index.fab.city");
+      origin === "https://index.fab.city" ||
+      origin === "https://planetai.fab.city"); // fix 2026-06-08: observatory consumes the cells API (FC_Surface_Constellation §6)
   return {
     "Access-Control-Allow-Origin": ok ? origin : "https://index.fab.city",
     "Vary": "Origin",
