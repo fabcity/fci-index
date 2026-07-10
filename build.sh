@@ -20,9 +20,9 @@ done
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
 mkdir -p "$OUT/atlas" "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
-tar -C "$SRC/fci-3-prototype"   --exclude='README.md' -cf - . | tar -C "$OUT" -xf -
-tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' -cf - . | tar -C "$OUT/atlas" -xf -
-tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' -cf - . | tar -C "$OUT/operate" -xf -
+tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT" -xf -
+tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT/atlas" -xf -
+tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT/operate" -xf -
 
 # Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
 find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
@@ -34,11 +34,51 @@ done
   perl -pi -e 's|\.\./FCI_3\.0_[A-Za-z_0-9.-]+\.md|/methodology.html|g' "$f"
 done
 
+# Strip internal editorial comments from the deployable tree (2026-07-10 pass).
+# Source folders keep their changelog comments; the published pages must not carry
+# internal references (fix markers, review passes, doc names) into view-source.
+# HTML: all <!-- --> comments go. JS: only full-line and trailing "// fix 2026…" lines
+# and "/* fix 2026 … */" blocks go — functional comments stay, syntax is node-checked below.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF'
+import os, re
+out = os.environ["FCI_OUT_DIR"]
+nh = nj = 0
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        p = os.path.join(dp, fn)
+        if fn.endswith(".html"):
+            s = open(p, encoding="utf-8").read()
+            s2 = re.sub(r'[ \t]*<!--.*?-->', '', s, flags=re.S)
+            if s2 != s:
+                open(p, "w", encoding="utf-8").write(s2); nh += 1
+        elif fn.endswith(".js"):
+            s = open(p, encoding="utf-8").read()
+            # HTML comments inside template literals render into the DOM — strip them too
+            s2 = re.sub(r'[ \t]*<!--.*?-->', '', s, flags=re.S)
+            s2 = re.sub(r'[ \t]*/\* fix 2026[^*]*(\*(?!/)[^*]*)*\*/', '', s2)
+            s2 = re.sub(r'^[ \t]*// fix 2026.*\n', '', s2, flags=re.M)
+            s2 = re.sub(r'[ \t]*// fix 2026.*$', '', s2, flags=re.M)
+            s2 = re.sub(r'[ \t]*\(fix 2026[^)]*\)', '', s2)          # parenthetical markers
+            s2 = re.sub(r'fix 2026.*?(?=\*/|\n)', '', s2)            # inside block comments, keep */
+            if s2 != s:
+                open(p, "w", encoding="utf-8").write(s2); nj += 1
+print(f"stripped internal comments: {nh} html, {nj} js")
+PYEOF
+# Syntax-check every JS file after stripping — a broken strip must fail the build
+if command -v node >/dev/null 2>&1; then
+  find "$OUT" -name '*.js' | while read -r f; do node --check "$f" || { echo "FAIL: JS syntax after comment strip: $f"; exit 1; }; done
+else
+  echo "note: node not found — skipping JS syntax check"
+fi
+
 # Beta feedback line on every page (tier-2 mechanism) + Plausible on --prod only.
 # python3, not perl: the strings contain @ and quotes that perl -e interpolates away.
 FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
+claim = ('<div style="max-width:34rem;margin:0 auto;padding:1.8rem 1.5rem 0.2rem;'
+         'font-family:var(--serif);font-size:1rem;line-height:1.4;color:var(--ink-2);">'
+         'We are a distributed movement redesigning the relationship between production and place.</div>')
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
             'font-size:0.72rem;color:#8a857c;">methodology v0 · beta — comments: '
             '<a href="mailto:index@fab.city" style="color:inherit;">index@fab.city</a></div>')
@@ -51,7 +91,7 @@ for dp, _, fns in os.walk(out):
         p = os.path.join(dp, fn)
         html = open(p, encoding="utf-8").read()
         if "</body>" in html and "mailto:index@fab.city" not in html:
-            html = html.replace("</body>", feedback + "\n</body>", 1)
+            html = html.replace("</body>", claim + feedback + "\n</body>", 1)
         if prod and "</head>" in html and "plausible.io" not in html:
             html = html.replace("</head>", plausible + "\n</head>", 1)
         open(p, "w", encoding="utf-8").write(html)
