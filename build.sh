@@ -20,9 +20,9 @@ done
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
 mkdir -p "$OUT/atlas" "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
-tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT" -xf -
-tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT/atlas" -xf -
-tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' -cf - . | tar -C "$OUT/operate" -xf -
+tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
+tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/atlas" -xf -
+tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/operate" -xf -
 
 # Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
 find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
