@@ -5,7 +5,7 @@
  * invented text, because every trap in this parser is a thing the harvest notes actually do.
  */
 import assert from "node:assert/strict";
-import { parseCell, mapCoverage } from "./worker.js";
+import { parseCell, mapCoverage, serveCoverage } from "./worker.js";
 
 /* ---- parseCell: the three states are three different things ---------------------------- */
 
@@ -165,4 +165,68 @@ assert.equal(doc.counts.links, 4);
 assert.equal(doc.last_harvested, "2026-09-12", "max across rows, not the first row");
 assert.ok(doc.note.includes("source of record"), "the payload says which way the sync runs");
 
-console.log("ok — parse, four states, closed vocabulary, derived counts");
+/* ---- serveCoverage: the KV cache in front of the tracker ------------------------------- */
+
+function fakeKV() {
+  const m = new Map();
+  return {
+    m,
+    async getWithMetadata(k) { const e = m.get(k); return e ? { value: e.value, metadata: e.metadata } : { value: null, metadata: null }; },
+    async put(k, value, opts) { m.set(k, { value, metadata: opts.metadata }); },
+  };
+}
+function fakeCtx() { const p = []; return { waitUntil: (x) => p.push(x), settle: () => Promise.all(p) }; }
+let airtableCalls = 0, airtableUp = true;
+globalThis.fetch = async () => {
+  airtableCalls++;
+  if (!airtableUp) return new Response("", { status: 503 });
+  return Response.json({ records: [{ fields: { Locality: "Zagreb" } }] });
+};
+const env = { BASE_ID: "b", AIRTABLE_TOKEN: "t", COVERAGE: fakeKV() };
+const MIN = 60 * 1000, T0 = Date.parse("2026-09-25T00:00:00Z");
+
+// Cold miss: waits for Airtable once, serves it, stores it.
+let ctx = fakeCtx();
+let res = await serveCoverage(env, ctx, {}, T0);
+await ctx.settle();
+assert.equal(res.status, 200);
+assert.equal(res.headers.get("X-Coverage-Cache"), "miss");
+assert.equal((await res.json()).counts.localities, 1);
+assert.equal(env.COVERAGE.m.get("coverage.json").metadata.at, T0, "stored with its build time");
+assert.equal(airtableCalls, 1);
+
+// Fresh hit: served from KV, Airtable not touched.
+ctx = fakeCtx();
+res = await serveCoverage(env, ctx, {}, T0 + 5 * MIN);
+await ctx.settle();
+assert.match(res.headers.get("X-Coverage-Cache"), /^hit; age=300$/);
+assert.equal(airtableCalls, 1, "a fresh hit never calls Airtable");
+
+// Stale hit: the old copy is served immediately, a refresh runs after and restamps it.
+ctx = fakeCtx();
+res = await serveCoverage(env, ctx, {}, T0 + 11 * MIN);
+assert.match(res.headers.get("X-Coverage-Cache"), /^stale/);
+await ctx.settle();
+assert.equal(airtableCalls, 2, "stale triggers exactly one background refresh");
+assert.equal(env.COVERAGE.m.get("coverage.json").metadata.at, T0 + 11 * MIN);
+
+// Stale hit with Airtable down: still 200 with the last good copy, and the copy is kept.
+airtableUp = false;
+ctx = fakeCtx();
+res = await serveCoverage(env, ctx, {}, T0 + 30 * MIN);
+await ctx.settle();
+assert.equal(res.status, 200, "an outage does not take the list down");
+assert.equal((await res.json()).counts.localities, 1);
+assert.equal(env.COVERAGE.m.get("coverage.json").metadata.at, T0 + 11 * MIN, "a failed refresh keeps the last good copy");
+
+// Cold miss with Airtable down: nothing to fall back on, so it is loud, as before.
+res = await serveCoverage({ ...env, COVERAGE: fakeKV() }, fakeCtx(), {}, T0);
+assert.equal(res.status, 502);
+assert.equal((await res.json()).error, "tracker unreachable");
+
+// No binding (local dev): reads through, no cache header claims a hit.
+airtableUp = true;
+res = await serveCoverage({ BASE_ID: "b", AIRTABLE_TOKEN: "t" }, fakeCtx(), {}, T0);
+assert.equal(res.headers.get("X-Coverage-Cache"), "miss");
+
+console.log("ok — parse, four states, closed vocabulary, derived counts, KV cache");

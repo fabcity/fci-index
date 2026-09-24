@@ -7,6 +7,7 @@
  * full city-node (Postgres/FastAPI) replaces this post-methodology-v1 — same JSON shape.
  *
  * Setup:  wrangler secret put AIRTABLE_TOKEN   (scoped PAT: data.records:read on the base)
+ *         the COVERAGE KV namespace is bound in wrangler.toml (see serveCoverage)
  *         set BASE_ID in wrangler.toml [vars] after creating the base
  *         wrangler deploy   → note the workers.dev URL for staging's live.js
  */
@@ -125,6 +126,69 @@ export function mapCoverage(records) {
   };
 }
 
+/* ---- coverage cache ----------------------------------------------------------------------
+   The tracker read takes ~4.5 s (Airtable, paginated), and every page that lists the network
+   used to wait for it. KV holds the last good export; a visitor is served from it and, once it
+   is older than COVERAGE_FRESH_MS, a refresh runs after the response. Nobody waits except the
+   very first request after the key is empty. The entry has no expiry on purpose: if Airtable is
+   down the last good export keeps being served, and its `generated_at` says how old it is.
+   ponytail: concurrent stale hits each start a refresh; KV allows 1 write/s per key, so the
+   losers' puts fail and are swallowed. Add a lock key if the network ever gets that busy. */
+const COVERAGE_KEY = "coverage.json";
+const COVERAGE_FRESH_MS = 10 * 60 * 1000;
+
+class TrackerError extends Error {
+  constructor(status) { super(`tracker unreachable (${status})`); this.status = status; }
+}
+
+/** Read the whole tracker and return the export as a JSON string. Throws TrackerError. */
+async function buildCoverage(env) {
+  const recs = [];
+  let offset = "";
+  /* 61 today, one page. Paginated anyway: the network grows, and pageSize=100 with no
+     loop would silently serve the first 100 localities as if they were all of them. */
+  do {
+    const u =
+      `https://api.airtable.com/v0/${env.BASE_ID}/${encodeURIComponent(COVERAGE_TABLE)}` +
+      `?pageSize=100${offset ? `&offset=${encodeURIComponent(offset)}` : ""}`;
+    const cr = await fetch(u, { headers: { Authorization: `Bearer ${env.AIRTABLE_TOKEN}` } });
+    if (!cr.ok) throw new TrackerError(cr.status);
+    const cd = await cr.json();
+    recs.push(...(cd.records || []));
+    offset = cd.offset || "";
+  } while (offset);
+  return JSON.stringify(mapCoverage(recs), null, 1);
+}
+
+/** GET /api/coverage.json through the KV cache. Without a COVERAGE binding it reads through. */
+export async function serveCoverage(env, ctx, headers, now = Date.now()) {
+  const kv = env.COVERAGE;
+  const store = (body) => kv && kv.put(COVERAGE_KEY, body, { metadata: { at: now } }).catch(() => {});
+  const hit = kv ? await kv.getWithMetadata(COVERAGE_KEY) : null;
+
+  if (hit && hit.value) {
+    const age = now - ((hit.metadata && hit.metadata.at) || 0);
+    const fresh = age < COVERAGE_FRESH_MS;
+    if (!fresh) ctx.waitUntil(buildCoverage(env).then(store).catch(() => {}));
+    return new Response(hit.value, {
+      headers: { ...headers, "X-Coverage-Cache": `${fresh ? "hit" : "stale"}; age=${Math.round(age / 1000)}` },
+    });
+  }
+
+  let body;
+  try {
+    body = await buildCoverage(env);
+  } catch (e) {
+    if (!(e instanceof TrackerError)) throw e;
+    return new Response(JSON.stringify({ error: "tracker unreachable", status: e.status }), {
+      status: 502,
+      headers,
+    });
+  }
+  ctx.waitUntil(store(body));
+  return new Response(body, { headers: { ...headers, "X-Coverage-Cache": "miss" } });
+}
+
 function corsHeaders(origin) {
   const ok =
     origin &&
@@ -171,34 +235,14 @@ export function mapRecords(city, records) {
 }
 
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const origin = req.headers.get("origin");
     const headers = corsHeaders(origin);
     if (req.method === "OPTIONS") return new Response(null, { headers });
 
     const path = new URL(req.url).pathname;
 
-    if (path === "/api/coverage.json") {
-      const recs = [];
-      let offset = "";
-      /* 61 today, one page. Paginated anyway: the network grows, and pageSize=100 with no
-         loop would silently serve the first 100 localities as if they were all of them. */
-      do {
-        const u =
-          `https://api.airtable.com/v0/${env.BASE_ID}/${encodeURIComponent(COVERAGE_TABLE)}` +
-          `?pageSize=100${offset ? `&offset=${encodeURIComponent(offset)}` : ""}`;
-        const cr = await fetch(u, { headers: { Authorization: `Bearer ${env.AIRTABLE_TOKEN}` } });
-        if (!cr.ok)
-          return new Response(JSON.stringify({ error: "tracker unreachable", status: cr.status }), {
-            status: 502,
-            headers,
-          });
-        const cd = await cr.json();
-        recs.push(...(cd.records || []));
-        offset = cd.offset || "";
-      } while (offset);
-      return new Response(JSON.stringify(mapCoverage(recs), null, 1), { headers });
-    }
+    if (path === "/api/coverage.json") return serveCoverage(env, ctx, headers);
 
     const m = path.match(/^\/api\/cells\/([a-z]+)\.json$/);
     if (!m || !ALLOWED_CITIES.includes(m[1]))

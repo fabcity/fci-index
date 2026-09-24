@@ -13,3 +13,9 @@ routes = [
 
 [vars]
 BASE_ID = "appmNQaDGEFE9VcYh" # FCI Observations base — verified via Airtable connector, 2026-06-07
+
+# The last good /api/coverage.json export. worker.js serveCoverage() reads it first and refreshes
+# it in the background once it is 10 minutes old; the namespace is "fci-cells-fci-coverage".
+[[kv_namespaces]]
+binding = "COVERAGE"
+id = "bb0d68240f36425384c7689ab53940ef"
