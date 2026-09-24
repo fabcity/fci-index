@@ -7,6 +7,16 @@ DEF = re.compile(r'(--[a-z0-9-]+)\s*:')
 USE = re.compile(r'var\(\s*(--[a-z0-9-]+)')
 STYLE = re.compile(r'<style[^>]*>(.*?)</style>', re.S)
 bad = 0
+# build.sh injects its own markup into every page (the feedback line, the claim). Those
+# var() references are not in any site repo, so the per-repo scan below cannot see them —
+# and they went stale in exactly that blind spot during the token rename.
+here = pathlib.Path(__file__).parent / "build.sh"
+if here.exists():
+    inj = set(USE.findall(here.read_text(encoding="utf-8")))
+    stale = sorted(t for t in inj if not t.startswith("--fc-") and t not in {"--mono", "--token"})
+    if stale:
+        print(f"build.sh injects unknown tokens: {stale}"); bad += len(stale)
+
 for d in sys.argv[1:]:
     root = pathlib.Path(d); defined, used = set(), collections.Counter()
     for p in root.rglob("*"):

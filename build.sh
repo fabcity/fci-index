@@ -96,7 +96,7 @@ FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
 claim = ('<div style="max-width:34rem;margin:0 auto;padding:1.8rem 1.5rem 0.2rem;'
-         'font-family:var(--serif);font-size:1rem;line-height:1.4;color:var(--ink-2);">'
+         'font-family:var(--fc-font-display);font-size:1rem;line-height:1.4;color:var(--fc-ink-2);">'
          'We are a distributed movement redesigning the relationship between production and place.</div>')
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
             'font-size:0.72rem;color:#8a857c;">methodology v0 · beta — comments: '
