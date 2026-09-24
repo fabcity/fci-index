@@ -68,20 +68,35 @@ Three things settled it:
    base `appmNQaDGEFE9VcYh`, and the Coverage Tracker is a table *in that same base*. A
    scheduled job needs an Airtable token as a GitHub secret — in a repo whose deploy Action
    **has never had its secrets set**. Zero new secrets beats one new secret.
-2. **No staleness to gate.** A committed copy can silently lag the tracker by however long the
-   cron has been broken. A read-through cannot: worst case it returns 502, which is loud.
-   `Cache-Control: max-age=300` bounds the lag at five minutes, by construction.
+2. **Staleness is bounded and visible.** A committed copy can silently lag the tracker by
+   however long the cron has been broken. This route serves from a KV cache (below) that
+   refreshes itself 10 minutes after the last build, plus `Cache-Control: max-age=300` in the
+   browser: about fifteen minutes of lag in normal running. If Airtable is down, the last good
+   export keeps being served and its `generated_at` shows how old it is.
 3. **It would be the sixth copy.** The locality list already exists in five places. The fix is
    fewer copies, and a committed export is one more thing that can disagree with the tracker.
 
-The cost, stated plainly: `index.fab.city` now depends on Airtable being up to render a city
-list, where `index.json` depends only on a CDN. That is the trade. If Airtable's availability
-ever becomes the problem, the upgrade path is a KV cache in front of this route — not a
-committed file, which reintroduces the copy.
+The cost, stated plainly: the export still comes from Airtable, and a read takes about 4.5 s.
+
+## The KV cache (2026-09-25)
+
+KV namespace `fci-cells-fci-coverage`, bound as `COVERAGE`, holds the last good export under
+`coverage.json`, stamped with its build time in the key's metadata. `serveCoverage()`:
+
+| KV holds | age | response | Airtable |
+|---|---|---|---|
+| nothing | | waits for Airtable, `X-Coverage-Cache: miss`; 502 if Airtable fails | read now |
+| an export | < 10 min | served, `hit; age=N` | not touched |
+| an export | ≥ 10 min | served at once, `stale; age=N` | refreshed after the response |
+
+The key never expires, so an Airtable outage serves the last good export instead of a 502.
+Only the first request after the key is empty waits. `node test.mjs` covers every row above.
+Not a committed file: that would reintroduce the copy.
 
 ## Freshness — two stamps, and they answer different questions
 
-- `generated_at` — when *this response* was assembled. Always now. Says nothing about the data.
+- `generated_at` — when this export was built from the tracker. With the KV cache it can be up
+  to ten minutes old in normal running, more if Airtable is down. Says nothing about the data.
 - `last_harvested` — the newest `Last harvested` across all 61 rows. **This is the one that
   means something**: when a human last added anything to the tracker. If it stops moving, the
   harvest has stopped, and no amount of fresh `generated_at` hides that.
