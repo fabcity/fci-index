@@ -1,6 +1,8 @@
 /**
  * FCI 3.0 — cells read-API (thin slice, S1 2026-06-06).
- * GET /api/cells/:city.json → latest observation per cell from the Airtable spine.
+ * GET /api/cells/:city.json     → latest observation per cell from the Airtable spine.
+ * GET /api/coverage.json        → the 61 Fab City localities × 8 per-territory cells, exported
+ *                                 from the FCI Coverage Tracker in the same base.
  * v0 simplification of the architecture doc's §5.1 public read format. Read-only; the
  * full city-node (Postgres/FastAPI) replaces this post-methodology-v1 — same JSON shape.
  *
@@ -10,6 +12,112 @@
  */
 const TABLE = "Observations";
 const ALLOWED_CITIES = ["barcelona", "boston", "santiago", "bali"];
+
+/* ---- coverage: the locality list, exported from the tracker ------------------------------ */
+
+const COVERAGE_TABLE = "FCI Coverage Tracker";
+
+/* The 8 per-territory cells. Bioregion and Planet are harvested globally (Regime 2) and
+   Community is node collection (Regime 3); neither is tracked per locality. */
+const CELL_KEYS = ["Environmental", "Social", "Economic", "Governance"]
+  .flatMap((p) => ["City", "Region"].map((sc) => `${p} | ${sc}`));
+
+/* Registry ids, closed vocabulary on the first two segments. This constraint is the whole
+   point: a bare /\w+\/\w+\/\S+/ also matches URL path fragments the harvest notes are full
+   of (`fr/api/explore`, `hr/ckan/dataset`) and reports ~77 references that do not exist. */
+const SLUG_RE =
+  /\b(?:environmental|social|economic|governance)\/(?:planet|bioregion|region|city|community)\/[a-z0-9-]+\b/g;
+
+/** A cell is one of FOUR things. An earlier version of this had three and got it badly wrong:
+ *  any cell with prose but no slug and no marker fell through to `blank`, which rendered 60
+ *  cells carrying real findings as "nobody has looked". Exactly 5 of the 488 are truly empty.
+ *
+ *  found         — carries at least one registry id
+ *  checked-empty — somebody looked and wrote down that there is nothing
+ *  noted         — somebody looked, wrote down what they found, and it is not a registry
+ *                  source: "Data EXISTS and is machine-readable; OPENLY LICENSED = NO".
+ *                  A finding, not a gap. Do not render this as absence.
+ *  blank         — genuinely empty. Nobody has looked.
+ *
+ *  `checked_empty` stays a separate flag because a cell can be both: a source was found AND
+ *  the rest of the cell was checked and is empty (Zagreb Environmental|City is one). */
+export function parseCell(text) {
+  const raw = (text || "").trim();
+  const slugs = [...new Set(raw.match(SLUG_RE) || [])].sort();
+  const checkedEmpty = /checked-empty/i.test(raw);
+  return {
+    state: slugs.length ? "found" : checkedEmpty ? "checked-empty" : raw ? "noted" : "blank",
+    slugs,
+    checked_empty: checkedEmpty,
+    text: raw,
+  };
+}
+
+/** tracker records → the v0 coverage document. Every count is derived here; none is a constant. */
+export function mapCoverage(records) {
+  const localities = records
+    .map((r) => {
+      const f = r.fields || {};
+      const cells = {};
+      for (const k of CELL_KEYS) cells[k] = parseCell(f[k]);
+      const name = f.Locality || "";
+      return {
+        name,
+        /* Derived, because the tracker has no id field — `Locality` is free text and the
+           primary field. Emitted so the surfaces have a stable key instead of hardcoding
+           names. NOTE: this does NOT join to /api/cells/{city}.json for every pilot —
+           "Santiago de Chile" slugs to santiago-de-chile, and that API serves `santiago`.
+           Three of the four pilots match; that one does not. Unresolved on purpose. */
+        slug: name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+        country: f.Country || "",
+        territory: f.Territory || "",
+        member_status: f["Member status"] || "",
+        wave: f.Wave ?? null,
+        wave_status: f["Wave status"] || "",
+        admin_chain: f["Admin chain"] || "",
+        portal_url: f["Portal URL"] || "",
+        portal_type: f["Portal type"] || "",
+        budget: {
+          community: f["Budget \u00b7 community"] || "",
+          city: f["Budget \u00b7 city"] || "",
+          region: f["Budget \u00b7 region"] || "",
+          national: f["Budget \u00b7 national"] || "",
+        },
+        cells,
+        last_harvested: f["Last harvested"] || null,
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const all = localities.flatMap((l) => CELL_KEYS.map((k) => l.cells[k]));
+  const slugs = new Set(all.flatMap((c) => c.slugs));
+  const harvested = localities.map((l) => l.last_harvested).filter(Boolean).sort();
+
+  return {
+    format: "fci-coverage-v0",
+    generated_at: new Date().toISOString(),
+    /* The freshness that matters. `generated_at` only says when this file was assembled;
+       this says when a human last added anything to the thing it was assembled from. */
+    last_harvested: harvested.length ? harvested[harvested.length - 1] : null,
+    source_of_record: "Airtable · FCI Coverage Tracker (tbl9tfpEsxoxQAh0w)",
+    note:
+      "GENERATED EXPORT, one way. Airtable is the source of record for this table — the harvest " +
+      "task writes it and git does not. Nothing may sync git into the Coverage Tracker. Values " +
+      "here are read-only; to change one, change the tracker.",
+    cell_keys: CELL_KEYS,
+    counts: {
+      localities: localities.length,
+      cell_slots: all.length,
+      found: all.filter((c) => c.state === "found").length,
+      checked_empty: all.filter((c) => c.state === "checked-empty").length,
+      noted: all.filter((c) => c.state === "noted").length,
+      blank: all.filter((c) => c.state === "blank").length,
+      distinct_slugs: slugs.size,
+      links: all.reduce((n, c) => n + c.slugs.length, 0),
+    },
+    localities,
+  };
+}
 
 function corsHeaders(origin) {
   const ok =
@@ -62,7 +170,31 @@ export default {
     const headers = corsHeaders(origin);
     if (req.method === "OPTIONS") return new Response(null, { headers });
 
-    const m = new URL(req.url).pathname.match(/^\/api\/cells\/([a-z]+)\.json$/);
+    const path = new URL(req.url).pathname;
+
+    if (path === "/api/coverage.json") {
+      const recs = [];
+      let offset = "";
+      /* 61 today, one page. Paginated anyway: the network grows, and pageSize=100 with no
+         loop would silently serve the first 100 localities as if they were all of them. */
+      do {
+        const u =
+          `https://api.airtable.com/v0/${env.BASE_ID}/${encodeURIComponent(COVERAGE_TABLE)}` +
+          `?pageSize=100${offset ? `&offset=${encodeURIComponent(offset)}` : ""}`;
+        const cr = await fetch(u, { headers: { Authorization: `Bearer ${env.AIRTABLE_TOKEN}` } });
+        if (!cr.ok)
+          return new Response(JSON.stringify({ error: "tracker unreachable", status: cr.status }), {
+            status: 502,
+            headers,
+          });
+        const cd = await cr.json();
+        recs.push(...(cd.records || []));
+        offset = cd.offset || "";
+      } while (offset);
+      return new Response(JSON.stringify(mapCoverage(recs), null, 1), { headers });
+    }
+
+    const m = path.match(/^\/api\/cells\/([a-z]+)\.json$/);
     if (!m || !ALLOWED_CITIES.includes(m[1]))
       return new Response(JSON.stringify({ error: "unknown city" }), { status: 404, headers });
     const city = m[1];

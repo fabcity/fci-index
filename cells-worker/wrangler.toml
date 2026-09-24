@@ -3,7 +3,13 @@ main = "worker.js"
 compatibility_date = "2026-06-01"
 workers_dev = true # staging test URL alongside the zone route (fix 2026-06-07)
 # Production route activates once the Pages custom domain exists; staging uses the workers.dev URL.
-routes = [{ pattern = "index.fab.city/api/cells/*", zone_name = "fab.city" }]
+# Two exact routes, deliberately not `index.fab.city/api/*`. The wildcard would work — Cloudflare
+# matches the most specific route first, so fci-feedback would keep /api/feedback — but it makes a
+# second worker's reachability depend on precedence nobody can see from this file. Exact is cheaper.
+routes = [
+  { pattern = "index.fab.city/api/cells/*", zone_name = "fab.city" },
+  { pattern = "index.fab.city/api/coverage.json", zone_name = "fab.city" },
+]
 
 [vars]
 BASE_ID = "appmNQaDGEFE9VcYh" # FCI Observations base — verified via Airtable connector, 2026-06-07
