@@ -128,6 +128,38 @@ EOF
 
 PAGES=$(find "$OUT" -name '*.html' | wc -l | tr -d ' ')
 LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' ')  # grep exits 1 on no-match; don't trip pipefail
+# Structural sanity. A page with two <!DOCTYPE>s, or one that has grown by two orders of
+# magnitude, is not a page — it is a broken edit. This exists because a Python
+# `s.replace(old, new)` where `old` had become "" inserted a block between EVERY CHARACTER
+# of index.html, taking it from 20 KB to 6 MB. It still had valid hrefs and every var()
+# resolved, so the link check and the token check both passed it, and it shipped.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF' || exit 1
+import os, sys
+out = os.environ["FCI_OUT_DIR"]
+bad = []
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if not fn.endswith(".html"):
+            continue
+        p = os.path.join(dp, fn)
+        rel = os.path.relpath(p, out)
+        size = os.path.getsize(p)
+        html = open(p, encoding="utf-8", errors="replace").read()
+        n = html.upper().count("<!DOCTYPE")
+        if n != 1:
+            bad.append(f"{rel}: {n} <!DOCTYPE> (expected 1)")
+        if size > 512 * 1024:
+            bad.append(f"{rel}: {size // 1024} KB — no page here is that big")
+        if html.count("<html") != 1 or html.count("</html>") != 1:
+            bad.append(f"{rel}: {html.count('<html')} <html> / {html.count('</html>')} </html>")
+if bad:
+    print("FAIL: structurally broken page(s):", file=sys.stderr)
+    for b in sorted(set(bad))[:20]:
+        print("  " + b, file=sys.stderr)
+    sys.exit(1)
+print("page structure: all sound")
+PYEOF
+
 # Every internal link must resolve to a file that exists. This domain answers EVERY miss
 # with HTTP 200 and the homepage, so a dead link is invisible to a crawler, to curl and to a
 # reader who does not check the <title>. Deleting the four per-city pages broke fifteen
