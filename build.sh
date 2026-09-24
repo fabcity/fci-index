@@ -128,5 +128,37 @@ EOF
 
 PAGES=$(find "$OUT" -name '*.html' | wc -l | tr -d ' ')
 LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' ')  # grep exits 1 on no-match; don't trip pipefail
+# Every internal link must resolve to a file that exists. This domain answers EVERY miss
+# with HTTP 200 and the homepage, so a dead link is invisible to a crawler, to curl and to a
+# reader who does not check the <title>. Deleting the four per-city pages broke fifteen
+# cross-repo links in one commit and nothing noticed until this ran.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF' || exit 1
+import os, re, sys, urllib.parse
+out = os.environ["FCI_OUT_DIR"]
+bad = []
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if not fn.endswith(".html"):
+            continue
+        p = os.path.join(dp, fn)
+        html = open(p, encoding="utf-8").read()
+        for href in re.findall(r'href="([^"#?]+)"', html):
+            if href.startswith(("http://", "https://", "mailto:", "//", "data:")):
+                continue
+            # hrefs built in JS inside a template or a concatenation are not literal links
+            if any(t in href for t in ("' +", "+ '", "${", "{{", '" +')):
+                continue
+            target = os.path.normpath(os.path.join(
+                out if href.startswith("/") else dp, href.lstrip("/")))
+            if not os.path.exists(urllib.parse.unquote(target)):
+                bad.append(f"{os.path.relpath(p, out)} -> {href}")
+if bad:
+    print(f"FAIL: {len(bad)} internal link(s) point at nothing:", file=sys.stderr)
+    for b in sorted(set(bad))[:20]:
+        print("  " + b, file=sys.stderr)
+    sys.exit(1)
+print("internal links: all resolve")
+PYEOF
+
 echo "assembled: ${PAGES} pages in ${OUT}/ · unrewritten cross-links: ${LEFTOVER} (must be 0) · prod=${PROD}"
 [ "$LEFTOVER" = "0" ] || { echo "FAIL: cross-links left unrewritten"; exit 1; }
