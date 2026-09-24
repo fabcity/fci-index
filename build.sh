@@ -98,11 +98,8 @@ fi
 FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
-claim = ('<div style="max-width:34rem;margin:0 auto;padding:1.8rem 1.5rem 0.2rem;'
-         'font-family:var(--fc-font-display);font-size:1rem;line-height:1.4;color:var(--fc-ink-2);">'
-         'We are a distributed movement redesigning the relationship between production and place.</div>')
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
-            'font-size:0.72rem;color:#8a857c;">methodology v0 · beta — comments: '
+            'font-size:0.72rem;color:#8a857c;">method v0 · beta · comments: '
             '<a href="mailto:index@fab.city" style="color:inherit;">index@fab.city</a></div>')
 plausible = '<script defer data-domain="index.fab.city" src="https://plausible.io/js/script.js"></script>'
 n = 0
@@ -113,7 +110,7 @@ for dp, _, fns in os.walk(out):
         p = os.path.join(dp, fn)
         html = open(p, encoding="utf-8").read()
         if "</body>" in html and "mailto:index@fab.city" not in html:
-            html = html.replace("</body>", claim + feedback + "\n</body>", 1)
+            html = html.replace("</body>", feedback + "\n</body>", 1)
         if prod and "</head>" in html and "plausible.io" not in html:
             html = html.replace("</head>", plausible + "\n</head>", 1)
         open(p, "w", encoding="utf-8").write(html)
