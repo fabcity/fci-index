@@ -86,19 +86,29 @@ committed file, which reintroduces the copy.
   means something**: when a human last added anything to the tracker. If it stops moving, the
   harvest has stopped, and no amount of fresh `generated_at` hides that.
 
-## The three states of a cell, which are not two
+## The four states of a cell, which are not two
 
-Every cell carries `state`, and collapsing these throws away 258 real findings:
+Every cell carries `state`. Collapsing these throws away the harvest:
 
 | state | means | renders as |
 |---|---|---|
-| `found` | carries ≥1 registry id | the sources |
+| `found` | carries >=1 registry id | the sources |
 | `checked-empty` | somebody looked and wrote down that there is nothing | **a result**, not a gap |
-| `blank` | nobody has looked yet | absent |
+| `noted` | somebody looked, wrote what they found, and it is not a registry source | **a finding**, not a gap |
+| `blank` | genuinely empty — nobody has looked | absent |
+
+`noted` exists because of a real bug, caught 2026-09-24 against production. An earlier version
+had three states and let any cell with prose but no slug and no marker fall through to `blank`.
+That misfiled **60 of 488 cells** — paragraphs like *"Data EXISTS and is machine-readable;
+OPENLY LICENSED = NO"* rendered as "nobody has looked". Exactly **5** cells are truly empty.
+
+That is the worst failure this export can have. The whole point is that absence is honest, and
+calling a paragraph absence is a lie in the same family as inventing a number — it just fails in
+the other direction. `test.mjs` pins it with the real Accra row.
 
 `checked_empty` is also a separate boolean, because a cell can be both — a source was found
-*and* the rest of the cell was checked and is empty. Zagreb `Environmental | City` is one.
-The prose in `text` is the finding: it names what was checked. Do not drop it.
+*and* the rest of the cell was checked and is empty. Zagreb `Environmental | City` is one; 82
+cells are. The prose in `text` is the finding: it names what was checked. Do not drop it.
 
 ## The regex is load-bearing
 

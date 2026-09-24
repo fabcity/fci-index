@@ -60,7 +60,22 @@ assert.equal(sp.state, "checked-empty");
 assert.deepEqual(sp.slugs, []);
 assert.ok(sp.text.length > 0, "the prose IS the finding — what was checked must survive");
 
-// Nobody has looked. Distinct from checked-empty, and must render differently.
+// Accra · Social|City — REAL TEXT, and the regression that matters most in this file.
+// Prose, no registry id, no checked-empty marker. An earlier three-state parser dropped this
+// to `blank`, rendering 60 cells that carry real findings as "nobody has looked". The whole
+// point of this export is that absence is honest; calling a paragraph absence is the worst
+// failure available to it.
+const accraSocCity = `Data EXISTS and is machine-readable; OPENLY LICENSED = NO. Three separate
+answers, kept separate. data.gov.gh (CKAN, 531 packages) holds district- and region-resolved
+social indicators, but the catalogue carries no open licence.`;
+
+const ac = parseCell(accraSocCity);
+assert.equal(ac.state, "noted", "prose with no slug and no marker is a FINDING, not a gap");
+assert.deepEqual(ac.slugs, []);
+assert.equal(ac.checked_empty, false);
+assert.ok(ac.text.includes("OPENLY LICENSED = NO"), "the finding survives");
+
+// Nobody has looked. Distinct from checked-empty AND from noted, and must render differently.
 for (const blank of [undefined, null, "", "   "]) {
   const b = parseCell(blank);
   assert.equal(b.state, "blank", `blank: ${JSON.stringify(blank)}`);
@@ -97,6 +112,7 @@ const doc = mapCoverage([
       "Last harvested": "2026-09-12",
       "Governance | Region": amsGovReg,
       "Environmental | City": spEnvCity,
+      "Social | City": accraSocCity,
     },
   },
 ]);
@@ -114,11 +130,18 @@ assert.equal(mapCoverage([{ fields: { Locality: "Santiago de Chile" } }]).locali
   "santiago-de-chile", "does NOT equal the readings API's `santiago` — unresolved, see README");
 assert.equal(mapCoverage([{ fields: { Locality: "Sao Paulo" } }]).localities[0].slug, "sao-paulo");
 
-// 3 found cells, 1 checked-empty, 12 blank.
+// 3 found, 1 checked-empty, 1 noted, 11 blank.
 assert.equal(doc.counts.found, 3);
 assert.equal(doc.counts.checked_empty, 1);
-assert.equal(doc.counts.blank, 12);
-assert.equal(doc.counts.found + doc.counts.checked_empty + doc.counts.blank, doc.counts.cell_slots);
+assert.equal(doc.counts.noted, 1);
+assert.equal(doc.counts.blank, 11);
+// The four states partition the slots exactly. If this ever fails, a cell is being counted
+// twice or lost — which is how the `noted` bug hid.
+assert.equal(
+  doc.counts.found + doc.counts.checked_empty + doc.counts.noted + doc.counts.blank,
+  doc.counts.cell_slots,
+  "the four states partition the cell slots",
+);
 
 // 4 distinct slugs, 4 links (no slug is shared between these two rows).
 assert.equal(doc.counts.distinct_slugs, 4);
@@ -128,4 +151,4 @@ assert.equal(doc.counts.links, 4);
 assert.equal(doc.last_harvested, "2026-09-12", "max across rows, not the first row");
 assert.ok(doc.note.includes("source of record"), "the payload says which way the sync runs");
 
-console.log("ok — parse, three states, closed vocabulary, derived counts");
+console.log("ok — parse, four states, closed vocabulary, derived counts");

@@ -28,10 +28,17 @@ const CELL_KEYS = ["Environmental", "Social", "Economic", "Governance"]
 const SLUG_RE =
   /\b(?:environmental|social|economic|governance)\/(?:planet|bioregion|region|city|community)\/[a-z0-9-]+\b/g;
 
-/** A cell is one of three things, and they are NOT the same thing.
+/** A cell is one of FOUR things. An earlier version of this had three and got it badly wrong:
+ *  any cell with prose but no slug and no marker fell through to `blank`, which rendered 60
+ *  cells carrying real findings as "nobody has looked". Exactly 5 of the 488 are truly empty.
+ *
  *  found         — carries at least one registry id
- *  checked-empty — somebody looked and wrote down that there is nothing. 258 of these exist.
- *  blank         — nobody has looked yet
+ *  checked-empty — somebody looked and wrote down that there is nothing
+ *  noted         — somebody looked, wrote down what they found, and it is not a registry
+ *                  source: "Data EXISTS and is machine-readable; OPENLY LICENSED = NO".
+ *                  A finding, not a gap. Do not render this as absence.
+ *  blank         — genuinely empty. Nobody has looked.
+ *
  *  `checked_empty` stays a separate flag because a cell can be both: a source was found AND
  *  the rest of the cell was checked and is empty (Zagreb Environmental|City is one). */
 export function parseCell(text) {
@@ -39,7 +46,7 @@ export function parseCell(text) {
   const slugs = [...new Set(raw.match(SLUG_RE) || [])].sort();
   const checkedEmpty = /checked-empty/i.test(raw);
   return {
-    state: slugs.length ? "found" : checkedEmpty ? "checked-empty" : "blank",
+    state: slugs.length ? "found" : checkedEmpty ? "checked-empty" : raw ? "noted" : "blank",
     slugs,
     checked_empty: checkedEmpty,
     text: raw,
@@ -103,6 +110,7 @@ export function mapCoverage(records) {
       cell_slots: all.length,
       found: all.filter((c) => c.state === "found").length,
       checked_empty: all.filter((c) => c.state === "checked-empty").length,
+      noted: all.filter((c) => c.state === "noted").length,
       blank: all.filter((c) => c.state === "blank").length,
       distinct_slugs: slugs.size,
       links: all.reduce((n, c) => n + c.slugs.length, 0),
