@@ -33,6 +33,9 @@ echo "token foundation: 3 copies, identical"
 
 # A renamed token that lost its definition is invisible: the property falls back to inherited
 # or initial, so a colour quietly becomes black and nothing errors. Cheap to assert, so assert it.
+python3 check_exports.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
+  || { echo "FAIL: a page script reads something data.js does not export"; exit 1; }
+
 python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
   || { echo "FAIL: a var(--token) does not resolve"; exit 1; }
 
