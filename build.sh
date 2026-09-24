@@ -17,6 +17,25 @@ for d in fci-3-prototype fci-matryoshka-viz fci-ingestion-tool; do
   [ -d "$SRC/$d" ] || { echo "missing $SRC/$d — run from fci-index/ inside the FAB CITY workspace"; exit 1; }
 done
 
+# ---- token gate -------------------------------------------------------------------------
+# The three sites each carry css/tokens.css, the Fab City foundation. They are copies, so the
+# only thing stopping them drifting is this check — and they HAD drifted: --rule-soft was
+# #EFEAE4 in the prototype and #E6E1D1 in the atlas, two hairlines on one site, with the type
+# scale and font stacks disagreeing three ways. Nothing noticed for three months.
+# This runs on every build because that is the one place all three repos are visible at once.
+sums=$(md5 -q "$SRC"/fci-3-prototype/css/tokens.css "$SRC"/fci-matryoshka-viz/css/tokens.css \
+                "$SRC"/fci-ingestion-tool/css/tokens.css 2>/dev/null \
+       || md5sum "$SRC"/fci-{3-prototype,matryoshka-viz,ingestion-tool}/css/tokens.css | cut -d' ' -f1)
+if [ "$(echo "$sums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
+  echo "FAIL: the three css/tokens.css copies are not identical — the foundation has drifted"; exit 1
+fi
+echo "token foundation: 3 copies, identical"
+
+# A renamed token that lost its definition is invisible: the property falls back to inherited
+# or initial, so a colour quietly becomes black and nothing errors. Cheap to assert, so assert it.
+python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
+  || { echo "FAIL: a var(--token) does not resolve"; exit 1; }
+
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
 mkdir -p "$OUT/atlas" "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
