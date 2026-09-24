@@ -17,6 +17,25 @@ for d in fci-3-prototype fci-matryoshka-viz fci-ingestion-tool; do
   [ -d "$SRC/$d" ] || { echo "missing $SRC/$d — run from fci-index/ inside the FAB CITY workspace"; exit 1; }
 done
 
+# ---- token gate -------------------------------------------------------------------------
+# The three sites each carry css/tokens.css, the Fab City foundation. They are copies, so the
+# only thing stopping them drifting is this check — and they HAD drifted: --rule-soft was
+# #EFEAE4 in the prototype and #E6E1D1 in the atlas, two hairlines on one site, with the type
+# scale and font stacks disagreeing three ways. Nothing noticed for three months.
+# This runs on every build because that is the one place all three repos are visible at once.
+sums=$(md5 -q "$SRC"/fci-3-prototype/css/tokens.css "$SRC"/fci-matryoshka-viz/css/tokens.css \
+                "$SRC"/fci-ingestion-tool/css/tokens.css 2>/dev/null \
+       || md5sum "$SRC"/fci-{3-prototype,matryoshka-viz,ingestion-tool}/css/tokens.css | cut -d' ' -f1)
+if [ "$(echo "$sums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
+  echo "FAIL: the three css/tokens.css copies are not identical — the foundation has drifted"; exit 1
+fi
+echo "token foundation: 3 copies, identical"
+
+# A renamed token that lost its definition is invisible: the property falls back to inherited
+# or initial, so a colour quietly becomes black and nothing errors. Cheap to assert, so assert it.
+python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
+  || { echo "FAIL: a var(--token) does not resolve"; exit 1; }
+
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
 mkdir -p "$OUT/atlas" "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
@@ -77,7 +96,7 @@ FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
 claim = ('<div style="max-width:34rem;margin:0 auto;padding:1.8rem 1.5rem 0.2rem;'
-         'font-family:var(--serif);font-size:1rem;line-height:1.4;color:var(--ink-2);">'
+         'font-family:var(--fc-font-display);font-size:1rem;line-height:1.4;color:var(--fc-ink-2);">'
          'We are a distributed movement redesigning the relationship between production and place.</div>')
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
             'font-size:0.72rem;color:#8a857c;">methodology v0 · beta — comments: '
@@ -109,5 +128,37 @@ EOF
 
 PAGES=$(find "$OUT" -name '*.html' | wc -l | tr -d ' ')
 LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' ')  # grep exits 1 on no-match; don't trip pipefail
+# Every internal link must resolve to a file that exists. This domain answers EVERY miss
+# with HTTP 200 and the homepage, so a dead link is invisible to a crawler, to curl and to a
+# reader who does not check the <title>. Deleting the four per-city pages broke fifteen
+# cross-repo links in one commit and nothing noticed until this ran.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF' || exit 1
+import os, re, sys, urllib.parse
+out = os.environ["FCI_OUT_DIR"]
+bad = []
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if not fn.endswith(".html"):
+            continue
+        p = os.path.join(dp, fn)
+        html = open(p, encoding="utf-8").read()
+        for href in re.findall(r'href="([^"#?]+)"', html):
+            if href.startswith(("http://", "https://", "mailto:", "//", "data:")):
+                continue
+            # hrefs built in JS inside a template or a concatenation are not literal links
+            if any(t in href for t in ("' +", "+ '", "${", "{{", '" +')):
+                continue
+            target = os.path.normpath(os.path.join(
+                out if href.startswith("/") else dp, href.lstrip("/")))
+            if not os.path.exists(urllib.parse.unquote(target)):
+                bad.append(f"{os.path.relpath(p, out)} -> {href}")
+if bad:
+    print(f"FAIL: {len(bad)} internal link(s) point at nothing:", file=sys.stderr)
+    for b in sorted(set(bad))[:20]:
+        print("  " + b, file=sys.stderr)
+    sys.exit(1)
+print("internal links: all resolve")
+PYEOF
+
 echo "assembled: ${PAGES} pages in ${OUT}/ · unrewritten cross-links: ${LEFTOVER} (must be 0) · prod=${PROD}"
 [ "$LEFTOVER" = "0" ] || { echo "FAIL: cross-links left unrewritten"; exit 1; }
