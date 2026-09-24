@@ -68,7 +68,13 @@ export function mapCoverage(records) {
            names. NOTE: this does NOT join to /api/cells/{city}.json for every pilot —
            "Santiago de Chile" slugs to santiago-de-chile, and that API serves `santiago`.
            Three of the four pilots match; that one does not. Unresolved on purpose. */
-        slug: name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+        /* NFD + strip combining marks BEFORE the ASCII filter, or an accent becomes a
+           separator: "Auvergne-Rhône-Alpes" slugged to auvergne-rh-ne-alpes. Every name in
+           the tracker was ASCII-folded by the harvest, so this was invisible until a
+           correct accented name was typed in on 2026-09-24. São Paulo, Córdoba and
+           Malmö are all waiting to do the same thing. */
+        slug: name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
         country: f.Country || "",
         territory: f.Territory || "",
         member_status: f["Member status"] || "",

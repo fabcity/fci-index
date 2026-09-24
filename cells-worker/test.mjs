@@ -130,6 +130,20 @@ assert.equal(mapCoverage([{ fields: { Locality: "Santiago de Chile" } }]).locali
   "santiago-de-chile", "does NOT equal the readings API's `santiago` — unresolved, see README");
 assert.equal(mapCoverage([{ fields: { Locality: "Sao Paulo" } }]).localities[0].slug, "sao-paulo");
 
+// Accents FOLD, they do not become separators. The harvest ASCII-folded every name it
+// wrote, so this was invisible until "Auvergne-Rone-Alpes" was corrected to its real
+// spelling in the tracker and slugged to `auvergne-rh-ne-alpes` — a locality the atlas
+// would then silently fail to place, because its coordinate is keyed on the slug.
+for (const [name, want] of [
+  ["Auvergne-Rh\u00f4ne-Alpes", "auvergne-rhone-alpes"],
+  ["S\u00e3o Paulo", "sao-paulo"],
+  ["C\u00f3rdoba", "cordoba"],
+  ["Malm\u00f6", "malmo"],
+]) {
+  assert.equal(mapCoverage([{ fields: { Locality: name } }]).localities[0].slug, want,
+    `${name} must fold, not split`);
+}
+
 // 3 found, 1 checked-empty, 1 noted, 11 blank.
 assert.equal(doc.counts.found, 3);
 assert.equal(doc.counts.checked_empty, 1);
