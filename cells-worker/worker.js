@@ -53,8 +53,15 @@ export function mapCoverage(records) {
       const f = r.fields || {};
       const cells = {};
       for (const k of CELL_KEYS) cells[k] = parseCell(f[k]);
+      const name = f.Locality || "";
       return {
-        name: f.Locality || "",
+        name,
+        /* Derived, because the tracker has no id field — `Locality` is free text and the
+           primary field. Emitted so the surfaces have a stable key instead of hardcoding
+           names. NOTE: this does NOT join to /api/cells/{city}.json for every pilot —
+           "Santiago de Chile" slugs to santiago-de-chile, and that API serves `santiago`.
+           Three of the four pilots match; that one does not. Unresolved on purpose. */
+        slug: name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
         country: f.Country || "",
         territory: f.Territory || "",
         member_status: f["Member status"] || "",

@@ -106,6 +106,13 @@ assert.equal(doc.counts.localities, 2);
 assert.equal(doc.counts.cell_slots, 16, "2 localities x 8 cells, always — no ragged rows");
 assert.equal(Object.keys(doc.localities[0].cells).length, 8);
 assert.equal(doc.localities[0].name, "Amsterdam", "sorted by name");
+assert.equal(doc.localities[0].slug, "amsterdam");
+
+// The join key the tracker does not have. Pinned so the mismatch is visible, not discovered
+// again in six months: the readings API serves `santiago`, the tracker says "Santiago de Chile".
+assert.equal(mapCoverage([{ fields: { Locality: "Santiago de Chile" } }]).localities[0].slug,
+  "santiago-de-chile", "does NOT equal the readings API's `santiago` — unresolved, see README");
+assert.equal(mapCoverage([{ fields: { Locality: "Sao Paulo" } }]).localities[0].slug, "sao-paulo");
 
 // 3 found cells, 1 checked-empty, 12 blank.
 assert.equal(doc.counts.found, 3);

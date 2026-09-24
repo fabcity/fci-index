@@ -117,3 +117,21 @@ node test.mjs      # parser: three states, closed vocabulary, derived counts
 
 Every number in the payload is derived from the records in the same response. There are no
 constants in `counts`. If a number here disagrees with the tracker, this code is wrong.
+
+## `slug` is derived, and it does not join to the readings API
+
+The tracker has **no id field**. `Locality` is free text and the primary field, so this export
+derives `slug` from it. That gives the surfaces a stable key instead of hardcoding names — but
+it does **not** line up with `/api/cells/{city}.json` for every pilot:
+
+| tracker `Locality` | derived `slug` | readings API serves | joins? |
+|---|---|---|---|
+| Barcelona | `barcelona` | `barcelona` | yes |
+| Boston | `boston` | `boston` | yes |
+| Bali | `bali` | `bali` | yes |
+| **Santiago de Chile** | `santiago-de-chile` | `santiago` | **no** |
+
+Left unresolved deliberately. Picking one silently renames a locality in whichever system loses,
+and the right fix is a real id column in the tracker — which is a click in the Airtable UI, not
+something the API can do (the PAT has no schema scope). Until then any surface joining these two
+feeds must treat Santiago as a known exception and say so, not quietly drop it.
