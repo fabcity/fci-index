@@ -143,15 +143,23 @@ cat > "$OUT/_redirects" <<'REDIR'
 /city-boston.html     /cities  301
 /city-bali.html       /cities  301
 /city-santiago.html   /cities  301
-# 2026-09-25: phase and lineage became parts of the Method page; "How it is built"
-# keeps the /constellation address. A destination may carry a fragment.
-/phase.html        /methodology.html#scores   301
-/phase             /methodology.html#scores   301
-/lineage.html      /methodology.html#lineage  301
-/lineage           /methodology.html#lineage  301
-/how-it-is-built   /constellation             301
+# 2026-09-25: methodology, phase and lineage became the four-band Method page
+# (method.html: #how, #scores, #lineage, #adds-up); "How it is built" keeps
+# /constellation. The old files stay as meta-refresh stubs for anywhere these
+# rules do not run. A destination may carry a fragment.
+/methodology.html  /method#how      301
+/methodology       /method#how      301
+/phase.html        /method#scores   301
+/phase             /method#scores   301
+/lineage.html      /method#lineage  301
+/lineage           /method#lineage  301
+/how-it-is-built   /constellation   301
 REDIR
-echo "wrote _redirects: $(grep -c '^/' "$OUT/_redirects") rules"
+NREDIR=$(grep -c '^/' "$OUT/_redirects")
+echo "wrote _redirects: ${NREDIR} rules"
+# A rule dropped by an edit fails silently: the old URL becomes a 200 with the homepage.
+# Change this number in the same commit that adds or removes a rule.
+[ "$NREDIR" = "15" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 15"; exit 1; }
 
 # Structural sanity. A page with two <!DOCTYPE>s, or one that has grown by two orders of
 # magnitude, is not a page — it is a broken edit. This exists because a Python
