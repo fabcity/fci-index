@@ -143,6 +143,13 @@ cat > "$OUT/_redirects" <<'REDIR'
 /city-boston.html     /cities  301
 /city-bali.html       /cities  301
 /city-santiago.html   /cities  301
+# 2026-09-25: phase and lineage became parts of the Method page; "How it is built"
+# keeps the /constellation address. A destination may carry a fragment.
+/phase.html        /methodology.html#scores   301
+/phase             /methodology.html#scores   301
+/lineage.html      /methodology.html#lineage  301
+/lineage           /methodology.html#lineage  301
+/how-it-is-built   /constellation             301
 REDIR
 echo "wrote _redirects: $(grep -c '^/' "$OUT/_redirects") rules"
 
