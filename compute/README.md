@@ -172,6 +172,8 @@ in euros and in tonnes, each separately**, and never draws a balance.
 | Province of Barcelona | 2024 (provisional) | 87.4 bn EUR · 25.3 Mt | 77.2 bn EUR · 19.8 Mt |
 | Catalonia | 2019 | 92.6 bn EUR · 56.8 Mt | 73.9 bn EUR · 34.3 Mt |
 | Catalonia | 2024 (provisional) | 111.4 bn EUR · 51.2 Mt | 100.3 bn EUR · 32.1 Mt |
+| Land Hamburg | 2019 (final) | 67.5 bn EUR | 53.4 bn EUR |
+| Land Hamburg | 2024 (final) | 73.9 bn EUR | 56.1 bn EUR |
 
 **It counts something different from the gateway row.** Customs trade is goods crossing the Spanish border, attributed
 to the declarant's province wherever they physically entered. Port throughput is what a port handled, including
@@ -180,16 +182,24 @@ either. Idescat flags 2024 and 2025 as
 provisional, and so do the rows. Idescat names no licence, only Spain's statutory reuse conditions, and whether those
 count as open is still a maintainer's call (awesome-fabcity-data#51).
 
-Hamburg, Paris and Boston have filed sources (#51) that are XLSX reports or HTML tables, not read yet. Santiago has no
-open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
+**Hamburg** comes from `trade.hamburg()`, which reads Statistikamt Nord's annual report G III 1 / G III 3 (registry
+`economic/region/statistikamt-nord-aussenhandel-hamburg`, dl-de-by-2.0 on the Transparenzportal). The file is found
+through the portal's CKAN, because the names drift. Each edition holds two years, and its header flags each year `a`
+(may still change through revision) or `b` (final). So a year's figure is read from the **next** year's edition,
+where it is final, and only falls back to its own edition, flagged provisional. Hamburg's 2019 imports read 66.6 bn
+EUR in the 2019 edition and 67.5 bn in the 2020 edition. It is **values only**, and the two directions follow
+different concepts: imports are general trade, which includes goods entering customs warehouses whose destination is
+not yet known, and exports are special trade, goods made or last processed in Hamburg. Their difference is not a
+trade balance, which is Boeing's reason for leaving trade out of Hamburg's 37.
+
+Paris and Boston have filed sources (#51) that are HTML tables or XLSX, not read yet. Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
 are arrays (Idescat) as well as objects (Eurostat), and `_status` reads the provisional flag.
 
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
    Waste now has open data for Barcelona, Paris and Santiago; Hamburg's recovery split does not.
-2. Read the other filed regional trade sources: Destatis by Land and Statistikamt Nord for Hamburg, French customs
-   for Paris. Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
+2. Read the other filed regional trade sources: French customs for Paris, and Census metro exports for Boston. Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
    gateway rows. A trade-adjusted variant still needs a methodology (item 3).
 3. Settle what the Index should report, capacity or self-supply. That is a methodology decision (FCI 3.0 §7),
    not a data one.

@@ -196,8 +196,8 @@ def run() -> None:
                     "Santiago are listed with why they have no data.",
         "rows": trade.gateway([YEAR, 2024])}
     out["regional_trade"] = {
-        "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros and "
-                    "tonnes, each reported separately and never netted. Customs trade of the territory, not its "
+        "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and "
+                    "tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its "
                     "gateways' throughput, and not trade with the rest of the country. Cities without an open reader "
                     "yet are listed with why.",
         "rows": trade.regional_trade([YEAR, 2024])}
@@ -415,7 +415,31 @@ def selftest() -> int:
     check("regional: a weight not reported is no data, not zero", rb[0]["exports_t"], None)
     check("regional: provisional values are flagged, per territory", (rb[0]["provisional"], rb[1]["provisional"]), (False, True))
     check("regional: cities without a reader say why",
-          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Hamburg", "Paris", "Santiago"])
+          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Paris", "Santiago"])
+    # trade.hamburg: the next edition's final figure first, the year's own provisional one as the fallback.
+    def nord(this, last):                            # a T1_1 sheet: header flags, then the Insgesamt row
+        return xlsx([["Tabelle 1"], [None, "2025a" if this == 2025 else f"{this}a", f"{last}b", "%",
+                                     "2025a" if this == 2025 else f"{this}a", f"{last}b", "%"],
+                     ["Europa", 9, 9, 0, 9, 9, 0], ["Insgesamt", this * 10.0, last * 10.0, 0, this, last, 0]])
+    books = {"j25": nord(2025, 2024), "j24": nord(2024, 2023)}
+    ckan = lambda u: {"result": {"results": [{"resources": [{"url": f"https://x/G_III_1_G_III_3_{k}_HH_nach_Laendern.xlsx"}]}
+                                             for k in books if u.split("q=G_III_1_G_III_3_")[1].startswith(k + "&")]}}
+    fetch = lambda u: books[next(k for k in books if f"_{k}_" in u)]
+    h24, h25 = trade.hamburg(2024, get=ckan, raw=fetch)[0], trade.hamburg(2025, get=ckan, raw=fetch)[0]
+    check("hamburg trade: the next edition's final figure, thousand euro to euro",
+          (h24["imports_eur"], h24["exports_eur"], h24["provisional"], "2025 edition" in h24["source"]),
+          (20240000, 2024000, False, True))
+    check("hamburg trade: no next edition, so the year's own figure, flagged provisional",
+          (h25["imports_eur"], h25["provisional"], "2025 edition" in h25["source"]), (20250000, True, True))
+    check("hamburg trade: no edition at all is no data, not zero", trade.hamburg(2031, get=ckan, raw=fetch)[0]["no_data"][:16],
+          "no annual editio")
+    check("hamburg trade: values only, tonnes stay empty", (h24["imports_t"], h24["exports_t"]), (None, None))
+    mismatch = xlsx([["Tabelle 1"], [None, "2024a", "2023b", "%", "2023b", "2024a", "%"], ["Insgesamt", 1, 2, 0, 3, 4, 0]])
+    try:
+        trade._nord_totals(mismatch)
+        check("hamburg trade: an imports/exports header mismatch raises", "no error", "ValueError")
+    except ValueError:
+        check("hamburg trade: an imports/exports header mismatch raises", "ValueError", "ValueError")
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
