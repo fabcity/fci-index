@@ -86,15 +86,24 @@ recovery share. The recovery share is also Boeing's input for macro-sector 16, w
 | Barcelona | 2019 · 2024 | 483.6 · 446.8 | 295.8 · 258.5 | 38.8% · 42.1% | collected municipal waste; recovery = separate collection |
 | **Catalonia (region)** | 2019 · 2024 | 527.2 · 498.7 | 290.5 · 253.4 | 44.9% · 49.2% | Barcelona's measure summed over every municipality (948); Environmental\|Region's waste row |
 | Paris | 2019 · 2024 | 464 · 436 | 341 · 308 | 26.5% · 29.4% | household waste only; recovery = sorted streams |
-| Santiago (comuna) | 2019 · 2022 | n/a | n/a | not recorded · 1.7% | tonnes declared (209 kt · 116 kt); no population in the source |
+| Santiago (comuna) | 2019 · 2022 | 429.8 · 220.6 | not recorded · 216.8 | not recorded · 1.7% | tonnes declared (209 kt · 116 kt) per INE's projected population |
+| **Región Metropolitana (region)** | 2019 · 2022 | 454.3 · 433.4 | not recorded · 392.7 | not recorded · 1.7% | the same, summed over the region's comunas by code; 2022 has 282 kt with no treatment recorded |
 | Hamburg | 2019 · 2024 | 425.8 · 413.6 | n/a | n/a | Urban Audit total only, no split |
 
 Catalonia is the first **region** in the pipeline. Eurostat has no regional waste table, so it is the Generalitat's
 municipal data summed server-side. The dataset has no Catalonia total row, so nothing is counted twice, and the
 population sum (8,012,231 in 2024) is kept so it can be checked against the official figure.
 
+Santiago's per-capita figures divide RETC's declared tonnes by **INE Chile's population projections** (base 2017),
+committed as a small extract in [`data/`](data/) because INE's server delivers a few KB/s.
+`python3 compute/waste.py --extract-ine` rebuilds it from the source. INE's own terms put its data under
+**CC BY-SA 4.0**, which is share-alike: the per-capita figures are shared under that licence too. (datos.gob.cl
+labels the same series "cc-nc", which contradicts the publisher.) Recovery and residual are shares of the
+tonnes whose treatment **is** recorded; tonnes with none are reported as `treatment_not_recorded_t`, outside both.
+Comuna Santiago's 2022 figure is half its 2019 one because fewer operators declared, not because of less waste.
+
 **These rows are not comparable yet.** Each counts a different thing, and the table says what. Santiago sends
-98% of what it declares to sanitary landfill. Its 2019 file records no treatment at all, which is "not
+98% of what it declares to sanitary landfill, and so does its region. Its 2019 file records no treatment at all, which is "not
 recorded", not 0%: the self-test pins that. Its total nearly halves between 2019 and 2022, which is a change in
 who declares, not in the waste. Hamburg's recovery split exists only in Statistikamt Nord PDFs, so its sector
 16 still carries Boeing's value.

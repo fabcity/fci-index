@@ -74,7 +74,7 @@ NOT_OPEN = {
                            "split. Barcelona, Paris and Santiago do have one: see trash_out.",
 }
 # Trash out, per city: Boeing's year and the latest each source has (Santiago's latest CSV year is 2022).
-WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
+WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Region Metropolitana": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
 VAT = {"DE": (0.07, 0.19), "ES": (0.10, 0.21), "FR": (0.055, 0.20)}   # (reduced, standard) in 2019
 
 
@@ -257,10 +257,31 @@ def selftest() -> int:
     csv_text = ("id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;1.000,5;Eliminación\n"
                 "13101;99,5;Valorización\n13102;5000;Eliminación\n").encode()
     sg = waste.santiago(2022, get=lambda u: {"result": {"resources": [{"name": "2022: x", "format": "CSV", "url": "u"}]}},
-                        raw=lambda u: csv_text)
+                        raw=lambda u: csv_text, pop=lambda c, y: None)
     check("waste: RETC '1.000,5' reads as 1000.5, and other comunas are left out", sg["generated_t"], 1100)
     check("waste: RETC recovery share by declared treatment", sg["recovery_share"], round(99.5 / 1100, 3))
     check("waste: no population means no per-capita figure, not a guess", sg["generated_kg_per_capita"], None)
+    res = lambda u: {"result": {"resources": [{"name": "2022: x", "format": "CSV", "url": "u"}]}}
+    pc = waste.santiago(2022, get=res, raw=lambda u: csv_text, pop=lambda c, y: 1100)
+    check("waste: comuna per capita = tonnes x 1000 / population", pc["generated_kg_per_capita"], 1000.0)
+    check("waste: residual = everything not declared recovered", pc["residual_kg_per_capita"], round(1000.5 * 1000 / 1100, 1))
+    rm = waste.santiago(2022, get=res, raw=lambda u: csv_text + b"5101;7;Eliminaci\xc3\xb3n\n", code="13",
+                        pop=lambda c, y: {"13": 6100}[c])
+    check("waste: a region sums its comunas by code prefix (13101 + 13102, not 5101)", rm["generated_t"], 6100)
+    check("waste: and is named as the region", rm["city"], "Region Metropolitana (region)")
+    part = waste.santiago(2022, get=res, raw=lambda u: csv_text + b"13103;400;\n", pop=lambda c, y: 1000, code="13103")
+    check("waste: tonnes with no treatment recorded are reported, not counted as residual",
+          (part["treatment_not_recorded_t"], part["residual_kg_per_capita"], part["recovery_share"]), (400, None, None))
+    mix = waste.santiago(2022, get=res, raw=lambda u: csv_text + b"13101;900;\n", pop=lambda c, y: 2000)
+    check("waste: recovery is a share of the recorded tonnes only", mix["recovery_share"], round(99.5 / 1100, 3))
+    check("waste: and residual leaves the unrecorded 900 t out", mix["residual_kg_per_capita"], round(1000.5 * 1000 / 2000, 1))
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        f = Path(d) / "p.csv"
+        f.write_text("# provenance\ncomuna,nombre,region,2022\n13101,Santiago,13,500\n13102,Cerrillos,13,80\n5101,Valparaiso,5,300\n")
+        check("population: a comuna by its 5-digit code", waste.population_cl("13101", 2022, f), 500)
+        check("population: a region sums its comunas", waste.population_cl("13", 2022, f), 580)
+        check("population: a year outside the file is no data", waste.population_cl("13101", 2040, f), None)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
