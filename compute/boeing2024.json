@@ -1,0 +1,25 @@
+{
+  "source": "Boeing, N. (2024). The Fab City Index. In Moritz et al. (eds.), Springer, ch. 9, pp. 115-133, CC-BY 4.0. Table 9.3 (p. 124), transcribed 2026-09-26.",
+  "place": "Hamburg (DE60)",
+  "year": 2019,
+  "published_index": 37,
+  "note": "ratio = production against consumption, as a fraction. weight_cpi = per mille from the German consumer price index basket; weight_estimate = per mille, Boeing's estimate where no consumption data exists. Both columns together sum to 1000 (664.05 + 335.95). Fig. 9.1 prints different values for chemicals (80%), metals (35%) and machinery (80%); the table's values are the ones that give 37, so they are the reference.",
+  "sectors": [
+    {"sector": "Energy (renewable)",          "ratio": 0.048,  "weight_cpi": 68.82,  "weight_estimate": null,  "basis": "MWh/TJ renewable share",                   "nace": ["D35"],                  "coicop_note": "COICOP 04.5"},
+    {"sector": "Water",                       "ratio": 0.827,  "weight_cpi": 36.43,  "weight_estimate": null,  "basis": "groundwater supply",                       "nace": ["E36"],                  "coicop_note": "COICOP 04.4"},
+    {"sector": "Agriculture and fishing",     "ratio": 0.0005, "weight_cpi": null,   "weight_estimate": 96.85, "basis": "global hectares",                          "nace": ["A01", "A03"],           "coicop_note": "estimate from COICOP 01"},
+    {"sector": "Food and beverages",          "ratio": 0.5387, "weight_cpi": 134.62, "weight_estimate": null,  "basis": "production value vs consumption expenses", "nace": ["C10", "C11"],           "coicop_note": "COICOP 01 and 02"},
+    {"sector": "Wood and products of wood",   "ratio": 0.05,   "weight_cpi": null,   "weight_estimate": 27.08, "basis": "estimate",                                 "nace": ["A02", "C16", "C18.1"],  "coicop_note": "estimate, includes COICOP 09.7"},
+    {"sector": "Textiles and clothing",       "ratio": 0.0042, "weight_cpi": 49.29,  "weight_estimate": null,  "basis": "production value vs consumption expenses", "nace": ["C13", "C14", "C15"],    "coicop_note": "COICOP 03 and 05.2"},
+    {"sector": "Chemical products",           "ratio": 0.90,   "weight_cpi": 46.13,  "weight_estimate": null,  "basis": "estimate from production value vs consumption expenses", "nace": ["C19", "C20", "C21", "C22"], "coicop_note": "COICOP 06"},
+    {"sector": "Fossil fuels, mining and quarrying", "ratio": 0.0005, "weight_cpi": null, "weight_estimate": 30.00, "basis": "biomass production, no deposits",   "nace": ["B05", "B06", "B07", "B08"], "coicop_note": "estimate"},
+    {"sector": "Metals",                      "ratio": 0.50,   "weight_cpi": 74.25,  "weight_estimate": null,  "basis": "estimate from production value vs consumption expenses", "nace": ["C24", "C25"], "coicop_note": "COICOP 13 (as printed)"},
+    {"sector": "Machinery and equipment",     "ratio": 0.90,   "weight_cpi": null,   "weight_estimate": 74.25, "basis": "estimate from production value vs consumption expenses", "nace": ["C27", "C28"], "coicop_note": "COICOP 13 (as printed)"},
+    {"sector": "Vehicles and transport equipment", "ratio": 0.01, "weight_cpi": 129.05, "weight_estimate": null, "basis": "estimate from production value vs consumption expenses", "nace": ["C29", "C30"], "coicop_note": "COICOP 07"},
+    {"sector": "IT and communication",        "ratio": 0.20,   "weight_cpi": 47.54,  "weight_estimate": null,  "basis": "estimate from production value vs consumption expenses", "nace": ["C26", "C18.2"], "coicop_note": "sums classes in COICOP 08"},
+    {"sector": "Other goods",                 "ratio": 0.6341, "weight_cpi": 50.04,  "weight_estimate": null,  "basis": "production value vs consumption expenses", "nace": ["C23", "C32"],           "coicop_note": "COICOP 05"},
+    {"sector": "Construction",                "ratio": 1.00,   "weight_cpi": null,   "weight_estimate": 37.77, "basis": "number of companies",                      "nace": ["F41", "F42", "F43"],    "coicop_note": "estimate"},
+    {"sector": "Repair",                      "ratio": 0.80,   "weight_cpi": 27.88,  "weight_estimate": null,  "basis": "estimate from production value vs consumption expenses", "nace": ["C33", "G45", "S95"], "coicop_note": "COICOP 04.3 and 07.2.3"},
+    {"sector": "Waste and recycling",         "ratio": 0.248,  "weight_cpi": null,   "weight_estimate": 70.00, "basis": "recycling share from waste data",          "nace": ["E37", "E38", "E39"],    "coicop_note": "estimate"}
+  ]
+}
