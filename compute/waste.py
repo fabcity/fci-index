@@ -25,6 +25,7 @@ import io
 import json
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -48,6 +49,10 @@ def _raw(url: str, tries: int = 4) -> bytes:
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=120) as r:
                 return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or n == tries - 1:   # a 404 is an answer (a file not published yet), not a hiccup
+                raise
+            time.sleep(5 * (n + 1))
         except (OSError, http.client.IncompleteRead):
             if n == tries - 1:
                 raise

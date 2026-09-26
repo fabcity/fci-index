@@ -18,6 +18,7 @@ from __future__ import annotations
 import functools
 import io
 import re
+import urllib.error
 import zipfile
 
 import waste  # the JSON-stat reader, the xlsx reader and the retrying fetch live there
@@ -52,10 +53,12 @@ NORD_LICENCE = ("dl-de-by-2.0 on the Transparenzportal; the file's own imprint p
 DGDDI_ZIP = "https://lekiosque.finances.gouv.fr/download_2.asp?rep=/fichiers/Telecharge&fic=region_03_A.zip"
 DGDDI_LICENCE = ("DGDDI reuse conditions: keep the data's integrity, cite the source and the reference date. Licence "
                  "Ouverte is not named; open-equivalence not yet confirmed (awesome-fabcity-data#51)")
+# Boston: the Census Bureau's exports by metropolitan area, one workbook per quarter; Q4 carries two annual columns.
+CENSUS_METRO = "https://www.census.gov/foreign-trade/statistics/state/metroq4{year}.xlsx"
+BOSTON_MSA = "Boston-Cambridge-Newton, MA-NH"
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre",
         "décembre"]
 NO_REGIONAL = {
-    "Boston": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level.",
     "Santiago": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50).",
 }
 NO_DATA = {
@@ -211,7 +214,35 @@ def paris(year: int, raw=waste._raw) -> list[dict]:
     return rows
 
 
-READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris}
+def boston(year: int, raw=waste._raw) -> list[dict]:
+    """Exports of the Boston metro area, in US dollars. A year's Q4 workbook is the first release, and the next
+    year's Q4 workbook revises it (2019: 23,505.8 then 23,508.2 million), so the next one is read first."""
+    row = {"city": "Boston", "year": year, "territory": "Boston-Cambridge-Newton, MA-NH (metro area)", "code": "CBSA 14460",
+           "imports_usd": None, "imports_t": None, "exports_t": None,
+           "counts": "goods exports only: no imports are published below state level, and the state series needs an API "
+                     "key; attributed to the exporter of record's location, not to where goods were made; values only",
+           "licence": "US public domain (Census Bureau work, 17 USC 105)"}
+    for edition in (year + 1, year):
+        url = CENSUS_METRO.format(year=edition)
+        try:
+            book = raw(url)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                continue                             # that quarter is not published yet
+            raise
+        rows = waste._xlsx_rows(book, f"Q4{edition}")
+        head = next(r for r in rows if f"{edition} Annual" in r.values())
+        col = next((c for c, v in head.items() if v == f"{year} Annual"), None)
+        msa = next((r for r in rows if (r.get("A") or "").strip() == BOSTON_MSA), None)
+        value = waste._num(msa.get(col)) if msa and col else None
+        if value is not None:
+            return [dict(row, exports_usd=round(value * 1e6), provisional=edition == year,
+                         source=f"U.S. Census Bureau, U.S. Exports by Metropolitan Area, Q4 {edition} workbook: {url}")]
+    return [dict(row, exports_usd=None, provisional=None, source="U.S. Census Bureau, U.S. Exports by Metropolitan Area",
+                 no_data=f"no Q4 {year} or Q4 {year + 1} workbook carries {BOSTON_MSA} for {year}")]
+
+
+READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris, "Boston": boston}
 
 
 def regional_trade(years: list[int]) -> list[dict]:

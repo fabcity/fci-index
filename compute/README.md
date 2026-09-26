@@ -176,6 +176,8 @@ in euros and in tonnes, each separately**, and never draws a balance.
 | Land Hamburg | 2024 (final) | 73.9 bn EUR | 56.1 bn EUR |
 | Paris (département 75) | 2024 | 41.8 bn EUR | 28.3 bn EUR |
 | Île-de-France | 2024 | 192.4 bn EUR | 141.8 bn EUR |
+| Boston metro area | 2019 (revised) | not published | 23.5 bn USD |
+| Boston metro area | 2024 (revised) | not published | 29.9 bn USD |
 
 **It counts something different from the gateway row.** Customs trade is goods crossing the Spanish border, attributed
 to the declarant's province wherever they physically entered. Port throughput is what a port handled, including
@@ -206,14 +208,24 @@ establishment, so a département with head offices, as Paris has, can show trade
 required citation, « source : douanes françaises, résultats de [mois année] ». Idescat's licence caveat (#51)
 applies here too: reuse on statutory conditions, and Licence Ouverte is not named.
 
-Boston has only metro-area exports (filed in #51), not read yet. Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
+**Boston** comes from `trade.boston()`, which reads the Census Bureau's U.S. Exports by Metropolitan Area (registry
+`economic/region/census-metro-area-exports`, US public domain). Each year's Q4 workbook carries that year's annual
+total and the previous year's, and the previous year is revised in the next workbook (Boston 2019: 23,505.8 then
+23,508.2 million USD). So a year is read from the next year's workbook, and only falls back to its own, flagged
+provisional as a first release. A workbook not published yet is a 404, which the fetch no longer retries. It is
+**exports only, in US dollars**: no imports are published below state level, the state series needs an API key this
+pipeline does not hold, and dollars are never converted to euros here. Exports are attributed to the exporter of
+record's location, not to where the goods were made.
+
+Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
 are arrays (Idescat) as well as objects (Eurostat), and `_status` reads the provisional flag.
 
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
    Waste now has open data for Barcelona, Paris and Santiago; Hamburg's recovery split does not.
-2. Read Census metro exports for Boston, the last filed regional trade source (exports only). Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
+2. Santiago is the one pilot without regional trade: the Banco Central's terms are revocable, and INE Chile's
+   regional export tables were not reachable (#50). Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
    gateway rows. A trade-adjusted variant still needs a methodology (item 3).
 3. Settle what the Index should report, capacity or self-supply. That is a methodology decision (FCI 3.0 §7),
    not a data one.

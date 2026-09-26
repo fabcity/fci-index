@@ -213,11 +213,13 @@ def run() -> None:
         print(f"gateway   {g['city']:18} {g['year'] or '':4} {g.get('mode', ''):3}  " + (g.get("no_data") or g.get("error") or
               f"in {t(g['inwards_t'])}  out {t(g['outwards_t'])}  ({g['port']})"))
     for r in out["regional_trade"]["rows"]:
-        eur = lambda v: "no data" if v is None else f"{v / 1e9:,.1f} bn EUR"
+        cur = "USD" if "exports_usd" in r else "EUR"   # Boston's metro exports are in dollars, never converted
+        money = lambda v: "no data" if v is None else f"{v / 1e9:,.1f} bn {cur}"
         t = lambda v: "no data" if v is None else f"{v / 1e6:,.1f} Mt"
         print(f"regional  {r['city']:18} {r['year'] or '':4}  " + (r.get("no_data") or r.get("error") or
-              f"imports {eur(r['imports_eur'])} / {t(r['imports_t'])}  exports {eur(r['exports_eur'])} / "
-              f"{t(r['exports_t'])}  ({r['territory']}{', provisional' if r['provisional'] else ''})"))
+              f"imports {money(r.get('imports_' + cur.lower()))} / {t(r['imports_t'])}  exports "
+              f"{money(r.get('exports_' + cur.lower()))} / {t(r['exports_t'])}  "
+              f"({r['territory']}{', provisional' if r['provisional'] else ''})"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -415,7 +417,7 @@ def selftest() -> int:
     check("regional: a weight not reported is no data, not zero", rb[0]["exports_t"], None)
     check("regional: provisional values are flagged, per territory", (rb[0]["provisional"], rb[1]["provisional"]), (False, True))
     check("regional: cities without a reader say why",
-          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Santiago"])
+          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Santiago"])
     # trade.hamburg: the next edition's final figure first, the year's own provisional one as the fallback.
     def nord(this, last):                            # a T1_1 sheet: header flags, then the Insgesamt row
         return xlsx([["Tabelle 1"], [None, "2025a" if this == 2025 else f"{this}a", f"{last}b", "%",
@@ -457,6 +459,37 @@ def selftest() -> int:
           (trade.paris(2019, raw=fake)[0]["imports_eur"], trade.paris(2019, raw=fake)[0]["no_data"]),
           (None, "the customs file carries only 2024, 2025"))
     check("paris trade: nothing to say about provisional, so it says nothing", p24[0]["provisional"], None)
+    # trade.boston: the next Q4 workbook's revised annual first, the year's own as the fallback; dollars stay dollars.
+    import urllib.error
+    def metro(edition, prev_val, this_val):
+        return xlsx([["U.S. Exports by Metropolitan Area"], [None, f"{edition} Q4", f"{edition - 1} Q4", f"{edition} Annual", f"{edition - 1} Annual"],
+                     ["Total Exports", 1, 1, 9, 9], [trade.BOSTON_MSA, 1, 1, this_val, prev_val]], sheet_name=f"Q4{edition}")
+    workbooks = {2025: metro(2025, 29935.6, 30541.3)}
+    def fetch_q4(u):
+        y = int(u.rsplit("metroq4", 1)[1][:4])
+        if y not in workbooks:
+            raise urllib.error.HTTPError(u, 404, "Not Found", {}, None)
+        return workbooks[y]
+    b24, b25 = trade.boston(2024, raw=fetch_q4)[0], trade.boston(2025, raw=fetch_q4)[0]
+    check("boston trade: next year's workbook, million dollars to dollars, not provisional",
+          (b24["exports_usd"], b24["provisional"], "Q4 2025" in b24["source"]), (29935600000, False, True))
+    check("boston trade: no next workbook yet (404), so the first release, flagged provisional",
+          (b25["exports_usd"], b25["provisional"]), (30541300000, True))
+    check("boston trade: exports only, and never in euros", (b24["imports_usd"], "exports_eur" in b24), (None, False))
+    check("boston trade: no workbook at all is no data", trade.boston(2031, raw=fetch_q4)[0]["no_data"][:6], "no Q4 ")
+    # waste._raw: a 404 is an answer and fails at once; only server errors are retried.
+    calls, real_open = [], waste.urllib.request.urlopen
+    def not_found(req, timeout=None):
+        calls.append(1)
+        raise urllib.error.HTTPError(req.full_url, 404, "Not Found", {}, None)
+    waste.urllib.request.urlopen = not_found
+    try:
+        waste._raw("https://example.org/missing")
+    except urllib.error.HTTPError:
+        pass
+    finally:
+        waste.urllib.request.urlopen = real_open
+    check("_raw: a 404 is tried once, not four times", len(calls), 1)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
