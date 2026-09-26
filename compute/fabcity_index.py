@@ -74,7 +74,7 @@ NOT_OPEN = {
                            "split. Barcelona, Paris and Santiago do have one: see trash_out.",
 }
 # Trash out, per city: Boeing's year and the latest each source has (Santiago's latest CSV year is 2022).
-WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
+WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
 VAT = {"DE": (0.07, 0.19), "ES": (0.10, 0.21), "FR": (0.055, 0.20)}   # (reduced, standard) in 2019
 
 
@@ -247,6 +247,12 @@ def selftest() -> int:
     check("waste: residual kg per capita = residual t x 1000 / population", b["residual_kg_per_capita"], 300.0)
     check("waste: generated = residual + separate collection", b["generated_kg_per_capita"], 400.0)
     check("waste: recovery share = separate / generated", b["recovery_share"], 0.25)
+    cat = waste.catalonia(2024, get=lambda u: [{"sum_suma_fracci_resta": "2000", "sum_total_recollida_selectiva": "2000",
+                                                "sum_poblaci": "8000", "count": "948"}])
+    check("waste: Catalonia residual per capita from the server-side sums", cat["residual_kg_per_capita"], 250.0)
+    check("waste: and says how many municipalities it summed", cat["municipalities"], 948)
+    check("waste: a year with no rows is no data, not zero",
+          waste.catalonia(1990, get=lambda u: [{"count": "0"}]), None)
     # waste.santiago: decimal commas, thousands dots, one comuna only, recovery by declared treatment.
     csv_text = ("id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;1.000,5;Eliminación\n"
                 "13101;99,5;Valorización\n13102;5000;Eliminación\n").encode()

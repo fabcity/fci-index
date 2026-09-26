@@ -470,6 +470,32 @@
     "licence": "Llicència oberta d'ús d'informació – Catalunya"
    },
    {
+    "city": "Catalonia (region)",
+    "year": 2019,
+    "population": 7675217.0,
+    "generated_t": 4046615,
+    "generated_kg_per_capita": 527.2,
+    "residual_kg_per_capita": 290.5,
+    "recovery_share": 0.449,
+    "counts": "sum of 948 municipalities' collected municipal waste; recovery = separate collection",
+    "source": "Generalitat de Catalunya 69zu-w48s, summed",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya",
+    "municipalities": 948
+   },
+   {
+    "city": "Catalonia (region)",
+    "year": 2024,
+    "population": 8012231.0,
+    "generated_t": 3995725,
+    "generated_kg_per_capita": 498.7,
+    "residual_kg_per_capita": 253.4,
+    "recovery_share": 0.492,
+    "counts": "sum of 948 municipalities' collected municipal waste; recovery = separate collection",
+    "source": "Generalitat de Catalunya 69zu-w48s, summed",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya",
+    "municipalities": 948
+   },
+   {
     "city": "Paris",
     "year": 2019,
     "population": null,
