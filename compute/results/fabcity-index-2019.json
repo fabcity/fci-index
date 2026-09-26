@@ -700,7 +700,7 @@
   ]
  },
  "gateway": {
-  "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports, in tonnes, reported separately. Throughput, not consumption; ports only (no airports yet). Boston and Santiago are listed with why they have no data.",
+  "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports and airports, in tonnes, reported separately, sea and air as separate rows. Throughput, not consumption. Boston and Santiago are listed with why they have no data.",
   "rows": [
    {
     "city": "Barcelona",
@@ -710,7 +710,8 @@
     "inwards_t": 29911000,
     "outwards_t": 24798000,
     "total_t": 54709000,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=ES_2ESBCN",
     "licence": "Eurostat reuse policy, 2011/833/EU"
    },
@@ -722,8 +723,35 @@
     "inwards_t": 29852000,
     "outwards_t": 25660000,
     "total_t": 55512000,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=ES_2ESBCN",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "port": "Barcelona El Prat",
+    "code": "ES_LEBL",
+    "mode": "air",
+    "inwards_t": 68684,
+    "outwards_t": 74459,
+    "total_t": 143143,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=ES_LEBL",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "port": "Barcelona El Prat",
+    "code": "ES_LEBL",
+    "mode": "air",
+    "inwards_t": 87094,
+    "outwards_t": 95432,
+    "total_t": 182526,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=ES_LEBL",
     "licence": "Eurostat reuse policy, 2011/833/EU"
    },
    {
@@ -734,7 +762,8 @@
     "inwards_t": 68112000,
     "outwards_t": 49040000,
     "total_t": 117152000,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=DE_1DEHAM",
     "licence": "Eurostat reuse policy, 2011/833/EU"
    },
@@ -746,8 +775,35 @@
     "inwards_t": 56413000,
     "outwards_t": 40572000,
     "total_t": 96984000,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=DE_1DEHAM",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2019,
+    "port": "Hamburg",
+    "code": "DE_EDDH",
+    "mode": "air",
+    "inwards_t": 12346,
+    "outwards_t": 15035,
+    "total_t": 27381,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=DE_EDDH",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2024,
+    "port": "Hamburg",
+    "code": "DE_EDDH",
+    "mode": "air",
+    "inwards_t": 16254,
+    "outwards_t": 13603,
+    "total_t": 29857,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=DE_EDDH",
     "licence": "Eurostat reuse policy, 2011/833/EU"
    },
    {
@@ -758,7 +814,8 @@
     "inwards_t": null,
     "outwards_t": null,
     "total_t": null,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=FR_1FR001",
     "licence": "Eurostat reuse policy, 2011/833/EU",
     "no_data": "HAROPA was formed in 2021; before that Le Havre and Rouen reported separately, and Rouen is not in this top-20 table"
@@ -771,8 +828,35 @@
     "inwards_t": 48030000,
     "outwards_t": 28708000,
     "total_t": 76738000,
-    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "mode": "sea",
+    "counts": "gross weight of goods handled by the port, inwards and outwards; throughput, not the hinterland's consumption",
     "source": "Eurostat mar_mg_aa_pwhd, rep_mar=FR_1FR001",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Paris",
+    "year": 2019,
+    "port": "Paris Charles de Gaulle + Paris Orly",
+    "code": "FR_LFPG+FR_LFPO",
+    "mode": "air",
+    "inwards_t": 1016345,
+    "outwards_t": 1178406,
+    "total_t": 2194751,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=FR_LFPG,FR_LFPO",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Paris",
+    "year": 2024,
+    "port": "Paris Charles de Gaulle + Paris Orly",
+    "code": "FR_LFPG+FR_LFPO",
+    "mode": "air",
+    "inwards_t": 960704,
+    "outwards_t": 1023906,
+    "total_t": 1984611,
+    "counts": "freight and mail unloaded (inwards) and loaded (outwards) at the airport; hub airports tranship, so this is throughput, not the city's consumption",
+    "source": "Eurostat avia_gooa, rep_airp=FR_LFPG,FR_LFPO",
     "licence": "Eurostat reuse policy, 2011/833/EU"
    },
    {

@@ -191,8 +191,8 @@ def run() -> None:
                     "sources count different things; each row says what, and they are not comparable until aligned.",
         "rows": waste.trash_out(WASTE_YEARS)}
     out["gateway"] = {
-        "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports, in tonnes, "
-                    "reported separately. Throughput, not consumption; ports only (no airports yet). Boston and "
+        "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports and airports, "
+                    "in tonnes, reported separately, sea and air as separate rows. Throughput, not consumption. Boston and "
                     "Santiago are listed with why they have no data.",
         "rows": trade.gateway([YEAR, 2024])}
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
@@ -204,7 +204,7 @@ def run() -> None:
               f"recovery {w['recovery_share']}"))
     for g in out["gateway"]["rows"]:
         t = lambda v: "no data" if v is None else f"{v:,} t"
-        print(f"gateway   {g['city']:18} {g['year'] or '':4}  " + (g.get("no_data") or g.get("error") or
+        print(f"gateway   {g['city']:18} {g['year'] or '':4} {g.get('mode', ''):3}  " + (g.get("no_data") or g.get("error") or
               f"in {t(g['inwards_t'])}  out {t(g['outwards_t'])}  ({g['port']})"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
@@ -371,6 +371,16 @@ def selftest() -> int:
           trade.port("Paris", 2019, get=lambda u: empty)["no_data"].startswith("HAROPA was formed in 2021"), True)
     check("trade: Boston and Santiago appear, each saying why they have no data",
           sorted(r["city"] for r in trade.gateway([]) if r.get("no_data")), ["Boston", "Santiago"])
+    # trade.airport: a city's airports summed, unloaded is inwards, and one missing airport blanks that direction.
+    air = {"FR_LFPG": js({"tra_meas": ["FRM_LD", "FRM_NLD"]}, {("FRM_LD",): 900.4, ("FRM_NLD",): 800.0}),
+           "FR_LFPO": js({"tra_meas": ["FRM_LD", "FRM_NLD"]}, {("FRM_LD",): 50.0, ("FRM_NLD",): 20.0})}
+    ap = trade.airport("Paris", 2024, get=lambda u: air["FR_LFPG" if "FR_LFPG" in u else "FR_LFPO"])
+    check("trade: Paris airports summed, unloaded = inwards, loaded = outwards",
+          (ap["mode"], ap["inwards_t"], ap["outwards_t"]), ("air", 820, 950))
+    air["FR_LFPO"] = js({"tra_meas": ["FRM_LD", "FRM_NLD"]}, {("FRM_LD",): 50.0})
+    ap = trade.airport("Paris", 2024, get=lambda u: air["FR_LFPG" if "FR_LFPG" in u else "FR_LFPO"])
+    check("trade: one airport missing a direction blanks it, not a partial sum",
+          (ap["inwards_t"], ap["outwards_t"], ap["total_t"], ap["missing"]), (None, 950, None, "not reported for 2024: Paris Orly"))
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
