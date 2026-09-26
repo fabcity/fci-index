@@ -131,6 +131,28 @@ not performance: the city series counts only what the public collection gathers,
 equivalent, so Santiago's rows have no national benchmark yet. A missing trade value leaves the export,
 import and net figures empty, never a partial sum.
 
+## Gateway flows: goods in and out through the ports
+
+`compute/trade.py` fills Economic|Bioregion's gateway row: goods handled by the territory's ports, in tonnes,
+**inwards and outwards reported separately**, from Eurostat `mar_mg_aa_pwhd` (filed in the registry as
+`economic/region/eurostat-maritime-goods-by-port`).
+
+| Territory | Port | Year | Inwards | Outwards |
+| --- | --- | --- | --- | --- |
+| Barcelona | Barcelona (`ES_2ESBCN`) | 2019 · 2024 | 29.9 · 29.9 Mt | 24.8 · 25.7 Mt |
+| Hamburg | Hamburg (`DE_1DEHAM`) | 2019 · 2024 | 68.1 · 56.4 Mt | 49.0 · 40.6 Mt |
+| Paris | HAROPA, Le Havre and Rouen (`FR_1FR001`) | 2024 | 48.0 Mt | 28.7 Mt |
+| Boston | none | | no data: US Census trade by port needs an API key this pipeline does not hold | |
+| Santiago | none | | no data yet: Chile's customs declarations are monthly RAR/ZIP files, not read yet | |
+
+**This is throughput, not consumption.** Hamburg's port handles about 57 Mt coming in for 1.9 million people, and
+much of it is transhipment or cargo for a hinterland far beyond the city (this pipeline has not measured the share).
+That is why Boeing left trade out of his index. HAROPA is Paris's sea gateway on the Seine, not a port in Paris, and it only exists as one
+series from 2021, when Le Havre and Rouen merged, so Paris has no 2019 figure. **Ports only**: airports (Eurostat
+`avia_gooa`) and road and rail are not read yet. A direction the port did not report stays empty, never zero.
+The module reports tonnes and never a ratio: turning gateway tonnage into a share of what a place consumes needs the
+regional trade data recorded as the Index's most important gap (awesome-fabcity-data#42).
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.

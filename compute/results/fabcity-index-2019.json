@@ -698,5 +698,93 @@
     "net_waste_export_t": 8465865
    }
   ]
+ },
+ "gateway": {
+  "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports, in tonnes, reported separately. Throughput, not consumption; ports only (no airports yet). Boston and Santiago are listed with why they have no data.",
+  "rows": [
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "port": "Barcelona",
+    "code": "ES_2ESBCN",
+    "inwards_t": 29911000,
+    "outwards_t": 24798000,
+    "total_t": 54709000,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=ES_2ESBCN",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "port": "Barcelona",
+    "code": "ES_2ESBCN",
+    "inwards_t": 29852000,
+    "outwards_t": 25660000,
+    "total_t": 55512000,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=ES_2ESBCN",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2019,
+    "port": "Hamburg",
+    "code": "DE_1DEHAM",
+    "inwards_t": 68112000,
+    "outwards_t": 49040000,
+    "total_t": 117152000,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=DE_1DEHAM",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2024,
+    "port": "Hamburg",
+    "code": "DE_1DEHAM",
+    "inwards_t": 56413000,
+    "outwards_t": 40572000,
+    "total_t": 96984000,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=DE_1DEHAM",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Paris",
+    "year": 2019,
+    "port": "HAROPA (Le Havre and Rouen), Paris's sea gateway on the Seine",
+    "code": "FR_1FR001",
+    "inwards_t": null,
+    "outwards_t": null,
+    "total_t": null,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=FR_1FR001",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "no_data": "HAROPA was formed in 2021; before that Le Havre and Rouen reported separately, and Rouen is not in this top-20 table"
+   },
+   {
+    "city": "Paris",
+    "year": 2024,
+    "port": "HAROPA (Le Havre and Rouen), Paris's sea gateway on the Seine",
+    "code": "FR_1FR001",
+    "inwards_t": 48030000,
+    "outwards_t": 28708000,
+    "total_t": 76738000,
+    "counts": "gross weight of goods handled by the port, inwards and outwards; ports only, no airports; throughput, not the hinterland's consumption",
+    "source": "Eurostat mar_mg_aa_pwhd, rep_mar=FR_1FR001",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Boston",
+    "year": null,
+    "no_data": "US Census trade by port (porths) needs an API key, which this pipeline does not hold."
+   },
+   {
+    "city": "Santiago",
+    "year": null,
+    "no_data": "Chile's customs declarations (Servicio Nacional de Aduanas) are monthly RAR/ZIP files, not read yet."
+   }
+  ]
  }
 }

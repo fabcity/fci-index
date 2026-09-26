@@ -37,6 +37,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import waste  # noqa: E402
+import trade  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 REF = json.loads((HERE / "boeing2024.json").read_text(encoding="utf-8"))
@@ -189,6 +190,11 @@ def run() -> None:
                     "(awesome-fabcity-data#42). recovery_share is also Boeing's input for macro-sector 16. The four "
                     "sources count different things; each row says what, and they are not comparable until aligned.",
         "rows": waste.trash_out(WASTE_YEARS)}
+    out["gateway"] = {
+        "reads_as": "Economic|Bioregion's gateway row: goods in and out through the territory's ports, in tonnes, "
+                    "reported separately. Throughput, not consumption; ports only (no airports yet). Boston and "
+                    "Santiago are listed with why they have no data.",
+        "rows": trade.gateway([YEAR, 2024])}
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"reference (Boeing's inputs)        {ref_idx:5.1f}   published {REF['published_index']}")
     print(f"Hamburg, open sectors substituted  {index(rows):5.1f}   ({open_weight:.0f} of 1000 per mille re-derived)")
@@ -196,6 +202,10 @@ def run() -> None:
         print(f"trash out {w['city']:18} {w['year']}  " + (w.get("error") or
               f"generated {w['generated_kg_per_capita']} kg/cap  residual {w['residual_kg_per_capita']} kg/cap  "
               f"recovery {w['recovery_share']}"))
+    for g in out["gateway"]["rows"]:
+        t = lambda v: "no data" if v is None else f"{v:,} t"
+        print(f"gateway   {g['city']:18} {g['year'] or '':4}  " + (g.get("no_data") or g.get("error") or
+              f"in {t(g['inwards_t'])}  out {t(g['outwards_t'])}  ({g['port']})"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -348,6 +358,19 @@ def selftest() -> int:
     check("hamburg: residual = Haus- und Sperrmüll per head", h["residual_kg_per_capita"], 240.0)
     check("hamburg: recovery = organics + recyclables + electrical over total", h["recovery_share"], 0.4)
     check("hamburg: a year not in the table is no data", waste.hamburg(2031, raw=lambda u: book), None)
+
+    # trade.port: directions kept apart, thousand tonnes to tonnes, a missing direction stays missing.
+    ports = js({"direct": ["IN", "OUT", "TOTAL"]}, {("IN",): 30.5, ("OUT",): 20.0, ("TOTAL",): 50.5})
+    pt = trade.port("Barcelona", 2024, get=lambda u: ports)
+    check("trade: inwards and outwards reported separately, in tonnes", (pt["inwards_t"], pt["outwards_t"]), (30500, 20000))
+    half = js({"direct": ["IN", "OUT", "TOTAL"]}, {("IN",): 30.5, ("TOTAL",): 50.5})
+    check("trade: a direction the port did not report is no data, not zero",
+          trade.port("Hamburg", 2024, get=lambda u: half)["outwards_t"], None)
+    empty = js({"direct": ["IN", "OUT", "TOTAL"]}, {})
+    check("trade: a port absent for a year says why (HAROPA before 2021)",
+          trade.port("Paris", 2019, get=lambda u: empty)["no_data"].startswith("HAROPA was formed in 2021"), True)
+    check("trade: Boston and Santiago appear, each saying why they have no data",
+          sorted(r["city"] for r in trade.gateway([]) if r.get("no_data")), ["Boston", "Santiago"])
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
