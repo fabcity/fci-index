@@ -109,22 +109,32 @@ def reference_rows() -> list[dict]:
             for s in REF["sectors"]]
 
 
+def consumption(region: str, year: int = YEAR, get=fetch) -> dict[str, dict]:
+    """Households' spending on each OPEN sector's goods in the region, M EUR net of VAT: the country's spending by
+    COICOP, scaled by the region's share of the population. Germany's COICOP detail on Eurostat ends in 2022."""
+    c = region[:2]
+    hfce = by(get("nama_10_co3_p3", geo=c, time=year, unit="CP_MEUR"), "coicop")
+    pop = by(get("demo_r_d2jan", geo=[region, c], time=year, sex="T", age="TOTAL", unit="NR"), "geo")
+    share = pop[region] / pop[c]
+    reduced, standard = VAT[c]
+    return {s: {"consumption_meur": sum(hfce[k] * share / (1 + (reduced if k in spec["reduced"] else standard))
+                                        for k in spec["coicop"] if k in hfce),
+                "coicop_missing": [k for k in spec["coicop"] if k not in hfce]}
+            for s, spec in OPEN.items()}
+
+
 def open_sectors(region: str, get=fetch) -> dict:
     """The OPEN sectors for one region, with every input kept so a reader can redo the sum."""
     c = region[:2]
     emp_r = by(get("sbs_r_nuts06_r2", geo=region, time=YEAR, indic_sb="V16110"), "nace_r2")
     emp_c = by(get("sbs_na_ind_r2", geo=c, time=YEAR, indic_sb="V16110"), "nace_r2")
     pv_c = by(get("sbs_na_ind_r2", geo=c, time=YEAR, indic_sb="V12120"), "nace_r2")
-    hfce = by(get("nama_10_co3_p3", geo=c, time=YEAR, unit="CP_MEUR"), "coicop")
-    pop = by(get("demo_r_d2jan", geo=[region, c], time=YEAR, sex="T", age="TOTAL", unit="NR"), "geo")
-    share = pop[region] / pop[c]
-    reduced, standard = VAT[c]
+    spend = consumption(region, YEAR, get)
     out = {}
     for s, spec in OPEN.items():
         used = [n for n in spec["nace"] if emp_r.get(n) is not None and emp_c.get(n) and pv_c.get(n) is not None]
         prod = sum(pv_c[n] * emp_r[n] / emp_c[n] for n in used)
-        cons = sum(hfce[k] * share / (1 + (reduced if k in spec["reduced"] else standard))
-                   for k in spec["coicop"] if k in hfce)
+        cons = spend[s]["consumption_meur"]
         out[s] = {
             # No division reporting is no data, never a zero: a suppressed sector must drop out of the
             # index, not pull it down (Ile-de-France's pharma, 2019, is the case that caught this).
@@ -132,11 +142,61 @@ def open_sectors(region: str, get=fetch) -> dict:
             "raw_ratio": round(prod / cons, 2) if used and cons else None,
             "production_meur": round(prod, 1), "consumption_meur": round(cons, 1),
             "nace_used": used, "nace_missing": [n for n in spec["nace"] if n not in used],
-            "coicop_missing": [k for k in spec["coicop"] if k not in hfce],
+            "coicop_missing": spend[s]["coicop_missing"],
             "state": "no data" if not used else "modelled" + (", partial" if len(used) < len(spec["nace"]) else ""),
             "differs_from_boeing": spec["differs"],
         }
     return out
+
+
+TRADE_YEAR = 2022   # the latest year with both Hamburg's measured turnover (E I 1) and Germany's COICOP spending
+
+
+def trade_adjust(spend: dict, divisions: dict) -> dict:
+    """Each OPEN sector twice: measured turnover against local consumption (capacity), and the same with sales abroad
+    taken out (trade-adjusted). A division counts only where both its turnover and its foreign turnover are published,
+    so the two ratios cover the same plants. Thousand euro in, M EUR out."""
+    out = {}
+    for s, spec in OPEN.items():
+        cons = spend[s]["consumption_meur"]
+        got = {n: divisions.get(n[1:]) for n in spec["nace"]}           # "C10" -> "10"
+        used = [n for n, v in got.items() if v and v[0] is not None and v[1] is not None]
+        made = sum(got[n][0] for n in used) / 1000
+        home = sum(got[n][0] - got[n][1] for n in used) / 1000
+        ok = bool(used) and cons > 0
+        out[s] = {"measured_meur": round(made, 1), "sold_abroad_meur": round(made - home, 1), "domestic_meur": round(home, 1),
+                  "consumption_meur": round(cons, 1),
+                  "capacity": min(1.0, made / cons) if ok else None, "trade_adjusted": min(1.0, home / cons) if ok else None,
+                  "raw_capacity": round(made / cons, 2) if ok else None, "raw_trade_adjusted": round(home / cons, 2) if ok else None,
+                  "nace_used": used, "nace_missing": [n for n in spec["nace"] if n not in used],
+                  "state": "no data" if not used else "measured" + (", partial" if len(used) < len(spec["nace"]) else "")}
+    return out
+
+
+def with_open(ref: list[dict], sectors: dict, key: str, label: str) -> list[dict]:
+    """Boeing's rows with the OPEN sectors' ratio replaced where there is one; the rest carried, as in open_hamburg."""
+    return [{**r, "ratio": sectors[r["sector"]][key], "boeing_ratio": r["ratio"], "source": f"{label}, {sectors[r['sector']]['state']}"}
+            if r["sector"] in sectors and sectors[r["sector"]][key] is not None
+            else {**r, "boeing_ratio": r["ratio"], "source": "Boeing 2024, carried"} for r in ref]
+
+
+def hamburg_trade_adjusted(year: int = TRADE_YEAR, get=fetch, raw=waste._raw) -> dict:
+    ei = trade.nord_manufacturing(year, raw)
+    if ei is None:
+        return {"year": year, "no_data": f"no E I 1 annual edition for {year} on statistik-nord.de"}
+    secs = trade_adjust(consumption("DE60", year, get), ei["divisions"])
+    ref = reference_rows()
+    cap, adj = with_open(ref, secs, "capacity", f"E I 1 {year}"), with_open(ref, secs, "trade_adjusted", f"E I 1 {year}")
+    return {
+        "year": year,
+        "reads_as": f"Hamburg's index with the five open sectors measured, {year}: capacity counts everything Hamburg's plants "
+                    "make against what its households buy; trade-adjusted takes out what they sell abroad. The difference is "
+                    "the trade effect. Still an UPPER bound on self-supply: sales to the rest of Germany count as local, and "
+                    "only plants with 20 or more people are covered. The other eleven sectors carry Boeing's 2019 ratios.",
+        "capacity_index": round(index(cap), 1), "trade_adjusted_index": round(index(adj), 1),
+        "concept": ei["concept"], "source": f"Statistikamt Nord E I 1 {year}, table T2_1: {ei['url']}; Eurostat "
+                                            f"nama_10_co3_p3 and demo_r_d2jan {year}",
+        "licence": trade.NORD_E_I_1_LICENCE, "sectors": secs, "rows": adj}
 
 
 def run() -> None:
@@ -195,6 +255,7 @@ def run() -> None:
                     "in tonnes, reported separately, sea and air as separate rows. Throughput, not consumption. Boston and "
                     "Santiago are listed with why they have no data.",
         "rows": trade.gateway([YEAR, 2024])}
+    out["hamburg_trade_adjusted"] = hamburg_trade_adjusted()
     out["regional_trade"] = {
         "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and "
                     "tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its "
@@ -204,6 +265,10 @@ def run() -> None:
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"reference (Boeing's inputs)        {ref_idx:5.1f}   published {REF['published_index']}")
     print(f"Hamburg, open sectors substituted  {index(rows):5.1f}   ({open_weight:.0f} of 1000 per mille re-derived)")
+    h = out["hamburg_trade_adjusted"]
+    if "no_data" not in h:
+        print(f"Hamburg {h['year']}, measured capacity    {h['capacity_index']:5.1f}   trade-adjusted {h['trade_adjusted_index']:.1f} "
+              f"(upper bound: sales to the rest of Germany count as local)")
     for w in out["trash_out"]["rows"]:
         print(f"trash out {w['city']:18} {w['year']}  " + (w.get("error") or
               f"generated {w['generated_kg_per_capita']} kg/cap  residual {w['residual_kg_per_capita']} kg/cap  "
@@ -350,7 +415,7 @@ def selftest() -> int:
     check("_num: '·' (withheld) is no data", waste._num("·"), None)
     import io, zipfile
     def xlsx(rows: list[list], sheet_name: str = "T1_1") -> bytes:
-        cols = "ABCDEFGH"
+        cols = "ABCDEFGHIJ"
         sheet = "".join(f'<row r="{i+1}">' + "".join(
             f'<c r="{cols[j]}{i+1}" t="inlineStr"><is><t>{v}</t></is></c>' if isinstance(v, str) else f'<c r="{cols[j]}{i+1}"><v>{v}</v></c>'
             for j, v in enumerate(r) if v is not None) + "</row>" for i, r in enumerate(rows))
@@ -490,6 +555,32 @@ def selftest() -> int:
     finally:
         waste.urllib.request.urlopen = real_open
     check("_raw: a 404 is tried once, not four times", len(calls), 1)
+    # trade.nord_manufacturing: own-production columns when the edition has them, '·' is unknown, the second path on 404.
+    ei_book = xlsx([["2. Umsatz, Auslandsumsatz"], ["WZ 2008", "Bezeichnung", "Umsatz", None, None, None, None, "Ums. a. Eigenerzeug."],
+                    [None, None, "2022", "%", "2022", None, None, "2022"],
+                    ["10", "Nahrung", 4000, 1, 1600, 1, 1, 3200, 1360], ["11", "Getraenke", 110, 1, 85, 1, 1, 100, 80],
+                    ["13", "Textilien", "·", "·", "·", "·", "·", "·", "·"], ["10.1", "Schlachten", 300, 1, 1, 1, 1, 200, 1]],
+                   sheet_name="T2_1")
+    def ei_fetch(u):
+        if "E_I_1_j_H" not in u:
+            raise urllib.error.HTTPError(u, 404, "Not Found", {}, None)
+        return ei_book
+    ei = trade.nord_manufacturing(2022, raw=ei_fetch)
+    check("E I 1: own-production turnover and its foreign part, the second path after a 404",
+          (ei["concept"], ei["divisions"]["10"], "E_I_1_j_H" in ei["url"]), ("turnover from own production", (3200.0, 1360.0), True))
+    check("E I 1: a suppressed division is unknown, not zero; groups like 10.1 are left out",
+          (ei["divisions"]["13"], "10.1" in ei["divisions"]), ((None, None), False))
+    # trade_adjust: capacity and trade-adjusted over the same plants; a division without its foreign part drops from both.
+    spend = {s: {"consumption_meur": 1000.0, "coicop_missing": []} for s in OPEN}
+    ta = trade_adjust(spend, {"10": (600000.0, 200000.0), "11": (100000.0, 50000.0), "23": (300000.0, None), "32": (400000.0, 100000.0),
+                              "26": (1500000.0, 1200000.0)})
+    check("trade_adjust: food, sales abroad taken out", (ta["Food and beverages"]["capacity"], ta["Food and beverages"]["trade_adjusted"]),
+          (0.7, 0.45))
+    check("trade_adjust: capacity caps at 1, trade-adjusted can still be low", (ta["IT and communication"]["capacity"],
+          ta["IT and communication"]["trade_adjusted"]), (1.0, 0.3))
+    check("trade_adjust: C23 without foreign turnover drops from both ratios, flagged partial",
+          (ta["Other goods"]["capacity"], ta["Other goods"]["state"], ta["Other goods"]["nace_missing"]), (0.4, "measured, partial", ["C23"]))
+    check("trade_adjust: nothing published is no data, which carries Boeing's ratio", ta["Textiles and clothing"]["capacity"], None)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)

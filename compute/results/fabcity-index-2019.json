@@ -871,6 +871,211 @@
    }
   ]
  },
+ "hamburg_trade_adjusted": {
+  "year": 2022,
+  "reads_as": "Hamburg's index with the five open sectors measured, 2022: capacity counts everything Hamburg's plants make against what its households buy; trade-adjusted takes out what they sell abroad. The difference is the trade effect. Still an UPPER bound on self-supply: sales to the rest of Germany count as local, and only plants with 20 or more people are covered. The other eleven sectors carry Boeing's 2019 ratios.",
+  "capacity_index": 41.1,
+  "trade_adjusted_index": 32.2,
+  "concept": "turnover from own production",
+  "source": "Statistikamt Nord E I 1 2022, table T2_1: https://www.statistik-nord.de/fileadmin/Dokumente/E_I_1_j22_HH.xlsx; Eurostat nama_10_co3_p3 and demo_r_d2jan 2022",
+  "licence": "Statistikamt Nord: extracts may be reproduced with attribution, all other rights reserved; not on the Transparenzportal; used under these terms by maintainer decision (awesome-fabcity-data#61)",
+  "sectors": {
+   "Food and beverages": {
+    "measured_meur": 3316.3,
+    "sold_abroad_meur": 1447.5,
+    "domestic_meur": 1868.8,
+    "consumption_meur": 5015.2,
+    "capacity": 0.6612510612646463,
+    "trade_adjusted": 0.372631342983362,
+    "raw_capacity": 0.66,
+    "raw_trade_adjusted": 0.37,
+    "nace_used": [
+     "C10",
+     "C11"
+    ],
+    "nace_missing": [],
+    "state": "measured"
+   },
+   "Textiles and clothing": {
+    "measured_meur": 0.0,
+    "sold_abroad_meur": 0.0,
+    "domestic_meur": 0.0,
+    "consumption_meur": 1623.9,
+    "capacity": null,
+    "trade_adjusted": null,
+    "raw_capacity": null,
+    "raw_trade_adjusted": null,
+    "nace_used": [],
+    "nace_missing": [
+     "C13",
+     "C14",
+     "C15"
+    ],
+    "state": "no data"
+   },
+   "Chemical products": {
+    "measured_meur": 779.5,
+    "sold_abroad_meur": 95.0,
+    "domestic_meur": 684.5,
+    "consumption_meur": 888.1,
+    "capacity": 0.8776762293665301,
+    "trade_adjusted": 0.7706895444319367,
+    "raw_capacity": 0.88,
+    "raw_trade_adjusted": 0.77,
+    "nace_used": [
+     "C21"
+    ],
+    "nace_missing": [],
+    "state": "measured"
+   },
+   "IT and communication": {
+    "measured_meur": 886.9,
+    "sold_abroad_meur": 693.9,
+    "domestic_meur": 193.0,
+    "consumption_meur": 747.5,
+    "capacity": 1.0,
+    "trade_adjusted": 0.25819665987119744,
+    "raw_capacity": 1.19,
+    "raw_trade_adjusted": 0.26,
+    "nace_used": [
+     "C26"
+    ],
+    "nace_missing": [],
+    "state": "measured"
+   },
+   "Other goods": {
+    "measured_meur": 1130.8,
+    "sold_abroad_meur": 666.6,
+    "domestic_meur": 464.2,
+    "consumption_meur": 3473.4,
+    "capacity": 0.3255584683346293,
+    "trade_adjusted": 0.13364404171285899,
+    "raw_capacity": 0.33,
+    "raw_trade_adjusted": 0.13,
+    "nace_used": [
+     "C32"
+    ],
+    "nace_missing": [
+     "C23"
+    ],
+    "state": "measured, partial"
+   }
+  },
+  "rows": [
+   {
+    "sector": "Energy (renewable)",
+    "ratio": 0.048,
+    "weight": 68.82,
+    "boeing_ratio": 0.048,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Water",
+    "ratio": 0.827,
+    "weight": 36.43,
+    "boeing_ratio": 0.827,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Agriculture and fishing",
+    "ratio": 0.0005,
+    "weight": 96.85,
+    "boeing_ratio": 0.0005,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Food and beverages",
+    "ratio": 0.372631342983362,
+    "weight": 134.62,
+    "boeing_ratio": 0.5387,
+    "source": "E I 1 2022, measured"
+   },
+   {
+    "sector": "Wood and products of wood",
+    "ratio": 0.05,
+    "weight": 27.08,
+    "boeing_ratio": 0.05,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Textiles and clothing",
+    "ratio": 0.0042,
+    "weight": 49.29,
+    "boeing_ratio": 0.0042,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Chemical products",
+    "ratio": 0.7706895444319367,
+    "weight": 46.13,
+    "boeing_ratio": 0.9,
+    "source": "E I 1 2022, measured"
+   },
+   {
+    "sector": "Fossil fuels, mining and quarrying",
+    "ratio": 0.0005,
+    "weight": 30.0,
+    "boeing_ratio": 0.0005,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Metals",
+    "ratio": 0.5,
+    "weight": 74.25,
+    "boeing_ratio": 0.5,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Machinery and equipment",
+    "ratio": 0.9,
+    "weight": 74.25,
+    "boeing_ratio": 0.9,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Vehicles and transport equipment",
+    "ratio": 0.01,
+    "weight": 129.05,
+    "boeing_ratio": 0.01,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "IT and communication",
+    "ratio": 0.25819665987119744,
+    "weight": 47.54,
+    "boeing_ratio": 0.2,
+    "source": "E I 1 2022, measured"
+   },
+   {
+    "sector": "Other goods",
+    "ratio": 0.13364404171285899,
+    "weight": 50.04,
+    "boeing_ratio": 0.6341,
+    "source": "E I 1 2022, measured, partial"
+   },
+   {
+    "sector": "Construction",
+    "ratio": 1.0,
+    "weight": 37.77,
+    "boeing_ratio": 1.0,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Repair",
+    "ratio": 0.8,
+    "weight": 27.88,
+    "boeing_ratio": 0.8,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Waste and recycling",
+    "ratio": 0.248,
+    "weight": 70.0,
+    "boeing_ratio": 0.248,
+    "source": "Boeing 2024, carried"
+   }
+  ]
+ },
  "regional_trade": {
   "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
   "rows": [
