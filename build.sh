@@ -31,6 +31,17 @@ if [ "$(echo "$sums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
 fi
 echo "token foundation: 3 copies, identical"
 
+# The header, section bar and phone menu live in css/nav.css, also copied into all three
+# sites. A drifted copy shows a different menu depending on which site you are on, which is
+# the exact confusion the one-menu work removed.
+navsums=$(md5 -q "$SRC"/fci-3-prototype/css/nav.css "$SRC"/fci-matryoshka-viz/css/nav.css \
+                  "$SRC"/fci-ingestion-tool/css/nav.css 2>/dev/null \
+         || md5sum "$SRC"/fci-{3-prototype,matryoshka-viz,ingestion-tool}/css/nav.css | cut -d' ' -f1)
+if [ "$(echo "$navsums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
+  echo "FAIL: the three css/nav.css copies are not identical, the menu has drifted"; exit 1
+fi
+echo "menu stylesheet: 3 copies, identical"
+
 # A renamed token that lost its definition is invisible: the property falls back to inherited
 # or initial, so a colour quietly becomes black and nothing errors. Cheap to assert, so assert it.
 python3 check_exports.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
