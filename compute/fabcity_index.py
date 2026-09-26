@@ -70,8 +70,9 @@ NOT_OPEN = {
     "Vehicles and transport equipment": "C29 is suppressed for Hamburg (confidentiality); C30 is Airbus, which "
                                         "makes no consumer vehicles, so it cannot stand in.",
     "Repair": "needs COICOP 07.2.3 and production value for G45/S95, neither published at that detail.",
-    "Waste and recycling": "Hamburg's only open machine-readable figure is the Urban Audit total, with no recovery "
-                           "split. Barcelona, Paris and Santiago do have one: see trash_out.",
+    "Waste and recycling": "Boeing's 24.8% is a recycling share. The open Hamburg data (Statistikamt Nord Q II 9, see "
+                           "trash_out) gives separate collection, 40.0% in 2019, which is not recycling; substituting "
+                           "it would mix two measures.",
 }
 # Trash out, per city: Boeing's year and the latest each source has (Santiago's latest CSV year is 2022).
 WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Region Metropolitana": [YEAR, 2022], "Hamburg": [YEAR, 2024],
@@ -319,6 +320,34 @@ def selftest() -> int:
     check("national: a missing partner value leaves exports and net as no data, not a partial sum",
           (g["waste_exported_t"], g["net_waste_export_t"], g["waste_imported_t"]), (None, None, 5))
     del waste.COUNTRY["XX"]
+
+    # waste.hamburg: Statistikamt Nord's flagged numbers, a real (tiny) xlsx, and the split arithmetic.
+    check("_num: '413,6 r' is 413.6", waste._num("413,6 r"), 413.6)
+    check("_num: '·' (withheld) is no data", waste._num("·"), None)
+    import io, zipfile
+    def xlsx(rows: list[list]) -> bytes:
+        cols = "ABCDEFGH"
+        sheet = "".join(f'<row r="{i+1}">' + "".join(
+            f'<c r="{cols[j]}{i+1}" t="inlineStr"><is><t>{v}</t></is></c>' if isinstance(v, str) else f'<c r="{cols[j]}{i+1}"><v>{v}</v></c>'
+            for j, v in enumerate(r) if v is not None) + "</row>" for i, r in enumerate(rows))
+        b = io.BytesIO()
+        with zipfile.ZipFile(b, "w") as z:
+            z.writestr("xl/workbook.xml", '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+                       'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'
+                       '<sheet name="T1_1" sheetId="1" r:id="rId1"/></sheets></workbook>')
+            z.writestr("xl/_rels/workbook.xml.rels", '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/'
+                       'relationships"><Relationship Id="rId1" Target="worksheets/sheet1.xml"/></Relationships>')
+            z.writestr("xl/worksheets/sheet1.xml", '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/'
+                       f'main"><sheetData>{sheet}</sheetData></worksheet>')
+        return b.getvalue()
+    book = xlsx([["Jahr", "insgesamt"], ["2024", 1000, "400,0 r", 600, 100, 250, 50, 5]])
+    check("_xlsx_rows: cells by column letter, inline and numeric",
+          (waste._xlsx_rows(book, "T1_1")[1]["A"], waste._xlsx_rows(book, "T1_1")[1]["D"]), ("2024", "600"))
+    h = waste.hamburg(2024, raw=lambda u: book)
+    check("hamburg: population from the report's own per-head basis", h["population"], 2500)
+    check("hamburg: residual = Haus- und Sperrmüll per head", h["residual_kg_per_capita"], 240.0)
+    check("hamburg: recovery = organics + recyclables + electrical over total", h["recovery_share"], 0.4)
+    check("hamburg: a year not in the table is no data", waste.hamburg(2031, raw=lambda u: book), None)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
