@@ -56,6 +56,13 @@ DGDDI_LICENCE = ("DGDDI reuse conditions: keep the data's integrity, cite the so
 # Boston: the Census Bureau's exports by metropolitan area, one workbook per quarter; Q4 carries two annual columns.
 CENSUS_METRO = "https://www.census.gov/foreign-trade/statistics/state/metroq4{year}.xlsx"
 BOSTON_MSA = "Boston-Cambridge-Newton, MA-NH"
+# Hamburg's measured manufacturing, Statistikamt Nord E I 1 (awesome-fabcity-data#61). Not open by the registry's rule
+# (extracts with attribution, other rights reserved) and used under those terms by Tomas Diez's decision, 2026-09-27.
+NORD_E_I_1 = ["https://www.statistik-nord.de/fileadmin/Dokumente/E_I_1_j{yy}_HH.xlsx",
+              "https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/"
+              "E_I_1_j_H/E_I_1_j{yy}_HH.xlsx"]
+NORD_E_I_1_LICENCE = ("Statistikamt Nord: extracts may be reproduced with attribution, all other rights reserved; not on "
+                      "the Transparenzportal; used under these terms by maintainer decision (awesome-fabcity-data#61)")
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre",
         "décembre"]
 NO_REGIONAL = {
@@ -240,6 +247,30 @@ def boston(year: int, raw=waste._raw) -> list[dict]:
                          source=f"U.S. Census Bureau, U.S. Exports by Metropolitan Area, Q4 {edition} workbook: {url}")]
     return [dict(row, exports_usd=None, provisional=None, source="U.S. Census Bureau, U.S. Exports by Metropolitan Area",
                  no_data=f"no Q4 {year} or Q4 {year + 1} workbook carries {BOSTON_MSA} for {year}")]
+
+
+def nord_manufacturing(year: int, raw=waste._raw) -> dict | None:
+    """Hamburg's manufacturing turnover and foreign turnover by WZ division, thousand euro, from E I 1 table T2_1.
+    Turnover from own production (columns H and I, from the 2022 edition) where the edition has it, since it leaves
+    out goods bought in and resold; total turnover (C and E) otherwise. A suppressed cell ('·') is None, never zero."""
+    for pattern in NORD_E_I_1:
+        url = pattern.format(yy=f"{year % 100:02d}")
+        try:
+            book = raw(url)
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                continue
+            raise
+        rows = waste._xlsx_rows(book, "T2_1")
+        if not any((r.get("C") or "").strip() == str(year) for r in rows[:10]):
+            raise ValueError(f"E I 1 {year}: table T2_1 has no {year} column")
+        own = any("Eigenerzeug" in (r.get("H") or "") for r in rows[:10])
+        t, f = ("H", "I") if own else ("C", "E")
+        divisions = {r["A"].strip(): (waste._num(r.get(t)), waste._num(r.get(f)))
+                     for r in rows if re.fullmatch(r"\d{2}", (r.get("A") or "").strip())}
+        return {"year": year, "url": url, "divisions": divisions,
+                "concept": "turnover from own production" if own else "turnover"}
+    return None
 
 
 READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris, "Boston": boston}

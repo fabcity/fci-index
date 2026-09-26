@@ -220,6 +220,40 @@ record's location, not to where the goods were made.
 Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
 are arrays (Idescat) as well as objects (Eurostat), and `_status` reads the provisional flag.
 
+## Hamburg with trade taken out (2022)
+
+`hamburg_trade_adjusted()` answers "what does trade do to Hamburg's number". The recipe's production side for the five
+open sectors is **modelled** (national production times Hamburg's employment share), and Hamburg's measured exports
+abroad are larger than that modelled production for food, textiles and other goods. Subtracting one from the other
+gives nonsense. So this variant replaces the model with **measured** turnover from Statistikamt Nord's manufacturing
+report E I 1 (registry `economic/region/statistikamt-nord-verarbeitendes-gewerbe-hamburg`): turnover from own
+production and the part of it sold abroad, by WZ division.
+
+| Sector | Made in Hamburg | Sold abroad | Local consumption | Capacity | Trade-adjusted |
+| --- | --- | --- | --- | --- | --- |
+| Food and beverages (C10, C11) | 3,316 M | 1,448 M | 5,015 M | 0.66 | 0.37 |
+| Pharmaceuticals (C21) | 780 M | 95 M | 888 M | 0.88 | 0.77 |
+| IT equipment (C26) | 887 M | 694 M | 748 M | 1.00 (1.19) | 0.26 |
+| Other goods (C32; C23 partly suppressed) | 1,131 M | 667 M | 3,473 M | 0.33 | 0.13 |
+| Textiles and clothing | suppressed | | 1,624 M | carried | carried |
+
+With the other eleven sectors carrying Boeing's 2019 ratios, Hamburg's index is **41.1 on measured capacity and
+32.2 with sales abroad taken out**: trade alone moves it by 8.9 points on 278 of the 1,000 weight points. The
+measured capacity is higher than the modelled 36.7 because Hamburg's plants outproduce their employment share (food:
+3,316 M measured against 1,563 M modelled for 2019).
+
+**Read it as an upper bound on self-supply.** Sales to the rest of Germany still count as local, and nothing open
+measures them. E I 1 covers plants with 20 or more people. Turnover is sales, not production
+value, though own-production turnover leaves out goods bought in and resold. A division counts only where both its
+turnover and its foreign turnover are published, so both ratios cover the same plants. Imports are not used: they are
+general trade, including goods passing through warehouses.
+
+**Why 2022, and a licence note.** 2022 is the latest year with both inputs: Germany's household spending by purpose
+on Eurostat ends there, and E I 1 has no 2019 or 2020 annual edition. So this sits beside Boeing's 2019 figure and
+does not replace it. E I 1 is not open by the registry's rule (its imprint permits extracts with attribution and
+reserves other rights, and it is not on the Transparenzportal). Tomas Diez decided on 2026-09-27 to use it under those
+terms, and every row carries that licence.
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
