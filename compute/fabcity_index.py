@@ -347,7 +347,7 @@ def selftest() -> int:
     check("_num: '413,6 r' is 413.6", waste._num("413,6 r"), 413.6)
     check("_num: '·' (withheld) is no data", waste._num("·"), None)
     import io, zipfile
-    def xlsx(rows: list[list]) -> bytes:
+    def xlsx(rows: list[list], sheet_name: str = "T1_1") -> bytes:
         cols = "ABCDEFGH"
         sheet = "".join(f'<row r="{i+1}">' + "".join(
             f'<c r="{cols[j]}{i+1}" t="inlineStr"><is><t>{v}</t></is></c>' if isinstance(v, str) else f'<c r="{cols[j]}{i+1}"><v>{v}</v></c>'
@@ -356,7 +356,7 @@ def selftest() -> int:
         with zipfile.ZipFile(b, "w") as z:
             z.writestr("xl/workbook.xml", '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
                        'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'
-                       '<sheet name="T1_1" sheetId="1" r:id="rId1"/></sheets></workbook>')
+                       f'<sheet name="{sheet_name}" sheetId="1" r:id="rId1"/></sheets></workbook>')
             z.writestr("xl/_rels/workbook.xml.rels", '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/'
                        'relationships"><Relationship Id="rId1" Target="worksheets/sheet1.xml"/></Relationships>')
             z.writestr("xl/worksheets/sheet1.xml", '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/'
@@ -415,7 +415,7 @@ def selftest() -> int:
     check("regional: a weight not reported is no data, not zero", rb[0]["exports_t"], None)
     check("regional: provisional values are flagged, per territory", (rb[0]["provisional"], rb[1]["provisional"]), (False, True))
     check("regional: cities without a reader say why",
-          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Paris", "Santiago"])
+          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Santiago"])
     # trade.hamburg: the next edition's final figure first, the year's own provisional one as the fallback.
     def nord(this, last):                            # a T1_1 sheet: header flags, then the Insgesamt row
         return xlsx([["Tabelle 1"], [None, "2025a" if this == 2025 else f"{this}a", f"{last}b", "%",
@@ -440,6 +440,23 @@ def selftest() -> int:
         check("hamburg trade: an imports/exports header mismatch raises", "no error", "ValueError")
     except ValueError:
         check("hamburg trade: an imports/exports header mismatch raises", "ValueError", "ValueError")
+    # trade.paris: French customs' file summed by département and region, in euros; a year it lacks is no data.
+    def qdf(flow, vals):                             # Region, Dep, Flux, ..., one column per year
+        return xlsx([["Region", "Dep", "Flux", "CodeA129", "Pays", "annee2024_valeur_en_euros", "annee2025_valeur_en_euros"]] +
+                    [["03", dep, flow, "C10A", "DE", a, b] for dep, a, b in vals], sheet_name="qdf")
+    zb = io.BytesIO()
+    with zipfile.ZipFile(zb, "w") as z:
+        z.writestr(zipfile.ZipInfo("REGION_03_A_IMPORT.xlsx", (2026, 9, 3, 0, 0, 0)), qdf("Import", [("75", 100.4, 1), ("75", 50, 1), ("92", 1000, 1)]))
+        z.writestr(zipfile.ZipInfo("REGION_03_A_EXPORT.xlsx", (2026, 9, 3, 0, 0, 0)), qdf("Export", [("75", 30, 1), ("92", 300, 1)]))
+    fake = lambda u: zb.getvalue()
+    p24 = trade.paris(2024, raw=fake)
+    check("paris trade: département 75 and the region summed apart, in euros",
+          [(r["code"], r["imports_eur"], r["exports_eur"]) for r in p24], [("75", 150, 30), ("03", 1150, 330)])
+    check("paris trade: the citation DGDDI asks for", p24[0]["source"].startswith("source : douanes françaises, résultats de septembre 2026"), True)
+    check("paris trade: a year the file does not carry is no data, saying which years it has",
+          (trade.paris(2019, raw=fake)[0]["imports_eur"], trade.paris(2019, raw=fake)[0]["no_data"]),
+          (None, "the customs file carries only 2024, 2025"))
+    check("paris trade: nothing to say about provisional, so it says nothing", p24[0]["provisional"], None)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)

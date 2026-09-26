@@ -15,7 +15,10 @@ of Charles de Gaulle and Orly. Sea and air stay separate rows (mode "sea" / "air
 """
 from __future__ import annotations
 
+import functools
+import io
 import re
+import zipfile
 
 import waste  # the JSON-stat reader, the xlsx reader and the retrying fetch live there
 
@@ -45,8 +48,13 @@ REGIONS = {"Barcelona": [("08", "Province of Barcelona"), ("TOTAL", "Catalonia")
 NORD_CKAN = "https://suche.transparenz.hamburg.de/api/3/action/package_search?q=G_III_1_G_III_3_j{yy}&rows=20"
 NORD_LICENCE = ("dl-de-by-2.0 on the Transparenzportal; the file's own imprint permits extracts with attribution and "
                 "reserves other rights")
+# Paris: French customs' annual regional file, the same plain GET the download page's own script builds.
+DGDDI_ZIP = "https://lekiosque.finances.gouv.fr/download_2.asp?rep=/fichiers/Telecharge&fic=region_03_A.zip"
+DGDDI_LICENCE = ("DGDDI reuse conditions: keep the data's integrity, cite the source and the reference date. Licence "
+                 "Ouverte is not named; open-equivalence not yet confirmed (awesome-fabcity-data#51)")
+MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre",
+        "décembre"]
 NO_REGIONAL = {
-    "Paris": "French customs publish regional trade as HTML tables (filed in #51), not read yet.",
     "Boston": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level.",
     "Santiago": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50).",
 }
@@ -164,7 +172,46 @@ def hamburg(year: int, get=waste._json, raw=waste._raw) -> list[dict]:
                  no_data=f"no annual edition for {year} or {year + 1} on the Transparenzportal")]
 
 
-READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg}
+@functools.lru_cache(maxsize=None)
+def _dgddi(raw=waste._raw) -> tuple[dict, str]:
+    """Île-de-France's annual file: {flow: rows of département x A129 product x country} and the release month.
+    One download serves every year of the run."""
+    z = zipfile.ZipFile(io.BytesIO(raw(DGDDI_ZIP)))
+    books, month = {}, None
+    for flow in ("IMPORT", "EXPORT"):
+        info = z.getinfo(f"REGION_03_A_{flow}.xlsx")
+        month = month or f"{MOIS[info.date_time[1] - 1]} {info.date_time[0]}"   # DGDDI's citation: « résultats de [mois année] »
+        books[flow] = waste._xlsx_rows(z.read(info), "qdf")
+    return books, month
+
+
+def paris(year: int, raw=waste._raw) -> list[dict]:
+    """Imports and exports of Paris (département 75) and of Île-de-France, in euros, summed from French customs' file.
+    The file carries the last three calendar years only, so an older year is no data, said so."""
+    books, month = _dgddi(raw)
+    rows = []
+    for code, name, keep in (("75", "Paris (département 75)", lambda r: r.get("B") == "75"),
+                             ("03", "Île-de-France", lambda r: True)):
+        row = {"city": "Paris", "year": year, "territory": name, "code": code, "imports_t": None, "exports_t": None,
+               "provisional": None,           # the file does not flag provisional years
+               "counts": "goods crossing the French customs border (imports CIF, exports FOB, military equipment "
+                         "excluded), attributed to the declaring firm's establishment, so a département holding head "
+                         "offices can show trade made elsewhere; trade with other French regions is not in it; values "
+                         "only; no balance is drawn",
+               "source": f"source : douanes françaises, résultats de {month} (region_03_A.zip, summed over "
+                         "product x country)", "licence": DGDDI_LICENCE}
+        for flow, key in (("IMPORT", "imports_eur"), ("EXPORT", "exports_eur")):
+            head, data = books[flow][0], books[flow][1:]
+            col = next((c for c, v in head.items() if v == f"annee{year}_valeur_en_euros"), None)
+            row[key] = None if col is None else round(sum(waste._num(r.get(col)) or 0.0 for r in data if keep(r)))
+        if row["imports_eur"] is None and row["exports_eur"] is None:
+            years = sorted(v[5:9] for v in books["IMPORT"][0].values() if v.startswith("annee"))
+            row["no_data"] = f"the customs file carries only {', '.join(years)}"
+        rows.append(row)
+    return rows
+
+
+READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris}
 
 
 def regional_trade(years: list[int]) -> list[dict]:
