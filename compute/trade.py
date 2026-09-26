@@ -33,6 +33,17 @@ AIRPORTS = {
     "Hamburg": [("DE_EDDH", "Hamburg")],
     "Paris": [("FR_LFPG", "Paris Charles de Gaulle"), ("FR_LFPO", "Paris Orly")],
 }
+# Regional trade, Economic|Region's external-trade row: customs trade of the territory, not of its gateways.
+IDESCAT = "https://api.idescat.cat/taules/v2/comest/18132/5/prov/data"
+IDESCAT_LICENCE = ("Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; "
+                   "open-equivalence not yet confirmed (awesome-fabcity-data#51)")
+REGIONS = {"Barcelona": [("08", "Province of Barcelona"), ("TOTAL", "Catalonia")]}
+NO_REGIONAL = {
+    "Hamburg": "Destatis and Statistikamt Nord publish Hamburg's trade as XLSX reports (filed in #51), not read yet.",
+    "Paris": "French customs publish regional trade as HTML tables (filed in #51), not read yet.",
+    "Boston": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level.",
+    "Santiago": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50).",
+}
 NO_DATA = {
     "Boston": "US Census trade by port (porths) needs an API key, which this pipeline does not hold.",
     "Santiago": "Chile's customs declarations (Servicio Nacional de Aduanas) are monthly RAR/ZIP files, not read yet.",
@@ -76,6 +87,42 @@ def airport(city: str, year: int, get=waste._json) -> dict:
     if missing:
         row["missing"] = f"not reported for {year}: {', '.join(missing)}"
     return row
+
+
+def regional(city: str, year: int, get=waste._json) -> list[dict]:
+    """Exports and imports of the city's territories, in euros and tonnes, each direction and unit kept apart."""
+    places = REGIONS[city]
+    d = get(f"{IDESCAT}?lang=en&YEAR={year}&TOD=TOTAL&TARIC=TOTAL&MOD_TRANS=TOTAL&PROV={','.join(c for c, _ in places)}"
+            "&CONCEPT=VALUE_IMP,VALUE_EXP,WEIGHT_IMP,WEIGHT_EXP")
+    rows = []
+    for code, name in places:
+        v = {c: waste._pick(d, PROV=code, CONCEPT=c) for c in ("VALUE_IMP", "VALUE_EXP", "WEIGHT_IMP", "WEIGHT_EXP")}
+        eur = lambda k: None if v[k] is None else round(v[k] * 1000)     # thousand euro
+        t = lambda k: None if v[k] is None else round(v[k] / 1000)       # kilograms
+        row = {"city": city, "year": year, "territory": name, "code": code,
+               "imports_eur": eur("VALUE_IMP"), "exports_eur": eur("VALUE_EXP"),
+               "imports_t": t("WEIGHT_IMP"), "exports_t": t("WEIGHT_EXP"),
+               "provisional": any(waste._status(d, PROV=code, CONCEPT=c) == "p" for c in v),
+               "counts": "goods crossing the Spanish customs border, attributed to the declarant's province; trade "
+                         "with the rest of Spain is not in it; no balance is drawn",
+               "source": f"Idescat comest 18132, AEAT customs, PROV={code}, updated {d.get('updated')}",
+               "licence": IDESCAT_LICENCE}
+        if all(x is None for x in v.values()):
+            row["no_data"] = "the territory is not in the table for this year"
+        rows.append(row)
+    return rows
+
+
+def regional_trade(years: list[int]) -> list[dict]:
+    rows = []
+    for city in REGIONS:
+        for y in years:
+            try:
+                rows += regional(city, y)
+            except Exception as e:                   # the API down must not blank the rest of the run
+                rows.append({"city": city, "year": y, "error": f"{type(e).__name__}: {e}"[:200]})
+    rows += [{"city": city, "year": None, "no_data": why} for city, why in NO_REGIONAL.items()]
+    return rows
 
 
 def gateway(years: list[int]) -> list[dict]:
