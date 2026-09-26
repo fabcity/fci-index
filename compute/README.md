@@ -160,12 +160,37 @@ misses a direction, that direction is empty rather than a partial sum. Road and 
 The module reports tonnes and never a ratio: turning gateway tonnage into a share of what a place consumes needs the
 regional trade data recorded as the Index's most important gap (awesome-fabcity-data#42).
 
+## Regional trade: what the territory exports and imports
+
+`trade.regional()` fills Economic|Region's external-trade row from Idescat's `comest` table 18132 (AEAT customs
+records, key-free JSON-stat; registry `economic/region/idescat-comerc-exterior`). It reports **imports and exports
+in euros and in tonnes, each separately**, and never draws a balance.
+
+| Territory | Year | Imports | Exports |
+| --- | --- | --- | --- |
+| Province of Barcelona | 2019 | 74.3 bn EUR · 31.4 Mt | 57.1 bn EUR · 21.4 Mt |
+| Province of Barcelona | 2024 (provisional) | 87.4 bn EUR · 25.3 Mt | 77.2 bn EUR · 19.8 Mt |
+| Catalonia | 2019 | 92.6 bn EUR · 56.8 Mt | 73.9 bn EUR · 34.3 Mt |
+| Catalonia | 2024 (provisional) | 111.4 bn EUR · 51.2 Mt | 100.3 bn EUR · 32.1 Mt |
+
+**It counts something different from the gateway row.** Customs trade is goods crossing the Spanish border, attributed
+to the declarant's province wherever they physically entered. Port throughput is what a port handled, including
+transit and Spanish coastal traffic. Neither can be subtracted from the other. Trade with the rest of Spain is not in
+either. Idescat flags 2024 and 2025 as
+provisional, and so do the rows. Idescat names no licence, only Spain's statutory reuse conditions, and whether those
+count as open is still a maintainer's call (awesome-fabcity-data#51).
+
+Hamburg, Paris and Boston have filed sources (#51) that are XLSX reports or HTML tables, not read yet. Santiago has no
+open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
+are arrays (Idescat) as well as objects (Eurostat), and `_status` reads the provisional flag.
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
    Waste now has open data for Barcelona, Paris and Santiago; Hamburg's recovery split does not.
-2. Add a trade-adjusted variant once regional exports exist for a pilot, starting with Destatis by
-   federal state or DataComex by province.
+2. Read the other filed regional trade sources: Destatis by Land and Statistikamt Nord for Hamburg, French customs
+   for Paris. Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
+   gateway rows. A trade-adjusted variant still needs a methodology (item 3).
 3. Settle what the Index should report, capacity or self-supply. That is a methodology decision (FCI 3.0 §7),
    not a data one.
 

@@ -247,11 +247,14 @@ def hamburg(year: int, raw=_raw) -> dict | None:
     return out
 
 
-def _pick(d: dict, **fixed) -> float | None:
-    """One value from a JSON-stat response: fixed dimensions by code, every other dimension a single member."""
+def _pos(d: dict, **fixed) -> int | None:
+    """Where a cell sits in a JSON-stat response: fixed dimensions by code, every other dimension a single member.
+    JSON-stat allows a category index and the values as an object or an array: Eurostat sends objects, Idescat arrays."""
     pos = 0
     for dim, size in zip(d["id"], d["size"]):
         index = d["dimension"][dim]["category"]["index"]
+        if isinstance(index, list):
+            index = {c: i for i, c in enumerate(index)}
         if dim in fixed:
             if fixed[dim] not in index:
                 return None
@@ -260,7 +263,28 @@ def _pick(d: dict, **fixed) -> float | None:
             pos = pos * size
         else:
             raise ValueError(f"dimension {dim} has {size} members and was not fixed")
-    return d["value"].get(str(pos))
+    return pos
+
+
+def _at(block, pos: int):
+    """The entry at pos in a JSON-stat value or status block, which may be an object, an array or one shared string."""
+    if isinstance(block, dict):
+        return block.get(str(pos))
+    if isinstance(block, list):
+        return block[pos] if pos < len(block) else None
+    return block
+
+
+def _pick(d: dict, **fixed) -> float | None:
+    """One value from a JSON-stat response."""
+    pos = _pos(d, **fixed)
+    return None if pos is None else _at(d["value"], pos)
+
+
+def _status(d: dict, **fixed) -> str | None:
+    """The status flag of that value ('p' provisional at Idescat), or None."""
+    pos = _pos(d, **fixed)
+    return None if pos is None else _at(d.get("status"), pos)
 
 
 COUNTRY = {"DE": "Germany", "ES": "Spain", "FR": "France"}

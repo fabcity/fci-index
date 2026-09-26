@@ -195,6 +195,12 @@ def run() -> None:
                     "in tonnes, reported separately, sea and air as separate rows. Throughput, not consumption. Boston and "
                     "Santiago are listed with why they have no data.",
         "rows": trade.gateway([YEAR, 2024])}
+    out["regional_trade"] = {
+        "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros and "
+                    "tonnes, each reported separately and never netted. Customs trade of the territory, not its "
+                    "gateways' throughput, and not trade with the rest of the country. Cities without an open reader "
+                    "yet are listed with why.",
+        "rows": trade.regional_trade([YEAR, 2024])}
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"reference (Boeing's inputs)        {ref_idx:5.1f}   published {REF['published_index']}")
     print(f"Hamburg, open sectors substituted  {index(rows):5.1f}   ({open_weight:.0f} of 1000 per mille re-derived)")
@@ -206,6 +212,12 @@ def run() -> None:
         t = lambda v: "no data" if v is None else f"{v:,} t"
         print(f"gateway   {g['city']:18} {g['year'] or '':4} {g.get('mode', ''):3}  " + (g.get("no_data") or g.get("error") or
               f"in {t(g['inwards_t'])}  out {t(g['outwards_t'])}  ({g['port']})"))
+    for r in out["regional_trade"]["rows"]:
+        eur = lambda v: "no data" if v is None else f"{v / 1e9:,.1f} bn EUR"
+        t = lambda v: "no data" if v is None else f"{v / 1e6:,.1f} Mt"
+        print(f"regional  {r['city']:18} {r['year'] or '':4}  " + (r.get("no_data") or r.get("error") or
+              f"imports {eur(r['imports_eur'])} / {t(r['imports_t'])}  exports {eur(r['exports_eur'])} / "
+              f"{t(r['exports_t'])}  ({r['territory']}{', provisional' if r['provisional'] else ''})"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -381,6 +393,29 @@ def selftest() -> int:
     ap = trade.airport("Paris", 2024, get=lambda u: air["FR_LFPG" if "FR_LFPG" in u else "FR_LFPO"])
     check("trade: one airport missing a direction blanks it, not a partial sum",
           (ap["inwards_t"], ap["outwards_t"], ap["total_t"], ap["missing"]), (None, 950, None, "not reported for 2024: Paris Orly"))
+    # JSON-stat as arrays (Idescat): index and value lists, and a status flag read by position.
+    arr = {"id": ["PROV", "CONCEPT"], "size": [2, 2], "value": [1.0, 2.0, 3.0, None],
+           "dimension": {"PROV": {"category": {"index": ["08", "TOTAL"]}},
+                         "CONCEPT": {"category": {"index": ["A", "B"]}}}, "status": {"2": "p"}}
+    check("_pick: an array index and array values", (waste._pick(arr, PROV="TOTAL", CONCEPT="A"),
+                                                     waste._pick(arr, PROV="08", CONCEPT="B")), (3.0, 2.0))
+    check("_pick: a null in the value array is no data", waste._pick(arr, PROV="TOTAL", CONCEPT="B"), None)
+    check("_status: the flag at the same position", (waste._status(arr, PROV="TOTAL", CONCEPT="A"),
+                                                    waste._status(arr, PROV="08", CONCEPT="A")), ("p", None))
+    # trade.regional: thousand euro to euro, kg to tonnes, a missing weight stays missing, provisional carried.
+    concepts = ["VALUE_IMP", "VALUE_EXP", "WEIGHT_IMP", "WEIGHT_EXP"]
+    idx = js({"PROV": ["08", "TOTAL"], "CONCEPT": concepts},
+             {("08", "VALUE_IMP"): 100.5, ("08", "VALUE_EXP"): 80.0, ("08", "WEIGHT_IMP"): 2500400.0,
+              ("TOTAL", "VALUE_IMP"): 150.0, ("TOTAL", "VALUE_EXP"): 90.0, ("TOTAL", "WEIGHT_IMP"): 4000.0,
+              ("TOTAL", "WEIGHT_EXP"): 3000.0})
+    idx["status"] = {"4": "p"}                       # TOTAL, VALUE_IMP
+    rb = trade.regional("Barcelona", 2024, get=lambda u: idx)
+    check("regional: euros and tonnes, imports and exports apart",
+          (rb[0]["imports_eur"], rb[0]["exports_eur"], rb[0]["imports_t"]), (100500, 80000, 2500))
+    check("regional: a weight not reported is no data, not zero", rb[0]["exports_t"], None)
+    check("regional: provisional values are flagged, per territory", (rb[0]["provisional"], rb[1]["provisional"]), (False, True))
+    check("regional: cities without a reader say why",
+          sorted(r["city"] for r in trade.regional_trade([]) if r.get("no_data")), ["Boston", "Hamburg", "Paris", "Santiago"])
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)

@@ -870,5 +870,86 @@
     "no_data": "Chile's customs declarations (Servicio Nacional de Aduanas) are monthly RAR/ZIP files, not read yet."
    }
   ]
+ },
+ "regional_trade": {
+  "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros and tonnes, each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
+  "rows": [
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "territory": "Province of Barcelona",
+    "code": "08",
+    "imports_eur": 74323277500,
+    "exports_eur": 57101626100,
+    "imports_t": 31440186,
+    "exports_t": 21392211,
+    "provisional": false,
+    "counts": "goods crossing the Spanish customs border, attributed to the declarant's province; trade with the rest of Spain is not in it; no balance is drawn",
+    "source": "Idescat comest 18132, AEAT customs, PROV=08, updated 2026-02-24",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "territory": "Catalonia",
+    "code": "TOTAL",
+    "imports_eur": 92643116500,
+    "exports_eur": 73937955200,
+    "imports_t": 56829470,
+    "exports_t": 34288583,
+    "provisional": false,
+    "counts": "goods crossing the Spanish customs border, attributed to the declarant's province; trade with the rest of Spain is not in it; no balance is drawn",
+    "source": "Idescat comest 18132, AEAT customs, PROV=TOTAL, updated 2026-02-24",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "territory": "Province of Barcelona",
+    "code": "08",
+    "imports_eur": 87447568600,
+    "exports_eur": 77170294100,
+    "imports_t": 25332552,
+    "exports_t": 19848870,
+    "provisional": true,
+    "counts": "goods crossing the Spanish customs border, attributed to the declarant's province; trade with the rest of Spain is not in it; no balance is drawn",
+    "source": "Idescat comest 18132, AEAT customs, PROV=08, updated 2026-02-24",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "territory": "Catalonia",
+    "code": "TOTAL",
+    "imports_eur": 111365224500,
+    "exports_eur": 100268510000,
+    "imports_t": 51165979,
+    "exports_t": 32055019,
+    "provisional": true,
+    "counts": "goods crossing the Spanish customs border, attributed to the declarant's province; trade with the rest of Spain is not in it; no balance is drawn",
+    "source": "Idescat comest 18132, AEAT customs, PROV=TOTAL, updated 2026-02-24",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+   },
+   {
+    "city": "Hamburg",
+    "year": null,
+    "no_data": "Destatis and Statistikamt Nord publish Hamburg's trade as XLSX reports (filed in #51), not read yet."
+   },
+   {
+    "city": "Paris",
+    "year": null,
+    "no_data": "French customs publish regional trade as HTML tables (filed in #51), not read yet."
+   },
+   {
+    "city": "Boston",
+    "year": null,
+    "no_data": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level."
+   },
+   {
+    "city": "Santiago",
+    "year": null,
+    "no_data": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50)."
+   }
+  ]
  }
 }
