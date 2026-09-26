@@ -872,7 +872,7 @@
   ]
  },
  "regional_trade": {
-  "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros and tonnes, each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
+  "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
   "rows": [
    {
     "city": "Barcelona",
@@ -932,8 +932,31 @@
    },
    {
     "city": "Hamburg",
-    "year": null,
-    "no_data": "Destatis and Statistikamt Nord publish Hamburg's trade as XLSX reports (filed in #51), not read yet."
+    "year": 2019,
+    "territory": "Land Hamburg",
+    "code": "02",
+    "imports_t": null,
+    "exports_t": null,
+    "counts": "imports are general trade (they include goods entering customs warehouses whose destination is not yet known) and exports special trade (goods made or last processed in Hamburg), so no balance is meaningful; values only, no tonnes; trade with other Länder is not in it",
+    "licence": "dl-de-by-2.0 on the Transparenzportal; the file's own imprint permits extracts with attribution and reserves other rights",
+    "imports_eur": 67498534701,
+    "exports_eur": 53375694422,
+    "provisional": false,
+    "source": "Statistikamt Nord G III 1 / G III 3, 2020 edition, T1_1 Insgesamt: https://www.statistik-nord.de/fileadmin/Dokumente/Statistische_Berichte/industrie__handel_und_dienstl/G_III_1_G_III_3_j_H_Laender/G_III_1_G_III_3_j20_HH_nach_Laendern.xlsx"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2024,
+    "territory": "Land Hamburg",
+    "code": "02",
+    "imports_t": null,
+    "exports_t": null,
+    "counts": "imports are general trade (they include goods entering customs warehouses whose destination is not yet known) and exports special trade (goods made or last processed in Hamburg), so no balance is meaningful; values only, no tonnes; trade with other Länder is not in it",
+    "licence": "dl-de-by-2.0 on the Transparenzportal; the file's own imprint permits extracts with attribution and reserves other rights",
+    "imports_eur": 73868308854,
+    "exports_eur": 56087385962,
+    "provisional": false,
+    "source": "Statistikamt Nord G III 1 / G III 3, 2025 edition, T1_1 Insgesamt: https://www.statistik-nord.de/fileadmin/Dokumente/G_III_1_G_III_3_j25_HH_nach_Laendern.xlsx"
    },
    {
     "city": "Paris",

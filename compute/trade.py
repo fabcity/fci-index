@@ -15,7 +15,9 @@ of Charles de Gaulle and Orly. Sea and air stay separate rows (mode "sea" / "air
 """
 from __future__ import annotations
 
-import waste  # the JSON-stat reader and the retrying fetch live there
+import re
+
+import waste  # the JSON-stat reader, the xlsx reader and the retrying fetch live there
 
 TABLE = "mar_mg_aa_pwhd"   # gross weight of goods handled in the top EU ports, thousand tonnes, by direction
 LICENCE = "Eurostat reuse policy, 2011/833/EU"
@@ -38,8 +40,12 @@ IDESCAT = "https://api.idescat.cat/taules/v2/comest/18132/5/prov/data"
 IDESCAT_LICENCE = ("Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; "
                    "open-equivalence not yet confirmed (awesome-fabcity-data#51)")
 REGIONS = {"Barcelona": [("08", "Province of Barcelona"), ("TOTAL", "Catalonia")]}
+# Hamburg: Statistikamt Nord's annual report G III 1 / G III 3, found through the Transparenzportal's CKAN, because
+# the file names drift (j23 is `..._Rev.xlsx`, older editions sit in another folder).
+NORD_CKAN = "https://suche.transparenz.hamburg.de/api/3/action/package_search?q=G_III_1_G_III_3_j{yy}&rows=20"
+NORD_LICENCE = ("dl-de-by-2.0 on the Transparenzportal; the file's own imprint permits extracts with attribution and "
+                "reserves other rights")
 NO_REGIONAL = {
-    "Hamburg": "Destatis and Statistikamt Nord publish Hamburg's trade as XLSX reports (filed in #51), not read yet.",
     "Paris": "French customs publish regional trade as HTML tables (filed in #51), not read yet.",
     "Boston": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level.",
     "Santiago": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50).",
@@ -113,12 +119,60 @@ def regional(city: str, year: int, get=waste._json) -> list[dict]:
     return rows
 
 
+def _nord_edition(edition: int, get=waste._json) -> str | None:
+    """The URL of Statistikamt Nord's annual trade report by partner country for that year, or None if not published."""
+    yy = f"{edition % 100:02d}"
+    found = get(NORD_CKAN.format(yy=yy))["result"]["results"]
+    urls = [x["url"] for p in found for x in p.get("resources", [])
+            if f"_j{yy}_HH_nach_Laendern" in x["url"] and x["url"].endswith(".xlsx")]
+    return urls[0] if urls else None
+
+
+def _nord_totals(book: bytes) -> dict[int, tuple]:
+    """{year: (imports, exports in thousand euro, final)} from sheet T1_1's `Insgesamt` row. Each edition holds two
+    years, and its header flags each one `a` (may still change through revision) or `b` (final)."""
+    rows = waste._xlsx_rows(book, "T1_1")
+    head = next(r for r in rows if re.fullmatch(r"\d{4}[ab]", (r.get("B") or "").strip()))
+    total = next(r for r in rows if (r.get("A") or "").strip().startswith("Insgesamt"))
+    out = {}
+    for imp, exp in (("B", "E"), ("C", "F")):       # Einfuhr this year / last year, Ausfuhr the same
+        label = head[imp].strip()
+        if head.get(exp, "").strip() != label:
+            raise ValueError(f"T1_1 header: imports column {imp} says {label}, exports column {exp} does not")
+        out[int(label[:4])] = (waste._num(total.get(imp)), waste._num(total.get(exp)), label[4] == "b")
+    return out
+
+
+def hamburg(year: int, get=waste._json, raw=waste._raw) -> list[dict]:
+    """Land Hamburg's imports and exports, in euros. The next year's edition carries the final figure, so it is read
+    first; the year's own edition is the fallback, and its figure is provisional."""
+    row = {"city": "Hamburg", "year": year, "territory": "Land Hamburg", "code": "02",
+           "imports_t": None, "exports_t": None,
+           "counts": "imports are general trade (they include goods entering customs warehouses whose destination is "
+                     "not yet known) and exports special trade (goods made or last processed in Hamburg), so no balance "
+                     "is meaningful; values only, no tonnes; trade with other Länder is not in it",
+           "licence": NORD_LICENCE}
+    for edition in (year + 1, year):
+        url = _nord_edition(edition, get)
+        found = _nord_totals(raw(url)).get(year) if url else None
+        if found:
+            imp, exp, final = found
+            return [dict(row, imports_eur=None if imp is None else round(imp * 1000),
+                         exports_eur=None if exp is None else round(exp * 1000), provisional=not final,
+                         source=f"Statistikamt Nord G III 1 / G III 3, {edition} edition, T1_1 Insgesamt: {url}")]
+    return [dict(row, imports_eur=None, exports_eur=None, provisional=False, source="Statistikamt Nord G III 1 / G III 3",
+                 no_data=f"no annual edition for {year} or {year + 1} on the Transparenzportal")]
+
+
+READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg}
+
+
 def regional_trade(years: list[int]) -> list[dict]:
     rows = []
-    for city in REGIONS:
+    for city, read in READERS.items():
         for y in years:
             try:
-                rows += regional(city, y)
+                rows += read(y)
             except Exception as e:                   # the API down must not blank the rest of the run
                 rows.append({"city": city, "year": y, "error": f"{type(e).__name__}: {e}"[:200]})
     rows += [{"city": city, "year": None, "no_data": why} for city, why in NO_REGIONAL.items()]
