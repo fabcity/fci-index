@@ -1018,8 +1018,31 @@
    },
    {
     "city": "Boston",
-    "year": null,
-    "no_data": "Only metro-area exports are open (filed in #51), not read yet; no imports are published below state level."
+    "year": 2019,
+    "territory": "Boston-Cambridge-Newton, MA-NH (metro area)",
+    "code": "CBSA 14460",
+    "imports_usd": null,
+    "imports_t": null,
+    "exports_t": null,
+    "counts": "goods exports only: no imports are published below state level, and the state series needs an API key; attributed to the exporter of record's location, not to where goods were made; values only",
+    "licence": "US public domain (Census Bureau work, 17 USC 105)",
+    "exports_usd": 23508184859,
+    "provisional": false,
+    "source": "U.S. Census Bureau, U.S. Exports by Metropolitan Area, Q4 2020 workbook: https://www.census.gov/foreign-trade/statistics/state/metroq42020.xlsx"
+   },
+   {
+    "city": "Boston",
+    "year": 2024,
+    "territory": "Boston-Cambridge-Newton, MA-NH (metro area)",
+    "code": "CBSA 14460",
+    "imports_usd": null,
+    "imports_t": null,
+    "exports_t": null,
+    "counts": "goods exports only: no imports are published below state level, and the state series needs an API key; attributed to the exporter of record's location, not to where goods were made; values only",
+    "licence": "US public domain (Census Bureau work, 17 USC 105)",
+    "exports_usd": 29935608466,
+    "provisional": false,
+    "source": "U.S. Census Bureau, U.S. Exports by Metropolitan Area, Q4 2025 workbook: https://www.census.gov/foreign-trade/statistics/state/metroq42025.xlsx"
    },
    {
     "city": "Santiago",
