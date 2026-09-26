@@ -174,6 +174,8 @@ in euros and in tonnes, each separately**, and never draws a balance.
 | Catalonia | 2024 (provisional) | 111.4 bn EUR · 51.2 Mt | 100.3 bn EUR · 32.1 Mt |
 | Land Hamburg | 2019 (final) | 67.5 bn EUR | 53.4 bn EUR |
 | Land Hamburg | 2024 (final) | 73.9 bn EUR | 56.1 bn EUR |
+| Paris (département 75) | 2024 | 41.8 bn EUR | 28.3 bn EUR |
+| Île-de-France | 2024 | 192.4 bn EUR | 141.8 bn EUR |
 
 **It counts something different from the gateway row.** Customs trade is goods crossing the Spanish border, attributed
 to the declarant's province wherever they physically entered. Port throughput is what a port handled, including
@@ -192,14 +194,26 @@ different concepts: imports are general trade, which includes goods entering cus
 not yet known, and exports are special trade, goods made or last processed in Hamburg. Their difference is not a
 trade balance, which is Boeing's reason for leaving trade out of Hamburg's 37.
 
-Paris and Boston have filed sources (#51) that are HTML tables or XLSX, not read yet. Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
+**Paris** comes from `trade.paris()`, which reads French customs' annual regional file for Île-de-France
+(`region_03_A.zip`, the same plain GET the download page's own script builds; registry
+`economic/region/dgddi-commerce-exterieur-regional`). It sums the file's département x product x country rows,
+for Paris (75) and for the region. Two things were checked against the site, not assumed. The values are **euros**
+(the column header is right and the file's readme, which says thousands, is wrong): the region's sums equal the
+published totals to the thousand. And the file has no aggregate rows to double-count. It carries **only the last
+three calendar years** (2023–2025), so Paris has no 2019 figure, and the output says so. The file does not flag
+provisional years, so the rows leave that empty rather than guess. Trade is attributed to the declaring firm's
+establishment, so a département with head offices, as Paris has, can show trade made elsewhere. Rows carry DGDDI's
+required citation, « source : douanes françaises, résultats de [mois année] ». Idescat's licence caveat (#51)
+applies here too: reuse on statutory conditions, and Licence Ouverte is not named.
+
+Boston has only metro-area exports (filed in #51), not read yet. Santiago has no open source (#50). Each is listed in the output with that reason. `_pick` now reads JSON-stat whose index and values
 are arrays (Idescat) as well as objects (Eurostat), and `_status` reads the provisional flag.
 
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
    Waste now has open data for Barcelona, Paris and Santiago; Hamburg's recovery split does not.
-2. Read the other filed regional trade sources: French customs for Paris, and Census metro exports for Boston. Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
+2. Read Census metro exports for Boston, the last filed regional trade source (exports only). Idescat's transport-mode split (MOD_TRANS) can also put Barcelona's sea and air trade beside its
    gateway rows. A trade-adjusted variant still needs a methodology (item 3).
 3. Settle what the Index should report, capacity or self-supply. That is a methodology decision (FCI 3.0 §7),
    not a data one.
