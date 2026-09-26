@@ -201,7 +201,7 @@
     "ratio": 0.248,
     "weight": 70.0,
     "boeing_ratio": 0.248,
-    "source": "Boeing 2024, carried: Hamburg's only open machine-readable figure is the Urban Audit total, with no recovery split. Barcelona, Paris and Santiago do have one: see trash_out."
+    "source": "Boeing 2024, carried: Boeing's 24.8% is a recycling share. The open Hamburg data (Statistikamt Nord Q II 9, see trash_out) gives separate collection, 40.0% in 2019, which is not recycling; substituting it would mix two measures."
    }
   ]
  },
@@ -584,27 +584,27 @@
    {
     "city": "Hamburg",
     "year": 2019,
-    "population": 1841179,
-    "generated_t": 783890,
-    "generated_kg_per_capita": 425.8,
-    "residual_kg_per_capita": null,
-    "recovery_share": null,
-    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
-    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
-    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "population": 1847253,
+    "generated_t": 795088,
+    "generated_kg_per_capita": 430.4,
+    "residual_kg_per_capita": 255.5,
+    "recovery_share": 0.4,
+    "counts": "waste collected by the public collection; residual = Haus- und Sperrmüll; recovery = separate collection (organics, recyclables, electrical equipment), which is not recycling. Boeing's 24.8% for 2019 is a recycling share, a different measure.",
+    "source": "Statistikamt Nord, Statistischer Bericht Q II 9 - j 24 HH, table T1_1",
+    "licence": "dl-de/by-2.0 (Hamburg Transparenzportal)",
     "country": "DE"
    },
    {
     "city": "Hamburg",
     "year": 2024,
-    "population": 1851596,
-    "generated_t": 765900,
-    "generated_kg_per_capita": 413.6,
-    "residual_kg_per_capita": null,
-    "recovery_share": null,
-    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
-    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
-    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "population": 1857080,
+    "generated_t": 775113,
+    "generated_kg_per_capita": 417.4,
+    "residual_kg_per_capita": 250.1,
+    "recovery_share": 0.394,
+    "counts": "waste collected by the public collection; residual = Haus- und Sperrmüll; recovery = separate collection (organics, recyclables, electrical equipment), which is not recycling. Boeing's 24.8% for 2019 is a recycling share, a different measure.",
+    "source": "Statistikamt Nord, Statistischer Bericht Q II 9 - j 24 HH, table T1_1",
+    "licence": "dl-de/by-2.0 (Hamburg Transparenzportal)",
     "country": "DE"
    },
    {

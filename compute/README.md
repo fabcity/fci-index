@@ -88,7 +88,7 @@ recovery share. The recovery share is also Boeing's input for macro-sector 16, w
 | Paris | 2019 · 2024 | 464 · 436 | 341 · 308 | 26.5% · 29.4% | household waste only; recovery = sorted streams |
 | Santiago (comuna) | 2019 · 2022 | 429.8 · 220.6 | not recorded · 216.8 | not recorded · 1.7% | tonnes declared (209 kt · 116 kt) per INE's projected population |
 | **Región Metropolitana (region)** | 2019 · 2022 | 454.3 · 433.4 | not recorded · 392.7 | not recorded · 1.7% | the same, summed over the region's comunas by code; 2022 has 282 kt with no treatment recorded |
-| Hamburg | 2019 · 2024 | 425.8 · 413.6 | n/a | n/a | Urban Audit total only, no split |
+| Hamburg | 2019 · 2024 | 430.4 · 417.4 | 255.5 · 250.1 | 40.0% · 39.4% | public collection (Statistikamt Nord Q II 9); residual = Haus- und Sperrmüll; recovery = separate collection |
 
 Catalonia is the first **region** in the pipeline. Eurostat has no regional waste table, so it is the Generalitat's
 municipal data summed server-side. The dataset has no Catalonia total row, so nothing is counted twice, and the
@@ -105,8 +105,10 @@ Comuna Santiago's 2022 figure is half its 2019 one because fewer operators decla
 **These rows are not comparable yet.** Each counts a different thing, and the table says what. Santiago sends
 98% of what it declares to sanitary landfill, and so does its region. Its 2019 file records no treatment at all, which is "not
 recorded", not 0%: the self-test pins that. Its total nearly halves between 2019 and 2022, which is a change in
-who declares, not in the waste. Hamburg's recovery split exists only in Statistikamt Nord PDFs, so its sector
-16 still carries Boeing's value.
+who declares, not in the waste. Hamburg's split comes from Statistikamt Nord's Q II 9 workbook, published on Hamburg's Transparenzportal under
+dl-de/by-2.0; the report's own notice permits extracts only, and the registry records both. Its 2019 separate
+collection is 40.0%, while Boeing scored sector 16 as a 24.8% recycling share, a different measure, so his value stays
+carried in the index rather than being replaced by a number that means something else.
 
 ### The national benchmark
 
@@ -123,8 +125,9 @@ tonnes, the "trash out" flow at the border.
 
 Barcelona (258.5) and Catalonia (253.4) sit just under Spain's 262, and Paris (308) just under France's 313. The
 city rows count **separate collection**, the national rows count **recycling**, so the gap is not all
-performance. Hamburg's Urban Audit total, 413.6 kg/cap, is far below Germany's national 628. That is more
-likely a difference in what each source counts than a city making a third less waste. Chile has no Eurostat
+performance. Hamburg's public collection, 417.4 kg/cap, is far below Germany's national 628. That is most likely scope,
+not performance: the city series counts only what the public collection gathers, and the national series is broader
+(not verified line by line). Hamburg's residual, 250.1 kg, is close to Barcelona's 258.5 and Catalonia's 253.4. Chile has no Eurostat
 equivalent, so Santiago's rows have no national benchmark yet. A missing trade value leaves the export,
 import and net figures empty, never a partial sum.
 

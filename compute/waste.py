@@ -12,7 +12,8 @@ Every value says what it counts, because the four sources do not count the same 
   Paris      household waste only; recovery = the sorted streams
   Santiago   declared municipal waste; recovery = tonnes whose declared treatment is "Valorizacion";
              per capita from INE's projections (a comuna, or the whole Region Metropolitana)
-  Hamburg    municipal waste generated, total only: no split, so no residual and no recovery share
+  Hamburg    waste collected by the public collection, Statistikamt Nord Q II 9: residual = Haus- und Sperrmüll,
+             recovery = separate collection
   National   Germany, Spain, France from Eurostat: generated, generated minus recycled, the official recycling
              rate, and waste exported and imported. The benchmark each city row names in `country`.
 """
@@ -180,19 +181,70 @@ def santiago(year: int, get=_json, raw=_raw, code: str = "13101", pop=population
     return out
 
 
-def hamburg(year: int, get=_json) -> dict | None:
-    def one(indic: str):
-        d = get(f"{EUROSTAT}urb_{'cenv' if indic.startswith('EN') else 'cpop1'}?format=JSON&lang=EN"
-                f"&cities=DE002C&indic_ur={indic}&time={year}")
-        return next(iter(d["value"].values()), None)
-    kt, pop = one("EN4008V"), one("DE1001V")
-    if kt is None:
+def _xlsx_rows(data: bytes, sheet: str) -> list[list[str]]:
+    """One worksheet's cell texts, by row and column letter order. Standard library only."""
+    import re
+    import xml.etree.ElementTree as ET
+    import zipfile
+    m = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+    r_ns = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+    z = zipfile.ZipFile(io.BytesIO(data))
+    shared = ([''.join(t.text or '' for t in si.iter(m + 't')) for si in ET.fromstring(z.read('xl/sharedStrings.xml'))]
+              if 'xl/sharedStrings.xml' in z.namelist() else [])
+    rels = {r.get('Id'): r.get('Target') for r in ET.fromstring(z.read('xl/_rels/workbook.xml.rels'))}
+    target = next(rels[s.get(r_ns + 'id')] for s in ET.fromstring(z.read('xl/workbook.xml')).iter(m + 'sheet')
+                  if s.get('name') == sheet).lstrip('/')
+    rows = []
+    for row in ET.fromstring(z.read(target if target.startswith('xl/') else 'xl/' + target)).iter(m + 'row'):
+        cells = {}
+        for c in row.iter(m + 'c'):
+            v, inline = c.find(m + 'v'), c.find(m + 'is')
+            col = re.sub(r'\d', '', c.get('r'))
+            if inline is not None:                     # t="inlineStr": the text sits in <is><t>, not in <v>
+                cells[col] = ''.join(t.text or '' for t in inline.iter(m + 't'))
+            elif v is not None:
+                cells[col] = shared[int(v.text)] if c.get('t') == 's' else v.text
+        rows.append(cells)
+    return rows
+
+
+def _num(cell: str | None) -> float | None:
+    """A Statistikamt Nord number: '430.4166', or '413,6 r' with a decimal comma and a correction flag."""
+    if cell is None:
         return None
-    return _row("Hamburg", year, gen_t=kt * 1000, pop=pop,
-                counts="municipal waste generated (domestic and commercial), total only: no recovery split, "
-                       "so no residual and no recovery share",
-                source="Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
-                licence="Eurostat reuse policy, 2011/833/EU")
+    t = cell.strip().split(' ')[0].replace(',', '.')
+    try:
+        return float(t)
+    except ValueError:
+        return None                                    # '·' (secret), '–' (zero is written as a number), etc.
+
+
+# Statistikamt Nord, Statistischer Bericht Q II 9 - j 24 HH, "Abfallentsorgung in Hamburg 2024, Teil 3: Einsammlung von
+# Abfällen". Table T1_1 carries 2012-2024. The report's own notice permits extracts only; the same file is published on
+# Hamburg's Transparenzportal under dl-de/by-2.0, which is the licence this reads it under (awesome-fabcity-data).
+HAMBURG_Q2_9 = "https://www.statistik-nord.de/fileadmin/Dokumente/Q_II_9_j_24_HH.xlsx"
+
+
+def hamburg(year: int, raw=_raw) -> dict | None:
+    """Waste collected by Hamburg's public collection, with its split: Haus- und Sperrmüll (residual), separately
+    collected organics and recyclables (Wertstoffe), electrical equipment, other."""
+    row = next((r for r in _xlsx_rows(raw(HAMBURG_Q2_9), "T1_1") if (r.get("A") or "").strip() == str(year)), None)
+    if row is None:
+        return None
+    total, per_head, residual = _num(row.get("B")), _num(row.get("C")), _num(row.get("D"))
+    separate = [_num(row.get(k)) for k in ("E", "F", "G")]   # organics, recyclables, electrical equipment
+    if None in (total, per_head, residual) or None in separate:
+        return None
+    pop = total * 1000 / per_head                         # the report's own population basis
+    out = _row("Hamburg", year, gen_t=total, pop=pop, residual_kg=residual * 1000 / pop,
+               recovery=sum(separate) / total,
+               counts="waste collected by the public collection; residual = Haus- und Sperrmüll; recovery = separate "
+                      "collection (organics, recyclables, electrical equipment), which is not recycling. Boeing's "
+                      "24.8% for 2019 is a recycling share, a different measure.",
+               source="Statistikamt Nord, Statistischer Bericht Q II 9 - j 24 HH, table T1_1",
+               licence="dl-de/by-2.0 (Hamburg Transparenzportal)")
+    out["population"] = round(pop)
+    return out
 
 
 def _pick(d: dict, **fixed) -> float | None:
