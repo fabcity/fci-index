@@ -84,9 +84,14 @@ recovery share. The recovery share is also Boeing's input for macro-sector 16, w
 | City | Year | Generated kg/cap | Residual kg/cap | Recovery | What it counts |
 | --- | --- | --- | --- | --- | --- |
 | Barcelona | 2019 · 2024 | 483.6 · 446.8 | 295.8 · 258.5 | 38.8% · 42.1% | collected municipal waste; recovery = separate collection |
+| **Catalonia (region)** | 2019 · 2024 | 527.2 · 498.7 | 290.5 · 253.4 | 44.9% · 49.2% | Barcelona's measure summed over every municipality (948); Environmental\|Region's waste row |
 | Paris | 2019 · 2024 | 464 · 436 | 341 · 308 | 26.5% · 29.4% | household waste only; recovery = sorted streams |
 | Santiago (comuna) | 2019 · 2022 | n/a | n/a | not recorded · 1.7% | tonnes declared (209 kt · 116 kt); no population in the source |
 | Hamburg | 2019 · 2024 | 425.8 · 413.6 | n/a | n/a | Urban Audit total only, no split |
+
+Catalonia is the first **region** in the pipeline. Eurostat has no regional waste table, so it is the Generalitat's
+municipal data summed server-side. The dataset has no Catalonia total row, so nothing is counted twice, and the
+population sum (8,012,231 in 2024) is kept so it can be checked against the official figure.
 
 **These rows are not comparable yet.** Each counts a different thing, and the table says what. Santiago sends
 98% of what it declares to sanitary landfill. Its 2019 file records no treatment at all, which is "not

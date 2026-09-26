@@ -8,6 +8,7 @@ share.
 
 Every value says what it counts, because the four sources do not count the same thing:
   Barcelona  collected municipal waste; recovery = separate collection (not the same as recycled)
+  Catalonia  the same, summed over every municipality: Environmental|Region's waste row
   Paris      household waste only; recovery = the sorted streams
   Santiago   declared municipal waste; recovery = tonnes whose declared treatment is "Valorizacion"
   Hamburg    municipal waste generated, total only: no split, so no residual and no recovery share
@@ -65,6 +66,27 @@ def barcelona(year: int, get=_json) -> dict:
                 source="Generalitat de Catalunya 69zu-w48s", licence="Llicència oberta d'ús d'informació – Catalunya")
 
 
+def catalonia(year: int, get=_json) -> dict | None:
+    """Environmental|Region's waste row: every Catalan municipality in 69zu-w48s, summed server-side.
+
+    The dataset holds one row per municipality and no Catalonia total, so the sum double-counts nothing.
+    The population sum is kept in the row, so a reader can check it against Catalonia's official figure.
+    """
+    q = ("$select=sum(suma_fracci_resta),sum(total_recollida_selectiva),sum(poblaci),count(*)"
+         f"&$where=any='{year}'")
+    r = get(f"{SOCRATA}?{q}")[0]
+    if int(r.get("count", 0)) == 0:
+        return None
+    pop = float(r["sum_poblaci"])
+    residual, separate = float(r["sum_suma_fracci_resta"]), float(r["sum_total_recollida_selectiva"])
+    out = _row("Catalonia (region)", year, gen_t=residual + separate, pop=pop, residual_kg=residual * 1000 / pop,
+               recovery=separate / (residual + separate),
+               counts=f"sum of {r['count']} municipalities' collected municipal waste; recovery = separate collection",
+               source="Generalitat de Catalunya 69zu-w48s, summed", licence="Llicència oberta d'ús d'informació – Catalunya")
+    out["municipalities"] = int(r["count"])
+    return out
+
+
 def paris(year: int, get=_json) -> dict | None:
     recs = [x for x in get(PARIS)["results"] if x["annee"] == str(year)]
     if not recs:
@@ -115,7 +137,7 @@ def hamburg(year: int, get=_json) -> dict | None:
 
 
 def trash_out(years: dict[str, list[int]]) -> list[dict]:
-    fns = {"Barcelona": barcelona, "Paris": paris, "Santiago": santiago, "Hamburg": hamburg}
+    fns = {"Barcelona": barcelona, "Catalonia": catalonia, "Paris": paris, "Santiago": santiago, "Hamburg": hamburg}
     out = []
     for city, ys in years.items():
         for y in ys:
