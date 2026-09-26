@@ -1,0 +1,546 @@
+{
+ "method": "Boeing 2024 recipe; see compute/README.md. Eurostat, reuse with acknowledgement (2011/833/EU).",
+ "year": 2019,
+ "reference": {
+  "index": 37.3,
+  "published": 37,
+  "rows": [
+   {
+    "sector": "Energy (renewable)",
+    "ratio": 0.048,
+    "weight": 68.82
+   },
+   {
+    "sector": "Water",
+    "ratio": 0.827,
+    "weight": 36.43
+   },
+   {
+    "sector": "Agriculture and fishing",
+    "ratio": 0.0005,
+    "weight": 96.85
+   },
+   {
+    "sector": "Food and beverages",
+    "ratio": 0.5387,
+    "weight": 134.62
+   },
+   {
+    "sector": "Wood and products of wood",
+    "ratio": 0.05,
+    "weight": 27.08
+   },
+   {
+    "sector": "Textiles and clothing",
+    "ratio": 0.0042,
+    "weight": 49.29
+   },
+   {
+    "sector": "Chemical products",
+    "ratio": 0.9,
+    "weight": 46.13
+   },
+   {
+    "sector": "Fossil fuels, mining and quarrying",
+    "ratio": 0.0005,
+    "weight": 30.0
+   },
+   {
+    "sector": "Metals",
+    "ratio": 0.5,
+    "weight": 74.25
+   },
+   {
+    "sector": "Machinery and equipment",
+    "ratio": 0.9,
+    "weight": 74.25
+   },
+   {
+    "sector": "Vehicles and transport equipment",
+    "ratio": 0.01,
+    "weight": 129.05
+   },
+   {
+    "sector": "IT and communication",
+    "ratio": 0.2,
+    "weight": 47.54
+   },
+   {
+    "sector": "Other goods",
+    "ratio": 0.6341,
+    "weight": 50.04
+   },
+   {
+    "sector": "Construction",
+    "ratio": 1.0,
+    "weight": 37.77
+   },
+   {
+    "sector": "Repair",
+    "ratio": 0.8,
+    "weight": 27.88
+   },
+   {
+    "sector": "Waste and recycling",
+    "ratio": 0.248,
+    "weight": 70.0
+   }
+  ]
+ },
+ "open_hamburg": {
+  "index": 36.7,
+  "open_weight_per_mille": 327.62,
+  "rows": [
+   {
+    "sector": "Energy (renewable)",
+    "ratio": 0.048,
+    "weight": 68.82,
+    "boeing_ratio": 0.048,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Water",
+    "ratio": 0.827,
+    "weight": 36.43,
+    "boeing_ratio": 0.827,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Agriculture and fishing",
+    "ratio": 0.0005,
+    "weight": 96.85,
+    "boeing_ratio": 0.0005,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Food and beverages",
+    "ratio": 0.3649312008093147,
+    "weight": 134.62,
+    "boeing_ratio": 0.5387,
+    "source": "open, modelled"
+   },
+   {
+    "sector": "Wood and products of wood",
+    "ratio": 0.05,
+    "weight": 27.08,
+    "boeing_ratio": 0.05,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Textiles and clothing",
+    "ratio": 0.007620162095065387,
+    "weight": 49.29,
+    "boeing_ratio": 0.0042,
+    "source": "open, modelled, partial"
+   },
+   {
+    "sector": "Chemical products",
+    "ratio": 0.817295537800415,
+    "weight": 46.13,
+    "boeing_ratio": 0.9,
+    "source": "open, modelled"
+   },
+   {
+    "sector": "Fossil fuels, mining and quarrying",
+    "ratio": 0.0005,
+    "weight": 30.0,
+    "boeing_ratio": 0.0005,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Metals",
+    "ratio": 0.5,
+    "weight": 74.25,
+    "boeing_ratio": 0.5,
+    "source": "Boeing 2024, carried: Boeing sets it against investment, not household spending; no open regional investment by asset."
+   },
+   {
+    "sector": "Machinery and equipment",
+    "ratio": 0.9,
+    "weight": 74.25,
+    "boeing_ratio": 0.9,
+    "source": "Boeing 2024, carried: as Metals."
+   },
+   {
+    "sector": "Vehicles and transport equipment",
+    "ratio": 0.01,
+    "weight": 129.05,
+    "boeing_ratio": 0.01,
+    "source": "Boeing 2024, carried: C29 is suppressed for Hamburg (confidentiality); C30 is Airbus, which makes no consumer vehicles, so it cannot stand in."
+   },
+   {
+    "sector": "IT and communication",
+    "ratio": 1.0,
+    "weight": 47.54,
+    "boeing_ratio": 0.2,
+    "source": "open, modelled"
+   },
+   {
+    "sector": "Other goods",
+    "ratio": 0.29061322437607073,
+    "weight": 50.04,
+    "boeing_ratio": 0.6341,
+    "source": "open, modelled"
+   },
+   {
+    "sector": "Construction",
+    "ratio": 1.0,
+    "weight": 37.77,
+    "boeing_ratio": 1.0,
+    "source": "Boeing 2024, carried"
+   },
+   {
+    "sector": "Repair",
+    "ratio": 0.8,
+    "weight": 27.88,
+    "boeing_ratio": 0.8,
+    "source": "Boeing 2024, carried: needs COICOP 07.2.3 and production value for G45/S95, neither published at that detail."
+   },
+   {
+    "sector": "Waste and recycling",
+    "ratio": 0.248,
+    "weight": 70.0,
+    "boeing_ratio": 0.248,
+    "source": "Boeing 2024, carried: Hamburg's only open machine-readable figure is the Urban Audit total, with no recovery split. Barcelona, Paris and Santiago do have one: see trash_out."
+   }
+  ]
+ },
+ "goods_capacity": {
+  "reads_as": "Production CAPACITY against local demand, capped at 100% per sector. It is not self-supply: a region that makes goods for the rest of its country and for export caps at 100% although its residents may buy almost none of it. Utopies put Paris's self-sufficiency at 8.7% (2018). Telling capacity from self-supply needs trade data: awesome-fabcity-data#42.",
+  "regions": {
+   "DE60": {
+    "name": "Hamburg",
+    "goods_index": 34.6,
+    "weight_covered_per_mille": 313.68,
+    "hicp_codes_without_weight": [],
+    "sectors": {
+     "Food and beverages": {
+      "ratio": 0.3649312008093147,
+      "raw_ratio": 0.36,
+      "production_meur": 1562.7,
+      "consumption_meur": 4282.1,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none"
+     },
+     "Textiles and clothing": {
+      "ratio": 0.007620162095065387,
+      "raw_ratio": 0.01,
+      "production_meur": 11.9,
+      "consumption_meur": 1555.7,
+      "nace_used": [
+       "C13",
+       "C14"
+      ],
+      "nace_missing": [
+       "C15"
+      ],
+      "coicop_missing": [],
+      "state": "modelled, partial",
+      "differs_from_boeing": "none"
+     },
+     "Chemical products": {
+      "ratio": 0.817295537800415,
+      "raw_ratio": 0.82,
+      "production_meur": 623.1,
+      "consumption_meur": 762.4,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "pharmaceuticals only (C21 vs medical products). Boeing's C19-C22 vs all of COICOP 06 sets refinery output, which he calls a port artefact, against hospital services."
+     },
+     "IT and communication": {
+      "ratio": 1.0,
+      "raw_ratio": 1.66,
+      "production_meur": 1114.2,
+      "consumption_meur": 671.6,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "equipment only (phones, audio-visual and IT). All of COICOP 08 is mostly telecom services, which C26 does not make."
+     },
+     "Other goods": {
+      "ratio": 0.29061322437607073,
+      "raw_ratio": 0.29,
+      "production_meur": 828.3,
+      "consumption_meur": 2850.3,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none: the groups Boeing lists in his text (p. 122)"
+     }
+    }
+   },
+   "ES51": {
+    "name": "Cataluna (Barcelona)",
+    "goods_index": 91.0,
+    "weight_covered_per_mille": 366.2,
+    "hicp_codes_without_weight": [],
+    "sectors": {
+     "Food and beverages": {
+      "ratio": 1.0,
+      "raw_ratio": 1.66,
+      "production_meur": 24633.0,
+      "consumption_meur": 14822.9,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none"
+     },
+     "Textiles and clothing": {
+      "ratio": 0.8603491274812961,
+      "raw_ratio": 0.86,
+      "production_meur": 3777.9,
+      "consumption_meur": 4391.2,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none"
+     },
+     "Chemical products": {
+      "ratio": 1.0,
+      "raw_ratio": 4.07,
+      "production_meur": 7256.8,
+      "consumption_meur": 1781.5,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "pharmaceuticals only (C21 vs medical products). Boeing's C19-C22 vs all of COICOP 06 sets refinery output, which he calls a port artefact, against hospital services."
+     },
+     "IT and communication": {
+      "ratio": 1.0,
+      "raw_ratio": 2.09,
+      "production_meur": 1764.9,
+      "consumption_meur": 844.5,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "equipment only (phones, audio-visual and IT). All of COICOP 08 is mostly telecom services, which C26 does not make."
+     },
+     "Other goods": {
+      "ratio": 0.6608870643279058,
+      "raw_ratio": 0.66,
+      "production_meur": 3457.5,
+      "consumption_meur": 5231.6,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none: the groups Boeing lists in his text (p. 122)"
+     }
+    }
+   },
+   "FR10": {
+    "name": "Ile-de-France (Paris)",
+    "goods_index": 99.6,
+    "weight_covered_per_mille": 338.96,
+    "hicp_codes_without_weight": [],
+    "sectors": {
+     "Food and beverages": {
+      "ratio": 1.0,
+      "raw_ratio": 1.27,
+      "production_meur": 40651.7,
+      "consumption_meur": 32034.0,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none"
+     },
+     "Textiles and clothing": {
+      "ratio": 0.9706241332252566,
+      "raw_ratio": 0.97,
+      "production_meur": 7225.1,
+      "consumption_meur": 7443.8,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none"
+     },
+     "Chemical products": {
+      "ratio": null,
+      "raw_ratio": null,
+      "production_meur": 0,
+      "consumption_meur": 2988.0,
+      "nace_used": [],
+      "nace_missing": [
+       "C21"
+      ],
+      "coicop_missing": [],
+      "state": "no data",
+      "differs_from_boeing": "pharmaceuticals only (C21 vs medical products). Boeing's C19-C22 vs all of COICOP 06 sets refinery output, which he calls a port artefact, against hospital services."
+     },
+     "IT and communication": {
+      "ratio": 1.0,
+      "raw_ratio": 8.78,
+      "production_meur": 23623.3,
+      "consumption_meur": 2691.9,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "equipment only (phones, audio-visual and IT). All of COICOP 08 is mostly telecom services, which C26 does not make."
+     },
+     "Other goods": {
+      "ratio": 1.0,
+      "raw_ratio": 1.3,
+      "production_meur": 18457.0,
+      "consumption_meur": 14159.0,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "coicop_missing": [],
+      "state": "modelled",
+      "differs_from_boeing": "none: the groups Boeing lists in his text (p. 122)"
+     }
+    }
+   }
+  }
+ },
+ "trash_out": {
+  "reads_as": "Residual municipal waste per capita is the proposed PITO 'trash out' measure (awesome-fabcity-data#42). recovery_share is also Boeing's input for macro-sector 16. The four sources count different things; each row says what, and they are not comparable until aligned.",
+  "rows": [
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "population": 1636762.0,
+    "generated_t": 791618,
+    "generated_kg_per_capita": 483.6,
+    "residual_kg_per_capita": 295.8,
+    "recovery_share": 0.388,
+    "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
+    "source": "Generalitat de Catalunya 69zu-w48s",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "population": 1686208.0,
+    "generated_t": 753337,
+    "generated_kg_per_capita": 446.8,
+    "residual_kg_per_capita": 258.5,
+    "recovery_share": 0.421,
+    "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
+    "source": "Generalitat de Catalunya 69zu-w48s",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+   },
+   {
+    "city": "Paris",
+    "year": 2019,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 464.0,
+    "residual_kg_per_capita": 341.0,
+    "recovery_share": 0.265,
+    "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
+    "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
+    "licence": "Licence Ouverte (Etalab)"
+   },
+   {
+    "city": "Paris",
+    "year": 2024,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 436.0,
+    "residual_kg_per_capita": 308.0,
+    "recovery_share": 0.294,
+    "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
+    "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
+    "licence": "Licence Ouverte (Etalab)"
+   },
+   {
+    "city": "Santiago (comuna)",
+    "year": 2019,
+    "population": null,
+    "generated_t": 209226,
+    "generated_kg_per_capita": null,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "tonnes declared through SINADER by municipal generators; recovery = declared treatment 'Valorizacion' (treatment not recorded this year). Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022). No population in the source, so nothing per capita yet.",
+    "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos",
+    "licence": "CC-BY (CKAN: cc-by)"
+   },
+   {
+    "city": "Santiago (comuna)",
+    "year": 2022,
+    "population": null,
+    "generated_t": 116236,
+    "generated_kg_per_capita": null,
+    "residual_kg_per_capita": null,
+    "recovery_share": 0.017,
+    "counts": "tonnes declared through SINADER by municipal generators; recovery = declared treatment 'Valorizacion'. Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022). No population in the source, so nothing per capita yet.",
+    "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos",
+    "licence": "CC-BY (CKAN: cc-by)"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2019,
+    "population": 1841179,
+    "generated_t": 783890,
+    "generated_kg_per_capita": 425.8,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
+    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2024,
+    "population": 1851596,
+    "generated_t": 765900,
+    "generated_kg_per_capita": 413.6,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
+    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   }
+  ]
+ }
+}
