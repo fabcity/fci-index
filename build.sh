@@ -166,6 +166,13 @@ cat > "$OUT/_redirects" <<'REDIR'
 /lineage           /method#lineage  301
 /how-it-is-built   /constellation   301
 REDIR
+# Pages Functions run only on the workbench's protected act pages (functions/operate/
+# _middleware.js sends their pages.dev copies to the Access-guarded custom domain).
+# Everything else stays static, so _redirects keeps applying to it.
+cat > "$OUT/_routes.json" <<'ROUTES'
+{ "version": 1, "include": ["/operate/intake*", "/operate/review-queue*", "/operate/sovereignty*"], "exclude": [] }
+ROUTES
+
 NREDIR=$(grep -c '^/' "$OUT/_redirects")
 echo "wrote _redirects: ${NREDIR} rules"
 # A rule dropped by an edit fails silently: the old URL becomes a 200 with the homepage.
