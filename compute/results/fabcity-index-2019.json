@@ -455,7 +455,8 @@
     "recovery_share": 0.388,
     "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
     "source": "Generalitat de Catalunya 69zu-w48s",
-    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+    "licence": "Llicència oberta d'ús d'informació – Catalunya",
+    "country": "ES"
    },
    {
     "city": "Barcelona",
@@ -467,7 +468,8 @@
     "recovery_share": 0.421,
     "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
     "source": "Generalitat de Catalunya 69zu-w48s",
-    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+    "licence": "Llicència oberta d'ús d'informació – Catalunya",
+    "country": "ES"
    },
    {
     "city": "Catalonia (region)",
@@ -480,7 +482,8 @@
     "counts": "sum of 948 municipalities' collected municipal waste; recovery = separate collection",
     "source": "Generalitat de Catalunya 69zu-w48s, summed",
     "licence": "Llicència oberta d'ús d'informació – Catalunya",
-    "municipalities": 948
+    "municipalities": 948,
+    "country": "ES"
    },
    {
     "city": "Catalonia (region)",
@@ -493,7 +496,8 @@
     "counts": "sum of 948 municipalities' collected municipal waste; recovery = separate collection",
     "source": "Generalitat de Catalunya 69zu-w48s, summed",
     "licence": "Llicència oberta d'ús d'informació – Catalunya",
-    "municipalities": 948
+    "municipalities": 948,
+    "country": "ES"
    },
    {
     "city": "Paris",
@@ -505,7 +509,8 @@
     "recovery_share": 0.265,
     "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
     "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
-    "licence": "Licence Ouverte (Etalab)"
+    "licence": "Licence Ouverte (Etalab)",
+    "country": "FR"
    },
    {
     "city": "Paris",
@@ -517,7 +522,8 @@
     "recovery_share": 0.294,
     "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
     "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
-    "licence": "Licence Ouverte (Etalab)"
+    "licence": "Licence Ouverte (Etalab)",
+    "country": "FR"
    },
    {
     "city": "Santiago (comuna)",
@@ -530,7 +536,8 @@
     "counts": "tonnes declared through SINADER by municipal generators, per INE's projected population; recovery = declared treatment 'Valorizacion', residual = the rest of the tonnes whose treatment is recorded; treatment_not_recorded_t is outside both (treatment not recorded this year, so no residual or recovery). Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022).",
     "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos; population INE Chile projections (base 2017)",
     "licence": "RETC CC-BY + INE CC-BY-SA-4.0: the per-capita figure is shared under CC-BY-SA-4.0",
-    "treatment_not_recorded_t": 209226
+    "treatment_not_recorded_t": 209226,
+    "country": "CL"
    },
    {
     "city": "Santiago (comuna)",
@@ -543,7 +550,8 @@
     "counts": "tonnes declared through SINADER by municipal generators, per INE's projected population; recovery = declared treatment 'Valorizacion', residual = the rest of the tonnes whose treatment is recorded; treatment_not_recorded_t is outside both. Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022).",
     "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos; population INE Chile projections (base 2017)",
     "licence": "RETC CC-BY + INE CC-BY-SA-4.0: the per-capita figure is shared under CC-BY-SA-4.0",
-    "treatment_not_recorded_t": 0
+    "treatment_not_recorded_t": 0,
+    "country": "CL"
    },
    {
     "city": "Region Metropolitana (region)",
@@ -556,7 +564,8 @@
     "counts": "tonnes declared through SINADER by municipal generators, per INE's projected population; recovery = declared treatment 'Valorizacion', residual = the rest of the tonnes whose treatment is recorded; treatment_not_recorded_t is outside both (treatment not recorded this year, so no residual or recovery). Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022).",
     "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos; population INE Chile projections (base 2017)",
     "licence": "RETC CC-BY + INE CC-BY-SA-4.0: the per-capita figure is shared under CC-BY-SA-4.0",
-    "treatment_not_recorded_t": 3596252
+    "treatment_not_recorded_t": 3596252,
+    "country": "CL"
    },
    {
     "city": "Region Metropolitana (region)",
@@ -569,7 +578,8 @@
     "counts": "tonnes declared through SINADER by municipal generators, per INE's projected population; recovery = declared treatment 'Valorizacion', residual = the rest of the tonnes whose treatment is recorded; treatment_not_recorded_t is outside both. Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022).",
     "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos; population INE Chile projections (base 2017)",
     "licence": "RETC CC-BY + INE CC-BY-SA-4.0: the per-capita figure is shared under CC-BY-SA-4.0",
-    "treatment_not_recorded_t": 282162
+    "treatment_not_recorded_t": 282162,
+    "country": "CL"
    },
    {
     "city": "Hamburg",
@@ -581,7 +591,8 @@
     "recovery_share": null,
     "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
     "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
-    "licence": "Eurostat reuse policy, 2011/833/EU"
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "country": "DE"
    },
    {
     "city": "Hamburg",
@@ -593,7 +604,98 @@
     "recovery_share": null,
     "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
     "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
-    "licence": "Eurostat reuse policy, 2011/833/EU"
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "country": "DE"
+   },
+   {
+    "city": "Germany (national)",
+    "year": 2019,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 609,
+    "residual_kg_per_capita": 203,
+    "recovery_share": 0.667,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 18747215,
+    "waste_imported_t": 15390176,
+    "net_waste_export_t": 3357039
+   },
+   {
+    "city": "Germany (national)",
+    "year": 2024,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 628,
+    "residual_kg_per_capita": 208,
+    "recovery_share": 0.669,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 16038565,
+    "waste_imported_t": 15531338,
+    "net_waste_export_t": 507227
+   },
+   {
+    "city": "Spain (national)",
+    "year": 2019,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 472,
+    "residual_kg_per_capita": 293,
+    "recovery_share": 0.38,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 3028789,
+    "waste_imported_t": 7132794,
+    "net_waste_export_t": -4104005
+   },
+   {
+    "city": "Spain (national)",
+    "year": 2024,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 456,
+    "residual_kg_per_capita": 262,
+    "recovery_share": 0.425,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 3526011,
+    "waste_imported_t": 7199395,
+    "net_waste_export_t": -3673384
+   },
+   {
+    "city": "France (national)",
+    "year": 2019,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 555,
+    "residual_kg_per_capita": 327,
+    "recovery_share": 0.41,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 12842766,
+    "waste_imported_t": 6097823,
+    "net_waste_export_t": 6744943
+   },
+   {
+    "city": "France (national)",
+    "year": 2024,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 530,
+    "residual_kg_per_capita": 313,
+    "recovery_share": 0.409,
+    "counts": "national municipal waste, kg per inhabitant; residual here = generated minus recycled (material recycling, composting and digestion), recovery = Eurostat's official recycling rate. The city rows count separate collection, which is not recycling, so the two are not the same measure.",
+    "source": "Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+    "licence": "Eurostat reuse policy, 2011/833/EU",
+    "waste_exported_t": 12993304,
+    "waste_imported_t": 4527439,
+    "net_waste_export_t": 8465865
    }
   ]
  }

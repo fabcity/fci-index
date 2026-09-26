@@ -13,6 +13,8 @@ Every value says what it counts, because the four sources do not count the same 
   Santiago   declared municipal waste; recovery = tonnes whose declared treatment is "Valorizacion";
              per capita from INE's projections (a comuna, or the whole Region Metropolitana)
   Hamburg    municipal waste generated, total only: no split, so no residual and no recovery share
+  National   Germany, Spain, France from Eurostat: generated, generated minus recycled, the official recycling
+             rate, and waste exported and imported. The benchmark each city row names in `country`.
 """
 from __future__ import annotations
 
@@ -193,9 +195,61 @@ def hamburg(year: int, get=_json) -> dict | None:
                 licence="Eurostat reuse policy, 2011/833/EU")
 
 
+def _pick(d: dict, **fixed) -> float | None:
+    """One value from a JSON-stat response: fixed dimensions by code, every other dimension a single member."""
+    pos = 0
+    for dim, size in zip(d["id"], d["size"]):
+        index = d["dimension"][dim]["category"]["index"]
+        if dim in fixed:
+            if fixed[dim] not in index:
+                return None
+            pos = pos * size + index[fixed[dim]]
+        elif size == 1:
+            pos = pos * size
+        else:
+            raise ValueError(f"dimension {dim} has {size} members and was not fixed")
+    return d["value"].get(str(pos))
+
+
+COUNTRY = {"DE": "Germany", "ES": "Spain", "FR": "France"}
+
+
+def national(country: str, year: int, get=_json) -> dict | None:
+    """The national benchmark, from Eurostat's own tables (awesome-fabcity-data#46): municipal waste generated and
+    recycled per capita (env_wasmun), the official recycling rate (cei_wm011) and waste traded across the border
+    (env_wastrdmp, which answers only to filtered queries)."""
+    base = f"{EUROSTAT}{{}}?format=JSON&lang=EN&geo={country}&time={year}"
+    mun = get(base.format("env_wasmun") + "&unit=KG_HAB&wst_oper=GEN&wst_oper=RCY")
+    gen, rcy = _pick(mun, wst_oper="GEN"), _pick(mun, wst_oper="RCY")
+    if gen is None:
+        return None
+    rate = _pick(get(base.format("cei_wm011")))
+    trade = get(base.format("env_wastrdmp") + "&rawmat=TOTAL&unit=T&partner=INT_EU27_2020&partner=EXT_EU27_2020")
+    flow = {f: [_pick(trade, stk_flow=f, partner=p) for p in ("INT_EU27_2020", "EXT_EU27_2020")] for f in ("EXP", "IMP")}
+    tonnes = {f: sum(v) if None not in v else None for f, v in flow.items()}
+    out = _row(f"{COUNTRY[country]} (national)", year, gen_kg=gen,
+               residual_kg=gen - rcy if rcy is not None else None,
+               recovery=rate / 100 if rate is not None else None,
+               counts="national municipal waste, kg per inhabitant; residual here = generated minus recycled "
+                      "(material recycling, composting and digestion), recovery = Eurostat's official recycling rate. "
+                      "The city rows count separate collection, which is not recycling, so the two are not the same "
+                      "measure.",
+               source="Eurostat env_wasmun, cei_wm011, env_wastrdmp",
+               licence="Eurostat reuse policy, 2011/833/EU")
+    out["waste_exported_t"], out["waste_imported_t"] = tonnes["EXP"], tonnes["IMP"]
+    out["net_waste_export_t"] = (tonnes["EXP"] - tonnes["IMP"]
+                                 if None not in (tonnes["EXP"], tonnes["IMP"]) else None)
+    return out
+
+
+CITY_COUNTRY = {"Barcelona": "ES", "Catalonia": "ES", "Paris": "FR", "Hamburg": "DE",
+                "Santiago": "CL", "Region Metropolitana": "CL"}
+
+
 def trash_out(years: dict[str, list[int]]) -> list[dict]:
     fns = {"Barcelona": barcelona, "Catalonia": catalonia, "Paris": paris, "Santiago": santiago,
-           "Region Metropolitana": lambda y: santiago(y, code="13"), "Hamburg": hamburg}
+           "Region Metropolitana": lambda y: santiago(y, code="13"), "Hamburg": hamburg,
+           **{name: (lambda y, c=code: national(c, y)) for code, name in COUNTRY.items()}}
     out = []
     for city, ys in years.items():
         for y in ys:
@@ -204,6 +258,8 @@ def trash_out(years: dict[str, list[int]]) -> list[dict]:
             except Exception as e:                   # one source down must not blank the others
                 r = {"city": city, "year": y, "error": f"{type(e).__name__}: {e}"[:200]}
             if r:
+                if city in CITY_COUNTRY:                 # so a city row can be read against its country's
+                    r["country"] = CITY_COUNTRY[city]
                 out.append(r)
     return out
 

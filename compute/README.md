@@ -108,6 +108,26 @@ recorded", not 0%: the self-test pins that. Its total nearly halves between 2019
 who declares, not in the waste. Hamburg's recovery split exists only in Statistikamt Nord PDFs, so its sector
 16 still carries Boeing's value.
 
+### The national benchmark
+
+Each city row names its `country`. `waste.national()` reads Eurostat's national tables
+(awesome-fabcity-data#46) for the same years: municipal waste generated, **generated minus recycled** (the
+national counterpart of residual waste), the official recycling rate, and waste **exported and imported** in
+tonnes, the "trash out" flow at the border.
+
+| Country | Year | Generated kg/cap | Generated − recycled | Recycling rate | Waste exported · imported (t) | Net export |
+| --- | --- | --- | --- | --- | --- | --- |
+| Germany | 2019 · 2024 | 609 · 628 | 203 · 208 | 66.7% · 66.9% | 16.0 Mt · 15.5 Mt (2024) | +0.5 Mt |
+| Spain | 2019 · 2024 | 472 · 456 | 293 · 262 | 38.0% · 42.5% | 3.5 Mt · 7.2 Mt (2024) | −3.7 Mt |
+| France | 2019 · 2024 | 555 · 530 | 327 · 313 | 41.0% · 40.9% | 13.0 Mt · 4.5 Mt (2024) | +8.5 Mt |
+
+Barcelona (258.5) and Catalonia (253.4) sit just under Spain's 262, and Paris (308) just under France's 313. The
+city rows count **separate collection**, the national rows count **recycling**, so the gap is not all
+performance. Hamburg's Urban Audit total, 413.6 kg/cap, is far below Germany's national 628. That is more
+likely a difference in what each source counts than a city making a third less waste. Chile has no Eurostat
+equivalent, so Santiago's rows have no national benchmark yet. A missing trade value leaves the export,
+import and net figures empty, never a partial sum.
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.

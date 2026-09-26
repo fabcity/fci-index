@@ -74,7 +74,8 @@ NOT_OPEN = {
                            "split. Barcelona, Paris and Santiago do have one: see trash_out.",
 }
 # Trash out, per city: Boeing's year and the latest each source has (Santiago's latest CSV year is 2022).
-WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Region Metropolitana": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
+WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Catalonia": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Region Metropolitana": [YEAR, 2022], "Hamburg": [YEAR, 2024],
+               "Germany": [YEAR, 2024], "Spain": [YEAR, 2024], "France": [YEAR, 2024]}
 VAT = {"DE": (0.07, 0.19), "ES": (0.10, 0.21), "FR": (0.055, 0.20)}   # (reduced, standard) in 2019
 
 
@@ -282,6 +283,42 @@ def selftest() -> int:
         check("population: a comuna by its 5-digit code", waste.population_cl("13101", 2022, f), 500)
         check("population: a region sums its comunas", waste.population_cl("13", 2022, f), 580)
         check("population: a year outside the file is no data", waste.population_cl("13101", 2040, f), None)
+
+    # waste.national: JSON-stat picking, the benchmark arithmetic, and missing trade values staying missing.
+    def js(dims: dict, values: dict) -> dict:
+        ids = list(dims)
+        d = {"id": ids, "size": [len(dims[k]) for k in ids],
+             "dimension": {k: {"category": {"index": {c: i for i, c in enumerate(dims[k])}}} for k in ids}, "value": {}}
+        for coords, v in values.items():
+            pos = 0
+            for k, c in zip(ids, coords):
+                pos = pos * len(dims[k]) + dims[k].index(c)
+            d["value"][str(pos)] = v
+        return d
+    mun = js({"geo": ["XX"], "wst_oper": ["GEN", "RCY"]}, {("XX", "GEN"): 500, ("XX", "RCY"): 200})
+    check("_pick: a value by its codes", waste._pick(mun, wst_oper="RCY"), 200)
+    check("_pick: an unknown code is no data", waste._pick(mun, wst_oper="PRP_REU"), None)
+    try:
+        waste._pick(mun)
+        check("_pick: an unfixed dimension with several members raises", "no error", "ValueError")
+    except ValueError:
+        check("_pick: an unfixed dimension with several members raises", "ValueError", "ValueError")
+    rate = js({"geo": ["XX"]}, {("XX",): 40.0})
+    parts = ["INT_EU27_2020", "EXT_EU27_2020"]
+    full = js({"stk_flow": ["EXP", "IMP"], "partner": parts},
+              {("EXP", parts[0]): 10, ("EXP", parts[1]): 5, ("IMP", parts[0]): 3, ("IMP", parts[1]): 2})
+    fake = lambda trade: (lambda u: mun if "env_wasmun" in u else rate if "cei_wm011" in u else trade)
+    waste.COUNTRY["XX"] = "Testland"
+    n = waste.national("XX", 2024, get=fake(full))
+    check("national: residual = generated minus recycled", n["residual_kg_per_capita"], 300.0)
+    check("national: recovery = the official recycling rate", n["recovery_share"], 0.4)
+    check("national: exports and imports sum both partners, net = exports - imports",
+          (n["waste_exported_t"], n["waste_imported_t"], n["net_waste_export_t"]), (15, 5, 10))
+    gap = js({"stk_flow": ["EXP", "IMP"], "partner": parts}, {("EXP", parts[0]): 10, ("IMP", parts[0]): 3, ("IMP", parts[1]): 2})
+    g = waste.national("XX", 2024, get=fake(gap))
+    check("national: a missing partner value leaves exports and net as no data, not a partial sum",
+          (g["waste_exported_t"], g["net_waste_export_t"], g["waste_imported_t"]), (None, None, 5))
+    del waste.COUNTRY["XX"]
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
