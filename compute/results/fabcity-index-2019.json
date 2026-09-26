@@ -201,7 +201,7 @@
     "ratio": 0.248,
     "weight": 70.0,
     "boeing_ratio": 0.248,
-    "source": "Boeing 2024, carried"
+    "source": "Boeing 2024, carried: Hamburg's only open machine-readable figure is the Urban Audit total, with no recovery split. Barcelona, Paris and Santiago do have one: see trash_out."
    }
   ]
  },
@@ -441,5 +441,106 @@
     }
    }
   }
+ },
+ "trash_out": {
+  "reads_as": "Residual municipal waste per capita is the proposed PITO 'trash out' measure (awesome-fabcity-data#42). recovery_share is also Boeing's input for macro-sector 16. The four sources count different things; each row says what, and they are not comparable until aligned.",
+  "rows": [
+   {
+    "city": "Barcelona",
+    "year": 2019,
+    "population": 1636762.0,
+    "generated_t": 791618,
+    "generated_kg_per_capita": 483.6,
+    "residual_kg_per_capita": 295.8,
+    "recovery_share": 0.388,
+    "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
+    "source": "Generalitat de Catalunya 69zu-w48s",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+   },
+   {
+    "city": "Barcelona",
+    "year": 2024,
+    "population": 1686208.0,
+    "generated_t": 753337,
+    "generated_kg_per_capita": 446.8,
+    "residual_kg_per_capita": 258.5,
+    "recovery_share": 0.421,
+    "counts": "collected municipal waste; recovery = separate collection, which is not the same as recycled",
+    "source": "Generalitat de Catalunya 69zu-w48s",
+    "licence": "Llicència oberta d'ús d'informació – Catalunya"
+   },
+   {
+    "city": "Paris",
+    "year": 2019,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 464.0,
+    "residual_kg_per_capita": 341.0,
+    "recovery_share": 0.265,
+    "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
+    "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
+    "licence": "Licence Ouverte (Etalab)"
+   },
+   {
+    "city": "Paris",
+    "year": 2024,
+    "population": null,
+    "generated_t": null,
+    "generated_kg_per_capita": 436.0,
+    "residual_kg_per_capita": 308.0,
+    "recovery_share": 0.294,
+    "counts": "household waste only, kg per inhabitant; recovery = the sorted streams",
+    "source": "Ville de Paris, quantite-de-dechets-produits-et-tries-par-habitant-et-par-an",
+    "licence": "Licence Ouverte (Etalab)"
+   },
+   {
+    "city": "Santiago (comuna)",
+    "year": 2019,
+    "population": null,
+    "generated_t": 209226,
+    "generated_kg_per_capita": null,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "tonnes declared through SINADER by municipal generators; recovery = declared treatment 'Valorizacion' (treatment not recorded this year). Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022). No population in the source, so nothing per capita yet.",
+    "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos",
+    "licence": "CC-BY (CKAN: cc-by)"
+   },
+   {
+    "city": "Santiago (comuna)",
+    "year": 2022,
+    "population": null,
+    "generated_t": 116236,
+    "generated_kg_per_capita": null,
+    "residual_kg_per_capita": null,
+    "recovery_share": 0.017,
+    "counts": "tonnes declared through SINADER by municipal generators; recovery = declared treatment 'Valorizacion'. Totals move with who declares (comuna Santiago: 209 kt in 2019, 116 kt in 2022). No population in the source, so nothing per capita yet.",
+    "source": "RETC Chile, generacion-municipal-de-residuos-no-peligrosos",
+    "licence": "CC-BY (CKAN: cc-by)"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2019,
+    "population": 1841179,
+    "generated_t": 783890,
+    "generated_kg_per_capita": 425.8,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
+    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   },
+   {
+    "city": "Hamburg",
+    "year": 2024,
+    "population": 1851596,
+    "generated_t": 765900,
+    "generated_kg_per_capita": 413.6,
+    "residual_kg_per_capita": null,
+    "recovery_share": null,
+    "counts": "municipal waste generated (domestic and commercial), total only: no recovery split, so no residual and no recovery share",
+    "source": "Eurostat Urban Audit urb_cenv EN4008V, population urb_cpop1 DE1001V",
+    "licence": "Eurostat reuse policy, 2011/833/EU"
+   }
+  ]
  }
 }

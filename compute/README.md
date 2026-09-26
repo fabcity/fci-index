@@ -74,10 +74,30 @@ needs to know what leaves and what arrives: regional imports and exports, or a r
 None of that exists openly below country level for these regions. It is recorded as the Index's most
 important gap in [awesome-fabcity-data#42](https://github.com/fabcity/awesome-fabcity-data/issues/42).
 
+## Trash out: the waste half of PITO
+
+`compute/waste.py` reads the four open waste sources filed in awesome-fabcity-data and reports, per city,
+waste generated per capita, **residual waste per capita** (the proposed "trash out" measure, #42) and the
+recovery share. The recovery share is also Boeing's input for macro-sector 16, which he scored for Hamburg as a
+24.8% recycling share.
+
+| City | Year | Generated kg/cap | Residual kg/cap | Recovery | What it counts |
+| --- | --- | --- | --- | --- | --- |
+| Barcelona | 2019 · 2024 | 483.6 · 446.8 | 295.8 · 258.5 | 38.8% · 42.1% | collected municipal waste; recovery = separate collection |
+| Paris | 2019 · 2024 | 464 · 436 | 341 · 308 | 26.5% · 29.4% | household waste only; recovery = sorted streams |
+| Santiago (comuna) | 2019 · 2022 | n/a | n/a | not recorded · 1.7% | tonnes declared (209 kt · 116 kt); no population in the source |
+| Hamburg | 2019 · 2024 | 425.8 · 413.6 | n/a | n/a | Urban Audit total only, no split |
+
+**These rows are not comparable yet.** Each counts a different thing, and the table says what. Santiago sends
+98% of what it declares to sanitary landfill. Its 2019 file records no treatment at all, which is "not
+recorded", not 0%: the self-test pins that. Its total nearly halves between 2019 and 2022, which is a change in
+who declares, not in the waste. Hamburg's recovery split exists only in Statistikamt Nord PDFs, so its sector
+16 still carries Boeing's value.
+
 ## Next
 
-1. Replace carried sectors with open data where it exists: the renewable share of electricity, the waste
-   recycling share (see the waste survey on #42) and farmland.
+1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
+   Waste now has open data for Barcelona, Paris and Santiago; Hamburg's recovery split does not.
 2. Add a trade-adjusted variant once regional exports exist for a pilot, starting with Destatis by
    federal state or DataComex by province.
 3. Settle what the Index should report, capacity or self-supply. That is a methodology decision (FCI 3.0 §7),

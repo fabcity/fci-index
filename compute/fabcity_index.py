@@ -35,6 +35,9 @@ import sys
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import waste  # noqa: E402
+
 HERE = Path(__file__).resolve().parent
 REF = json.loads((HERE / "boeing2024.json").read_text(encoding="utf-8"))
 EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
@@ -67,7 +70,11 @@ NOT_OPEN = {
     "Vehicles and transport equipment": "C29 is suppressed for Hamburg (confidentiality); C30 is Airbus, which "
                                         "makes no consumer vehicles, so it cannot stand in.",
     "Repair": "needs COICOP 07.2.3 and production value for G45/S95, neither published at that detail.",
+    "Waste and recycling": "Hamburg's only open machine-readable figure is the Urban Audit total, with no recovery "
+                           "split. Barcelona, Paris and Santiago do have one: see trash_out.",
 }
+# Trash out, per city: Boeing's year and the latest each source has (Santiago's latest CSV year is 2022).
+WASTE_YEARS = {"Barcelona": [YEAR, 2024], "Paris": [YEAR, 2024], "Santiago": [YEAR, 2022], "Hamburg": [YEAR, 2024]}
 VAT = {"DE": (0.07, 0.19), "ES": (0.10, 0.21), "FR": (0.055, 0.20)}   # (reduced, standard) in 2019
 
 
@@ -175,9 +182,18 @@ def run() -> None:
                         "Telling capacity from self-supply needs trade data: awesome-fabcity-data#42.",
             "regions": goods},
     }
+    out["trash_out"] = {
+        "reads_as": "Residual municipal waste per capita is the proposed PITO 'trash out' measure "
+                    "(awesome-fabcity-data#42). recovery_share is also Boeing's input for macro-sector 16. The four "
+                    "sources count different things; each row says what, and they are not comparable until aligned.",
+        "rows": waste.trash_out(WASTE_YEARS)}
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"reference (Boeing's inputs)        {ref_idx:5.1f}   published {REF['published_index']}")
     print(f"Hamburg, open sectors substituted  {index(rows):5.1f}   ({open_weight:.0f} of 1000 per mille re-derived)")
+    for w in out["trash_out"]["rows"]:
+        print(f"trash out {w['city']:18} {w['year']}  " + (w.get("error") or
+              f"generated {w['generated_kg_per_capita']} kg/cap  residual {w['residual_kg_per_capita']} kg/cap  "
+              f"recovery {w['recovery_share']}"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -224,6 +240,24 @@ def selftest() -> int:
     check("a sector with no reporting division has no ratio, not zero", o["Textiles and clothing"]["ratio"], None)
     check("and says so", o["Textiles and clothing"]["state"], "no data")
     del VAT["XX"]
+
+    # waste.barcelona: residual per capita from the residual fraction, recovery from separate collection.
+    b = waste.barcelona(2024, get=lambda u: [{"poblaci": "1000", "suma_fracci_resta": "300",
+                                              "total_recollida_selectiva": "100"}])
+    check("waste: residual kg per capita = residual t x 1000 / population", b["residual_kg_per_capita"], 300.0)
+    check("waste: generated = residual + separate collection", b["generated_kg_per_capita"], 400.0)
+    check("waste: recovery share = separate / generated", b["recovery_share"], 0.25)
+    # waste.santiago: decimal commas, thousands dots, one comuna only, recovery by declared treatment.
+    csv_text = ("id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;1.000,5;Eliminación\n"
+                "13101;99,5;Valorización\n13102;5000;Eliminación\n").encode()
+    sg = waste.santiago(2022, get=lambda u: {"result": {"resources": [{"name": "2022: x", "format": "CSV", "url": "u"}]}},
+                        raw=lambda u: csv_text)
+    check("waste: RETC '1.000,5' reads as 1000.5, and other comunas are left out", sg["generated_t"], 1100)
+    check("waste: RETC recovery share by declared treatment", sg["recovery_share"], round(99.5 / 1100, 3))
+    check("waste: no population means no per-capita figure, not a guess", sg["generated_kg_per_capita"], None)
+    blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
+                           raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
+    check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 
