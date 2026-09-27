@@ -15,6 +15,7 @@ of Charles de Gaulle and Orly. Sea and air stay separate rows (mode "sea" / "air
 """
 from __future__ import annotations
 
+import csv
 import functools
 import io
 import re
@@ -63,6 +64,9 @@ NORD_E_I_1 = ["https://www.statistik-nord.de/fileadmin/Dokumente/E_I_1_j{yy}_HH.
               "E_I_1_j_H/E_I_1_j{yy}_HH.xlsx"]
 NORD_E_I_1_LICENCE = ("Statistikamt Nord: extracts may be reproduced with attribution, all other rights reserved; not on "
                       "the Transparenzportal; used under these terms by maintainer decision (awesome-fabcity-data#61)")
+# Catalonia's measured manufacturing: Idescat's industrial survey, turnover by destination of sales
+# (awesome-fabcity-data#62). `t=YYYY00` picks the year; a plain year is ignored and returns the latest.
+IDESCAT_EIE = "https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t={year}00"
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre",
         "décembre"]
 NO_REGIONAL = {
@@ -271,6 +275,22 @@ def nord_manufacturing(year: int, raw=waste._raw) -> dict | None:
         return {"year": year, "url": url, "divisions": divisions,
                 "concept": "turnover from own production" if own else "turnover"}
     return None
+
+
+def idescat_industry(year: int, raw=waste._raw) -> dict | None:
+    """Catalonia's industrial turnover by activity group, thousand euro: (total, sold outside Spain), from Idescat's
+    Structural Business Statistics. "Spain" includes the rest of Spain, so only sales abroad come out."""
+    url = IDESCAT_EIE.format(year=year)
+    lines = list(csv.reader(io.StringIO(raw(url).decode("utf-8-sig"))))
+    if len(lines) < 2 or lines[1][:1] != [str(year)]:
+        return None                                  # the year the file names is not the one asked for
+    head = next(i for i, l in enumerate(lines) if l[1:5] == ["Spain", "Rest of European Union", "Rest of the world", "Total"])
+    groups = {}
+    for l in lines[head + 1:]:
+        if len(l) >= 5 and l[0]:
+            eu, world, total = (waste._num(v) for v in l[2:5])
+            groups[l[0]] = (total, None if eu is None or world is None else eu + world)
+    return {"year": year, "url": url, "divisions": groups, "concept": "turnover (company survey)"}
 
 
 READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris, "Boston": boston}
