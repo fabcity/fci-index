@@ -1263,6 +1263,199 @@
    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
   }
  ],
+ "brazil_trade_adjusted": {
+  "reads_as": "São Paulo and Recife, read as their states (no city figures exist): measured production against what households buy, and with exports taken out, as a goods index weighted by the state's own spending. An UPPER bound on self-supply: sales to the rest of Brazil count as local. Exports are products by state of production, a proxy for the same firms' sales abroad. Production is 2019, spending is the 2017-2018 survey in its own reais (prices rose about 4% to 2019).",
+  "rows": [
+   {
+    "city": "São Paulo",
+    "territory": "São Paulo (state)",
+    "year": 2019,
+    "currency": "BRL (M R$ in the sector rows)",
+    "goods_capacity_index": 100.0,
+    "goods_trade_adjusted_index": 100.0,
+    "brl_per_usd": 3.9461,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 173404.4,
+      "sold_abroad_meur": 35934.1,
+      "domestic_meur": 137470.3,
+      "consumption_meur": 93779.3,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.85,
+      "raw_trade_adjusted": 1.47,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is food at home (alcohol included), not meals out"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 36196.9,
+      "sold_abroad_meur": 2111.8,
+      "domestic_meur": 34085.1,
+      "consumption_meur": 33958.5,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.07,
+      "raw_trade_adjusted": 1.0,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 38504.1,
+      "sold_abroad_meur": 3033.1,
+      "domestic_meur": 35471.0,
+      "consumption_meur": 31789.5,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.21,
+      "raw_trade_adjusted": 1.12,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "IT and communication": {
+      "measured_meur": 47524.2,
+      "sold_abroad_meur": 4340.4,
+      "domestic_meur": 43183.8,
+      "consumption_meur": 7407.5,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 6.42,
+      "raw_trade_adjusted": 5.83,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is phones and accessories only: POF puts TVs and computers inside appliances, with fridges, so capacity is overstated"
+     },
+     "Other goods": {
+      "measured_meur": 38938.9,
+      "sold_abroad_meur": 3423.1,
+      "domestic_meur": 35515.9,
+      "consumption_meur": 18107.8,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 2.15,
+      "raw_trade_adjusted": 1.96,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "IBGE PIA-Empresa 2019 (SIDRA 1849, gross value of production); ComexStat exports 2019 by state of production; IBGE POF 2017-2018 (SIDRA 6715, 6972, 6977); BCB SGS 3694",
+    "licence": "IBGE: reuse with IBGE cited as the source. ComexStat: open government data under Decreto 8.777/2016, by maintainer decision (awesome-fabcity-data#65)"
+   },
+   {
+    "city": "Recife",
+    "territory": "Pernambuco (state)",
+    "year": 2019,
+    "currency": "BRL (M R$ in the sector rows)",
+    "goods_capacity_index": 72.5,
+    "goods_trade_adjusted_index": 72.4,
+    "brl_per_usd": 3.9461,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 19297.6,
+      "sold_abroad_meur": 480.1,
+      "domestic_meur": 18817.5,
+      "consumption_meur": 14583.4,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.32,
+      "raw_trade_adjusted": 1.29,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is food at home (alcohol included), not meals out"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 1878.4,
+      "sold_abroad_meur": 30.5,
+      "domestic_meur": 1847.9,
+      "consumption_meur": 5632.2,
+      "capacity": 0.3335141392082646,
+      "trade_adjusted": 0.32809643321386706,
+      "raw_capacity": 0.33,
+      "raw_trade_adjusted": 0.33,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 1224.4,
+      "sold_abroad_meur": 0.6,
+      "domestic_meur": 1223.8,
+      "consumption_meur": 3829.7,
+      "capacity": 0.3197214604951801,
+      "trade_adjusted": 0.3195649357398701,
+      "raw_capacity": 0.32,
+      "raw_trade_adjusted": 0.32,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "IT and communication": {
+      "measured_meur": 28.3,
+      "sold_abroad_meur": 2.8,
+      "domestic_meur": 25.5,
+      "consumption_meur": 1221.7,
+      "capacity": 0.023133046227330235,
+      "trade_adjusted": 0.020852299040024547,
+      "raw_capacity": 0.02,
+      "raw_trade_adjusted": 0.02,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is phones and accessories only: POF puts TVs and computers inside appliances, with fridges, so capacity is overstated"
+     },
+     "Other goods": {
+      "measured_meur": 2738.2,
+      "sold_abroad_meur": 70.9,
+      "domestic_meur": 2667.3,
+      "consumption_meur": 2225.6,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.23,
+      "raw_trade_adjusted": 1.2,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "IBGE PIA-Empresa 2019 (SIDRA 1849, gross value of production); ComexStat exports 2019 by state of production; IBGE POF 2017-2018 (SIDRA 6715, 6972, 6977); BCB SGS 3694",
+    "licence": "IBGE: reuse with IBGE cited as the source. ComexStat: open government data under Decreto 8.777/2016, by maintainer decision (awesome-fabcity-data#65)"
+   }
+  ]
+ },
  "regional_trade": {
   "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
   "rows": [

@@ -290,6 +290,50 @@ Barcelona. The goods index covers 366 of the 1,000 weight points in 2019. Two gr
 beverages come with tobacco, and "other goods" includes furniture. Idescat names no licence, only Spain's statutory
 reuse terms, as for its trade data.
 
+## São Paulo and Recife with trade taken out (2019)
+
+`brazil_trade_adjusted()` reads the two cities as their states, because Brazil publishes no city figures for
+production or spending: São Paulo state, and Pernambuco for Recife (registry #65). Production is IBGE's industrial
+survey (PIA-Empresa, SIDRA table 1849, gross value of production by CNAE division, local units with 5 or more people;
+nothing suppressed). Exports are ComexStat's, by **state of production** and ISIC division, converted at the central
+bank's 2019 average rate (3.9461 R$ per US$). Consumption is IBGE's household budget survey 2017-18 (POF): spending
+per family per month, times 12, times the number of families. The goods index is weighted by each state's own
+spending on the five sectors.
+
+| 2019, goods index | Capacity | Trade-adjusted |
+| --- | --- | --- |
+| São Paulo (state) | 100.0 | 100.0 |
+| Recife (Pernambuco) | 72.5 | 72.4 |
+
+| Pernambuco, 2019 | Made | Exported | Household spending | Capacity |
+| --- | --- | --- | --- | --- |
+| Food and beverages | 19,298 M R$ | 480 M | 14,583 M | 1.00 (1.32) |
+| Textiles and clothing | 1,878 M | 31 M | 5,632 M | 0.33 |
+| Pharmaceuticals | 1,224 M | 1 M | 3,830 M | 0.32 |
+| Electronics (phones only on the spending side) | 28 M | 3 M | 1,222 M | 0.02 |
+| Other goods | 2,738 M | 71 M | 2,226 M | 1.00 (1.23) |
+
+**Exports hardly move either state**: they are a small share of what Brazilian industry makes (São Paulo's food, the
+largest, is 21%). The number that matters is the one this cannot see, sales to the rest of Brazil. São Paulo state
+supplies much of the country, so its 100 is capacity, not self-supply. Recife's 72 is the more telling figure:
+Pernambuco makes more food and "other goods" than its households buy, and almost none of its clothing, medicines or
+electronics. Exports are products by state of production, a proxy for the same firms' sales abroad. POF puts TVs and
+computers inside appliances, with fridges, so electronics spending is phones only and that sector's capacity is
+overstated. Spending is in 2017-18 reais against 2019 production (prices rose about 4%). ComexStat is used as open
+government data under Decreto 8.777/2016, by Tomas Diez's decision, though its site footer reads CC BY-ND.
+
+## Who has what
+
+| City | Trade-adjusted goods index | What it rests on | What is missing |
+| --- | --- | --- | --- |
+| Hamburg | 32.2 (2022) | E I 1 turnover and foreign turnover, same plants | sales to the rest of Germany; E I 1 is used under its own terms (#61) |
+| Barcelona | 86.6 (2019), 91.3 (2022) | Idescat turnover by destination | sales to the rest of Spain (Idescat's material-flow account has them in tonnes, #64) |
+| São Paulo | 100.0 (2019) | IBGE production, ComexStat exports, POF | sales to the rest of Brazil; city figures |
+| Recife | 72.4 (2019) | the same, for Pernambuco | the same |
+| Paris | none | | measured production with its export share for Île-de-France (#63) |
+| Bali | none yet | BPS website tables, usable by decision: large/medium industry to 2021, exports by HS chapter | micro and small industry by division (the larger part), the export share, 2022+ |
+| Boston, Santiago | none | | measured production by industry for the metro or region |
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
