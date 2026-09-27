@@ -129,6 +129,41 @@ for dp, _, fns in os.walk(out):
 print(f"injected feedback line into {n} pages" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
 PYEOF
 
+# Version every local script and stylesheet by its content. Pages serve js/ and css/ with
+# max-age=14400, so without this a visitor from the last four hours keeps the old data.js and
+# city.js next to a new city.html: on 2026-09-27 the new place map rendered "Unknown city" and an
+# empty card that way. A changed file gets a new ?v=, an unchanged one keeps its address.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF' || exit 1
+import hashlib, os, re, sys
+out = os.environ["FCI_OUT_DIR"]
+seen, n = {}, 0
+def version(page_dir, ref):
+    path = os.path.normpath(os.path.join(out, ref.lstrip("/")) if ref.startswith("/") else os.path.join(page_dir, ref))
+    if path not in seen:
+        if not os.path.isfile(path):
+            return None
+        seen[path] = hashlib.md5(open(path, "rb").read()).hexdigest()[:10]
+    return seen[path]
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if not fn.endswith(".html"):
+            continue
+        p = os.path.join(dp, fn)
+        html = open(p, encoding="utf-8").read()
+        def sub(m):
+            global n
+            v = version(dp, m.group(2))
+            if v is None:
+                print(f"FAIL: {os.path.relpath(p, out)} references {m.group(2)}, which is not in the build", file=sys.stderr)
+                sys.exit(1)
+            n += 1
+            return f'{m.group(1)}="{m.group(2)}?v={v}"'
+        html2 = re.sub(r'\b(src|href)="((?!https?:|//|data:)[^"?#]+\.(?:js|css))"', sub, html)
+        if html2 != html:
+            open(p, "w", encoding="utf-8").write(html2)
+print(f"versioned {n} script and stylesheet links across {len(seen)} files")
+PYEOF
+
 # Consolidation guard (CANONICAL.md): the build output must never be edited by hand
 cat > "$OUT/DO-NOT-EDIT.txt" <<'EOF'
 GENERATED TREE — do not edit anything in this folder.
