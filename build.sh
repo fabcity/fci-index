@@ -165,6 +165,10 @@ cat > "$OUT/_redirects" <<'REDIR'
 /lineage.html      /method#lineage  301
 /lineage           /method#lineage  301
 /how-it-is-built   /constellation   301
+# 2026-09-27: the atlas map became the city page. city.html reads ?place= as well as
+# ?locality=, so an old /atlas/map?place=<slug> link lands on that place.
+/atlas/map         /city            301
+/atlas/map.html    /city            301
 REDIR
 # Pages Functions run only on the workbench's protected act pages (functions/operate/
 # _middleware.js sends their pages.dev copies to the Access-guarded custom domain).
@@ -177,7 +181,7 @@ NREDIR=$(grep -c '^/' "$OUT/_redirects")
 echo "wrote _redirects: ${NREDIR} rules"
 # A rule dropped by an edit fails silently: the old URL becomes a 200 with the homepage.
 # Change this number in the same commit that adds or removes a rule.
-[ "$NREDIR" = "15" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 15"; exit 1; }
+[ "$NREDIR" = "17" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 17"; exit 1; }
 
 # Structural sanity. A page with two <!DOCTYPE>s, or one that has grown by two orders of
 # magnitude, is not a page — it is a broken edit. This exists because a Python
