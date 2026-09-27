@@ -872,13 +872,12 @@
   ]
  },
  "hamburg_trade_adjusted": {
-  "year": 2022,
   "reads_as": "Hamburg's index with the five open sectors measured, 2022: capacity counts everything Hamburg's plants make against what its households buy; trade-adjusted takes out what they sell abroad. The difference is the trade effect. Still an UPPER bound on self-supply: sales to the rest of Germany count as local, and only plants with 20 or more people are covered. The other eleven sectors carry Boeing's 2019 ratios.",
-  "capacity_index": 41.1,
-  "trade_adjusted_index": 32.2,
+  "year": 2022,
+  "goods_capacity_index": 59.4,
+  "goods_trade_adjusted_index": 32.2,
+  "goods_weight_per_mille": 281.64,
   "concept": "turnover from own production",
-  "source": "Statistikamt Nord E I 1 2022, table T2_1: https://www.statistik-nord.de/fileadmin/Dokumente/E_I_1_j22_HH.xlsx; Eurostat nama_10_co3_p3 and demo_r_d2jan 2022",
-  "licence": "Statistikamt Nord: extracts may be reproduced with attribution, all other rights reserved; not on the Transparenzportal; used under these terms by maintainer decision (awesome-fabcity-data#61)",
   "sectors": {
    "Food and beverages": {
     "measured_meur": 3316.3,
@@ -961,6 +960,8 @@
     "state": "measured, partial"
    }
   },
+  "capacity_index": 41.1,
+  "trade_adjusted_index": 32.2,
   "rows": [
    {
     "sector": "Energy (renewable)",
@@ -1074,8 +1075,194 @@
     "boeing_ratio": 0.248,
     "source": "Boeing 2024, carried"
    }
-  ]
+  ],
+  "source": "Statistikamt Nord E I 1 2022, table T2_1: https://www.statistik-nord.de/fileadmin/Dokumente/E_I_1_j22_HH.xlsx; Eurostat nama_10_co3_p3 and demo_r_d2jan 2022",
+  "licence": "Statistikamt Nord: extracts may be reproduced with attribution, all other rights reserved; not on the Transparenzportal; used under these terms by maintainer decision (awesome-fabcity-data#61)"
  },
+ "barcelona_trade_adjusted": [
+  {
+   "reads_as": "Catalonia's index (Barcelona's region, ES51) with the five open sectors measured, 2019: capacity counts everything Catalan industry sells against what Catalan households buy; trade-adjusted takes out what it sells abroad, as a goods index over those sectors (Spain's HICP weights). A loose UPPER bound on self-supply: sales to the rest of Spain count as local, and most of what is not exported goes there. No full index: Boeing's other eleven ratios are Hamburg's.",
+   "year": 2019,
+   "goods_capacity_index": 100.0,
+   "goods_trade_adjusted_index": 86.6,
+   "goods_weight_per_mille": 366.2,
+   "concept": "turnover (company survey)",
+   "sectors": {
+    "Food and beverages": {
+     "measured_meur": 30090.2,
+     "sold_abroad_meur": 7989.6,
+     "domestic_meur": 22100.6,
+     "consumption_meur": 14822.9,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 2.03,
+     "raw_trade_adjusted": 1.49,
+     "nace_used": [
+      "Industries of food products",
+      "Production of beverages and of tobacco products"
+     ],
+     "nace_missing": [],
+     "state": "measured",
+     "differs_from_boeing": "the beverages group includes tobacco (C12)"
+    },
+    "Textiles and clothing": {
+     "measured_meur": 4557.9,
+     "sold_abroad_meur": 1956.4,
+     "domestic_meur": 2601.5,
+     "consumption_meur": 4391.2,
+     "capacity": 1.0,
+     "trade_adjusted": 0.5924486640507562,
+     "raw_capacity": 1.04,
+     "raw_trade_adjusted": 0.59,
+     "nace_used": [
+      "Manufacture of textiles, leather, footwear. Tailoring"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "Chemical products": {
+     "measured_meur": 7166.1,
+     "sold_abroad_meur": 3673.1,
+     "domestic_meur": 3493.0,
+     "consumption_meur": 1781.5,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 4.02,
+     "raw_trade_adjusted": 1.96,
+     "nace_used": [
+      "Manufacture of pharmaceutical products"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "IT and communication": {
+     "measured_meur": 6116.6,
+     "sold_abroad_meur": 2814.3,
+     "domestic_meur": 3302.3,
+     "consumption_meur": 844.5,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 7.24,
+     "raw_trade_adjusted": 3.91,
+     "nace_used": [
+      "Manufacture of computer, electronic and optical material and equipment"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "Other goods": {
+     "measured_meur": 5251.2,
+     "sold_abroad_meur": 1570.5,
+     "domestic_meur": 3680.7,
+     "consumption_meur": 5231.6,
+     "capacity": 1.0,
+     "trade_adjusted": 0.7035513138495775,
+     "raw_capacity": 1.0,
+     "raw_trade_adjusted": 0.7,
+     "nace_used": [
+      "Other non-metal mineral products industries",
+      "Furniture making and other manufacturing industries"
+     ],
+     "nace_missing": [],
+     "state": "measured",
+     "differs_from_boeing": "the group joins furniture (C31) with other manufacturing (C32)"
+    }
+   },
+   "source": "Idescat, based on INE's Structural Business Statistics in the Industrial Sector, 2019: https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t=201900; Eurostat nama_10_co3_p3 and demo_r_d2jan 2019",
+   "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+  },
+  {
+   "reads_as": "Catalonia's index (Barcelona's region, ES51) with the five open sectors measured, 2022: capacity counts everything Catalan industry sells against what Catalan households buy; trade-adjusted takes out what it sells abroad, as a goods index over those sectors (Spain's HICP weights). A loose UPPER bound on self-supply: sales to the rest of Spain count as local, and most of what is not exported goes there. No full index: Boeing's other eleven ratios are Hamburg's.",
+   "year": 2022,
+   "goods_capacity_index": 100.0,
+   "goods_trade_adjusted_index": 91.3,
+   "goods_weight_per_mille": 400.21,
+   "concept": "turnover (company survey)",
+   "sectors": {
+    "Food and beverages": {
+     "measured_meur": 37530.9,
+     "sold_abroad_meur": 11093.4,
+     "domestic_meur": 26437.5,
+     "consumption_meur": 16818.6,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 2.23,
+     "raw_trade_adjusted": 1.57,
+     "nace_used": [
+      "Industries of food products",
+      "Production of beverages and of tobacco products"
+     ],
+     "nace_missing": [],
+     "state": "measured",
+     "differs_from_boeing": "the beverages group includes tobacco (C12)"
+    },
+    "Textiles and clothing": {
+     "measured_meur": 5080.2,
+     "sold_abroad_meur": 2190.5,
+     "domestic_meur": 2889.7,
+     "consumption_meur": 4041.6,
+     "capacity": 1.0,
+     "trade_adjusted": 0.7149912519360797,
+     "raw_capacity": 1.26,
+     "raw_trade_adjusted": 0.71,
+     "nace_used": [
+      "Manufacture of textiles, leather, footwear. Tailoring"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "Chemical products": {
+     "measured_meur": 8428.5,
+     "sold_abroad_meur": 4342.5,
+     "domestic_meur": 4085.9,
+     "consumption_meur": 1930.0,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 4.37,
+     "raw_trade_adjusted": 2.12,
+     "nace_used": [
+      "Manufacture of pharmaceutical products"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "IT and communication": {
+     "measured_meur": 8025.7,
+     "sold_abroad_meur": 3330.9,
+     "domestic_meur": 4694.8,
+     "consumption_meur": 1128.6,
+     "capacity": 1.0,
+     "trade_adjusted": 1.0,
+     "raw_capacity": 7.11,
+     "raw_trade_adjusted": 4.16,
+     "nace_used": [
+      "Manufacture of computer, electronic and optical material and equipment"
+     ],
+     "nace_missing": [],
+     "state": "measured"
+    },
+    "Other goods": {
+     "measured_meur": 5726.5,
+     "sold_abroad_meur": 1555.4,
+     "domestic_meur": 4171.1,
+     "consumption_meur": 5613.7,
+     "capacity": 1.0,
+     "trade_adjusted": 0.7430200115772164,
+     "raw_capacity": 1.02,
+     "raw_trade_adjusted": 0.74,
+     "nace_used": [
+      "Other non-metal mineral products industries",
+      "Furniture making and other manufacturing industries"
+     ],
+     "nace_missing": [],
+     "state": "measured",
+     "differs_from_boeing": "the group joins furniture (C31) with other manufacturing (C32)"
+    }
+   },
+   "source": "Idescat, based on INE's Structural Business Statistics in the Industrial Sector, 2022: https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t=202200; Eurostat nama_10_co3_p3 and demo_r_d2jan 2022",
+   "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date. No named licence; open-equivalence not yet confirmed (awesome-fabcity-data#51)"
+  }
+ ],
  "regional_trade": {
   "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its gateways' throughput, and not trade with the rest of the country. Cities without an open reader yet are listed with why.",
   "rows": [

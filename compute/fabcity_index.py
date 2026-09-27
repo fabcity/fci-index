@@ -152,14 +152,27 @@ def open_sectors(region: str, get=fetch) -> dict:
 TRADE_YEAR = 2022   # the latest year with both Hamburg's measured turnover (E I 1) and Germany's COICOP spending
 
 
-def trade_adjust(spend: dict, divisions: dict) -> dict:
+# Idescat publishes activity groups, not NACE divisions. Where a group is wider than Boeing's sector it says so.
+CAT_GROUPS = {
+    "Food and beverages": ["Industries of food products", "Production of beverages and of tobacco products"],
+    "Textiles and clothing": ["Manufacture of textiles, leather, footwear. Tailoring"],
+    "Chemical products": ["Manufacture of pharmaceutical products"],
+    "IT and communication": ["Manufacture of computer, electronic and optical material and equipment"],
+    "Other goods": ["Other non-metal mineral products industries", "Furniture making and other manufacturing industries"],
+}
+CAT_DIFFERS = {"Food and beverages": "the beverages group includes tobacco (C12)",
+               "Other goods": "the group joins furniture (C31) with other manufacturing (C32)"}
+
+
+def trade_adjust(spend: dict, divisions: dict, codes: dict | None = None) -> dict:
     """Each OPEN sector twice: measured turnover against local consumption (capacity), and the same with sales abroad
     taken out (trade-adjusted). A division counts only where both its turnover and its foreign turnover are published,
-    so the two ratios cover the same plants. Thousand euro in, M EUR out."""
+    so the two ratios cover the same plants. `codes` maps each sector to the source's own keys (default: its NACE
+    divisions). Thousand euro in, M EUR out."""
     out = {}
     for s, spec in OPEN.items():
         cons = spend[s]["consumption_meur"]
-        got = {n: divisions.get(n[1:]) for n in spec["nace"]}           # "C10" -> "10"
+        got = {n: divisions.get(n) for n in (codes or {}).get(s, spec["nace"])}
         used = [n for n, v in got.items() if v and v[0] is not None and v[1] is not None]
         made = sum(got[n][0] for n in used) / 1000
         home = sum(got[n][0] - got[n][1] for n in used) / 1000
@@ -168,8 +181,8 @@ def trade_adjust(spend: dict, divisions: dict) -> dict:
                   "consumption_meur": round(cons, 1),
                   "capacity": min(1.0, made / cons) if ok else None, "trade_adjusted": min(1.0, home / cons) if ok else None,
                   "raw_capacity": round(made / cons, 2) if ok else None, "raw_trade_adjusted": round(home / cons, 2) if ok else None,
-                  "nace_used": used, "nace_missing": [n for n in spec["nace"] if n not in used],
-                  "state": "no data" if not used else "measured" + (", partial" if len(used) < len(spec["nace"]) else "")}
+                  "nace_used": used, "nace_missing": [n for n in got if n not in used],
+                  "state": "no data" if not used else "measured" + (", partial" if len(used) < len(got) else "")}
     return out
 
 
@@ -180,23 +193,60 @@ def with_open(ref: list[dict], sectors: dict, key: str, label: str) -> list[dict
             else {**r, "boeing_ratio": r["ratio"], "source": "Boeing 2024, carried"} for r in ref]
 
 
+def trade_variant(region: str, year: int, reading: dict, codes: dict | None, label: str, carry: bool, get=fetch) -> dict:
+    """One region's open sectors measured, twice: capacity, and sales abroad taken out. Always as a goods index over
+    those sectors alone, weighted by the country's HICP basket (comparable across regions, like goods_capacity).
+    With carry, also as Boeing's full index, the other eleven sectors carrying his ratios; they are Hamburg's, so only
+    Hamburg carries them."""
+    secs = trade_adjust(consumption(region, year, get), reading["divisions"], codes)
+    hicp = by(get("prc_hicp_inw", geo=region[:2], time=year), "coicop")
+    w = {s: sum(x for x in (weight_of(hicp, k) for k in OPEN[s]["coicop"]) if x) for s in OPEN}
+    def goods(key):
+        rows = [{"ratio": o[key], "weight": w[s]} for s, o in secs.items() if o[key] is not None]
+        return round(index(rows), 1) if rows else None
+    out = {"year": year, "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+           "goods_weight_per_mille": round(sum(w[s] for s, o in secs.items() if o["capacity"] is not None), 2),
+           "concept": reading["concept"], "sectors": secs}
+    if carry:
+        ref = reference_rows()
+        adj = with_open(ref, secs, "trade_adjusted", label)
+        out.update(capacity_index=round(index(with_open(ref, secs, "capacity", label)), 1),
+                   trade_adjusted_index=round(index(adj), 1), rows=adj)
+    return out
+
+
 def hamburg_trade_adjusted(year: int = TRADE_YEAR, get=fetch, raw=waste._raw) -> dict:
     ei = trade.nord_manufacturing(year, raw)
     if ei is None:
         return {"year": year, "no_data": f"no E I 1 annual edition for {year} on statistik-nord.de"}
-    secs = trade_adjust(consumption("DE60", year, get), ei["divisions"])
-    ref = reference_rows()
-    cap, adj = with_open(ref, secs, "capacity", f"E I 1 {year}"), with_open(ref, secs, "trade_adjusted", f"E I 1 {year}")
+    out = trade_variant("DE60", year, {**ei, "divisions": {"C" + k: v for k, v in ei["divisions"].items()}}, None,
+                        f"E I 1 {year}", True, get)
     return {
-        "year": year,
         "reads_as": f"Hamburg's index with the five open sectors measured, {year}: capacity counts everything Hamburg's plants "
                     "make against what its households buy; trade-adjusted takes out what they sell abroad. The difference is "
                     "the trade effect. Still an UPPER bound on self-supply: sales to the rest of Germany count as local, and "
                     "only plants with 20 or more people are covered. The other eleven sectors carry Boeing's 2019 ratios.",
-        "capacity_index": round(index(cap), 1), "trade_adjusted_index": round(index(adj), 1),
-        "concept": ei["concept"], "source": f"Statistikamt Nord E I 1 {year}, table T2_1: {ei['url']}; Eurostat "
-                                            f"nama_10_co3_p3 and demo_r_d2jan {year}",
-        "licence": trade.NORD_E_I_1_LICENCE, "sectors": secs, "rows": adj}
+        **out, "source": f"Statistikamt Nord E I 1 {year}, table T2_1: {ei['url']}; Eurostat "
+                         f"nama_10_co3_p3 and demo_r_d2jan {year}",
+        "licence": trade.NORD_E_I_1_LICENCE}
+
+
+def barcelona_trade_adjusted(year: int = YEAR, get=fetch, raw=waste._raw) -> dict:
+    eie = trade.idescat_industry(year, raw)
+    if eie is None:
+        return {"year": year, "no_data": f"Idescat's industrial survey has no {year} table"}
+    out = trade_variant("ES51", year, eie, CAT_GROUPS, f"Idescat EIE {year}", False, get)
+    for s, why in CAT_DIFFERS.items():
+        out["sectors"][s]["differs_from_boeing"] = why
+    return {
+        "reads_as": f"Catalonia's index (Barcelona's region, ES51) with the five open sectors measured, {year}: capacity counts "
+                    "everything Catalan industry sells against what Catalan households buy; trade-adjusted takes out what it "
+                    "sells abroad, as a goods index over those sectors (Spain's HICP weights). A loose UPPER bound on "
+                    "self-supply: sales to the rest of Spain count as local, and most of what is not exported goes there. "
+                    "No full index: Boeing's other eleven ratios are Hamburg's.",
+        **out, "source": f"Idescat, based on INE's Structural Business Statistics in the Industrial Sector, {year}: "
+                         f"{eie['url']}; Eurostat nama_10_co3_p3 and demo_r_d2jan {year}",
+        "licence": trade.IDESCAT_LICENCE}
 
 
 def run() -> None:
@@ -256,6 +306,7 @@ def run() -> None:
                     "Santiago are listed with why they have no data.",
         "rows": trade.gateway([YEAR, 2024])}
     out["hamburg_trade_adjusted"] = hamburg_trade_adjusted()
+    out["barcelona_trade_adjusted"] = [barcelona_trade_adjusted(y) for y in (YEAR, TRADE_YEAR)]
     out["regional_trade"] = {
         "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and "
                     "tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its "
@@ -269,6 +320,11 @@ def run() -> None:
     if "no_data" not in h:
         print(f"Hamburg {h['year']}, measured capacity    {h['capacity_index']:5.1f}   trade-adjusted {h['trade_adjusted_index']:.1f} "
               f"(upper bound: sales to the rest of Germany count as local)")
+        print(f"Hamburg {h['year']}, open goods only     {h['goods_capacity_index']:5.1f}   trade-adjusted {h['goods_trade_adjusted_index']:.1f}")
+    for b in out["barcelona_trade_adjusted"]:
+        print(f"Catalonia {b['year']}, open goods only   " + (b.get("no_data") or
+              f"{b['goods_capacity_index']:5.1f}   trade-adjusted {b['goods_trade_adjusted_index']:.1f} "
+              "(loose upper bound: sales to the rest of Spain count as local)"))
     for w in out["trash_out"]["rows"]:
         print(f"trash out {w['city']:18} {w['year']}  " + (w.get("error") or
               f"generated {w['generated_kg_per_capita']} kg/cap  residual {w['residual_kg_per_capita']} kg/cap  "
@@ -572,8 +628,8 @@ def selftest() -> int:
           (ei["divisions"]["13"], "10.1" in ei["divisions"]), ((None, None), False))
     # trade_adjust: capacity and trade-adjusted over the same plants; a division without its foreign part drops from both.
     spend = {s: {"consumption_meur": 1000.0, "coicop_missing": []} for s in OPEN}
-    ta = trade_adjust(spend, {"10": (600000.0, 200000.0), "11": (100000.0, 50000.0), "23": (300000.0, None), "32": (400000.0, 100000.0),
-                              "26": (1500000.0, 1200000.0)})
+    ta = trade_adjust(spend, {"C10": (600000.0, 200000.0), "C11": (100000.0, 50000.0), "C23": (300000.0, None), "C32": (400000.0, 100000.0),
+                              "C26": (1500000.0, 1200000.0)})
     check("trade_adjust: food, sales abroad taken out", (ta["Food and beverages"]["capacity"], ta["Food and beverages"]["trade_adjusted"]),
           (0.7, 0.45))
     check("trade_adjust: capacity caps at 1, trade-adjusted can still be low", (ta["IT and communication"]["capacity"],
@@ -581,6 +637,30 @@ def selftest() -> int:
     check("trade_adjust: C23 without foreign turnover drops from both ratios, flagged partial",
           (ta["Other goods"]["capacity"], ta["Other goods"]["state"], ta["Other goods"]["nace_missing"]), (0.4, "measured, partial", ["C23"]))
     check("trade_adjust: nothing published is no data, which carries Boeing's ratio", ta["Textiles and clothing"]["capacity"], None)
+    # trade.idescat_industry: the year the file names, abroad = rest of the EU + rest of the world, thousand euro.
+    eie_csv = ("\ufeffIndustrial sector. Turnover.\n2019\nUnits: Thousand euros.\n,Spain,Rest of European Union,Rest of the world,Total\n"
+               "Industries of food products,19690,4848,2437,26975\n\"Manufacture of textiles, leather, footwear. Tailoring\",2601,1449,507,4557\n")
+    eie = trade.idescat_industry(2019, raw=lambda u: eie_csv.encode("utf-8"))
+    check("Idescat EIE: total and sold abroad (EU + rest of the world), a quoted label kept whole",
+          (eie["divisions"]["Industries of food products"], eie["divisions"]["Manufacture of textiles, leather, footwear. Tailoring"]),
+          ((26975.0, 7285.0), (4557.0, 1956.0)))
+    check("Idescat EIE: a file for another year is no data (plain t=2019 silently returns the latest year)",
+          trade.idescat_industry(2022, raw=lambda u: eie_csv.encode("utf-8")), None)
+    check("Idescat EIE: the year goes in as YYYY00", "t=201900" in trade.IDESCAT_EIE.format(year=2019), True)
+    # trade_adjust with a source's own groups, and trade_variant without carried ratios: a goods index only.
+    groups = {"Industries of food products": (600000.0, 200000.0)}
+    tg = trade_adjust(spend, groups, {"Food and beverages": ["Industries of food products", "Beverages"]})
+    check("trade_adjust: groups instead of divisions, a missing group makes it partial",
+          (tg["Food and beverages"]["capacity"], tg["Food and beverages"]["state"]), (0.6, "measured, partial"))
+    def fake_get(dataset, **p):
+        if dataset == "nama_10_co3_p3":
+            return js({"coicop": ["CP01", "CP021"]}, {("CP01",): 1100.0, ("CP021",): 121.0})
+        if dataset == "demo_r_d2jan":
+            return js({"geo": ["ES51", "ES"]}, {("ES51",): 1.0, ("ES",): 1.0})
+        return js({"coicop": ["CP01", "CP021"]}, {("CP01",): 150.0, ("CP021",): 10.0})
+    tv = trade_variant("ES51", 2019, {"divisions": groups, "concept": "turnover"}, CAT_GROUPS, "test", False, get=fake_get)
+    check("trade_variant: no carried ratios for Barcelona, a goods index over the measured sectors",
+          ("capacity_index" in tv, tv["goods_capacity_index"], tv["goods_weight_per_mille"]), (False, 54.5, 160.0))   # 600 / (1100/1.10 + 121/1.21)
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)

@@ -254,6 +254,42 @@ does not replace it. E I 1 is not open by the registry's rule (its imprint permi
 reserves other rights, and it is not on the Transparenzportal). Tomas Diez decided on 2026-09-27 to use it under those
 terms, and every row carries that licence.
 
+**The same on the open goods alone**, weighted by Germany's 2022 HICP basket and comparable with Barcelona below:
+59.4 on capacity, 32.2 trade-adjusted.
+
+## Barcelona with trade taken out (2019 and 2022)
+
+`barcelona_trade_adjusted()` does the same for Catalonia (ES51, Barcelona's region) from Idescat's industrial survey
+(registry `economic/region/idescat-eie-destinacio-vendes`, based on INE's Structural Business Statistics). It gives
+turnover by activity group split into Spain, the rest of the EU and the rest of the world, for every year from 1999, so
+this one sits on **Boeing's year, 2019**, as well as on 2022 for comparison with Hamburg.
+
+| Catalonia, 2019 | Made in Catalonia | Sold abroad | Local consumption | Capacity | Trade-adjusted |
+| --- | --- | --- | --- | --- | --- |
+| Food and beverages (incl. tobacco) | 30,090 M | 7,990 M | 14,823 M | 1.00 (2.03) | 1.00 (1.49) |
+| Textiles and clothing | 4,558 M | 1,956 M | 4,391 M | 1.00 (1.04) | 0.59 |
+| Pharmaceuticals | 7,166 M | 3,673 M | 1,782 M | 1.00 (4.02) | 1.00 (1.96) |
+| IT equipment | 6,117 M | 2,814 M | 845 M | 1.00 (7.24) | 1.00 (3.91) |
+| Other goods (incl. furniture) | 5,251 M | 1,571 M | 5,232 M | 1.00 | 0.70 |
+
+| Open goods index | Capacity | Trade-adjusted |
+| --- | --- | --- |
+| Catalonia 2019 | 100.0 | 86.6 |
+| Catalonia 2022 | 100.0 | 91.3 |
+| Hamburg 2022 | 59.4 | 32.2 |
+
+**Trade barely moves Catalonia, and that says more about the data than about Catalonia.** Even with sales abroad taken
+out, Catalan industry sells more food, pharmaceuticals and electronics than Catalan households buy. What is not
+exported mostly goes to the rest of Spain, and Idescat's split counts the rest of Spain as local. So this is a much
+looser upper bound than Hamburg's, where exports abroad are most of what leaves. Measuring what stays in Catalonia needs
+interregional trade, which no open source in the registry has yet.
+
+There is **no full index for Barcelona** on purpose. Boeing's other eleven ratios, which Hamburg's full index carries,
+are Hamburg's own energy, water, farmland and so on. Carrying them into Catalonia's number would dress Hamburg up as
+Barcelona. The goods index covers 366 of the 1,000 weight points in 2019. Two groups are wider than Boeing's sectors:
+beverages come with tobacco, and "other goods" includes furniture. Idescat names no licence, only Spain's statutory
+reuse terms, as for its trade data.
+
 ## Next
 
 1. Replace carried sectors with open data where it exists: the renewable share of electricity and farmland.
