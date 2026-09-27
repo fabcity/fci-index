@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import csv
 import functools
+import json
 import io
 import re
 import urllib.error
@@ -67,6 +68,23 @@ NORD_E_I_1_LICENCE = ("Statistikamt Nord: extracts may be reproduced with attrib
 # Catalonia's measured manufacturing: Idescat's industrial survey, turnover by destination of sales
 # (awesome-fabcity-data#62). `t=YYYY00` picks the year; a plain year is ignored and returns the latest.
 IDESCAT_EIE = "https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t={year}00"
+# Brazil, read at state level (São Paulo state; Pernambuco for Recife): IBGE's industrial survey and household budget
+# survey through the SIDRA API, ComexStat exports by state of production, the central bank's annual USD rate.
+# awesome-fabcity-data#65. ComexStat is used as open government data under Decreto 8.777/2016 by Tomas Diez's decision.
+SIDRA = "https://apisidra.ibge.gov.br/values"
+BR_STATES = {"São Paulo": {"ibge": "35", "comex": 41}, "Pernambuco": {"ibge": "26", "comex": 26}}
+PIA_DIVISIONS = {"116911": "C10", "116952": "C11", "116965": "C13", "116985": "C14", "116994": "C15",
+                 "117082": "C21", "117099": "C23", "117159": "C26", "117267": "C32"}
+COMEXSTAT = "https://api-comexstat.mdic.gov.br/general?language=en"
+BCB_USD = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.3694/dados?formato=json&dataInicial=01/01/{y}&dataFinal=31/12/{y}"
+# POF 2017-18 spending types standing in for each OPEN sector's COICOP groups (table, category).
+POF_TYPES = {"Food and beverages": [("6972", "103626")],                       # food at home, alcohol included
+             "Textiles and clothing": [("6715", "103554")],                    # clothing, footwear, fabrics
+             "Chemical products": [("6715", "103575")],                        # medicines
+             "IT and communication": [("6715", "103594")],                     # phones and accessories only
+             "Other goods": [("6715", "8026"), ("6715", "103593")]}           # furniture and household articles, toys
+BR_LICENCE = ("IBGE: reuse with IBGE cited as the source. ComexStat: open government data under Decreto 8.777/2016, by "
+              "maintainer decision (awesome-fabcity-data#65)")
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre",
         "décembre"]
 NO_REGIONAL = {
@@ -291,6 +309,55 @@ def idescat_industry(year: int, raw=waste._raw) -> dict | None:
             eu, world, total = (waste._num(v) for v in l[2:5])
             groups[l[0]] = (total, None if eu is None or world is None else eu + world)
     return {"year": year, "url": url, "divisions": groups, "concept": "turnover (company survey)"}
+
+
+def brazil_production(year: int, get=waste._json) -> dict:
+    """{state: {"C10": gross value of industrial production, thousand R$}} from IBGE PIA-Empresa (SIDRA 1849),
+    local units with 5 or more persons employed. A suppressed or absent cell is None."""
+    ufs = ",".join(s["ibge"] for s in BR_STATES.values())
+    rows = get(f"{SIDRA}/t/1849/n3/{ufs}/v/810/p/{year}/c12762/{','.join(PIA_DIVISIONS)}/f/c")[1:]
+    name = {s["ibge"]: n for n, s in BR_STATES.items()}
+    out = {n: {c: None for c in PIA_DIVISIONS.values()} for n in BR_STATES}
+    for r in rows:
+        out[name[r["D1C"]]][PIA_DIVISIONS[r["D4C"]]] = waste._num(r["V"])
+    return out
+
+
+def brazil_exports_usd(year: int, post=None) -> dict:
+    """{state: {"C10": FOB US$}} from ComexStat's general dataset, where a state's exports are the goods produced there.
+    ComexStat lists only divisions with exports, so a division it leaves out exported nothing that year."""
+    body = {"flow": "export", "monthDetail": False, "period": {"from": f"{year}-01", "to": f"{year}-12"},
+            "filters": [{"filter": "state", "values": [s["comex"] for s in BR_STATES.values()]},
+                        {"filter": "ISICDivision", "values": [c[1:] for c in PIA_DIVISIONS.values()]}],
+            "details": ["state", "ISICDivision"], "metrics": ["metricFOB"]}
+    post = post or (lambda b: json.loads(waste.urllib.request.urlopen(waste.urllib.request.Request(
+        COMEXSTAT, data=json.dumps(b).encode(), headers={**waste.UA, "Content-Type": "application/json"}), timeout=120).read()))
+    out = {n: {c: 0.0 for c in PIA_DIVISIONS.values()} for n in BR_STATES}
+    for r in post(body)["data"]["list"]:
+        if r["state"] in out and "C" + r["coIsicDivision"] in out[r["state"]]:
+            out[r["state"]]["C" + r["coIsicDivision"]] = float(r["metricFOB"])
+    return out
+
+
+def brl_per_usd(year: int, get=waste._json) -> float:
+    """The central bank's annual average commercial rate (SGS 3694)."""
+    rows = get(BCB_USD.format(y=year))
+    return float(next(r["valor"] for r in rows if r["data"].endswith(str(year))))
+
+
+def pof_spending(get=waste._json) -> dict:
+    """{state: {sector: M R$ a year}}: POF 2017-18 spending per family per month x 12 x families (SIDRA 6977)."""
+    ufs = ",".join(s["ibge"] for s in BR_STATES.values())
+    name = {s["ibge"]: n for n, s in BR_STATES.items()}
+    families = {name[r["D1C"]]: waste._num(r["V"]) for r in
+                get(f"{SIDRA}/t/6977/n3/{ufs}/v/1211/p/2018/c339/7999/f/c")[1:]}
+    per_family = {}
+    for table in {t for types in POF_TYPES.values() for t, _ in types}:
+        cats = ",".join(c for types in POF_TYPES.values() for t, c in types if t == table)
+        for r in get(f"{SIDRA}/t/{table}/n3/{ufs}/v/1201/p/2018/c339/7999/c12190/{cats}/f/c")[1:]:
+            per_family[(name[r["D1C"]], table, r["D5C"])] = waste._num(r["V"])
+    return {n: {s: sum(per_family[(n, t, c)] for t, c in types) * 12 * families[n] / 1e6 for s, types in POF_TYPES.items()}
+            for n in BR_STATES}
 
 
 READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris, "Boston": boston}

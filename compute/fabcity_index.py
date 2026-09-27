@@ -249,6 +249,35 @@ def barcelona_trade_adjusted(year: int = YEAR, get=fetch, raw=waste._raw) -> dic
         "licence": trade.IDESCAT_LICENCE}
 
 
+BR_DIFFERS = {"IT and communication": "consumption is phones and accessories only: POF puts TVs and computers inside "
+                                      "appliances, with fridges, so capacity is overstated",
+              "Food and beverages": "consumption is food at home (alcohol included), not meals out"}
+
+
+def brazil_trade_adjusted(year: int = YEAR, get=waste._json, post=None) -> list[dict]:
+    """São Paulo state and Pernambuco (for Recife): IBGE's measured production against POF household spending, and
+    with exports (ComexStat, by state of production, converted at the year's average rate) taken out. A goods index
+    over the five sectors, weighted by each state's own spending on them."""
+    prod, usd = trade.brazil_production(year, get), trade.brazil_exports_usd(year, post)
+    rate, spend = trade.brl_per_usd(year, get), trade.pof_spending(get)
+    out = []
+    for state, city in (("São Paulo", "São Paulo"), ("Pernambuco", "Recife")):
+        divisions = {c: (v, usd[state][c] * rate / 1000) for c, v in prod[state].items() if v is not None}
+        secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend[state].items()}, divisions)
+        for s, why in BR_DIFFERS.items():
+            secs[s]["differs_from_boeing"] = why
+        def goods(key):
+            rows = [{"ratio": o[key], "weight": spend[state][s]} for s, o in secs.items() if o[key] is not None]
+            return round(index(rows), 1) if rows else None
+        out.append({"city": city, "territory": f"{state} (state)", "year": year, "currency": "BRL (M R$ in the sector rows)",
+                    "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+                    "brl_per_usd": rate, "sectors": secs,
+                    "source": f"IBGE PIA-Empresa {year} (SIDRA 1849, gross value of production); ComexStat exports {year} "
+                              "by state of production; IBGE POF 2017-2018 (SIDRA 6715, 6972, 6977); BCB SGS 3694",
+                    "licence": trade.BR_LICENCE})
+    return out
+
+
 def run() -> None:
     res = HERE / "results"
     res.mkdir(exist_ok=True)
@@ -307,6 +336,13 @@ def run() -> None:
         "rows": trade.gateway([YEAR, 2024])}
     out["hamburg_trade_adjusted"] = hamburg_trade_adjusted()
     out["barcelona_trade_adjusted"] = [barcelona_trade_adjusted(y) for y in (YEAR, TRADE_YEAR)]
+    out["brazil_trade_adjusted"] = {
+        "reads_as": "São Paulo and Recife, read as their states (no city figures exist): measured production against what "
+                    "households buy, and with exports taken out, as a goods index weighted by the state's own spending. An "
+                    "UPPER bound on self-supply: sales to the rest of Brazil count as local. Exports are products by state of "
+                    "production, a proxy for the same firms' sales abroad. Production is 2019, spending is the 2017-2018 "
+                    "survey in its own reais (prices rose about 4% to 2019).",
+        "rows": brazil_trade_adjusted()}
     out["regional_trade"] = {
         "reads_as": "Economic|Region's external-trade row: goods exported and imported by the territory, in euros (and "
                     "tonnes where the source has them), each reported separately and never netted. Customs trade of the territory, not its "
@@ -341,6 +377,9 @@ def run() -> None:
               f"imports {money(r.get('imports_' + cur.lower()))} / {t(r['imports_t'])}  exports "
               f"{money(r.get('exports_' + cur.lower()))} / {t(r['exports_t'])}  "
               f"({r['territory']}{', provisional' if r['provisional'] else ''})"))
+    for b in out["brazil_trade_adjusted"]["rows"]:
+        print(f"{b['city']:9} ({b['territory']}) {b['year']}, goods  {b['goods_capacity_index']:5.1f}   trade-adjusted "
+              f"{b['goods_trade_adjusted_index']:.1f} (upper bound: the rest of Brazil counts as local)")
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -661,6 +700,29 @@ def selftest() -> int:
     tv = trade_variant("ES51", 2019, {"divisions": groups, "concept": "turnover"}, CAT_GROUPS, "test", False, get=fake_get)
     check("trade_variant: no carried ratios for Barcelona, a goods index over the measured sectors",
           ("capacity_index" in tv, tv["goods_capacity_index"], tv["goods_weight_per_mille"]), (False, 54.5, 160.0))   # 600 / (1100/1.10 + 121/1.21)
+    # Brazil: SIDRA rows by code, ComexStat's missing divisions as no exports, USD at the year's rate, POF x 12 x families.
+    def br_get(u):
+        if "bcdata.sgs.3694" in u:
+            return [{"data": "01/01/2019", "valor": "4.0"}]
+        if "/t/1849/" in u:
+            return [{}, {"D1C": "35", "D4C": "116911", "V": "1000"}, {"D1C": "35", "D4C": "117159", "V": "..."},
+                    {"D1C": "26", "D4C": "116911", "V": "500"}]
+        if "/t/6977/" in u:
+            return [{}, {"D1C": "35", "V": "10"}, {"D1C": "26", "V": "5"}]
+        return [{}] + [{"D1C": uf, "D5C": c, "V": "1000"} for uf in ("35", "26") for c in u.split("/c12190/")[1].split("/")[0].split(",")]
+    br_post = lambda b: {"data": {"list": [{"state": "São Paulo", "coIsicDivision": "10", "metricFOB": "50"}]}}
+    prod = trade.brazil_production(2019, get=br_get)
+    check("Brazil production: by state and division, an unpublished cell ('...') is None, never zero",
+          (prod["São Paulo"]["C10"], prod["São Paulo"]["C26"], prod["Pernambuco"]["C10"]), (1000.0, None, 500.0))
+    ex = trade.brazil_exports_usd(2019, post=br_post)
+    check("ComexStat: a division it does not list exported nothing", (ex["São Paulo"]["C10"], ex["Pernambuco"]["C10"]), (50.0, 0.0))
+    check("POF: per family per month x 12 x families, M R$", trade.pof_spending(get=br_get)["São Paulo"]["Food and beverages"], 0.12)
+    br = brazil_trade_adjusted(2019, get=br_get, post=br_post)
+    check("Brazil: exports in R$ thousand (50 US$ x 4.0 / 1000) taken out of 1,000 thousand R$",
+          (br[0]["city"], br[0]["sectors"]["Food and beverages"]["measured_meur"], br[0]["sectors"]["Food and beverages"]["sold_abroad_meur"]),
+          ("São Paulo", 1.0, 0.0))
+    check("Brazil: a state without a published division drops it; Recife reads Pernambuco", (br[1]["city"], br[1]["territory"],
+          br[0]["sectors"]["IT and communication"]["capacity"]), ("Recife", "Pernambuco (state)", None))
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
