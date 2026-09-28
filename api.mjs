@@ -4,7 +4,7 @@
 //
 // Scores come from the same js/fci-score.js the pages run, on the registry as it is at build time. The pages
 // recompute on the live registry, so a place's open-data count can be ahead of this file until the next deploy;
-// every file says which registry it read (`registry_generated`).
+// every file says which registry it read (`registry_generated`, `registry_commit`).
 //
 // What the pipeline measured (compute/results/) is mapped to cells and indicators here, and nowhere else:
 // MEASURED says which result is which cell's score s_c for which place. A result that is not in MEASURED
@@ -18,7 +18,10 @@ const [site, out] = process.argv.slice(2);
 if (!site || !out) { console.error("usage: node api.mjs <site source dir> <out dir>"); process.exit(2); }
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RESULTS = "compute/results/fabcity-index-2019.json";
-const REGISTRY = "https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/index.json";
+// The registry at main's current commit, not at `main`: raw.githubusercontent caches a branch URL for about five
+// minutes, so a deploy right after a registry merge used to publish the registry from before it (28 Sep, #73).
+const REPO_API = "https://api.github.com/repos/fabcity/awesome-fabcity-data/commits/main";
+const REGISTRY_AT = (sha) => `https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/${sha}/index.json`;
 const TRACKER = "https://index.fab.city/api/coverage.json";
 const BASE = "https://index.fab.city";
 const REPO = "https://github.com/fabcity/fci-index/blob/main/";
@@ -32,7 +35,9 @@ if (!FCI || !FCI_SCORE) throw new Error("js/data.js or js/fci-score.js did not l
 
 const results = JSON.parse(fs.readFileSync(path.join(HERE, RESULTS), "utf8"));
 const get = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} returned ${r.status}`); return r.json(); };
-const [registry, tracker] = await Promise.all([get(REGISTRY), get(TRACKER)]);
+const sha = (await (await fetch(REPO_API, { headers: { accept: "application/vnd.github.sha" } })).text()).trim();
+if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error(`could not read the registry's main commit from ${REPO_API}: ${sha.slice(0, 120)}`);
+const [registry, tracker] = await Promise.all([get(REGISTRY_AT(sha)), get(TRACKER)]);
 
 /* ---- what the pipeline measured, by place ------------------------------------------------------------ */
 const place = (m, slug) => (m[slug] = m[slug] || { cells: {}, indicators: [], boundaries: [] });
@@ -122,7 +127,7 @@ const stray = Object.keys(measured).filter((s) => !known.has(s));
 if (stray.length) throw new Error(`measured places not in the tracker: ${stray.join(", ")}`);
 
 const now = new Date().toISOString();
-const head = { format: "fci-api-v0", generated: now, registry_generated: registry.generated, tracker_harvested: tracker.last_harvested,
+const head = { format: "fci-api-v0", generated: now, registry_generated: registry.generated, registry_commit: sha, tracker_harvested: tracker.last_harvested,
   pipeline: REPO + RESULTS, method: `${BASE}/method#worked`, licence: "Scores: CC BY 4.0, Fab City Foundation. Each input keeps its own licence, named where it is used." };
 const summaries = [];
 fs.mkdirSync(path.join(out, "places"), { recursive: true });
@@ -150,4 +155,4 @@ const COLS = ["slug", "name", "country", "territory", "status", "fci", "fci_low"
 fs.writeFileSync(path.join(out, "index.csv"), [COLS.join(","), ...summaries.map((s) => [s.slug, s.name, s.country, s.territory, s.status, s.fci,
   s.fci_range && s.fci_range[0], s.fci_range ? s.fci_range[1] : s.fci, s.dido, s.one_minus_pito, s.rho, s.cells_open, s.cells_measured,
   Math.round(1000 * s.pito_weight_measured[0] / s.pito_weight_measured[1]) / 1000].map(csvCell).join(","))].join("\n") + "\n");
-console.log(`api v0: ${places.length} places (${count("partial")} partial, ${count("simulated")} simulated, ${count("complete")} complete) · registry ${registry.generated}`);
+console.log(`api v0: ${places.length} places (${count("partial")} partial, ${count("simulated")} simulated, ${count("complete")} complete) · registry ${registry.generated} @ ${sha.slice(0, 7)}`);
