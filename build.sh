@@ -109,24 +109,41 @@ fi
 FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
+import re
+line = ('method v0 · beta · comments: '
+        '<a href="mailto:index@fab.city" style="color:inherit;display:inline;font-size:inherit;'
+        'margin:0;text-decoration:underline;">index@fab.city</a>')   # inline beats the footer's `.foot a{display:block}`
+# Inside the dark footer, as a second line of its fine print: after </body> it sat on light
+# paper below the footer, cut off from it. Every page's footer ends `</p></div></footer>`, and
+# .foot__fine is styled the same in all three sites. The redirect stubs have no footer and keep
+# the line before </body>.
+in_footer = '<p class="foot__fine" style="margin-top:0.5rem;">' + line + '</p>'
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
-            'font-size:0.72rem;color:#8a857c;">method v0 · beta · comments: '
-            '<a href="mailto:index@fab.city" style="color:inherit;">index@fab.city</a></div>')
+            'font-size:0.72rem;color:#8a857c;">' + line + '</div>')
+foot_end = re.compile(r'(</p>)(\s*</div>\s*</footer>)')
 plausible = '<script defer data-domain="index.fab.city" src="https://plausible.io/js/script.js"></script>'
-n = 0
+n = footed = 0
 for dp, _, fns in os.walk(out):
     for fn in fns:
         if not fn.endswith(".html"):
             continue
         p = os.path.join(dp, fn)
         html = open(p, encoding="utf-8").read()
-        if "</body>" in html and "mailto:index@fab.city" not in html:
-            html = html.replace("</body>", feedback + "\n</body>", 1)
+        # Guard on the line itself: method.html's "Comment on the method" card is a mailto to the
+        # same address, and guarding on the address kept the line off that page.
+        if "method v0 · beta" not in html:
+            if '<footer class="foot' in html:
+                html, k = foot_end.subn(r"\1\n" + in_footer + r"\2", html, count=1)
+                if k != 1:
+                    raise SystemExit(f"FAIL: {p} has a .foot footer that does not end </p></div></footer>")
+                footed += 1
+            elif "</body>" in html:
+                html = html.replace("</body>", feedback + "\n</body>", 1)
         if prod and "</head>" in html and "plausible.io" not in html:
             html = html.replace("</head>", plausible + "\n</head>", 1)
         open(p, "w", encoding="utf-8").write(html)
         n += 1
-print(f"injected feedback line into {n} pages" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
+print(f"injected feedback line into {n} pages ({footed} in the footer)" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
 PYEOF
 
 # Version every local script and stylesheet by its content. Pages serve js/ and css/ with
