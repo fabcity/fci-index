@@ -1636,6 +1636,229 @@
    }
   ]
  },
+ "santiago_trade_adjusted": {
+  "reads_as": "Santiago, read as the Región Metropolitana: what its establishments produce (ENIA) against what its residents spend (Gran Santiago's EPF, per person, scaled to the region), and with the same establishments' export income taken out. An UPPER bound on self-supply: sales to the rest of Chile count as local. Spending is the EPF round nearest the year, in its own prices.",
+  "rows": [
+   {
+    "city": "Santiago",
+    "territory": "Región Metropolitana",
+    "year": 2019,
+    "epf": "VIII",
+    "currency": "CLP (M CLP in the sector rows)",
+    "population": 7915199,
+    "goods_capacity_index": 87.3,
+    "goods_trade_adjusted_index": 83.7,
+    "clp_per_usd": 702.897422561529,
+    "rows_without_division": 1,
+    "establishments": {
+     "C10": 435,
+     "C11": 44,
+     "C13": 105,
+     "C14": 123,
+     "C15": 30,
+     "C21": 37,
+     "C23": 104,
+     "C26": 17,
+     "C32": 29
+    },
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 7044968.6,
+      "sold_abroad_meur": 499904.3,
+      "domestic_meur": 6545064.3,
+      "consumption_meur": 6774470.0,
+      "capacity": 1.0,
+      "trade_adjusted": 0.966136729139859,
+      "raw_capacity": 1.04,
+      "raw_trade_adjusted": 0.97,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption includes food not broken down by type (EPF 01.3 or 01.4)"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 492783.7,
+      "sold_abroad_meur": 17207.4,
+      "domestic_meur": 475576.4,
+      "consumption_meur": 1215473.7,
+      "capacity": 0.40542526991457456,
+      "trade_adjusted": 0.39126835348766553,
+      "raw_capacity": 0.41,
+      "raw_trade_adjusted": 0.39,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 931467.6,
+      "sold_abroad_meur": 114562.8,
+      "domestic_meur": 816904.8,
+      "consumption_meur": 924664.9,
+      "capacity": 1.0,
+      "trade_adjusted": 0.883460403250099,
+      "raw_capacity": 1.01,
+      "raw_trade_adjusted": 0.88,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "IT and communication": {
+      "measured_meur": 103166.2,
+      "sold_abroad_meur": 542.7,
+      "domestic_meur": 102623.6,
+      "consumption_meur": 515674.9,
+      "capacity": 0.2000606183535086,
+      "trade_adjusted": 0.19900828869505266,
+      "raw_capacity": 0.2,
+      "raw_trade_adjusted": 0.2,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is equipment only (VIII 08.2 + 09.1, IX 08.1)"
+     },
+     "Other goods": {
+      "measured_meur": 1251983.4,
+      "sold_abroad_meur": 36803.6,
+      "domestic_meur": 1215179.8,
+      "consumption_meur": 1506932.8,
+      "capacity": 0.8308157057612112,
+      "trade_adjusted": 0.8063928670625968,
+      "raw_capacity": 0.83,
+      "raw_trade_adjusted": 0.81,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "routine household maintenance (05.6) left out: in Chile it is mostly domestic service"
+     }
+    },
+    "source": "INE Chile ENIA 2019 microdata (https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/bbdd/encuesta-nacional-industrial-anual/csv/base-enia-2019.csv); INE Chile VIII EPF, Gran Santiago (https://www.ine.gob.cl/docs/default-source/encuesta-de-presupuestos-familiares/cuadros-estadisticos/viii-epf---(junio-2016---junio-2017)/tabulados-principales-resultados-viii-epf-(estimaciones).xlsx); INE Chile population projections, base 2017; World Bank PA.NUS.FCRF 2019",
+    "licence": "INE Chile: CC BY-SA 4.0 (ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos; datos.gob.cl's 'cc-nc' label contradicts the publisher), so figures derived from it are shared under CC BY-SA 4.0. Exchange rate: World Bank PA.NUS.FCRF, CC BY 4.0"
+   },
+   {
+    "city": "Santiago",
+    "territory": "Región Metropolitana",
+    "year": 2022,
+    "epf": "IX",
+    "currency": "CLP (M CLP in the sector rows)",
+    "population": 8310984,
+    "goods_capacity_index": 79.7,
+    "goods_trade_adjusted_index": 71.6,
+    "clp_per_usd": 873.314189543014,
+    "rows_without_division": 0,
+    "establishments": {
+     "C10": 368,
+     "C11": 41,
+     "C13": 81,
+     "C14": 73,
+     "C15": 8,
+     "C21": 41,
+     "C23": 102,
+     "C26": 8,
+     "C32": 23
+    },
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 10523687.7,
+      "sold_abroad_meur": 1174191.4,
+      "domestic_meur": 9349496.3,
+      "consumption_meur": 11298512.8,
+      "capacity": 0.9314223836913079,
+      "trade_adjusted": 0.8274979621948055,
+      "raw_capacity": 0.93,
+      "raw_trade_adjusted": 0.83,
+      "nace_used": [
+       "C10",
+       "C11"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption includes food not broken down by type (EPF 01.3 or 01.4)"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 397642.7,
+      "sold_abroad_meur": 17095.9,
+      "domestic_meur": 380546.8,
+      "consumption_meur": 1601415.1,
+      "capacity": 0.24830710261041616,
+      "trade_adjusted": 0.23763159373707157,
+      "raw_capacity": 0.25,
+      "raw_trade_adjusted": 0.24,
+      "nace_used": [
+       "C13",
+       "C14",
+       "C15"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 1306103.7,
+      "sold_abroad_meur": 177854.2,
+      "domestic_meur": 1128249.5,
+      "consumption_meur": 1559099.8,
+      "capacity": 0.8377293986679427,
+      "trade_adjusted": 0.7236544389137842,
+      "raw_capacity": 0.84,
+      "raw_trade_adjusted": 0.72,
+      "nace_used": [
+       "C21"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "IT and communication": {
+      "measured_meur": 16911.4,
+      "sold_abroad_meur": 474.3,
+      "domestic_meur": 16437.0,
+      "consumption_meur": 1223450.0,
+      "capacity": 0.013822684650479748,
+      "trade_adjusted": 0.01343497038751523,
+      "raw_capacity": 0.01,
+      "raw_trade_adjusted": 0.01,
+      "nace_used": [
+       "C26"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is equipment only (VIII 08.2 + 09.1, IX 08.1)"
+     },
+     "Other goods": {
+      "measured_meur": 1770561.8,
+      "sold_abroad_meur": 81001.9,
+      "domestic_meur": 1689559.9,
+      "consumption_meur": 1272336.5,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.39,
+      "raw_trade_adjusted": 1.33,
+      "nace_used": [
+       "C23",
+       "C32"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "routine household maintenance (05.6) left out: in Chile it is mostly domestic service"
+     }
+    },
+    "source": "INE Chile ENIA 2022 microdata (https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/bbdd/encuesta-nacional-industrial-anual/csv/base-enia-2022.csv); INE Chile IX EPF, Gran Santiago (https://www.ine.gob.cl/docs/default-source/encuesta-de-presupuestos-familiares/cuadros-estadisticos/ix-epf/tabulados-principales-resultados-ix-epf-(estimaciones).xlsx); INE Chile population projections, base 2017; World Bank PA.NUS.FCRF 2022",
+    "licence": "INE Chile: CC BY-SA 4.0 (ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos; datos.gob.cl's 'cc-nc' label contradicts the publisher), so figures derived from it are shared under CC BY-SA 4.0. Exchange rate: World Bank PA.NUS.FCRF, CC BY 4.0"
+   }
+  ]
+ },
  "material_flows": {
   "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
   "rows": [

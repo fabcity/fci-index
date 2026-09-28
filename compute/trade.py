@@ -380,6 +380,116 @@ def pof_spending(get=waste._json) -> dict:
             for n in BR_STATES}
 
 
+# Chile: INE's industrial survey (production and export sales of the same establishments) and household budget survey.
+INE = "https://www.ine.gob.cl/docs/default-source/"
+ENIA_CSV = INE + "estructura-de-la-industria/bbdd/encuesta-nacional-industrial-anual/csv/base-enia-{year}.csv"
+EPF_XLSX = {"VIII": INE + "encuesta-de-presupuestos-familiares/cuadros-estadisticos/viii-epf---(junio-2016---junio-2017)/"
+                   "tabulados-principales-resultados-viii-epf-(estimaciones).xlsx",
+            "IX": INE + "encuesta-de-presupuestos-familiares/cuadros-estadisticos/ix-epf/"
+                  "tabulados-principales-resultados-ix-epf-(estimaciones).xlsx"}
+WB_RATE = "https://api.worldbank.org/v2/country/{iso}/indicator/PA.NUS.FCRF?date={year}&format=json"
+# EPF groups standing in for each OPEN sector's COICOP groups. VIII uses COICOP 1999, IX COICOP 2018, so the codes
+# differ: IX moved phones, computers and audio-visual equipment into 08.1. 05.6 (routine maintenance) is left out in
+# both: in Chile it is mostly domestic service, not goods.
+EPF_GROUPS = {
+    "VIII": {"Food and beverages": ["01.1", "01.2", "01.3", "02.1"], "Textiles and clothing": ["03.1", "03.2", "03.3", "05.2"],
+             "Chemical products": ["06.1"], "IT and communication": ["08.2", "09.1"],
+             "Other goods": ["05.1", "05.4", "05.5", "09.2", "09.3", "09.5"]},
+    "IX": {"Food and beverages": ["01.1", "01.2", "01.4", "02.1"], "Textiles and clothing": ["03.1", "03.2", "03.3", "05.2"],
+           "Chemical products": ["06.1"], "IT and communication": ["08.1"],
+           "Other goods": ["05.1", "05.4", "05.5", "09.1", "09.2", "09.5"]},
+}
+CL_LICENCE = ("INE Chile: CC BY-SA 4.0 (ine.gob.cl/terminos-de-uso-y-licencia-de-datos-abiertos; datos.gob.cl's 'cc-nc' label "
+              "contradicts the publisher), so figures derived from it are shared under CC BY-SA 4.0. Exchange rate: World Bank "
+              "PA.NUS.FCRF, CC BY 4.0")
+
+
+def wb_rate(iso: str, year: int, get=waste._json) -> float:
+    """Official exchange rate, local currency per US$, annual average (World Bank PA.NUS.FCRF)."""
+    return next(x["value"] for x in get(WB_RATE.format(iso=iso, year=year))[1] if x["value"] is not None)
+
+
+def enia(year: int, region: str = "13", raw=waste._raw, get=waste._json) -> dict:
+    """{"C10": (gross value of production, export income)} in thousand CLP for one region's establishments, from INE's
+    ENIA microdata (one row per establishment, K009 and K003). About 5% of rows report in thousand US$ (A005 = 5) and
+    are converted at the year's rate. INE hides some rows' industry by truncating CIIU4 to the section ("C"); those
+    are counted, not guessed."""
+    rows = list(csv.DictReader(io.StringIO(raw(ENIA_CSV.format(year=year)).decode("latin-1")), delimiter=";"))
+    rate = wb_rate("CHL", year, get)
+    num = lambda v: float((v or "0").strip().replace(",", ".") or 0)
+    divisions, n, hidden, usd = {}, {}, 0, 0
+    for r in rows:
+        if r["REGION"].strip() != region:
+            continue
+        code = r["CIIU4"].strip()
+        if len(code) < 2 or not code[:2].isdigit():
+            hidden += 1
+            continue
+        m = rate if r["A005"].strip() == "5" else 1
+        usd += r["A005"].strip() == "5"
+        d = "C" + code[:2]
+        vbp, exp = divisions.get(d, (0.0, 0.0))
+        divisions[d] = (vbp + num(r["K009"]) * m, exp + num(r["K003"]) * m)
+        n[d] = n.get(d, 0) + 1
+    return {"year": year, "divisions": divisions, "establishments": n, "rows_without_division": hidden,
+            "rows_in_usd": usd, "clp_per_usd": rate, "concept": "gross value of production (ENIA K009), export income K003",
+            "url": ENIA_CSV.format(year=year)}
+
+
+def epf(edition: str, raw=waste._raw) -> dict:
+    """Gran Santiago's mean household spending per month by COICOP group (CLP), and its households and persons, from
+    the EPF's published tables (the group table and the households-and-persons table whose header names Gran Santiago)."""
+    import re
+    book = raw(EPF_XLSX[edition])
+    names = re.findall(rb'<sheet [^>]*name="([^"]+)"', __import__("zipfile").ZipFile(io.BytesIO(book)).read("xl/workbook.xml"))
+    names = [x.decode() for x in names]
+    gs = lambda rows: any(v.strip().startswith("GRAN SANTIAGO") for r in rows[:6] for v in r.values())
+    groups = None
+    for sh in (x for x in names if x.strip().startswith("CUADRO 6")):
+        rows = waste._xlsx_rows(book, sh)
+        if gs(rows):
+            groups = {r["A"].strip()[:4]: float(r["C"]) for r in rows
+                      if re.fullmatch(r"\d{2}\.\d\.0\.00\.00", (r.get("A") or "").strip()) and r.get("C")}
+            break
+    households = persons = None
+    for sh in (x for x in names if x.strip().startswith("CUADROS 3")):
+        rows = waste._xlsx_rows(book, sh)
+        for i, r in enumerate(rows):
+            if any(v.strip().startswith("GRAN SANTIAGO") for v in r.values()):
+                head = next(h for h in rows[i:i + 6] if "HOGARES" in h.values())
+                col = {v.strip(): k for k, v in head.items()}
+                total = next(t for t in rows[i:i + 20] if any(v.strip().upper() == "TOTAL" for v in t.values()))
+                households, persons = float(total[col["HOGARES"]]), float(total[col["PERSONAS"]])
+                break
+        if households:
+            break
+    if not groups or not households:
+        raise ValueError(f"EPF {edition}: Gran Santiago's tables not found")
+    return {"edition": edition, "groups": groups, "households": households, "persons": persons, "url": EPF_XLSX[edition]}
+
+
+# INE's server resets connections for minutes at a time, so what the pipeline needs is committed as a small extract
+# (like the population projections); `python3 compute/trade.py --extract-cl` rebuilds it from the sources above.
+CL_EXTRACT = waste.INE_EXTRACT.parent / "ine-chile-enia-epf-extract.json"
+CL_YEARS = {2019: "VIII", 2022: "IX"}
+
+
+def extract_cl(raw=waste._raw, get=waste._json, out=CL_EXTRACT) -> dict:
+    data = {"note": "INE Chile ENIA (Región Metropolitana, by CIIU4 division) and EPF (Gran Santiago), read by "
+                    "trade.enia() and trade.epf(). " + CL_LICENCE,
+            "enia": {str(y): enia(y, "13", raw, get) for y in CL_YEARS},
+            "epf": {e: epf(e, raw) for e in set(CL_YEARS.values())}}
+    out.write_text(json.dumps(data, indent=1, ensure_ascii=False, sort_keys=True) + "\n")
+    return data
+
+
+def chile_inputs(year: int, edition: str, path=CL_EXTRACT) -> tuple[dict, dict]:
+    d = json.loads(path.read_text())
+    prod = d["enia"][str(year)]
+    prod["divisions"] = {k: tuple(v) for k, v in prod["divisions"].items()}
+    return prod, d["epf"][edition]
+
+
 READERS = {"Barcelona": lambda y: regional("Barcelona", y), "Hamburg": hamburg, "Paris": paris, "Boston": boston}
 
 
@@ -407,3 +517,9 @@ def gateway(years: list[int]) -> list[dict]:
                                  "error": f"{type(e).__name__}: {e}"[:200]})
     rows += [{"city": city, "year": None, "no_data": why} for city, why in NO_DATA.items()]
     return rows
+
+
+if __name__ == "__main__":
+    import sys
+    if "--extract-cl" in sys.argv:
+        print(f"wrote {extract_cl() and CL_EXTRACT.name}")

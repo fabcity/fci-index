@@ -43,9 +43,13 @@ const goods = [
   ...results.barcelona_trade_adjusted.filter((b) => !b.no_data).map((b) => ({ slug: "barcelona", territory: "Catalonia", ref: "fabcity/fci-index#24", ...b })),
   ...[results.hamburg_trade_adjusted].filter((b) => !b.no_data).map((b) => ({ slug: "hamburg", territory: "Land Hamburg", ref: "fabcity/fci-index#23", ...b })),
   ...results.brazil_trade_adjusted.rows.map((b) => ({ slug: { "São Paulo": "sao-paulo", Recife: "recife" }[b.city], ref: "fabcity/fci-index#25", ...b })),
+  ...(results.santiago_trade_adjusted ? results.santiago_trade_adjusted.rows : []).map((b) => ({ slug: "santiago-de-chile", ref: "fabcity/fci-index#29", ...b })),
 ];
 const UPPER = { barcelona: "sales to the rest of Spain still count as local", hamburg: "sales to the rest of Germany still count as local; plants with 20 or more people only",
-                "sao-paulo": "sales to the rest of Brazil still count as local; read as the state", recife: "sales to the rest of Brazil still count as local; read as Pernambuco state" };
+                "sao-paulo": "sales to the rest of Brazil still count as local; read as the state", recife: "sales to the rest of Brazil still count as local; read as Pernambuco state",
+                "santiago-de-chile": "sales to the rest of Chile still count as local; read as the Región Metropolitana" };
+// Places whose goods series change household survey between years: a trend across them is not like for like.
+const SURVEY_BREAK = { "santiago-de-chile": "the two years use different household budget surveys (2016-17 and 2021-22) and product codes" };
 for (const slug of new Set(goods.map((g) => g.slug))) {
   const series = goods.filter((g) => g.slug === slug).sort((a, b) => a.year - b.year);
   const last = series[series.length - 1];
@@ -57,7 +61,8 @@ for (const slug of new Set(goods.map((g) => g.slug))) {
   };
   place(measured, slug).indicators.push({
     id: "goods-self-supply", label: "Goods self-supply, sales abroad taken out", unit: "index, 0-100", better: "higher",
-    cell: "Economic|Region", territory: last.territory, caveat: `an upper bound: ${UPPER[slug]}`, source: last.source, pipeline: last.ref,
+    cell: "Economic|Region", territory: last.territory, caveat: `an upper bound: ${UPPER[slug]}` + (SURVEY_BREAK[slug] ? `; ${SURVEY_BREAK[slug]}` : ""),
+    comparable_across_years: !SURVEY_BREAK[slug], source: last.source, pipeline: last.ref,
     series: series.map((g) => ({ year: g.year, value: g.goods_trade_adjusted_index })),
   });
 }
