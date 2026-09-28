@@ -68,6 +68,7 @@ NORD_E_I_1_LICENCE = ("Statistikamt Nord: extracts may be reproduced with attrib
 # Catalonia's measured manufacturing: Idescat's industrial survey, turnover by destination of sales
 # (awesome-fabcity-data#62). `t=YYYY00` picks the year; a plain year is ignored and returns the latest.
 IDESCAT_EIE = "https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t={year}00"
+IDESCAT_CFM = "https://www.idescat.cat/indicadors/?id=aec&n=16006&lang=en&f=csv&t={year}00"   # material flow accounts, DMC
 # Brazil, read at state level (São Paulo state; Pernambuco for Recife): IBGE's industrial survey and household budget
 # survey through the SIDRA API, ComexStat exports by state of production, the central bank's annual USD rate.
 # awesome-fabcity-data#65. ComexStat is used as open government data under Decreto 8.777/2016 by Tomas Diez's decision.
@@ -309,6 +310,25 @@ def idescat_industry(year: int, raw=waste._raw) -> dict | None:
             eu, world, total = (waste._num(v) for v in l[2:5])
             groups[l[0]] = (total, None if eu is None or world is None else eu + world)
     return {"year": year, "url": url, "divisions": groups, "concept": "turnover (company survey)"}
+
+
+def materials(year: int, raw=waste._raw) -> dict:
+    """Catalonia's domestic material consumption (DMC) from Idescat's material flow accounts, table 16006, tonnes
+    (registry economic/region/idescat-compte-fluxos-materials). DMC counts what is extracted and imported by weight,
+    not the raw materials embodied in imports, so it understates an importing region's footprint."""
+    url = IDESCAT_CFM.format(year=year)
+    lines = list(csv.reader(io.StringIO(raw(url).decode("utf-8-sig"))))
+    if len(lines) < 2 or not lines[1][0].endswith(str(year)):
+        return {"territory": "Catalonia", "year": year, "no_data": "Idescat returned another year"}
+    v = {l[0]: waste._num(l[1]) for l in lines if len(l) >= 2 and l[0]}
+    return {"territory": "Catalonia", "city": "Barcelona", "year": year, "dmc_t": v.get("Total"),
+            "dmc_t_per_capita": v.get("DMC per inhabitant"), "domestic_extraction_t": v.get("Domestic extraction"),
+            "imports_abroad_t": v.get("Imports from abroad"), "exports_abroad_t": v.get("Exports abroad"),
+            "imports_rest_of_state_t": v.get("Imports from the rest of the State"),
+            "exports_rest_of_state_t": v.get("Exports to the rest of the State (1)"),
+            "counts": "domestic extraction plus imports minus exports, by weight, abroad and with the rest of Spain",
+            "source": f"Idescat, Material Flow Accounts, table 16006: {url}",
+            "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date"}
 
 
 def brazil_production(year: int, get=waste._json) -> dict:

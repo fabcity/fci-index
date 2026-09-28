@@ -218,6 +218,16 @@ echo "wrote _redirects: ${NREDIR} rules"
 # Change this number in the same commit that adds or removes a rule.
 [ "$NREDIR" = "17" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 17"; exit 1; }
 
+# The public API, /api/v0/: every place's score, cells, indicators and next actions as JSON, and a CSV
+# (api.mjs, with the pages' own js/fci-score.js). It reads the registry and the tracker over the network,
+# and an unreachable one fails the build rather than ship an API that is quietly out of date.
+node api.mjs "$SRC/fci-3-prototype" "$OUT/api/v0"
+cat > "$OUT/_headers" <<'HEADERS'
+/api/v0/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300
+HEADERS
+
 # Structural sanity. A page with two <!DOCTYPE>s, or one that has grown by two orders of
 # magnitude, is not a page — it is a broken edit. This exists because a Python
 # `s.replace(old, new)` where `old` had become "" inserted a block between EVERY CHARACTER

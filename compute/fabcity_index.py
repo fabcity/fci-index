@@ -349,6 +349,11 @@ def run() -> None:
                     "gateways' throughput, and not trade with the rest of the country. Cities without an open reader "
                     "yet are listed with why.",
         "rows": trade.regional_trade([YEAR, 2024])}
+    out["material_flows"] = {
+        "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
+                    "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
+                    "embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
+        "rows": [trade.materials(y) for y in (YEAR, 2023)]}
     (res / f"fabcity-index-{YEAR}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"reference (Boeing's inputs)        {ref_idx:5.1f}   published {REF['published_index']}")
     print(f"Hamburg, open sectors substituted  {index(rows):5.1f}   ({open_weight:.0f} of 1000 per mille re-derived)")
@@ -380,6 +385,8 @@ def run() -> None:
     for b in out["brazil_trade_adjusted"]["rows"]:
         print(f"{b['city']:9} ({b['territory']}) {b['year']}, goods  {b['goods_capacity_index']:5.1f}   trade-adjusted "
               f"{b['goods_trade_adjusted_index']:.1f} (upper bound: the rest of Brazil counts as local)")
+    for m in out["material_flows"]["rows"]:
+        print(f"materials {m['territory']:18} {m['year']}  " + (m.get("no_data") or f"DMC {m['dmc_t'] / 1e6:,.1f} Mt, {m['dmc_t_per_capita']} t/person"))
     for region, g in goods.items():
         print(f"goods capacity  {g['name']:28} {g['goods_index']!s:>5}   (HICP weight covered {g['weight_covered_per_mille']}; capacity, not self-supply)")
 
@@ -726,6 +733,12 @@ def selftest() -> int:
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
+    cfm = lambda u: ("\ufeffDomestic consumption of materials (DMC)\nCatalonia. 2019\nUnits: Tons.\n,Value,Variation (%)\n"
+                     "Total,55317163,6.7\nDMC per inhabitant,7.20,5.45\n").encode()
+    m = trade.materials(2019, raw=cfm)
+    check("materials: DMC total and per person read from Idescat's CSV", (m["dmc_t"], m["dmc_t_per_capita"]), (55317163.0, 7.2))
+    check("materials: a file for another year is no data, never that year's figure",
+          "no_data" in trade.materials(2023, raw=cfm), True)
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 
