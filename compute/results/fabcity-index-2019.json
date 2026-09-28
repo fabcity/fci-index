@@ -1635,5 +1635,40 @@
     "no_data": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50)."
    }
   ]
+ },
+ "material_flows": {
+  "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
+  "rows": [
+   {
+    "territory": "Catalonia",
+    "city": "Barcelona",
+    "year": 2019,
+    "dmc_t": 55317163.0,
+    "dmc_t_per_capita": 7.2,
+    "domestic_extraction_t": 38690387.0,
+    "imports_abroad_t": 56829458.0,
+    "exports_abroad_t": 34288583.0,
+    "imports_rest_of_state_t": 35754962.0,
+    "exports_rest_of_state_t": 41669059.0,
+    "counts": "domestic extraction plus imports minus exports, by weight, abroad and with the rest of Spain",
+    "source": "Idescat, Material Flow Accounts, table 16006: https://www.idescat.cat/indicadors/?id=aec&n=16006&lang=en&f=csv&t=201900",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date"
+   },
+   {
+    "territory": "Catalonia",
+    "city": "Barcelona",
+    "year": 2023,
+    "dmc_t": 43859974.0,
+    "dmc_t_per_capita": 5.51,
+    "domestic_extraction_t": 32319167.0,
+    "imports_abroad_t": 50657703.0,
+    "exports_abroad_t": 31591623.0,
+    "imports_rest_of_state_t": 43124851.0,
+    "exports_rest_of_state_t": 50650124.0,
+    "counts": "domestic extraction plus imports minus exports, by weight, abroad and with the rest of Spain",
+    "source": "Idescat, Material Flow Accounts, table 16006: https://www.idescat.cat/indicadors/?id=aec&n=16006&lang=en&f=csv&t=202300",
+    "licence": "Idescat reuse conditions: cite the source, do not alter, state the update date"
+   }
+  ]
  }
 }

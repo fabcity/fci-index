@@ -345,3 +345,20 @@ government data under Decreto 8.777/2016, by Tomas Diez's decision, though its s
    not a data one.
 
 Data: Eurostat, reuse authorised with acknowledgement (Commission Decision 2011/833/EU). Method: Boeing (2024), CC-BY 4.0.
+
+## Material use: the planetary comparison
+
+`trade.materials()` reads Catalonia's domestic material consumption (DMC) from Idescat's material flow accounts,
+table 16006 (registry `economic/region/idescat-compte-fluxos-materials`), into `material_flows`: 7.20 t per person in
+2019 and 5.51 in 2023. It is the one per-person figure in the pipeline with a published per-person safe level, about
+6-8 t by 2050 (UNEP IRP 2011, Bringezu 2015), so a place's report sets the two side by side. DMC counts imports by
+their own weight, not the raw materials used to make them, so for an importing region it is a floor on its footprint:
+under the safe range it proves nothing, and the report says "not conclusive".
+
+## From results to the site: `api.mjs`
+
+The site build (`build.sh`) runs `node api.mjs`, which maps these results to cells and indicators (its `MEASURED`
+section is the only place that does) and scores every place with the pages' own `js/fci-score.js`. It writes
+`/api/v0/index.json`, `index.csv`, `places/<slug>.json` and `measured.json`. A result that `api.mjs` does not map
+reaches no page. Today the Economic|Region goods index is the only cell score (Barcelona, Hamburg, São Paulo,
+Recife); waste and material use are indicators the report follows, not inputs to the FCI.
