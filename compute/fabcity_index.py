@@ -278,6 +278,36 @@ def brazil_trade_adjusted(year: int = YEAR, get=waste._json, post=None) -> list[
     return out
 
 
+CL_DIFFERS = {"Food and beverages": "consumption includes food not broken down by type (EPF 01.3 or 01.4)",
+              "Other goods": "routine household maintenance (05.6) left out: in Chile it is mostly domestic service",
+              "IT and communication": "consumption is equipment only (VIII 08.2 + 09.1, IX 08.1)"}
+
+
+def santiago_trade_adjusted(year: int, edition: str, inputs=None, pop=waste.population_cl) -> dict:
+    """The Región Metropolitana (for Santiago): ENIA's production of the region's establishments against what its
+    residents spend, and with the same establishments' export income taken out. Spending is Gran Santiago's per
+    person (EPF), scaled to the region's population. A goods index over the five sectors, weighted by that spending."""
+    prod, spend = (inputs or trade.chile_inputs)(year, edition)
+    people = pop("13", year)
+    per_person = {s: 12 * sum(spend["groups"].get(c, 0) for c in codes) * spend["households"] / spend["persons"]
+                  for s, codes in trade.EPF_GROUPS[edition].items()}
+    secs = trade_adjust({s: {"consumption_meur": v * people / 1e6} for s, v in per_person.items()}, prod["divisions"])
+    for s, why in CL_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(key):
+        rows = [{"ratio": o[key], "weight": per_person[s]} for s, o in secs.items() if o[key] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Santiago", "territory": "Región Metropolitana", "year": year, "epf": edition,
+            "currency": "CLP (M CLP in the sector rows)", "population": people,
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "clp_per_usd": prod["clp_per_usd"], "rows_without_division": prod["rows_without_division"],
+            "establishments": {d: prod["establishments"].get(d, 0) for d in ("C10", "C11", "C13", "C14", "C15", "C21", "C23", "C26", "C32")},
+            "sectors": secs,
+            "source": f"INE Chile ENIA {year} microdata ({prod['url']}); INE Chile {edition} EPF, Gran Santiago ({spend['url']}); "
+                      f"INE Chile population projections, base 2017; World Bank PA.NUS.FCRF {year}",
+            "licence": trade.CL_LICENCE}
+
+
 def run() -> None:
     res = HERE / "results"
     res.mkdir(exist_ok=True)
@@ -349,6 +379,12 @@ def run() -> None:
                     "gateways' throughput, and not trade with the rest of the country. Cities without an open reader "
                     "yet are listed with why.",
         "rows": trade.regional_trade([YEAR, 2024])}
+    out["santiago_trade_adjusted"] = {
+        "reads_as": "Santiago, read as the Región Metropolitana: what its establishments produce (ENIA) against what its "
+                    "residents spend (Gran Santiago's EPF, per person, scaled to the region), and with the same "
+                    "establishments' export income taken out. An UPPER bound on self-supply: sales to the rest of Chile "
+                    "count as local. Spending is the EPF round nearest the year, in its own prices.",
+        "rows": [santiago_trade_adjusted(2019, "VIII"), santiago_trade_adjusted(2022, "IX")]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -385,6 +421,9 @@ def run() -> None:
     for b in out["brazil_trade_adjusted"]["rows"]:
         print(f"{b['city']:9} ({b['territory']}) {b['year']}, goods  {b['goods_capacity_index']:5.1f}   trade-adjusted "
               f"{b['goods_trade_adjusted_index']:.1f} (upper bound: the rest of Brazil counts as local)")
+    for b in out["santiago_trade_adjusted"]["rows"]:
+        print(f"Santiago (RM) {b['year']}, goods {b['goods_capacity_index']:5.1f}   trade-adjusted {b['goods_trade_adjusted_index']:.1f} "
+              f"(EPF {b['epf']}; upper bound: the rest of Chile counts as local)")
     for m in out["material_flows"]["rows"]:
         print(f"materials {m['territory']:18} {m['year']}  " + (m.get("no_data") or f"DMC {m['dmc_t'] / 1e6:,.1f} Mt, {m['dmc_t_per_capita']} t/person"))
     for region, g in goods.items():
@@ -733,6 +772,28 @@ def selftest() -> int:
     blank = waste.santiago(2019, get=lambda u: {"result": {"resources": [{"name": "2019: x", "format": "CSV", "url": "u"}]}},
                            raw=lambda u: b"id_comuna;cantidad_toneladas;tratamiento_nivel_1\n13101;10;\n")
     check("waste: a year with no treatment recorded has no recovery share, not 0%", blank["recovery_share"], None)
+    enia_csv = ("REGION;CIIU4;A005;K009;K003\n13;1010;4;1000;100\n13;1101;5;2;1\n13;C;4;500;0\n5;1010;4;9999;0\n").encode("latin-1")
+    rate = lambda u: [{}, [{"value": 800.0}]]
+    en = trade.enia(2022, raw=lambda u: enia_csv, get=rate)
+    check("ENIA: region 13 only, thousand-US$ rows converted, a row hidden to section C counted and not guessed",
+          (en["divisions"]["C10"], en["divisions"]["C11"], en["rows_without_division"], en["rows_in_usd"]),
+          ((1000.0, 100.0), (1600.0, 800.0), 1, 1))
+    gs = lambda: [{"A": "CUADRO 6C"}, {}, {}, {"H": "GRAN SANTIAGO"}]
+    fake_epf = {"CUADRO 6B": [{"H": "RESTO"}] , "CUADRO 6C": gs() + [{"A": "01.1.0.00.00", "C": "300"}, {"A": "03.1.0.00.00", "C": "40"}],
+                "CUADROS 3A - 3E": [{"F": "GRAN SANTIAGO /R"}, {"B": "HOGARES", "E": "PERSONAS"}, {"B": "NÚMERO "},
+                                    {"A": "Total", "B": "10", "E": "30"}]}
+    real_rows, real_names = waste._xlsx_rows, None
+    import zipfile as _zf
+    buf = io.BytesIO()
+    with _zf.ZipFile(buf, "w") as z:
+        z.writestr("xl/workbook.xml", "".join(f'<sheet name="{n}"/>' for n in fake_epf))
+    waste._xlsx_rows = lambda b, sh: fake_epf[sh]
+    try:
+        ep = trade.epf("IX", raw=lambda u: buf.getvalue())
+    finally:
+        waste._xlsx_rows = real_rows
+    check("EPF: the group table and the households row that name Gran Santiago, not another area's",
+          (ep["groups"], ep["households"], ep["persons"]), ({"01.1": 300.0, "03.1": 40.0}, 10.0, 30.0))
     cfm = lambda u: ("\ufeffDomestic consumption of materials (DMC)\nCatalonia. 2019\nUnits: Tons.\n,Value,Variation (%)\n"
                      "Total,55317163,6.7\nDMC per inhabitant,7.20,5.45\n").encode()
     m = trade.materials(2019, raw=cfm)

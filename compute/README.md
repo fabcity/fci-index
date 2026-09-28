@@ -362,3 +362,30 @@ section is the only place that does) and scores every place with the pages' own 
 `/api/v0/index.json`, `index.csv`, `places/<slug>.json` and `measured.json`. A result that `api.mjs` does not map
 reaches no page. Today the Economic|Region goods index is the only cell score (Barcelona, Hamburg, São Paulo,
 Recife); waste and material use are indicators the report follows, not inputs to the FCI.
+
+## Santiago with trade taken out: ENIA and the EPF
+
+`santiago_trade_adjusted()` reads Santiago as the **Región Metropolitana** (region 13). Its inputs are INE Chile's:
+- **ENIA** industrial survey microdata: each establishment's gross value of production (K009) and its export income (K003), so production and exports cover the same plants.
+- **EPF** household budget survey: Gran Santiago's mean spending per household by COICOP group, turned into spending per person and scaled to the region's population with INE's projections.
+
+| Year | Spending survey | Goods capacity | Trade-adjusted |
+| --- | --- | --- | --- |
+| 2019 | VIII EPF (2016–17) | 87.3 | 83.7 |
+| 2022 | IX EPF (2021–22) | 79.7 | 71.6 |
+
+**It is an upper bound on self-supply.** Sales to the rest of Chile count as local, as they do for the other regions.
+
+**The two years are not a trend.** They rest on different spending surveys, in their own prices. The surveys also use different product classifications: IX moved phones and computers into 08.1 and redrew group 09.
+
+**Some ENIA figures need handling:**
+- About 5% of rows report in thousand US$ and are converted at the World Bank's annual rate: 702.9 CLP/US$ in 2019 and 873.3 in 2022.
+- INE hides a few rows' industry by cutting CIIU4 to the section, "C". Those rows are counted, not assigned: 1 row in 2019, worth 19.5 bn CLP.
+- With it, the 2019 divisions sum to INE's published regional total, 19,549.5 bn CLP, within 0.01%.
+- IT and electronics (division 26) is 8 establishments in 2022.
+
+**Other goods caps at 100% in 2022.** It includes cement and concrete (C23), which households mostly buy through construction.
+
+**Licence and access.** INE publishes under CC BY-SA 4.0, so these figures are share-alike. INE's server drops connections for minutes at a time, so the pipeline reads a committed extract, `data/ine-chile-enia-epf-extract.json`. Rebuild it with `python3 compute/trade.py --extract-cl`.
+
+**Customs cross-check (not an input).** Chile's customs export declarations (`aduanas-chile-registros-comercio-exterior`) record each line's region of origin. Region 13's 2019 ordinary goods exports, operation 200, total US$6.72 bn. That figure excludes services exports (operations 202 and 211) and seven lines, US$442.5 M in total, whose value per kilogram is more than 100 times their tariff code's median. One of those lines is US$353.6 M for 3,753 handbags.
