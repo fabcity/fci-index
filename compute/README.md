@@ -7,7 +7,8 @@ python3 compute/fabcity_index.py              # fetches Eurostat, writes results
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
 Hamburg recipe (*The Fab City Index*, Springer 2024, ch. 9, CC-BY), states it as code, checks it reproduces
-his published score, and re-derives as much of it as open data allows. Nothing here is on the site yet.
+his published score, and re-derives as much of it as open data allows. Results reach the site only through
+`api.mjs` (see *From results to the site*).
 
 ## The recipe
 
