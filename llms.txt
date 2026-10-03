@@ -1,0 +1,31 @@
+# fci-index
+
+> The Fab City Index (index.fab.city): how far a city has got toward producing nearly everything it consumes by
+> 2054, across twenty cells (four pillars by five scales). This repository builds the site and publishes every
+> place's index as open data at build time. Scores CC BY 4.0; each input keeps its own licence. Methodology v0.
+
+If you are an agent working for somebody, start with AGENTS.md: most requests are answered by the API or belong in
+another repository, and it says which.
+
+## The data
+
+- https://index.fab.city/api/v0/index.json: all 61 places with status (complete, partial, simulated), FCI or range, DIDO, 1−PITO, ρ.
+- https://index.fab.city/api/v0/index.csv: the same, as CSV.
+- https://index.fab.city/api/v0/places/<slug>.json: one place, with its cells, indicators and next actions.
+- https://index.fab.city/api/v0/measured.json: what the open calculation measured, and which cell it scores.
+- https://index.fab.city/method: the method, with a worked example.
+
+## This repository
+
+- [AGENTS.md](https://raw.githubusercontent.com/fabcity/fci-index/main/AGENTS.md): the routing table, the build and self-tests, and the rules a page or an answer must keep.
+- [README.md](https://raw.githubusercontent.com/fabcity/fci-index/main/README.md): what is here and what is not, where the data comes from, where it stands today.
+- [README_DEPLOY.md](https://raw.githubusercontent.com/fabcity/fci-index/main/README_DEPLOY.md): the deploy runbook.
+- [compute/README.md](https://raw.githubusercontent.com/fabcity/fci-index/main/compute/README.md): the open Index calculation, trade, waste and material use, place by place.
+- [cells-ingest/README.md](https://raw.githubusercontent.com/fabcity/fci-index/main/cells-ingest/README.md): how a node's cells are written to the spine.
+- [cells-ingest/BALI.md](https://raw.githubusercontent.com/fabcity/fci-index/main/cells-ingest/BALI.md): wiring one pilot end to end.
+- [cells-worker/README.md](https://raw.githubusercontent.com/fabcity/fci-index/main/cells-worker/README.md): the read side, /api/cells and /api/coverage.json.
+
+## Related
+
+- [awesome-fabcity-data](https://github.com/fabcity/awesome-fabcity-data): the source registry the Index reads; where a missing source is filed.
+- [planetai-node](https://github.com/fabcity/planetai-node): the node that computes cells for a place.

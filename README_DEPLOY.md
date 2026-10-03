@@ -1,6 +1,6 @@
 # FCI 3.0 — Deploy Runbook
 
-One Cloudflare Pages project, one domain, three routes (per `FCI_3.0_Deployment_Plan_2026-06-06.md` §0, approved 6 June):
+One Cloudflare Pages project, one domain, three routes (per the FCI 3.0 deployment plan, §0, approved 6 June 2026; that plan is a workspace document, not in this repo):
 
 | Route | Source folder | Surface |
 |---|---|---|
@@ -8,21 +8,24 @@ One Cloudflare Pages project, one domain, three routes (per `FCI_3.0_Deployment_
 | `index.fab.city/atlas/` | `../fci-matryoshka-viz/` | Aggregation atlas |
 | `index.fab.city/operate/` | `../fci-ingestion-tool/` | Operator workbench |
 
-The three source folders in the FAB CITY workspace stay canonical — edit there, never in `public/`. `build.sh` assembles + rewrites cross-links + injects the beta feedback line (and Plausible, on `--prod`).
+The three site repos, checked out beside this one, are canonical — edit there, never in `public/`. `build.sh` assembles, rewrites cross-links, injects the beta feedback line (and Plausible, on `--prod`), versions every script and stylesheet link by content, writes `/api/v0/` with `api.mjs`, and runs every gate. Pull all three and this repo first: it builds their working trees as they are.
+
+**Build in the checkout that has `main` checked out**, never one on another branch: an old branch's `build.sh` lacks gates and redirects that main has, and a deploy from it ships without them.
 
 ## One-time setup (~20 min, needs your Cloudflare auth)
 
 ```bash
 npm install -g wrangler
 wrangler login                                   # browser auth — your account, holds the fab.city zone
-cd "<workspace>/fci-index"
-./build.sh                                       # sanity: expect "assembled: 22 pages · unrewritten cross-links: 0"
+cd "<workspace>/<the checkout on main>"
+./build.sh                                       # sanity: expect "assembled: 27 pages … unrewritten cross-links: 0 (must be 0)"
 wrangler pages project create fci-index --production-branch main
 ```
 
 ## Every deploy
 
 ```bash
+FCI_OUT=/tmp/fci-check ./build.sh                # optional: assemble elsewhere, touch nothing
 ./build.sh
 wrangler pages deploy public --branch staging    # → stable preview URL, share with tier 1 only
 # walk the staging URL (phone + laptop), then:

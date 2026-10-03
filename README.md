@@ -8,6 +8,12 @@ The Index measures how far a city has got toward producing nearly everything it 
 across twenty cells: four pillars (Environmental, Social, Economic, Governance) × five scales
 (Community, City, Region, Bioregion, Planet).
 
+**Using the Index, not building it?** Every place's score is open data at
+[`index.fab.city/api/v0/`](https://index.fab.city/api/v0/index.json) (JSON and CSV, CC BY 4.0). Missing data for
+your city goes to [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data), and a node's cells
+come from [`planetai-node`](https://github.com/fabcity/planetai-node). Working with an AI agent? Point it at
+[`AGENTS.md`](AGENTS.md) or [`llms.txt`](llms.txt).
+
 ---
 
 ## What is *not* in this repo
@@ -41,6 +47,10 @@ build.sh              assembles the three sites into public/, rewrites cross-lin
                       _routes.json, and runs the gates below
 check_tokens.py       every var(--…) a page uses is defined, build.sh's own markup included
 check_exports.py      every window.FCI reference resolves
+api.mjs               writes /api/v0/ at build: every place's index, scored by the pages' own
+                      js/fci-score.js; its MEASURED section is the only map from compute/ to cells
+compute/              the open Index calculation (Boeing's Hamburg recipe on open data), trade,
+                      waste and material use; results/ is what api.mjs reads. See compute/README.md
 wrangler.toml         Cloudflare Pages project config (output: public/)
 README_DEPLOY.md      the deploy runbook: staging, production, custom domain, rollback
 functions/operate/    Pages middleware: sends the workbench's act pages from *.pages.dev
@@ -54,8 +64,8 @@ feedback-worker/      POST /api/feedback → Airtable "FCI Beta Feedback" (not c
 public/               generated. gitignored. do not edit.
 ```
 
-**The build fails rather than ship** if any of these break: the three `css/tokens.css` copies stop
-being identical, the three `css/nav.css` copies drift, a page uses an undefined token or a
+**The build fails rather than ship** if any of these break: `api.mjs` cannot read the registry or the
+tracker, the three `css/tokens.css` copies stop being identical, the three `css/nav.css` copies drift, a page uses an undefined token or a
 `window.FCI` export that does not exist, a page loses its structure, an internal link points at
 nothing, a cross-link is left unrewritten, or the redirect rule count changes. Each gate exists
 because something got past the others.
@@ -64,13 +74,17 @@ because something got past the others.
 
 ## Where the data comes from
 
-Nothing the site shows as data is a file in this repo. It reads three live feeds:
+The pages read three live feeds, and the build writes a fourth:
 
 | feed | source of record | what it says |
 |---|---|---|
 | `/api/coverage.json` | Airtable, base `appmNQaDGEFE9VcYh`, table `FCI Coverage Tracker` | the 61 pledged places × 8 cells: which registered sources could fill each one, and whether anyone has looked |
 | `/api/cells/<city>.json` | Airtable, same base, table `Observations` (the spine) | what a node has actually measured |
 | `index.json` | [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data), read from `raw.githubusercontent.com` | what each registered source is, its licence, status and reviews |
+| `/api/v0/` | written by `api.mjs` at build, from the registry at its main commit, the tracker, and `compute/results/` | every place's status, FCI or range, DIDO, 1−PITO and ρ: `index.json`, `index.csv`, `places/<slug>.json`, `measured.json` |
+
+The pages recompute scores on the live registry, so between deploys a place's open-data count on a page can be
+ahead of `/api/v0/`; every API file names the registry commit it read.
 
 The spine, end to end:
 
@@ -145,16 +159,16 @@ scoped Airtable PAT as a secret. `cells-worker` needs `data.records:read`. `cell
 
 ## Where it actually stands
 
-As of 26 September 2026. Worth being plain about, because the site is honest about it and the repo
+As of 3 October 2026. Worth being plain about, because the site is honest about it and the repo
 should be too.
 
-- **Barcelona is the only city with a real observation**, and it is a single hand-typed seed row
-  from 6 June 2026 (`Environmental|City`, Smart Citizen kit, `partial`). Boston, Santiago and Bali
-  answer `"count": 0`. No node writes to the spine on a schedule yet.
-- **The invented numbers are gone.** The city pages used to render twenty scores and a scoreboard,
-  sixty of them from a seeded random number generator. One `city.html` template now shows what the
-  three feeds actually say for any of the 61 places. The four old `city-*.html` pages 301 to
-  `/cities`.
+- **No place is complete.** `/api/v0/` labels 5 places partial (Barcelona 0.515, Santiago de Chile 0.26,
+  São Paulo 0.218, Recife 0.216, Hamburg 0.091) and 56 simulated, which carry a range from 0 to DIDO and never
+  one number. The only measured cell score is Economic|Region, goods with trade taken out, from `compute/`;
+  waste and material use are indicators the report follows, not FCI inputs.
+- **The spine is empty.** `/api/cells/<city>.json` answers `"count": 0` for all four allowed cities. No node
+  writes to it on a schedule yet, so no score uses a node's measurement.
+- **The tracker was harvested once**, on 11 September 2026, and nothing refreshes it. The registry is read live.
 - **Methodology v0, in review.** The v0 labels, the mock pills on the matrix and the "under review"
   qualifiers on ρ ship on purpose. They are the design, not an apology.
 - **Coverage is counted out of 20.** The tracker holds 8 cells per place, so the other 12 count as
@@ -176,7 +190,6 @@ should be too.
 | [`fci-3-prototype`](https://github.com/fabcity/fci-3-prototype), [`fci-matryoshka-viz`](https://github.com/fabcity/fci-matryoshka-viz), [`fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) | the pages. See the first section. |
 | [`planetai-node`](https://github.com/fabcity/planetai-node) | the node. Computes the cells this Index serves. `ARCHITECTURE.md` §2 is the tier contract. |
 | [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data) | the open-data source registry. The site reads its generated `index.json` at runtime; reviews arrive through its source-review issue form. |
-| [`planetai-coordination`](https://github.com/fabcity/planetai-coordination) | decision log, reviews, tracks, pilots, waves. |
 
 To wire a pilot end to end, start at [`cells-ingest/BALI.md`](cells-ingest/BALI.md).
 
