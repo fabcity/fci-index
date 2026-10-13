@@ -40,6 +40,8 @@ const GOODS = "compute/results/goods-country.json";   // and goods: OECD TiVA's 
 const atlas = JSON.parse(fs.readFileSync(path.join(HERE, ATLAS), "utf8"));
 const food = JSON.parse(fs.readFileSync(path.join(HERE, FOOD), "utf8"));
 const tiva = JSON.parse(fs.readFileSync(path.join(HERE, GOODS), "utf8"));
+const DOWNSCALE = "compute/results/downscale-check.json";   // the region bracket: a national figure split to the place's NUTS2 region, modelled (compute/downscale.py)
+const downscale = JSON.parse(fs.readFileSync(path.join(HERE, DOWNSCALE), "utf8"));
 // One bracket per tracker country: { iso, name, places, trade, food, goods }. A half with no row says not_measured, never zero.
 const half = (res, file) => Object.fromEntries(Object.entries(res.countries).map(([iso, { name, places, m49, ...c }]) =>
   [name, { iso, name, places, half: { reads_as: res.reads_as, source: res.source, licence: res.licence, pipeline: REPO + file, ...c } }]));
@@ -51,6 +53,21 @@ const bracketOf = (country) => {
   return { ...head, ...Object.fromEntries(Object.entries(HALVES).map(([k, [of, what]]) =>
     [k, of[country] ? of[country].half : { not_measured: `${country} has no row in ${what}` }])) };
 };
+// The region bracket, by place: the modelled row where places.yaml allows a key, else why not. Never a cell, never measured.
+const regionOf = (() => {
+  const P = downscale.places, bar = downscale.error_bar_modelled_over_measured;
+  const rows = Object.fromEntries(P.modelled.map((m) => [m.slug, m]));
+  const why = Object.fromEntries(P.eligibility.map((e) => [e.slug, e.why]));
+  const notRun = Object.fromEntries(P.not_modelled.map((n) => [n.slug, n.why]));
+  return (slug) => {
+    const common = { reads_as: P.reads_as, registry_commit: P.registry_commit, pipeline: REPO + DOWNSCALE };
+    const m = rows[slug];
+    if (!m) return { ...common, not_modelled: notRun[slug] || why[slug] || `${slug} is not in the registry's places.yaml` };
+    return { ...common, state: m.state, nuts2: m.nuts2, year: m.year, territory: m.reads_as, modelled: m.modelled,
+             error_bar_modelled_over_measured: bar, keys: { population_share: m.keys.population_share, employment_table: m.keys.employment_table, employment_year: m.keys.employment_year },
+             national_atlas: m.national_atlas, source: downscale.source };
+  };
+})();
 const get = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} returned ${r.status}`); return r.json(); };
 const sha = (await (await fetch(REPO_API, { headers: { accept: "application/vnd.github.sha" } })).text()).trim();
 if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error(`could not read the registry's main commit from ${REPO_API}: ${sha.slice(0, 120)}`);
@@ -146,7 +163,7 @@ if (stray.length) throw new Error(`measured places not in the tracker: ${stray.j
 const now = new Date().toISOString();
 const head = { format: "fci-api-v0", generated: now, registry_generated: registry.generated, registry_commit: sha, tracker_harvested: tracker.last_harvested,
   pipeline: REPO + RESULTS, method: `${BASE}/method#worked`, licence: "Scores: CC BY 4.0, Fab City Foundation. Each input keeps its own licence, named where it is used." };
-const summaries = [];
+const summaries = [], brackets = {};   // brackets: the country and region brackets by place, for the pages (measured.json)
 fs.mkdirSync(path.join(out, "places"), { recursive: true });
 for (const p of places) {
   const m = measured[p.slug] || { cells: {}, indicators: [], boundaries: [] };
@@ -160,15 +177,17 @@ for (const p of places) {
   const { cells, ...summary } = sc;
   summaries.push({ ...p, ...summary, links });
   // The country's goods trade (Atlas), food self-sufficiency (FAO) and domestic share of value added (OECD). A bracket, never a cell.
-  const country_bracket = bracketOf(p.country);
+  const country_bracket = bracketOf(p.country), region_bracket = regionOf(p.slug);
+  brackets[p.slug] = { country: country_bracket, region: region_bracket };
   fs.writeFileSync(path.join(out, "places", `${p.slug}.json`), JSON.stringify({ ...head, place: p, score: summary, actions,
-    cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, planet: PLANET, links }, null, 1) + "\n");
+    cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, region_bracket, planet: PLANET, links }, null, 1) + "\n");
 }
 const count = (s) => summaries.filter((x) => x.status === s).length;
 if (count("complete") + count("partial") + count("simulated") !== places.length) throw new Error("statuses do not partition the places");
 fs.writeFileSync(path.join(out, "index.json"), JSON.stringify({ ...head, counts: { places: places.length, complete: count("complete"), partial: count("partial"), simulated: count("simulated") },
   statuses: FCI_SCORE.STATUS, places: summaries }, null, 1) + "\n");
-fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, places: measured, planet: PLANET }, null, 1) + "\n");
+// `places` stays what the pipeline MEASURED; the brackets are modelled or national and live under their own key.
+fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, places: measured, brackets, planet: PLANET }, null, 1) + "\n");
 const csvCell = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
 const COLS = ["slug", "name", "country", "territory", "status", "fci", "fci_low", "fci_high", "dido", "one_minus_pito", "rho", "cells_open", "cells_measured", "pito_weight_measured_share"];
 fs.writeFileSync(path.join(out, "index.csv"), [COLS.join(","), ...summaries.map((s) => [s.slug, s.name, s.country, s.territory, s.status, s.fci,
