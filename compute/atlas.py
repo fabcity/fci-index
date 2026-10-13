@@ -51,13 +51,23 @@ def _rows(text: str) -> list[dict]:
     return list(csv.DictReader(io.StringIO(text)))
 
 
-def bracket(tables: dict[str, str], tracker: dict) -> dict:
-    """The bracket for every country in the tracker, from the Atlas CSV texts. Pure: no network."""
+def countries_of(countries_csv: str, tracker: dict) -> dict[str, dict]:
+    """Every tracker country, with its place count and the Atlas's ISO3 and M49 code (the Atlas's country_id is M49
+    where one exists; FAOSTAT keys on M49 too, so compute/food.py shares this). No Atlas row: iso and m49 are None."""
     places = {}
     for loc in tracker["localities"]:
         places[loc["country"]] = places.get(loc["country"], 0) + 1
-    by_name = {r["country_name_short"]: r["country_iso3_code"] for r in _rows(tables["countries"])}
-    iso_of = {c: by_name.get(TRACKER_NAMES.get(c, c)) for c in places}
+    by_name = {r["country_name_short"]: (r["country_iso3_code"], int(r["country_id"])) for r in _rows(countries_csv)}
+    return {c: {"places": n, "iso": by_name.get(TRACKER_NAMES.get(c, c), (None, None))[0],
+                "m49": by_name.get(TRACKER_NAMES.get(c, c), (None, None))[1]}
+            for c, n in sorted(places.items(), key=lambda kv: (-kv[1], kv[0]))}
+
+
+def bracket(tables: dict[str, str], tracker: dict) -> dict:
+    """The bracket for every country in the tracker, from the Atlas CSV texts. Pure: no network."""
+    countries = countries_of(tables["countries"], tracker)
+    places = {c: v["places"] for c, v in countries.items()}
+    iso_of = {c: v["iso"] for c, v in countries.items()}
     wanted = {iso for iso in iso_of.values() if iso}
     sector_name = {r["product_id"]: r["product_name"] for r in _rows(tables["products"]) if r["product_level"] == "1"}
 
@@ -84,7 +94,7 @@ def bracket(tables: dict[str, str], tracker: dict) -> dict:
 
     ratio = lambda x, m: round(x / m, 2) if m else None   # noqa: E731  no imports: no ratio, never infinity
     out, absent = {}, []
-    for country, n in sorted(places.items(), key=lambda kv: (-kv[1], kv[0])):
+    for country, n in places.items():
         iso = iso_of[country]
         if not iso or iso not in latest:
             absent.append(country)
@@ -164,6 +174,8 @@ def selftest() -> int:
           (out["countries"]["KOR"]["sectors"], out["countries"]["KOR"]["imports_in_net_export_chapters_share"]), ({}, None))
     check("the series is every year, oldest first", [s["year"] for s in es["series"]], [2023, 2024])
     check("countries come most places first, then by name", list(out["countries"]), ["ESP", "KOR"])
+    check("countries_of carries M49 for FAOSTAT, and None where the Atlas has no row",
+          {c: v["m49"] for c, v in countries_of(tables["countries"], tracker).items()}, {"Spain": 724, "Korea, South": 410, "Bhutan": None})
     print(f"\natlas selftest: {bad} failed.")
     return 1 if bad else 0
 

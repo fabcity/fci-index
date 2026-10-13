@@ -18,7 +18,7 @@ const [site, out] = process.argv.slice(2);
 if (!site || !out) { console.error("usage: node api.mjs <site source dir> <out dir>"); process.exit(2); }
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RESULTS = "compute/results/fabcity-index-2019.json";
-const ATLAS = "compute/results/atlas-country.json";   // the country bracket (compute/atlas.py): not a cell, served beside each place
+const ATLAS = "compute/results/atlas-country.json";   // the country bracket, trade (compute/atlas.py): not a cell, served beside each place
 // The registry at main's current commit, not at `main`: raw.githubusercontent caches a branch URL for about five
 // minutes, so a deploy right after a registry merge used to publish the registry from before it (28 Sep, #73).
 const REPO_API = "https://api.github.com/repos/fabcity/awesome-fabcity-data/commits/main";
@@ -35,8 +35,19 @@ const { FCI, FCI_SCORE } = ctx.window;
 if (!FCI || !FCI_SCORE) throw new Error("js/data.js or js/fci-score.js did not load");
 
 const results = JSON.parse(fs.readFileSync(path.join(HERE, RESULTS), "utf8"));
+const FOOD = "compute/results/food-country.json";     // the same bracket, food: FAO's self-sufficiency ratios (compute/food.py)
 const atlas = JSON.parse(fs.readFileSync(path.join(HERE, ATLAS), "utf8"));
-const bracketOf = Object.fromEntries(Object.entries(atlas.countries).map(([iso, c]) => [c.name, { iso, ...c }]));
+const food = JSON.parse(fs.readFileSync(path.join(HERE, FOOD), "utf8"));
+// One bracket per tracker country: { iso, name, places, trade, food }. A half with no row says not_measured, never zero.
+const half = (res, file, absent) => Object.fromEntries(Object.entries(res.countries).map(([iso, { name, places, m49, ...c }]) =>
+  [name, { iso, name, places, half: { reads_as: res.reads_as, source: res.source, licence: res.licence, pipeline: REPO + file, ...c } }]));
+const tradeOf = half(atlas, ATLAS), foodOf = half(food, FOOD);
+const bracketOf = (country) => {
+  const t = tradeOf[country], f = foodOf[country];
+  if (!t && !f) return { not_measured: `${country} has no row in the Atlas tables or the Food Balance Sheets` };
+  return { ...(t || f), half: undefined, trade: t ? t.half : { not_measured: `${country} has no row in the Atlas tables` },
+           food: f ? f.half : { not_measured: `${country} has no row in the Food Balance Sheets` } };
+};
 const get = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} returned ${r.status}`); return r.json(); };
 const sha = (await (await fetch(REPO_API, { headers: { accept: "application/vnd.github.sha" } })).text()).trim();
 if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error(`could not read the registry's main commit from ${REPO_API}: ${sha.slice(0, 120)}`);
@@ -145,9 +156,8 @@ for (const p of places) {
   const links = { page: `${BASE}/city?locality=${p.slug}`, report: `${BASE}/report?locality=${p.slug}`, json: `${BASE}/api/v0/places/${p.slug}.json` };
   const { cells, ...summary } = sc;
   summaries.push({ ...p, ...summary, links });
-  // The country's goods trade, from the Atlas (compute/atlas.py). A bracket, never a cell: it does not touch the score.
-  const country_bracket = bracketOf[p.country] ? { reads_as: atlas.reads_as, source: atlas.source, licence: atlas.licence, pipeline: REPO + ATLAS, ...bracketOf[p.country] }
-                                               : { not_measured: `${p.country} has no row in the Atlas tables`, pipeline: REPO + ATLAS };
+  // The country's goods trade (Atlas) and food self-sufficiency (FAO). A bracket, never a cell: it does not touch the score.
+  const country_bracket = bracketOf(p.country);
   fs.writeFileSync(path.join(out, "places", `${p.slug}.json`), JSON.stringify({ ...head, place: p, score: summary, actions,
     cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, planet: PLANET, links }, null, 1) + "\n");
 }
