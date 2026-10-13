@@ -401,6 +401,45 @@ and a half with no row says `not_measured`.
 
 **Customs cross-check (not an input).** Chile's customs export declarations (`aduanas-chile-registros-comercio-exterior`) record each line's region of origin. Region 13's 2019 ordinary goods exports, operation 200, total US$6.72 bn. That figure excludes services exports (operations 202 and 211) and seven lines, US$442.5 M in total, whose value per kilogram is more than 100 times their tariff code's median. One of those lines is US$353.6 M for 3,753 handbags.
 
+## Downscaling check: what a national key gets wrong, measured
+
+`compute/downscale.py` is the gate before any national figure is split down to a place that has no data of its own.
+It takes the country's goods trade from the Atlas tables (compute/atlas.py), splits it to a region by two keys, and sets
+the result against the three regions whose customs trade is measured above (Idescat, Statistikamt Nord, French
+customs). The **population key** is the naive split, one share for everything. The **employment key** splits each of
+the Atlas's ten goods sectors by the region's share of the country's workers in the NACE divisions that make those
+goods (`sbs_r_nuts06_r2` to 2020, `sbs_r_nuts2021` from 2021); a sector with a suppressed division falls back to the
+region's share of all manufacturing, and the row says so. Dollars become euros at Eurostat's annual average. Nothing
+here is served on a page; `results/downscale-check.json` holds every input.
+
+Modelled over measured, so 1.00 is a key that reproduces the customs figure:
+
+| Territory | Year | Measured imports · exports | Population key, modelled ÷ measured | Employment key, modelled ÷ measured |
+| --- | --- | --- | --- | --- |
+| Catalonia | 2019 | 92.6 · 73.9 bn EUR | 0.51 · 0.58 | 0.76 · 0.86 |
+| Catalonia | 2024 (provisional) | 111.4 · 100.3 bn EUR | 0.54 · 0.56 | 0.79 · 0.81 |
+| Land Hamburg | 2019 | 67.5 · 53.4 bn EUR | 0.33 · 0.51 | 0.18 · 0.27 |
+| Land Hamburg | 2024 | 73.9 · 56.1 bn EUR | 0.35 · 0.55 | 0.23 · 0.38 |
+| Île-de-France | 2024 | 192.4 · 141.8 bn EUR | 0.60 · 0.71 | 0.46 · 0.53 |
+
+**What it shows.** For Catalonia, a manufacturing region, the employment key lands within a fifth of the measured
+figure (0.76–0.86), and the population key at about half. For Hamburg it fails by a factor of three to five, and the
+population key is closer than the employment one: Hamburg's customs trade is a port's, general-trade imports landing
+for all of Germany, and its share of German factory jobs says nothing about that (the C30-only key of 2019, Airbus
+without the suppressed car division, gave Hamburg 13% of Germany's vehicle exports until the fallback caught it). For
+Île-de-France both keys give about half: French customs attribute trade to the declaring firm's establishment, and
+Paris holds the head offices. So the error is not one number. It is a factor of 1.2 for a region that makes things,
+and 2 to 5 for a gateway or a headquarters region, in a direction that the kind of region predicts. Part of that gap
+is the measurement's concept, not the model's: a port's or a head office's customs figure is not what its residents
+consume, which is the same reason Boeing left trade out of Hamburg's 37.
+
+**What follows for the 58 places without customs data.** A downscaled figure is usable as a bracket for a place that
+makes things, labelled modelled with this table as its error bar, and not usable for a port city or a capital. The
+tracker does not yet say which kind of place each one is, and a NUTS code is needed for the key; both are the next
+step, not this one. Province of Barcelona and Paris as a département are skipped because the employment table stops
+at NUTS2; Boston because its measured exports are in dollars and its key would need a US table; Santiago has no
+measured trade. The Atlas is goods only.
+
 ## The country bracket: what the whole country buys and sells abroad
 
 `compute/atlas.py` reads the Atlas of Economic Complexity's bulk tables (Growth Lab at Harvard University, CC0 on
