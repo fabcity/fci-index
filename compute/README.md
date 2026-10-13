@@ -459,7 +459,8 @@ That is why Catalonia, and only Catalonia, sets the error bar:
 The 14 allowed places, modelled for 2024 from the Atlas's national figures and Eurostat's employment and population.
 **Each row is the NUTS2 region that holds the place, not the place**: Schwaben for Augsburg, Bretagne for both Brest and
 Rennes (which is why those two read the same), Skåne for Veberöd. Every row is `state: modelled` and carries the error
-bar above; none of them is measured, and none reaches a page unless a maintainer maps it in `api.mjs`.
+bar above; none of them is measured. Since 13 October they are served as `region_bracket` on each place (Tomas Diez's
+decision), beside the country bracket and outside the score.
 
 | Place | NUTS2 region modelled | Employment year | Population key, imports · exports | Employment key, imports · exports |
 | --- | --- | --- | --- | --- |
