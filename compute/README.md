@@ -7,6 +7,8 @@ python3 compute/atlas.py --selftest           # no network; the country bracket'
 python3 compute/atlas.py                      # fetches the Atlas tables (~43 MB), writes results/atlas-country.json
 python3 compute/food.py --selftest            # no network; FAO's self-sufficiency ratio on a fake sheet
 python3 compute/food.py                       # fetches FAOSTAT's balance sheets (22 MB zip), writes results/food-country.json
+python3 compute/goods.py --selftest           # no network; the OECD slice read on a fake table
+python3 compute/goods.py                      # two OECD SDMX calls (~17 MB), writes results/goods-country.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -367,9 +369,10 @@ section is the only place that does) and scores every place with the pages' own 
 `/api/v0/index.json`, `index.csv`, `places/<slug>.json` and `measured.json`. A result that `api.mjs` does not map
 reaches no page. Today the Economic|Region goods index is the only cell score (Barcelona, Hamburg, São Paulo,
 Recife); waste and material use are indicators the report follows, not inputs to the FCI. Each place file also
-carries `country_bracket`, the whole country's goods trade (`trade`, from `results/atlas-country.json`) and food
-self-sufficiency (`food`, from `results/food-country.json`); see *The country bracket*. Neither half is a cell or an
-input to the score, and a half with no row says `not_measured`.
+carries `country_bracket`, the whole country's goods trade (`trade`, from `results/atlas-country.json`), food
+self-sufficiency (`food`, from `results/food-country.json`) and the domestic share of value added in what it buys
+(`goods`, from `results/goods-country.json`); see *The country bracket*. No half is a cell or an input to the score,
+and a half with no row says `not_measured`.
 
 ## Santiago with trade taken out: ENIA and the EPF
 
@@ -504,3 +507,52 @@ claim of equivalence. **Re-exports are inside here too**: the Netherlands' meat 
 hub's figures. Sugar crops overlap sugar and sweeteners, and oilcrops overlap vegetable oils, in tonnes; the calorie
 weights count each as eaten, so the summary does not double count. Stock changes are not in FAO's ratio, so a year of
 drawdown reads as more self-supplied than it was.
+
+### Goods: of the value added in what the country buys, the share made at home
+
+`compute/goods.py` reads the OECD's Trade in Value Added tables, 2025 edition (registry
+`economic/bioregion/oecd-tiva-sdmx`; OECD terms: any purpose including commercial, credit the OECD, and the same
+acknowledgment carried into any sub-licence) and writes `results/goods-country.json`. The measure is `FD_VA_SH` with the
+country as its own counterpart: of the value added embodied in what the country's households, government and investors
+buy, the share created inside the country, by the industry that created it, for 80 activities. `api.mjs` serves it as
+`country_bracket.goods`. It is the production side the Atlas half lacks, in value-added terms: a self-supply ratio per
+industry with imports already netted, so it needs no capping. Same rules: a country figure, never a cell, never a score
+input.
+
+2022, every tracker country the tables cover:
+
+| Country | Index places | All activities | Agriculture | Industry | Manufacturing | Food, drink, tobacco | Textiles | Chemicals | Computers, electronics | Machinery | Vehicles |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| France (FRA) | 8 | 72% | 62% | 34% | 35% | 70% | 16% | 8% | 10% | 13% | 25% |
+| United States of America (USA) | 7 | 88% | 68% | 67% | 67% | 82% | 20% | 69% | 64% | 65% | 54% |
+| Brazil (BRA) | 5 | 82% | 89% | 64% | 63% | 87% | 76% | 42% | 28% | 54% | 67% |
+| Indonesia (IDN) | 5 | 81% | 92% | 69% | 70% | 92% | 69% | 39% | 31% | 24% | 77% |
+| Mexico (MEX) | 5 | 70% | 74% | 48% | 49% | 90% | 42% | 30% | 23% | 12% | 57% |
+| Germany (DEU) | 3 | 69% | 42% | 46% | 50% | 65% | 14% | 30% | 18% | 62% | 76% |
+| Austria (AUT) | 2 | 63% | 45% | 31% | 31% | 63% | 1% | 17% | 22% | 37% | 15% |
+| Canada (CAN) | 2 | 74% | 54% | 43% | 36% | 72% | 13% | 19% | 9% | 24% | 16% |
+| Chile (CHL) | 2 | 68% | 60% | 40% | 40% | 73% | 6% | 19% | 63% | 20% | 0% |
+| Croatia (HRV) | 2 | 57% | 55% | 28% | 29% | 52% | 25% | 4% | 9% | 19% | 6% |
+| India (IND) | 2 | 80% | 96% | 56% | 68% | 82% | 90% | 37% | 13% | 64% | 90% |
+| Netherlands (NLD) | 2 | 68% | 41% | 32% | 35% | 47% | 16% | 16% | 22% | 43% | 24% |
+| South Africa (ZAF) | 2 | 76% | 64% | 43% | 42% | 79% | 35% | 26% | 6% | 21% | 29% |
+| Argentina (ARG) | 1 | 85% | 88% | 73% | 76% | 96% | 80% | 67% | 30% | 67% | 72% |
+| China (CHN) | 1 | 87% | 93% | 80% | 86% | 94% | 96% | 79% | 56% | 88% | 89% |
+| Finland (FIN) | 1 | 68% | 65% | 44% | 44% | 68% | 13% | 36% | 51% | 48% | 10% |
+| Japan (JPN) | 1 | 79% | 49% | 60% | 71% | 84% | 27% | 52% | 42% | 82% | 85% |
+| Korea, South (KOR) | 1 | 71% | 56% | 50% | 60% | 67% | 48% | 51% | 57% | 61% | 76% |
+| Slovenia (SVN) | 1 | 55% | 39% | 22% | 23% | 50% | 14% | 2% | 6% | 18% | 13% |
+| Spain (ESP) | 1 | 72% | 52% | 41% | 38% | 69% | 23% | 18% | 6% | 22% | 35% |
+| Sweden (SWE) | 1 | 68% | 49% | 40% | 41% | 55% | 6% | 11% | 20% | 49% | 50% |
+| United Kingdom (GBR) | 1 | 73% | 39% | 36% | 38% | 68% | 25% | 21% | 28% | 36% | 37% |
+
+Not in the tables: Ghana, Bhutan, Georgia, Tanzania; their places say `not_measured` for goods and keep the Atlas half. **Value added, not
+products.** 38% for Spain's manufacturing means 38% of the manufacturing value added in what Spain buys was made in
+Spain: a car assembled in Spain from imported parts counts for the assembly only, and a Spanish-made part in a German
+car bought in Spain counts for Spain. That is a different quantity from Boeing's production-against-consumption and
+from FAO's tonnes, and it is the one that answers "made here" without double counting. The agriculture column is the
+value-added twin of the food half's tonnes: the Netherlands reads 41% here and 0.62 there, both a trading hub's figures.
+Direction was checked, not assumed: for a reporting country the shares over all origins sum to 100 per industry, so the
+reporting country is the buyer and the counterpart the maker. The series runs from 2019, Boeing's year, to the tables'
+last year; the host answers 429 after a few calls and 403 to `lastNObservations`, so the run makes two calls for all
+countries at once and reads the latest year from the first.
