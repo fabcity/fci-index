@@ -1,0 +1,4515 @@
+{
+ "reads_as": "The country each place sits in, as FAO's Food Balance Sheets record its food: for each commodity group, production against production plus imports minus exports, FAO's own self-sufficiency ratio. Above 1 the country grows more than it keeps; below 1 it eats what others grow. The summary weights each group's ratio, capped at 1, by the group's share of the diet's calories, and says how much of the diet the covered groups are. A country figure, never a city's: it is the bracket a place's own food system sits inside.",
+ "licence": "CC BY 4.0 (FAO Statistical Database Terms of Use), which also bars use in conjunction with the promotion of a commercial enterprise; cite FAO, FAOSTAT Food Balance Sheets",
+ "year": 2023,
+ "years_in_sheet": [
+  2010,
+  2023
+ ],
+ "countries": {
+  "FRA": {
+   "name": "France",
+   "places": 8,
+   "m49": 250,
+   "year": 2023,
+   "kcal_per_person_day": 3489.55,
+   "self_supply_kcal_weighted": 0.94,
+   "kcal_weight_covered_share": 0.98,
+   "groups_measured": 18,
+   "groups": {
+    "Cereals": {
+     "production_kt": 64241.0,
+     "imports_kt": 6184.0,
+     "exports_kt": 29079.0,
+     "kcal_per_person_day": 908.43,
+     "ssr": 1.55,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 8606.0,
+     "imports_kt": 2417.0,
+     "exports_kt": 4318.0,
+     "kcal_per_person_day": 92.57,
+     "ssr": 1.28,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 30581.0,
+     "imports_kt": 51.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 6648.0,
+     "imports_kt": 1273.0,
+     "exports_kt": 3118.0,
+     "kcal_per_person_day": 341.41,
+     "ssr": 1.38,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 1037.0,
+     "imports_kt": 179.0,
+     "exports_kt": 359.0,
+     "kcal_per_person_day": 12.93,
+     "ssr": 1.21,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 61.0,
+     "imports_kt": 671.0,
+     "exports_kt": 119.0,
+     "kcal_per_person_day": 33.99,
+     "ssr": 0.1,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 6834.0,
+     "imports_kt": 3176.0,
+     "exports_kt": 1941.0,
+     "kcal_per_person_day": 33.97,
+     "ssr": 0.85,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 2765.0,
+     "imports_kt": 1514.0,
+     "exports_kt": 1395.0,
+     "kcal_per_person_day": 364.47,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 5703.0,
+     "imports_kt": 5064.0,
+     "exports_kt": 2231.0,
+     "kcal_per_person_day": 75.57,
+     "ssr": 0.67,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 9393.0,
+     "imports_kt": 6727.0,
+     "exports_kt": 1411.0,
+     "kcal_per_person_day": 118.69,
+     "ssr": 0.64,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 1112.0,
+     "exports_kt": 484.0,
+     "kcal_per_person_day": 53.5,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 48.0,
+     "exports_kt": 14.0,
+     "kcal_per_person_day": 3.99,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 8998.0,
+     "imports_kt": 2584.0,
+     "exports_kt": 2717.0,
+     "kcal_per_person_day": 232.09,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 1047.0,
+     "exports_kt": 846.0,
+     "kcal_per_person_day": 11.23,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 4976.0,
+     "imports_kt": 1773.0,
+     "exports_kt": 1245.0,
+     "kcal_per_person_day": 362.24,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 453.0,
+     "imports_kt": 143.0,
+     "exports_kt": 207.0,
+     "kcal_per_person_day": 19.79,
+     "ssr": 1.16,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 1838.0,
+     "imports_kt": 797.0,
+     "exports_kt": 751.0,
+     "kcal_per_person_day": 325.29,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 24963.0,
+     "imports_kt": 9406.0,
+     "exports_kt": 8560.0,
+     "kcal_per_person_day": 402.51,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 920.0,
+     "imports_kt": 129.0,
+     "exports_kt": 97.0,
+     "kcal_per_person_day": 46.2,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 677.0,
+     "imports_kt": 2019.0,
+     "exports_kt": 479.0,
+     "kcal_per_person_day": 50.67,
+     "ssr": 0.31,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 52.0,
+     "imports_kt": 50.0,
+     "exports_kt": 9.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.56,
+     "state": "measured"
+    }
+   }
+  },
+  "USA": {
+   "name": "United States of America",
+   "places": 7,
+   "m49": 840,
+   "year": 2023,
+   "kcal_per_person_day": 3947.33,
+   "self_supply_kcal_weighted": 0.87,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 20,
+   "groups": {
+    "Cereals": {
+     "production_kt": 462915.0,
+     "imports_kt": 21914.0,
+     "exports_kt": 76750.0,
+     "kcal_per_person_day": 848.02,
+     "ssr": 1.13,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 21131.0,
+     "imports_kt": 6005.0,
+     "exports_kt": 3794.0,
+     "kcal_per_person_day": 102.78,
+     "ssr": 0.91,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 61854.0,
+     "imports_kt": 6.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 24978.0,
+     "imports_kt": 7916.0,
+     "exports_kt": 3722.0,
+     "kcal_per_person_day": 569.31,
+     "ssr": 0.86,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 2862.0,
+     "imports_kt": 824.0,
+     "exports_kt": 1385.0,
+     "kcal_per_person_day": 35.37,
+     "ssr": 1.24,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 3456.0,
+     "imports_kt": 2295.0,
+     "exports_kt": 2572.0,
+     "kcal_per_person_day": 44.02,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 122687.0,
+     "imports_kt": 2374.0,
+     "exports_kt": 50148.0,
+     "kcal_per_person_day": 70.34,
+     "ssr": 1.64,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 15472.0,
+     "imports_kt": 7609.0,
+     "exports_kt": 989.0,
+     "kcal_per_person_day": 783.27,
+     "ssr": 0.7,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 33751.0,
+     "imports_kt": 20074.0,
+     "exports_kt": 6034.0,
+     "kcal_per_person_day": 77.61,
+     "ssr": 0.71,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 19533.0,
+     "imports_kt": 49447.0,
+     "exports_kt": 5624.0,
+     "kcal_per_person_day": 147.95,
+     "ssr": 0.31,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 3.0,
+     "imports_kt": 3370.0,
+     "exports_kt": 958.0,
+     "kcal_per_person_day": 23.7,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 1.0,
+     "imports_kt": 480.0,
+     "exports_kt": 41.0,
+     "kcal_per_person_day": 9.4,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 28856.0,
+     "imports_kt": 7549.0,
+     "exports_kt": 6404.0,
+     "kcal_per_person_day": 137.36,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 2328.0,
+     "exports_kt": 2237.0,
+     "kcal_per_person_day": 0.84,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 47463.0,
+     "imports_kt": 2808.0,
+     "exports_kt": 8427.0,
+     "kcal_per_person_day": 489.89,
+     "ssr": 1.13,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 1687.0,
+     "imports_kt": 112.0,
+     "exports_kt": 737.0,
+     "kcal_per_person_day": 1.4,
+     "ssr": 1.59,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 8097.0,
+     "imports_kt": 1207.0,
+     "exports_kt": 462.0,
+     "kcal_per_person_day": 130.03,
+     "ssr": 0.92,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 102703.0,
+     "imports_kt": 5766.0,
+     "exports_kt": 4268.0,
+     "kcal_per_person_day": 392.39,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 6535.0,
+     "imports_kt": 22.0,
+     "exports_kt": 197.0,
+     "kcal_per_person_day": 54.28,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 5291.0,
+     "imports_kt": 5610.0,
+     "exports_kt": 2418.0,
+     "kcal_per_person_day": 29.35,
+     "ssr": 0.62,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 3.0,
+     "imports_kt": 29.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.1,
+     "state": "measured"
+    }
+   }
+  },
+  "BRA": {
+   "name": "Brazil",
+   "places": 5,
+   "m49": 76,
+   "year": 2023,
+   "kcal_per_person_day": 3423.45,
+   "self_supply_kcal_weighted": 0.99,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 19,
+   "groups": {
+    "Cereals": {
+     "production_kt": 155894.0,
+     "imports_kt": 9915.0,
+     "exports_kt": 60699.0,
+     "kcal_per_person_day": 912.33,
+     "ssr": 1.48,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 23883.0,
+     "imports_kt": 754.0,
+     "exports_kt": 219.0,
+     "kcal_per_person_day": 131.67,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 782586.0,
+     "imports_kt": null,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 14.54,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 64900.0,
+     "imports_kt": 235.0,
+     "exports_kt": 31884.0,
+     "kcal_per_person_day": 381.29,
+     "ssr": 1.95,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 2912.0,
+     "imports_kt": 119.0,
+     "exports_kt": 139.0,
+     "kcal_per_person_day": 109.19,
+     "ssr": 1.01,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 173.0,
+     "imports_kt": 128.0,
+     "exports_kt": 60.0,
+     "kcal_per_person_day": 5.21,
+     "ssr": 0.72,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 163972.0,
+     "imports_kt": 690.0,
+     "exports_kt": 102485.0,
+     "kcal_per_person_day": 41.85,
+     "ssr": 2.64,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 13181.0,
+     "imports_kt": 702.0,
+     "exports_kt": 2722.0,
+     "kcal_per_person_day": 583.71,
+     "ssr": 1.18,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 11721.0,
+     "imports_kt": 859.0,
+     "exports_kt": 411.0,
+     "kcal_per_person_day": 38.73,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 40615.0,
+     "imports_kt": 654.0,
+     "exports_kt": 11282.0,
+     "kcal_per_person_day": 136.7,
+     "ssr": 1.35,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 4440.0,
+     "imports_kt": 148.0,
+     "exports_kt": 2535.0,
+     "kcal_per_person_day": 13.1,
+     "ssr": 2.16,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 127.0,
+     "imports_kt": 27.0,
+     "exports_kt": 117.0,
+     "kcal_per_person_day": 1.6,
+     "ssr": 3.43,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 19385.0,
+     "imports_kt": 276.0,
+     "exports_kt": 2298.0,
+     "kcal_per_person_day": 104.22,
+     "ssr": 1.12,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 98.0,
+     "exports_kt": 212.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 31845.0,
+     "imports_kt": 66.0,
+     "exports_kt": 9824.0,
+     "kcal_per_person_day": 462.13,
+     "ssr": 1.44,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 1817.0,
+     "imports_kt": 9.0,
+     "exports_kt": 259.0,
+     "kcal_per_person_day": 17.1,
+     "ssr": 1.16,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 2473.0,
+     "imports_kt": 70.0,
+     "exports_kt": 407.0,
+     "kcal_per_person_day": 108.08,
+     "ssr": 1.16,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 36742.0,
+     "imports_kt": 4155.0,
+     "exports_kt": 230.0,
+     "kcal_per_person_day": 302.6,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 3450.0,
+     "imports_kt": 0.0,
+     "exports_kt": 59.0,
+     "kcal_per_person_day": 45.08,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 1410.0,
+     "imports_kt": 518.0,
+     "exports_kt": 187.0,
+     "kcal_per_person_day": 14.3,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 1.0,
+     "imports_kt": 2.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    }
+   }
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "places": 5,
+   "m49": 360,
+   "year": 2023,
+   "kcal_per_person_day": 2900.3,
+   "self_supply_kcal_weighted": 0.84,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 68757.0,
+     "imports_kt": 17747.0,
+     "exports_kt": 860.0,
+     "kcal_per_person_day": 1344.6,
+     "ssr": 0.8,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 20399.0,
+     "imports_kt": 426.0,
+     "exports_kt": 969.0,
+     "kcal_per_person_day": 220.49,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 31000.0,
+     "imports_kt": null,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 3636.0,
+     "imports_kt": 5801.0,
+     "exports_kt": 1257.0,
+     "kcal_per_person_day": 279.98,
+     "ssr": 0.44,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 180.0,
+     "imports_kt": 147.0,
+     "exports_kt": 36.0,
+     "kcal_per_person_day": 8.21,
+     "ssr": 0.62,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 356.0,
+     "imports_kt": 36.0,
+     "exports_kt": 220.0,
+     "kcal_per_person_day": 5.25,
+     "ssr": 2.07,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 259144.0,
+     "imports_kt": 2810.0,
+     "exports_kt": 1577.0,
+     "kcal_per_person_day": 173.5,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 59458.0,
+     "imports_kt": 151.0,
+     "exports_kt": 34277.0,
+     "kcal_per_person_day": 414.81,
+     "ssr": 2.35,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 13611.0,
+     "imports_kt": 878.0,
+     "exports_kt": 111.0,
+     "kcal_per_person_day": 43.62,
+     "ssr": 0.95,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 25217.0,
+     "imports_kt": 773.0,
+     "exports_kt": 668.0,
+     "kcal_per_person_day": 123.6,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 2049.0,
+     "imports_kt": 498.0,
+     "exports_kt": 1346.0,
+     "kcal_per_person_day": 8.62,
+     "ssr": 1.71,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 665.0,
+     "imports_kt": 107.0,
+     "exports_kt": 158.0,
+     "kcal_per_person_day": 11.27,
+     "ssr": 1.08,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 439.0,
+     "imports_kt": 14.0,
+     "exports_kt": 59.0,
+     "kcal_per_person_day": 2.31,
+     "ssr": 1.11,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 257.0,
+     "exports_kt": 603.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 5290.0,
+     "imports_kt": 333.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": 80.6,
+     "ssr": 0.94,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 117.0,
+     "imports_kt": 66.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 2.11,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Animal fats": {
+     "production_kt": 54.0,
+     "imports_kt": 39.0,
+     "exports_kt": 207.0,
+     "kcal_per_person_day": 3.72,
+     "ssr": null,
+     "state": "not covered: nothing kept"
+    },
+    "Milk": {
+     "production_kt": 1444.0,
+     "imports_kt": 8007.0,
+     "exports_kt": 361.0,
+     "kcal_per_person_day": 20.56,
+     "ssr": 0.16,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 6887.0,
+     "imports_kt": 9.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 73.51,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 12665.0,
+     "imports_kt": 615.0,
+     "exports_kt": 1403.0,
+     "kcal_per_person_day": 83.54,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 9148.0,
+     "imports_kt": 1.0,
+     "exports_kt": 210.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.02,
+     "state": "measured"
+    }
+   }
+  },
+  "MEX": {
+   "name": "Mexico",
+   "places": 5,
+   "m49": 484,
+   "year": 2023,
+   "kcal_per_person_day": 3304.56,
+   "self_supply_kcal_weighted": 0.76,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 19,
+   "groups": {
+    "Cereals": {
+     "production_kt": 37016.0,
+     "imports_kt": 25090.0,
+     "exports_kt": 1964.0,
+     "kcal_per_person_day": 1319.13,
+     "ssr": 0.62,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 2326.0,
+     "imports_kt": 596.0,
+     "exports_kt": 58.0,
+     "kcal_per_person_day": 34.47,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 55978.0,
+     "imports_kt": null,
+     "exports_kt": null,
+     "kcal_per_person_day": 0.42,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 9516.0,
+     "imports_kt": 1714.0,
+     "exports_kt": 2358.0,
+     "kcal_per_person_day": 406.47,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 980.0,
+     "imports_kt": 342.0,
+     "exports_kt": 101.0,
+     "kcal_per_person_day": 76.3,
+     "ssr": 0.8,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 293.0,
+     "imports_kt": 64.0,
+     "exports_kt": 168.0,
+     "kcal_per_person_day": 12.49,
+     "ssr": 1.55,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 3306.0,
+     "imports_kt": 8155.0,
+     "exports_kt": 75.0,
+     "kcal_per_person_day": 22.32,
+     "ssr": 0.29,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 2240.0,
+     "imports_kt": 886.0,
+     "exports_kt": 96.0,
+     "kcal_per_person_day": 376.72,
+     "ssr": 0.74,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 18650.0,
+     "imports_kt": 555.0,
+     "exports_kt": 8971.0,
+     "kcal_per_person_day": 53.43,
+     "ssr": 1.82,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 24389.0,
+     "imports_kt": 912.0,
+     "exports_kt": 4813.0,
+     "kcal_per_person_day": 174.87,
+     "ssr": 1.19,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 224.0,
+     "imports_kt": 145.0,
+     "exports_kt": 246.0,
+     "kcal_per_person_day": 3.64,
+     "ssr": 1.82,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 205.0,
+     "imports_kt": 72.0,
+     "exports_kt": 64.0,
+     "kcal_per_person_day": 14.48,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 13132.0,
+     "imports_kt": 490.0,
+     "exports_kt": 4420.0,
+     "kcal_per_person_day": 80.54,
+     "ssr": 1.43,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 498.0,
+     "exports_kt": 725.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 8075.0,
+     "imports_kt": 2668.0,
+     "exports_kt": 595.0,
+     "kcal_per_person_day": 358.22,
+     "ssr": 0.8,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 543.0,
+     "imports_kt": 267.0,
+     "exports_kt": 25.0,
+     "kcal_per_person_day": 21.32,
+     "ssr": 0.69,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 449.0,
+     "imports_kt": 218.0,
+     "exports_kt": 94.0,
+     "kcal_per_person_day": 46.49,
+     "ssr": 0.78,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 13910.0,
+     "imports_kt": 5678.0,
+     "exports_kt": 239.0,
+     "kcal_per_person_day": 202.23,
+     "ssr": 0.72,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 3172.0,
+     "imports_kt": 57.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 74.99,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 1825.0,
+     "imports_kt": 545.0,
+     "exports_kt": 603.0,
+     "kcal_per_person_day": 26.03,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 7.0,
+     "imports_kt": 1.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    }
+   }
+  },
+  "DEU": {
+   "name": "Germany",
+   "places": 3,
+   "m49": 276,
+   "year": 2023,
+   "kcal_per_person_day": 3534.54,
+   "self_supply_kcal_weighted": 0.9,
+   "kcal_weight_covered_share": 0.98,
+   "groups_measured": 16,
+   "groups": {
+    "Cereals": {
+     "production_kt": 42463.0,
+     "imports_kt": 19672.0,
+     "exports_kt": 19403.0,
+     "kcal_per_person_day": 732.39,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 11607.0,
+     "imports_kt": 1920.0,
+     "exports_kt": 4949.0,
+     "kcal_per_person_day": 127.62,
+     "ssr": 1.35,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 31558.0,
+     "imports_kt": 97.0,
+     "exports_kt": 345.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": 1.01,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 5793.0,
+     "imports_kt": 2106.0,
+     "exports_kt": 2605.0,
+     "kcal_per_person_day": 410.82,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 639.0,
+     "imports_kt": 285.0,
+     "exports_kt": 101.0,
+     "kcal_per_person_day": 6.74,
+     "ssr": 0.78,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": null,
+     "imports_kt": 3178.0,
+     "exports_kt": 1079.0,
+     "kcal_per_person_day": 56.74,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Oilcrops": {
+     "production_kt": 4556.0,
+     "imports_kt": 10794.0,
+     "exports_kt": 395.0,
+     "kcal_per_person_day": 37.62,
+     "ssr": 0.3,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 5111.0,
+     "imports_kt": 2875.0,
+     "exports_kt": 2221.0,
+     "kcal_per_person_day": 569.7,
+     "ssr": 0.89,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 3514.0,
+     "imports_kt": 14948.0,
+     "exports_kt": 2565.0,
+     "kcal_per_person_day": 74.52,
+     "ssr": 0.22,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 2415.0,
+     "imports_kt": 7826.0,
+     "exports_kt": 1769.0,
+     "kcal_per_person_day": 122.25,
+     "ssr": 0.29,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 2322.0,
+     "exports_kt": 1787.0,
+     "kcal_per_person_day": 15.84,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 127.0,
+     "exports_kt": 55.0,
+     "kcal_per_person_day": 6.27,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 9468.0,
+     "imports_kt": 3529.0,
+     "exports_kt": 2492.0,
+     "kcal_per_person_day": 196.61,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 1304.0,
+     "exports_kt": 1406.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 6777.0,
+     "imports_kt": 2300.0,
+     "exports_kt": 2800.0,
+     "kcal_per_person_day": 291.6,
+     "ssr": 1.08,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 594.0,
+     "imports_kt": 144.0,
+     "exports_kt": 453.0,
+     "kcal_per_person_day": 13.03,
+     "ssr": 2.08,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 2552.0,
+     "imports_kt": 682.0,
+     "exports_kt": 1156.0,
+     "kcal_per_person_day": 267.21,
+     "ssr": 1.23,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 34036.0,
+     "imports_kt": 18671.0,
+     "exports_kt": 14863.0,
+     "kcal_per_person_day": 528.47,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 967.0,
+     "imports_kt": 658.0,
+     "exports_kt": 219.0,
+     "kcal_per_person_day": 50.7,
+     "ssr": 0.69,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 265.0,
+     "imports_kt": 2316.0,
+     "exports_kt": 1478.0,
+     "kcal_per_person_day": 26.42,
+     "ssr": 0.24,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 3.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "AUT": {
+   "name": "Austria",
+   "places": 2,
+   "m49": 40,
+   "year": 2023,
+   "kcal_per_person_day": 3755.86,
+   "self_supply_kcal_weighted": 0.76,
+   "kcal_weight_covered_share": 0.99,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 5235.0,
+     "imports_kt": 3704.0,
+     "exports_kt": 2204.0,
+     "kcal_per_person_day": 883.04,
+     "ssr": 0.78,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 594.0,
+     "imports_kt": 273.0,
+     "exports_kt": 132.0,
+     "kcal_per_person_day": 77.44,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 2676.0,
+     "imports_kt": 3.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 1013.0,
+     "imports_kt": 512.0,
+     "exports_kt": 357.0,
+     "kcal_per_person_day": 377.53,
+     "ssr": 0.87,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 48.0,
+     "imports_kt": 26.0,
+     "exports_kt": 8.0,
+     "kcal_per_person_day": 15.85,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 2.0,
+     "imports_kt": 147.0,
+     "exports_kt": 59.0,
+     "kcal_per_person_day": 36.03,
+     "ssr": 0.02,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 449.0,
+     "imports_kt": 753.0,
+     "exports_kt": 259.0,
+     "kcal_per_person_day": 82.74,
+     "ssr": 0.48,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 258.0,
+     "imports_kt": 547.0,
+     "exports_kt": 208.0,
+     "kcal_per_person_day": 629.53,
+     "ssr": 0.43,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 592.0,
+     "imports_kt": 1997.0,
+     "exports_kt": 775.0,
+     "kcal_per_person_day": 81.17,
+     "ssr": 0.33,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 571.0,
+     "imports_kt": 1961.0,
+     "exports_kt": 975.0,
+     "kcal_per_person_day": 127.69,
+     "ssr": 0.37,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 203.0,
+     "exports_kt": 142.0,
+     "kcal_per_person_day": 9.23,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 20.0,
+     "exports_kt": 9.0,
+     "kcal_per_person_day": 9.35,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 1456.0,
+     "imports_kt": 302.0,
+     "exports_kt": 295.0,
+     "kcal_per_person_day": 197.3,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 260.0,
+     "exports_kt": 318.0,
+     "kcal_per_person_day": 0.38,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 816.0,
+     "imports_kt": 388.0,
+     "exports_kt": 488.0,
+     "kcal_per_person_day": 315.3,
+     "ssr": 1.14,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 62.0,
+     "imports_kt": 43.0,
+     "exports_kt": 88.0,
+     "kcal_per_person_day": 14.4,
+     "ssr": 3.65,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 262.0,
+     "imports_kt": 65.0,
+     "exports_kt": 56.0,
+     "kcal_per_person_day": 456.66,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 3717.0,
+     "imports_kt": 2039.0,
+     "exports_kt": 2338.0,
+     "kcal_per_person_day": 362.42,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 141.0,
+     "imports_kt": 42.0,
+     "exports_kt": 24.0,
+     "kcal_per_person_day": 53.41,
+     "ssr": 0.89,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 5.0,
+     "imports_kt": 179.0,
+     "exports_kt": 26.0,
+     "kcal_per_person_day": 26.4,
+     "ssr": 0.03,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 1.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "CAN": {
+   "name": "Canada",
+   "places": 2,
+   "m49": 124,
+   "year": 2023,
+   "kcal_per_person_day": 3590.04,
+   "self_supply_kcal_weighted": 0.83,
+   "kcal_weight_covered_share": 0.97,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 59267.0,
+     "imports_kt": 8350.0,
+     "exports_kt": 38725.0,
+     "kcal_per_person_day": 873.02,
+     "ssr": 2.05,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 6543.0,
+     "imports_kt": 617.0,
+     "exports_kt": 2820.0,
+     "kcal_per_person_day": 148.7,
+     "ssr": 1.51,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 1172.0,
+     "imports_kt": 2.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 334.0,
+     "imports_kt": 2889.0,
+     "exports_kt": 1079.0,
+     "kcal_per_person_day": 443.46,
+     "ssr": 0.16,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 4891.0,
+     "imports_kt": 323.0,
+     "exports_kt": 5230.0,
+     "kcal_per_person_day": 7.19,
+     "ssr": null,
+     "state": "not covered: nothing kept"
+    },
+    "Tree nuts": {
+     "production_kt": null,
+     "imports_kt": 1045.0,
+     "exports_kt": 134.0,
+     "kcal_per_person_day": 46.17,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Oilcrops": {
+     "production_kt": 25888.0,
+     "imports_kt": 1173.0,
+     "exports_kt": 11980.0,
+     "kcal_per_person_day": 97.41,
+     "ssr": 1.72,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 5601.0,
+     "imports_kt": 654.0,
+     "exports_kt": 3803.0,
+     "kcal_per_person_day": 644.01,
+     "ssr": 2.28,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 2351.0,
+     "imports_kt": 3649.0,
+     "exports_kt": 1408.0,
+     "kcal_per_person_day": 78.07,
+     "ssr": 0.51,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 884.0,
+     "imports_kt": 5041.0,
+     "exports_kt": 1195.0,
+     "kcal_per_person_day": 121.75,
+     "ssr": 0.19,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 738.0,
+     "exports_kt": 376.0,
+     "kcal_per_person_day": 25.96,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": 12.0,
+     "imports_kt": 60.0,
+     "exports_kt": 10.0,
+     "kcal_per_person_day": 9.67,
+     "ssr": 0.19,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 2577.0,
+     "imports_kt": 3054.0,
+     "exports_kt": 738.0,
+     "kcal_per_person_day": 82.05,
+     "ssr": 0.53,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 965.0,
+     "exports_kt": 707.0,
+     "kcal_per_person_day": 23.21,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 5262.0,
+     "imports_kt": 808.0,
+     "exports_kt": 2114.0,
+     "kcal_per_person_day": 374.35,
+     "ssr": 1.33,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 196.0,
+     "imports_kt": 40.0,
+     "exports_kt": 226.0,
+     "kcal_per_person_day": 1.67,
+     "ssr": 19.6,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 1140.0,
+     "imports_kt": 207.0,
+     "exports_kt": 408.0,
+     "kcal_per_person_day": 243.87,
+     "ssr": 1.21,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 9887.0,
+     "imports_kt": 2974.0,
+     "exports_kt": 1616.0,
+     "kcal_per_person_day": 282.42,
+     "ssr": 0.88,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 636.0,
+     "imports_kt": 66.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 55.72,
+     "ssr": 0.91,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 933.0,
+     "imports_kt": 1014.0,
+     "exports_kt": 831.0,
+     "kcal_per_person_day": 31.32,
+     "ssr": 0.84,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 13.0,
+     "imports_kt": 4.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.3,
+     "state": "measured"
+    }
+   }
+  },
+  "CHL": {
+   "name": "Chile",
+   "places": 2,
+   "m49": 152,
+   "year": 2023,
+   "kcal_per_person_day": 3057.47,
+   "self_supply_kcal_weighted": 0.54,
+   "kcal_weight_covered_share": 0.97,
+   "groups_measured": 16,
+   "groups": {
+    "Cereals": {
+     "production_kt": 2497.0,
+     "imports_kt": 4304.0,
+     "exports_kt": 488.0,
+     "kcal_per_person_day": 1067.3,
+     "ssr": 0.4,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 858.0,
+     "imports_kt": 320.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 88.27,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 604.0,
+     "imports_kt": null,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 118.0,
+     "imports_kt": 795.0,
+     "exports_kt": 13.0,
+     "kcal_per_person_day": 445.27,
+     "ssr": 0.13,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 42.0,
+     "imports_kt": 49.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 28.96,
+     "ssr": 0.49,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 307.0,
+     "imports_kt": 18.0,
+     "exports_kt": 243.0,
+     "kcal_per_person_day": 30.38,
+     "ssr": 3.74,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 268.0,
+     "imports_kt": 208.0,
+     "exports_kt": 32.0,
+     "kcal_per_person_day": 25.7,
+     "ssr": 0.6,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 282.0,
+     "imports_kt": 616.0,
+     "exports_kt": 127.0,
+     "kcal_per_person_day": 235.17,
+     "ssr": 0.37,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 2364.0,
+     "imports_kt": 291.0,
+     "exports_kt": 787.0,
+     "kcal_per_person_day": 67.27,
+     "ssr": 1.27,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 6656.0,
+     "imports_kt": 666.0,
+     "exports_kt": 3204.0,
+     "kcal_per_person_day": 94.21,
+     "ssr": 1.62,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 92.0,
+     "exports_kt": 8.0,
+     "kcal_per_person_day": 28.69,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 6.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 1.89,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 2315.0,
+     "imports_kt": 138.0,
+     "exports_kt": 660.0,
+     "kcal_per_person_day": 146.62,
+     "ssr": 1.29,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 233.0,
+     "exports_kt": 46.0,
+     "kcal_per_person_day": 30.23,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 1563.0,
+     "imports_kt": 625.0,
+     "exports_kt": 247.0,
+     "kcal_per_person_day": 451.79,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 80.0,
+     "imports_kt": 7.0,
+     "exports_kt": 54.0,
+     "kcal_per_person_day": 1.82,
+     "ssr": 2.42,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 322.0,
+     "imports_kt": 126.0,
+     "exports_kt": 116.0,
+     "kcal_per_person_day": 75.42,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 2232.0,
+     "imports_kt": 1050.0,
+     "exports_kt": 355.0,
+     "kcal_per_person_day": 183.34,
+     "ssr": 0.76,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 226.0,
+     "imports_kt": 14.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 33.12,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Fish and seafood": {
+     "production_kt": 3356.0,
+     "imports_kt": 272.0,
+     "exports_kt": 2425.0,
+     "kcal_per_person_day": 22.02,
+     "ssr": 2.79,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 428.0,
+     "imports_kt": 6.0,
+     "exports_kt": 61.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.15,
+     "state": "measured"
+    }
+   }
+  },
+  "HRV": {
+   "name": "Croatia",
+   "places": 2,
+   "m49": 191,
+   "year": 2023,
+   "kcal_per_person_day": 3447.57,
+   "self_supply_kcal_weighted": 0.76,
+   "kcal_weight_covered_share": 0.97,
+   "groups_measured": 16,
+   "groups": {
+    "Cereals": {
+     "production_kt": 3191.0,
+     "imports_kt": 836.0,
+     "exports_kt": 1764.0,
+     "kcal_per_person_day": 893.66,
+     "ssr": 1.41,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 126.0,
+     "imports_kt": 149.0,
+     "exports_kt": 17.0,
+     "kcal_per_person_day": 86.39,
+     "ssr": 0.49,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 500.0,
+     "imports_kt": 52.0,
+     "exports_kt": null,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 172.0,
+     "imports_kt": 615.0,
+     "exports_kt": 520.0,
+     "kcal_per_person_day": 415.84,
+     "ssr": 0.64,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 7.0,
+     "imports_kt": 10.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 23.5,
+     "ssr": 0.44,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 3.0,
+     "imports_kt": 55.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": 36.37,
+     "ssr": 0.06,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 445.0,
+     "imports_kt": 73.0,
+     "exports_kt": 357.0,
+     "kcal_per_person_day": 32.71,
+     "ssr": 2.76,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 79.0,
+     "imports_kt": 108.0,
+     "exports_kt": 97.0,
+     "kcal_per_person_day": 345.5,
+     "ssr": 0.88,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 922.0,
+     "imports_kt": 722.0,
+     "exports_kt": 225.0,
+     "kcal_per_person_day": 155.59,
+     "ssr": 0.65,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 220.0,
+     "imports_kt": 437.0,
+     "exports_kt": 152.0,
+     "kcal_per_person_day": 128.38,
+     "ssr": 0.44,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 94.0,
+     "exports_kt": 44.0,
+     "kcal_per_person_day": 90.63,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 4.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 5.22,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 416.0,
+     "imports_kt": 139.0,
+     "exports_kt": 123.0,
+     "kcal_per_person_day": 155.14,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 104.0,
+     "exports_kt": 102.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 232.0,
+     "imports_kt": 245.0,
+     "exports_kt": 67.0,
+     "kcal_per_person_day": 411.63,
+     "ssr": 0.57,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 20.0,
+     "imports_kt": 4.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 16.93,
+     "ssr": 1.05,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 73.0,
+     "imports_kt": 20.0,
+     "exports_kt": 11.0,
+     "kcal_per_person_day": 252.19,
+     "ssr": 0.89,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 479.0,
+     "imports_kt": 811.0,
+     "exports_kt": 172.0,
+     "kcal_per_person_day": 330.86,
+     "ssr": 0.43,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 34.0,
+     "imports_kt": 10.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 31.39,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 89.0,
+     "imports_kt": 85.0,
+     "exports_kt": 91.0,
+     "kcal_per_person_day": 35.62,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "GHA": {
+   "name": "Ghana",
+   "places": 2,
+   "m49": 288,
+   "year": 2023,
+   "kcal_per_person_day": 3124.99,
+   "self_supply_kcal_weighted": 0.9,
+   "kcal_weight_covered_share": 0.96,
+   "groups_measured": 15,
+   "groups": {
+    "Cereals": {
+     "production_kt": 5772.0,
+     "imports_kt": 2231.0,
+     "exports_kt": 53.0,
+     "kcal_per_person_day": 853.04,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 38888.0,
+     "imports_kt": 22.0,
+     "exports_kt": 58.0,
+     "kcal_per_person_day": 1291.89,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 157.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 3.81,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": null,
+     "imports_kt": 431.0,
+     "exports_kt": 50.0,
+     "kcal_per_person_day": 108.03,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Pulses": {
+     "production_kt": 501.0,
+     "imports_kt": 2.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 47.4,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 226.0,
+     "imports_kt": 3.0,
+     "exports_kt": 948.0,
+     "kcal_per_person_day": 0.41,
+     "ssr": null,
+     "state": "not covered: nothing kept"
+    },
+    "Oilcrops": {
+     "production_kt": 4522.0,
+     "imports_kt": 384.0,
+     "exports_kt": 172.0,
+     "kcal_per_person_day": 136.11,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 575.0,
+     "imports_kt": 186.0,
+     "exports_kt": 174.0,
+     "kcal_per_person_day": 172.15,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 799.0,
+     "imports_kt": 310.0,
+     "exports_kt": 57.0,
+     "kcal_per_person_day": 18.55,
+     "ssr": 0.76,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 6195.0,
+     "imports_kt": 72.0,
+     "exports_kt": 206.0,
+     "kcal_per_person_day": 285.68,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 654.0,
+     "imports_kt": 10.0,
+     "exports_kt": 715.0,
+     "kcal_per_person_day": 0.42,
+     "ssr": null,
+     "state": "not covered: nothing kept"
+    },
+    "Spices": {
+     "production_kt": 113.0,
+     "imports_kt": 4.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 27.64,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 833.0,
+     "imports_kt": 78.0,
+     "exports_kt": 25.0,
+     "kcal_per_person_day": 27.05,
+     "ssr": 0.94,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 86.0,
+     "exports_kt": 26.0,
+     "kcal_per_person_day": 5.87,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 319.0,
+     "imports_kt": 268.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 72.74,
+     "ssr": 0.54,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 21.0,
+     "imports_kt": 37.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 5.73,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Animal fats": {
+     "production_kt": 6.0,
+     "imports_kt": 1.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 4.57,
+     "ssr": 1.2,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 51.0,
+     "imports_kt": 186.0,
+     "exports_kt": 22.0,
+     "kcal_per_person_day": 9.74,
+     "ssr": 0.24,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 50.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 3.68,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 482.0,
+     "imports_kt": 388.0,
+     "exports_kt": 69.0,
+     "kcal_per_person_day": 50.48,
+     "ssr": 0.6,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "IND": {
+   "name": "India",
+   "places": 2,
+   "m49": 356,
+   "year": 2023,
+   "kcal_per_person_day": 2668.5,
+   "self_supply_kcal_weighted": 0.94,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 19,
+   "groups": {
+    "Cereals": {
+     "production_kt": 374634.0,
+     "imports_kt": 1007.0,
+     "exports_kt": 31231.0,
+     "kcal_per_person_day": 1359.98,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 67374.0,
+     "imports_kt": 32.0,
+     "exports_kt": 963.0,
+     "kcal_per_person_day": 60.39,
+     "ssr": 1.01,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 490533.0,
+     "imports_kt": 0.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 16.7,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 59728.0,
+     "imports_kt": 2618.0,
+     "exports_kt": 8660.0,
+     "kcal_per_person_day": 196.64,
+     "ssr": 1.11,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 25771.0,
+     "imports_kt": 3636.0,
+     "exports_kt": 985.0,
+     "kcal_per_person_day": 138.22,
+     "ssr": 0.91,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 2151.0,
+     "imports_kt": 1643.0,
+     "exports_kt": 356.0,
+     "kcal_per_person_day": 7.7,
+     "ssr": 0.63,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 66289.0,
+     "imports_kt": 1012.0,
+     "exports_kt": 1607.0,
+     "kcal_per_person_day": 60.86,
+     "ssr": 1.01,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 9600.0,
+     "imports_kt": 16187.0,
+     "exports_kt": 854.0,
+     "kcal_per_person_day": 235.52,
+     "ssr": 0.39,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 150220.0,
+     "imports_kt": 94.0,
+     "exports_kt": 4045.0,
+     "kcal_per_person_day": 76.12,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 108784.0,
+     "imports_kt": 1587.0,
+     "exports_kt": 1566.0,
+     "kcal_per_person_day": 89.42,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 6396.0,
+     "imports_kt": 260.0,
+     "exports_kt": 730.0,
+     "kcal_per_person_day": 0.77,
+     "ssr": 1.08,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 8610.0,
+     "imports_kt": 268.0,
+     "exports_kt": 1134.0,
+     "kcal_per_person_day": 35.54,
+     "ssr": 1.11,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 9832.0,
+     "imports_kt": 390.0,
+     "exports_kt": 266.0,
+     "kcal_per_person_day": 19.06,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 51.0,
+     "exports_kt": 293.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 12833.0,
+     "imports_kt": 2.0,
+     "exports_kt": 1157.0,
+     "kcal_per_person_day": 30.35,
+     "ssr": 1.1,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 1173.0,
+     "imports_kt": null,
+     "exports_kt": 137.0,
+     "kcal_per_person_day": 1.91,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Animal fats": {
+     "production_kt": 5923.0,
+     "imports_kt": 4.0,
+     "exports_kt": 188.0,
+     "kcal_per_person_day": 91.16,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 239418.0,
+     "imports_kt": 512.0,
+     "exports_kt": 118.0,
+     "kcal_per_person_day": 213.59,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 7853.0,
+     "imports_kt": 0.0,
+     "exports_kt": 124.0,
+     "kcal_per_person_day": 16.41,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 14395.0,
+     "imports_kt": 155.0,
+     "exports_kt": 1706.0,
+     "kcal_per_person_day": 18.16,
+     "ssr": 1.12,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 39.0,
+     "imports_kt": 1.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.97,
+     "state": "measured"
+    }
+   }
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "places": 2,
+   "m49": 528,
+   "year": 2023,
+   "kcal_per_person_day": 3466.98,
+   "self_supply_kcal_weighted": 0.62,
+   "kcal_weight_covered_share": 0.99,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 1557.0,
+     "imports_kt": 24769.0,
+     "exports_kt": 6845.0,
+     "kcal_per_person_day": 716.62,
+     "ssr": 0.08,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 6492.0,
+     "imports_kt": 3781.0,
+     "exports_kt": 8507.0,
+     "kcal_per_person_day": 136.87,
+     "ssr": 3.68,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 6943.0,
+     "imports_kt": 15.0,
+     "exports_kt": 3.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 1920.0,
+     "imports_kt": 1483.0,
+     "exports_kt": 1956.0,
+     "kcal_per_person_day": 456.88,
+     "ssr": 1.33,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 7.0,
+     "imports_kt": 323.0,
+     "exports_kt": 97.0,
+     "kcal_per_person_day": 21.92,
+     "ssr": 0.03,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 0.0,
+     "imports_kt": 1582.0,
+     "exports_kt": 1342.0,
+     "kcal_per_person_day": 41.11,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 12.0,
+     "imports_kt": 6033.0,
+     "exports_kt": 2454.0,
+     "kcal_per_person_day": 33.83,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 1359.0,
+     "imports_kt": 7981.0,
+     "exports_kt": 5611.0,
+     "kcal_per_person_day": 343.12,
+     "ssr": 0.36,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 4762.0,
+     "imports_kt": 4527.0,
+     "exports_kt": 6790.0,
+     "kcal_per_person_day": 68.59,
+     "ssr": 1.91,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 683.0,
+     "imports_kt": 11397.0,
+     "exports_kt": 8669.0,
+     "kcal_per_person_day": 174.45,
+     "ssr": 0.2,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 1888.0,
+     "exports_kt": 1785.0,
+     "kcal_per_person_day": 7.24,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 156.0,
+     "exports_kt": 104.0,
+     "kcal_per_person_day": 10.63,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 2057.0,
+     "imports_kt": 3173.0,
+     "exports_kt": 3712.0,
+     "kcal_per_person_day": 134.77,
+     "ssr": 1.36,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 985.0,
+     "exports_kt": 1684.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 2784.0,
+     "imports_kt": 1911.0,
+     "exports_kt": 3354.0,
+     "kcal_per_person_day": 360.7,
+     "ssr": 2.08,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 329.0,
+     "imports_kt": 397.0,
+     "exports_kt": 624.0,
+     "kcal_per_person_day": 32.64,
+     "ssr": 3.23,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 698.0,
+     "imports_kt": 1856.0,
+     "exports_kt": 1647.0,
+     "kcal_per_person_day": 235.28,
+     "ssr": 0.77,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 15178.0,
+     "imports_kt": 19280.0,
+     "exports_kt": 14663.0,
+     "kcal_per_person_day": 595.58,
+     "ssr": 0.77,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 720.0,
+     "imports_kt": 324.0,
+     "exports_kt": 803.0,
+     "kcal_per_person_day": 64.28,
+     "ssr": 2.99,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 367.0,
+     "imports_kt": 1641.0,
+     "exports_kt": 1712.0,
+     "kcal_per_person_day": 32.47,
+     "ssr": 1.24,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 2.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "places": 2,
+   "m49": 710,
+   "year": 2023,
+   "kcal_per_person_day": 2693.94,
+   "self_supply_kcal_weighted": 0.92,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 20,
+   "groups": {
+    "Cereals": {
+     "production_kt": 19117.0,
+     "imports_kt": 5884.0,
+     "exports_kt": 5958.0,
+     "kcal_per_person_day": 1218.46,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 2492.0,
+     "imports_kt": 97.0,
+     "exports_kt": 202.0,
+     "kcal_per_person_day": 59.52,
+     "ssr": 1.04,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 17944.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 3567.0,
+     "imports_kt": 713.0,
+     "exports_kt": 1251.0,
+     "kcal_per_person_day": 273.96,
+     "ssr": 1.18,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 74.0,
+     "imports_kt": 46.0,
+     "exports_kt": 25.0,
+     "kcal_per_person_day": 10.21,
+     "ssr": 0.78,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 73.0,
+     "imports_kt": 88.0,
+     "exports_kt": 118.0,
+     "kcal_per_person_day": 3.6,
+     "ssr": 1.7,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 3828.0,
+     "imports_kt": 128.0,
+     "exports_kt": 767.0,
+     "kcal_per_person_day": 21.82,
+     "ssr": 1.2,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 844.0,
+     "imports_kt": 760.0,
+     "exports_kt": 240.0,
+     "kcal_per_person_day": 470.57,
+     "ssr": 0.62,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 2731.0,
+     "imports_kt": 282.0,
+     "exports_kt": 329.0,
+     "kcal_per_person_day": 32.45,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 8319.0,
+     "imports_kt": 810.0,
+     "exports_kt": 5150.0,
+     "kcal_per_person_day": 34.99,
+     "ssr": 2.09,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 2.0,
+     "imports_kt": 141.0,
+     "exports_kt": 28.0,
+     "kcal_per_person_day": 9.97,
+     "ssr": 0.02,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 18.0,
+     "imports_kt": 35.0,
+     "exports_kt": 28.0,
+     "kcal_per_person_day": 5.17,
+     "ssr": 0.72,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 4937.0,
+     "imports_kt": 212.0,
+     "exports_kt": 863.0,
+     "kcal_per_person_day": 126.74,
+     "ssr": 1.15,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 79.0,
+     "exports_kt": 247.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 3462.0,
+     "imports_kt": 356.0,
+     "exports_kt": 134.0,
+     "kcal_per_person_day": 268.33,
+     "ssr": 0.94,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 375.0,
+     "imports_kt": 136.0,
+     "exports_kt": 13.0,
+     "kcal_per_person_day": 24.95,
+     "ssr": 0.75,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 64.0,
+     "imports_kt": 21.0,
+     "exports_kt": 27.0,
+     "kcal_per_person_day": 9.67,
+     "ssr": 1.1,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 3810.0,
+     "imports_kt": 1212.0,
+     "exports_kt": 709.0,
+     "kcal_per_person_day": 92.33,
+     "ssr": 0.88,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 480.0,
+     "imports_kt": 6.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 21.35,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 493.0,
+     "imports_kt": 279.0,
+     "exports_kt": 387.0,
+     "kcal_per_person_day": 9.87,
+     "ssr": 1.28,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 9.0,
+     "imports_kt": 4.0,
+     "exports_kt": 3.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.9,
+     "state": "measured"
+    }
+   }
+  },
+  "ARG": {
+   "name": "Argentina",
+   "places": 1,
+   "m49": 32,
+   "year": 2023,
+   "kcal_per_person_day": 3360.43,
+   "self_supply_kcal_weighted": 1.0,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 18,
+   "groups": {
+    "Cereals": {
+     "production_kt": 62554.0,
+     "imports_kt": 173.0,
+     "exports_kt": 32254.0,
+     "kcal_per_person_day": 1092.56,
+     "ssr": 2.05,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 2682.0,
+     "imports_kt": 226.0,
+     "exports_kt": 406.0,
+     "kcal_per_person_day": 75.27,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 15436.0,
+     "imports_kt": null,
+     "exports_kt": null,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 2534.0,
+     "imports_kt": 29.0,
+     "exports_kt": 261.0,
+     "kcal_per_person_day": 386.07,
+     "ssr": 1.1,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 942.0,
+     "imports_kt": 13.0,
+     "exports_kt": 530.0,
+     "kcal_per_person_day": 63.91,
+     "ssr": 2.22,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 19.0,
+     "imports_kt": 24.0,
+     "exports_kt": 9.0,
+     "kcal_per_person_day": 4.12,
+     "ssr": 0.56,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 31877.0,
+     "imports_kt": 10408.0,
+     "exports_kt": 2913.0,
+     "kcal_per_person_day": 7.15,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 7392.0,
+     "imports_kt": 49.0,
+     "exports_kt": 4964.0,
+     "kcal_per_person_day": 412.88,
+     "ssr": 2.98,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 4166.0,
+     "imports_kt": 104.0,
+     "exports_kt": 379.0,
+     "kcal_per_person_day": 56.44,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 6704.0,
+     "imports_kt": 588.0,
+     "exports_kt": 2071.0,
+     "kcal_per_person_day": 85.12,
+     "ssr": 1.28,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 1351.0,
+     "imports_kt": 186.0,
+     "exports_kt": 106.0,
+     "kcal_per_person_day": 23.17,
+     "ssr": 0.94,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 12.0,
+     "imports_kt": 7.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 2.46,
+     "ssr": 0.86,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 3194.0,
+     "imports_kt": 31.0,
+     "exports_kt": 241.0,
+     "kcal_per_person_day": 94.96,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 38.0,
+     "exports_kt": 71.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 6500.0,
+     "imports_kt": 29.0,
+     "exports_kt": 970.0,
+     "kcal_per_person_day": 571.49,
+     "ssr": 1.17,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 637.0,
+     "imports_kt": 0.0,
+     "exports_kt": 108.0,
+     "kcal_per_person_day": 35.66,
+     "ssr": 1.2,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 737.0,
+     "imports_kt": 13.0,
+     "exports_kt": 187.0,
+     "kcal_per_person_day": 113.69,
+     "ssr": 1.31,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 11665.0,
+     "imports_kt": 131.0,
+     "exports_kt": 1721.0,
+     "kcal_per_person_day": 259.45,
+     "ssr": 1.16,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 977.0,
+     "imports_kt": 0.0,
+     "exports_kt": 4.0,
+     "kcal_per_person_day": 64.51,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 856.0,
+     "imports_kt": 69.0,
+     "exports_kt": 601.0,
+     "kcal_per_person_day": 11.52,
+     "ssr": 2.64,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 0.0,
+     "imports_kt": 1.0,
+     "exports_kt": null,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "places": 1,
+   "m49": 64,
+   "year": 2023,
+   "kcal_per_person_day": 3106.71,
+   "self_supply_kcal_weighted": 0.3,
+   "kcal_weight_covered_share": 0.93,
+   "groups_measured": 13,
+   "groups": {
+    "Cereals": {
+     "production_kt": 70.0,
+     "imports_kt": 230.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 1927.06,
+     "ssr": 0.23,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 74.0,
+     "imports_kt": 5.0,
+     "exports_kt": 23.0,
+     "kcal_per_person_day": 116.52,
+     "ssr": 1.32,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 0.0,
+     "imports_kt": 0.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 0.23,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 8.0,
+     "imports_kt": 16.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": 127.51,
+     "ssr": 0.47,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 2.0,
+     "imports_kt": 3.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 55.73,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Tree nuts": {
+     "production_kt": 12.0,
+     "imports_kt": 1.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 2.69,
+     "ssr": 0.92,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 0.0,
+     "imports_kt": 1.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 5.46,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 0.0,
+     "imports_kt": 16.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 399.22,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 27.0,
+     "imports_kt": 28.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 44.07,
+     "ssr": 0.51,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 30.0,
+     "imports_kt": 15.0,
+     "exports_kt": 16.0,
+     "kcal_per_person_day": 37.58,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 2.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 4.53,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": 7.0,
+     "imports_kt": 0.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 57.6,
+     "ssr": 1.17,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 58.0,
+     "imports_kt": 1.0,
+     "exports_kt": 14.0,
+     "kcal_per_person_day": 74.89,
+     "ssr": 1.29,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 4.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 9.7,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 5.0,
+     "imports_kt": 7.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 66.47,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Offals": {
+     "production_kt": 1.0,
+     "imports_kt": 1.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 6.56,
+     "ssr": 0.5,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 2.0,
+     "imports_kt": 1.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 62.45,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Milk": {
+     "production_kt": 40.0,
+     "imports_kt": 47.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 79.55,
+     "ssr": 0.46,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 3.0,
+     "imports_kt": 0.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 14.9,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Fish and seafood": {
+     "production_kt": 0.0,
+     "imports_kt": 5.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 13.99,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "CHN": {
+   "name": "China",
+   "places": 1,
+   "m49": 156,
+   "year": 2023,
+   "kcal_per_person_day": 3526.9,
+   "self_supply_kcal_weighted": 0.88,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 20,
+   "groups": {
+    "Cereals": {
+     "production_kt": 641916.0,
+     "imports_kt": 68144.0,
+     "exports_kt": 3834.0,
+     "kcal_per_person_day": 1612.13,
+     "ssr": 0.91,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 152025.0,
+     "imports_kt": 34728.0,
+     "exports_kt": 890.0,
+     "kcal_per_person_day": 143.93,
+     "ssr": 0.82,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 113726.0,
+     "imports_kt": 1909.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 19140.0,
+     "imports_kt": 6520.0,
+     "exports_kt": 3436.0,
+     "kcal_per_person_day": 88.1,
+     "ssr": 0.86,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 5131.0,
+     "imports_kt": 3453.0,
+     "exports_kt": 218.0,
+     "kcal_per_person_day": 17.96,
+     "ssr": 0.61,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 3178.0,
+     "imports_kt": 659.0,
+     "exports_kt": 487.0,
+     "kcal_per_person_day": 15.82,
+     "ssr": 0.95,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 71126.0,
+     "imports_kt": 114396.0,
+     "exports_kt": 1291.0,
+     "kcal_per_person_day": 152.5,
+     "ssr": 0.39,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 26887.0,
+     "imports_kt": 12266.0,
+     "exports_kt": 500.0,
+     "kcal_per_person_day": 234.48,
+     "ssr": 0.7,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 697337.0,
+     "imports_kt": 312.0,
+     "exports_kt": 17295.0,
+     "kcal_per_person_day": 310.42,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 191050.0,
+     "imports_kt": 6952.0,
+     "exports_kt": 4643.0,
+     "kcal_per_person_day": 150.79,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 16108.0,
+     "imports_kt": 519.0,
+     "exports_kt": 485.0,
+     "kcal_per_person_day": 2.52,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 1285.0,
+     "imports_kt": 316.0,
+     "exports_kt": 706.0,
+     "kcal_per_person_day": 3.17,
+     "ssr": 1.44,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 52812.0,
+     "imports_kt": 807.0,
+     "exports_kt": 712.0,
+     "kcal_per_person_day": 96.69,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 777.0,
+     "exports_kt": 2452.0,
+     "kcal_per_person_day": 1.26,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 97496.0,
+     "imports_kt": 7280.0,
+     "exports_kt": 1002.0,
+     "kcal_per_person_day": 419.17,
+     "ssr": 0.94,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 5295.0,
+     "imports_kt": 1136.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 16.35,
+     "ssr": 0.82,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 4226.0,
+     "imports_kt": 714.0,
+     "exports_kt": 40.0,
+     "kcal_per_person_day": 30.74,
+     "ssr": 0.86,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 46791.0,
+     "imports_kt": 33282.0,
+     "exports_kt": 181.0,
+     "kcal_per_person_day": 67.57,
+     "ssr": 0.59,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 35630.0,
+     "imports_kt": 0.0,
+     "exports_kt": 174.0,
+     "kcal_per_person_day": 82.97,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 64159.0,
+     "imports_kt": 14190.0,
+     "exports_kt": 7329.0,
+     "kcal_per_person_day": 64.56,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 21789.0,
+     "imports_kt": 332.0,
+     "exports_kt": 27.0,
+     "kcal_per_person_day": 15.75,
+     "ssr": 0.99,
+     "state": "measured"
+    }
+   }
+  },
+  "FIN": {
+   "name": "Finland",
+   "places": 1,
+   "m49": 246,
+   "year": 2023,
+   "kcal_per_person_day": 3345.6,
+   "self_supply_kcal_weighted": 0.82,
+   "kcal_weight_covered_share": 0.97,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 3007.0,
+     "imports_kt": 511.0,
+     "exports_kt": 559.0,
+     "kcal_per_person_day": 1075.14,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 498.0,
+     "imports_kt": 100.0,
+     "exports_kt": 32.0,
+     "kcal_per_person_day": 100.32,
+     "ssr": 0.88,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 421.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 97.0,
+     "imports_kt": 378.0,
+     "exports_kt": 113.0,
+     "kcal_per_person_day": 326.34,
+     "ssr": 0.27,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 99.0,
+     "imports_kt": 4.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 65.91,
+     "ssr": 0.97,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 0.0,
+     "imports_kt": 71.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 17.69,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 42.0,
+     "imports_kt": 196.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 23.46,
+     "ssr": 0.18,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 103.0,
+     "imports_kt": 135.0,
+     "exports_kt": 113.0,
+     "kcal_per_person_day": 172.61,
+     "ssr": 0.82,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 242.0,
+     "imports_kt": 390.0,
+     "exports_kt": 16.0,
+     "kcal_per_person_day": 59.77,
+     "ssr": 0.39,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 26.0,
+     "imports_kt": 556.0,
+     "exports_kt": 36.0,
+     "kcal_per_person_day": 94.34,
+     "ssr": 0.05,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 95.0,
+     "exports_kt": 20.0,
+     "kcal_per_person_day": 43.18,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 3.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 3.71,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 383.0,
+     "imports_kt": 213.0,
+     "exports_kt": 114.0,
+     "kcal_per_person_day": 117.42,
+     "ssr": 0.79,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 120.0,
+     "exports_kt": 25.0,
+     "kcal_per_person_day": 47.59,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 389.0,
+     "imports_kt": 80.0,
+     "exports_kt": 47.0,
+     "kcal_per_person_day": 354.3,
+     "ssr": 0.92,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 29.0,
+     "imports_kt": 3.0,
+     "exports_kt": 19.0,
+     "kcal_per_person_day": 9.38,
+     "ssr": 2.23,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 143.0,
+     "imports_kt": 14.0,
+     "exports_kt": 45.0,
+     "kcal_per_person_day": 207.87,
+     "ssr": 1.28,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 2239.0,
+     "imports_kt": 605.0,
+     "exports_kt": 153.0,
+     "kcal_per_person_day": 532.96,
+     "ssr": 0.83,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 75.0,
+     "imports_kt": 3.0,
+     "exports_kt": 13.0,
+     "kcal_per_person_day": 37.07,
+     "ssr": 1.15,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 179.0,
+     "imports_kt": 133.0,
+     "exports_kt": 90.0,
+     "kcal_per_person_day": 56.52,
+     "ssr": 0.81,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "GEO": {
+   "name": "Georgia",
+   "places": 1,
+   "m49": 268,
+   "year": 2023,
+   "kcal_per_person_day": 2999.83,
+   "self_supply_kcal_weighted": 0.48,
+   "kcal_weight_covered_share": 0.99,
+   "groups_measured": 18,
+   "groups": {
+    "Cereals": {
+     "production_kt": 400.0,
+     "imports_kt": 900.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 1244.09,
+     "ssr": 0.31,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 197.0,
+     "imports_kt": 44.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 90.61,
+     "ssr": 0.83,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 0.0,
+     "imports_kt": 0.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 123.0,
+     "imports_kt": 191.0,
+     "exports_kt": 145.0,
+     "kcal_per_person_day": 375.67,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 4.0,
+     "imports_kt": 14.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 2.58,
+     "ssr": 0.22,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 45.0,
+     "imports_kt": 26.0,
+     "exports_kt": 45.0,
+     "kcal_per_person_day": 47.2,
+     "ssr": 1.73,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 6.0,
+     "imports_kt": 21.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 18.12,
+     "ssr": 0.24,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 7.0,
+     "imports_kt": 59.0,
+     "exports_kt": 4.0,
+     "kcal_per_person_day": 202.23,
+     "ssr": 0.11,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 192.0,
+     "imports_kt": 192.0,
+     "exports_kt": 14.0,
+     "kcal_per_person_day": 51.64,
+     "ssr": 0.52,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 444.0,
+     "imports_kt": 125.0,
+     "exports_kt": 151.0,
+     "kcal_per_person_day": 75.64,
+     "ssr": 1.06,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 2.0,
+     "imports_kt": 69.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 88.73,
+     "ssr": 0.03,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 6.0,
+     "imports_kt": 3.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 3.76,
+     "ssr": 2.0,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 293.0,
+     "imports_kt": 39.0,
+     "exports_kt": 148.0,
+     "kcal_per_person_day": 64.56,
+     "ssr": 1.59,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 47.0,
+     "exports_kt": 3.0,
+     "kcal_per_person_day": 36.09,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 79.0,
+     "imports_kt": 116.0,
+     "exports_kt": 19.0,
+     "kcal_per_person_day": 192.47,
+     "ssr": 0.45,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 11.0,
+     "imports_kt": 3.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 12.45,
+     "ssr": 0.79,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 14.0,
+     "imports_kt": 19.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 99.1,
+     "ssr": 0.52,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 602.0,
+     "imports_kt": 251.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 335.85,
+     "ssr": 0.71,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 43.0,
+     "imports_kt": 4.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 39.31,
+     "ssr": 0.93,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 220.0,
+     "imports_kt": 22.0,
+     "exports_kt": 61.0,
+     "kcal_per_person_day": 19.74,
+     "ssr": 1.22,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "KOR": {
+   "name": "Korea, South",
+   "places": 1,
+   "m49": 410,
+   "year": 2023,
+   "kcal_per_person_day": 3430.35,
+   "self_supply_kcal_weighted": 0.4,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 19,
+   "groups": {
+    "Cereals": {
+     "production_kt": 5134.0,
+     "imports_kt": 17704.0,
+     "exports_kt": 375.0,
+     "kcal_per_person_day": 1098.04,
+     "ssr": 0.23,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 860.0,
+     "imports_kt": 683.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 39.39,
+     "ssr": 0.56,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": null,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 1630.0,
+     "imports_kt": 2422.0,
+     "exports_kt": 711.0,
+     "kcal_per_person_day": 489.09,
+     "ssr": 0.49,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 21.0,
+     "imports_kt": 109.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 14.61,
+     "ssr": 0.16,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 73.0,
+     "imports_kt": 463.0,
+     "exports_kt": 19.0,
+     "kcal_per_person_day": 34.34,
+     "ssr": 0.14,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 209.0,
+     "imports_kt": 1864.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": 96.8,
+     "ssr": 0.1,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 324.0,
+     "imports_kt": 1642.0,
+     "exports_kt": 53.0,
+     "kcal_per_person_day": 600.44,
+     "ssr": 0.17,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 9810.0,
+     "imports_kt": 2822.0,
+     "exports_kt": 150.0,
+     "kcal_per_person_day": 155.67,
+     "ssr": 0.79,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 2159.0,
+     "imports_kt": 1059.0,
+     "exports_kt": 93.0,
+     "kcal_per_person_day": 61.39,
+     "ssr": 0.69,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 2.0,
+     "imports_kt": 246.0,
+     "exports_kt": 66.0,
+     "kcal_per_person_day": 13.98,
+     "ssr": 0.01,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 23.0,
+     "imports_kt": 38.0,
+     "exports_kt": 4.0,
+     "kcal_per_person_day": 7.04,
+     "ssr": 0.4,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 3007.0,
+     "imports_kt": 1486.0,
+     "exports_kt": 288.0,
+     "kcal_per_person_day": 126.79,
+     "ssr": 0.72,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 423.0,
+     "exports_kt": 597.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 2768.0,
+     "imports_kt": 1591.0,
+     "exports_kt": 12.0,
+     "kcal_per_person_day": 362.05,
+     "ssr": 0.64,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 232.0,
+     "imports_kt": 132.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 25.36,
+     "ssr": 0.64,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 352.0,
+     "imports_kt": 108.0,
+     "exports_kt": 21.0,
+     "kcal_per_person_day": 78.44,
+     "ssr": 0.8,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 1939.0,
+     "imports_kt": 1687.0,
+     "exports_kt": 51.0,
+     "kcal_per_person_day": 53.17,
+     "ssr": 0.54,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 815.0,
+     "imports_kt": 16.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 45.44,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 1889.0,
+     "imports_kt": 2294.0,
+     "exports_kt": 954.0,
+     "kcal_per_person_day": 92.61,
+     "ssr": 0.59,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 1853.0,
+     "imports_kt": 11.0,
+     "exports_kt": 87.0,
+     "kcal_per_person_day": 35.69,
+     "ssr": 1.04,
+     "state": "measured"
+    }
+   }
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "places": 1,
+   "m49": 705,
+   "year": 2023,
+   "kcal_per_person_day": 3200.29,
+   "self_supply_kcal_weighted": 0.55,
+   "kcal_weight_covered_share": 0.96,
+   "groups_measured": 16,
+   "groups": {
+    "Cereals": {
+     "production_kt": 667.0,
+     "imports_kt": 2284.0,
+     "exports_kt": 1690.0,
+     "kcal_per_person_day": 1167.77,
+     "ssr": 0.53,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 69.0,
+     "imports_kt": 146.0,
+     "exports_kt": 61.0,
+     "kcal_per_person_day": 94.12,
+     "ssr": 0.45,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 7.0,
+     "imports_kt": 4.0,
+     "exports_kt": 11.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: nothing kept"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 19.0,
+     "imports_kt": 350.0,
+     "exports_kt": 164.0,
+     "kcal_per_person_day": 280.36,
+     "ssr": 0.09,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 1.0,
+     "imports_kt": 4.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 6.09,
+     "ssr": 0.25,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 1.0,
+     "imports_kt": 33.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": 32.23,
+     "ssr": 0.04,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 19.0,
+     "imports_kt": 115.0,
+     "exports_kt": 77.0,
+     "kcal_per_person_day": 36.88,
+     "ssr": 0.33,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 3.0,
+     "imports_kt": 108.0,
+     "exports_kt": 66.0,
+     "kcal_per_person_day": 274.74,
+     "ssr": 0.07,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 75.0,
+     "imports_kt": 398.0,
+     "exports_kt": 92.0,
+     "kcal_per_person_day": 73.0,
+     "ssr": 0.2,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 119.0,
+     "imports_kt": 412.0,
+     "exports_kt": 187.0,
+     "kcal_per_person_day": 164.89,
+     "ssr": 0.35,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 68.0,
+     "exports_kt": 31.0,
+     "kcal_per_person_day": 86.54,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 4.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 6.96,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 235.0,
+     "imports_kt": 83.0,
+     "exports_kt": 62.0,
+     "kcal_per_person_day": 155.88,
+     "ssr": 0.92,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 59.0,
+     "exports_kt": 35.0,
+     "kcal_per_person_day": 30.15,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 134.0,
+     "imports_kt": 106.0,
+     "exports_kt": 121.0,
+     "kcal_per_person_day": 245.05,
+     "ssr": 1.13,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 9.0,
+     "imports_kt": 6.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 12.85,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 23.0,
+     "imports_kt": 15.0,
+     "exports_kt": 14.0,
+     "kcal_per_person_day": 175.28,
+     "ssr": 0.96,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 608.0,
+     "imports_kt": 453.0,
+     "exports_kt": 445.0,
+     "kcal_per_person_day": 302.44,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 25.0,
+     "imports_kt": 6.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 35.47,
+     "ssr": 0.86,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 2.0,
+     "imports_kt": 46.0,
+     "exports_kt": 24.0,
+     "kcal_per_person_day": 19.61,
+     "ssr": 0.08,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "ESP": {
+   "name": "Spain",
+   "places": 1,
+   "m49": 724,
+   "year": 2023,
+   "kcal_per_person_day": 3377.16,
+   "self_supply_kcal_weighted": 0.65,
+   "kcal_weight_covered_share": 0.99,
+   "groups_measured": 18,
+   "groups": {
+    "Cereals": {
+     "production_kt": 11990.0,
+     "imports_kt": 26898.0,
+     "exports_kt": 3131.0,
+     "kcal_per_person_day": 759.92,
+     "ssr": 0.34,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 1922.0,
+     "imports_kt": 2378.0,
+     "exports_kt": 571.0,
+     "kcal_per_person_day": 105.28,
+     "ssr": 0.52,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 2890.0,
+     "imports_kt": 1.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 1239.0,
+     "imports_kt": 2553.0,
+     "exports_kt": 1197.0,
+     "kcal_per_person_day": 312.13,
+     "ssr": 0.48,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 359.0,
+     "imports_kt": 812.0,
+     "exports_kt": 32.0,
+     "kcal_per_person_day": 51.79,
+     "ssr": 0.32,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 520.0,
+     "imports_kt": 744.0,
+     "exports_kt": 512.0,
+     "kcal_per_person_day": 65.42,
+     "ssr": 0.69,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 6167.0,
+     "imports_kt": 4268.0,
+     "exports_kt": 602.0,
+     "kcal_per_person_day": 36.1,
+     "ssr": 0.63,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 2493.0,
+     "imports_kt": 3549.0,
+     "exports_kt": 2143.0,
+     "kcal_per_person_day": 678.9,
+     "ssr": 0.64,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 13666.0,
+     "imports_kt": 2195.0,
+     "exports_kt": 8797.0,
+     "kcal_per_person_day": 81.87,
+     "ssr": 1.93,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 14975.0,
+     "imports_kt": 3593.0,
+     "exports_kt": 7374.0,
+     "kcal_per_person_day": 140.0,
+     "ssr": 1.34,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 868.0,
+     "exports_kt": 543.0,
+     "kcal_per_person_day": 23.31,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 107.0,
+     "exports_kt": 112.0,
+     "kcal_per_person_day": 1.03,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 7407.0,
+     "imports_kt": 1150.0,
+     "exports_kt": 3107.0,
+     "kcal_per_person_day": 159.41,
+     "ssr": 1.36,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 447.0,
+     "exports_kt": 736.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 7356.0,
+     "imports_kt": 619.0,
+     "exports_kt": 3112.0,
+     "kcal_per_person_day": 404.61,
+     "ssr": 1.51,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 713.0,
+     "imports_kt": 35.0,
+     "exports_kt": 555.0,
+     "kcal_per_person_day": 11.72,
+     "ssr": 3.69,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 1001.0,
+     "imports_kt": 288.0,
+     "exports_kt": 350.0,
+     "kcal_per_person_day": 75.41,
+     "ssr": 1.07,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 8714.0,
+     "imports_kt": 6187.0,
+     "exports_kt": 2896.0,
+     "kcal_per_person_day": 348.36,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 880.0,
+     "imports_kt": 81.0,
+     "exports_kt": 150.0,
+     "kcal_per_person_day": 52.31,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 1086.0,
+     "imports_kt": 2495.0,
+     "exports_kt": 1717.0,
+     "kcal_per_person_day": 69.59,
+     "ssr": 0.58,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 3.0,
+     "imports_kt": 14.0,
+     "exports_kt": 5.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.25,
+     "state": "measured"
+    }
+   }
+  },
+  "SWE": {
+   "name": "Sweden",
+   "places": 1,
+   "m49": 752,
+   "year": 2023,
+   "kcal_per_person_day": 3366.78,
+   "self_supply_kcal_weighted": 0.66,
+   "kcal_weight_covered_share": 0.98,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 4328.0,
+     "imports_kt": 1069.0,
+     "exports_kt": 1487.0,
+     "kcal_per_person_day": 891.23,
+     "ssr": 1.11,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 810.0,
+     "imports_kt": 380.0,
+     "exports_kt": 47.0,
+     "kcal_per_person_day": 104.93,
+     "ssr": 0.71,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 1744.0,
+     "imports_kt": 5.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 0.0,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 372.0,
+     "imports_kt": 574.0,
+     "exports_kt": 326.0,
+     "kcal_per_person_day": 340.11,
+     "ssr": 0.6,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 105.0,
+     "imports_kt": 19.0,
+     "exports_kt": 28.0,
+     "kcal_per_person_day": 13.66,
+     "ssr": 1.09,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 0.0,
+     "imports_kt": 199.0,
+     "exports_kt": 19.0,
+     "kcal_per_person_day": 30.67,
+     "ssr": 0.0,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 309.0,
+     "imports_kt": 253.0,
+     "exports_kt": 19.0,
+     "kcal_per_person_day": 32.32,
+     "ssr": 0.57,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 170.0,
+     "imports_kt": 980.0,
+     "exports_kt": 192.0,
+     "kcal_per_person_day": 571.07,
+     "ssr": 0.18,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 327.0,
+     "imports_kt": 1655.0,
+     "exports_kt": 193.0,
+     "kcal_per_person_day": 71.07,
+     "ssr": 0.18,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 52.0,
+     "imports_kt": 1154.0,
+     "exports_kt": 114.0,
+     "kcal_per_person_day": 81.87,
+     "ssr": 0.05,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 241.0,
+     "exports_kt": 96.0,
+     "kcal_per_person_day": 18.72,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 14.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": 8.08,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 677.0,
+     "imports_kt": 717.0,
+     "exports_kt": 432.0,
+     "kcal_per_person_day": 163.25,
+     "ssr": 0.7,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 284.0,
+     "exports_kt": 185.0,
+     "kcal_per_person_day": 26.77,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 561.0,
+     "imports_kt": 339.0,
+     "exports_kt": 105.0,
+     "kcal_per_person_day": 306.68,
+     "ssr": 0.71,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 80.0,
+     "imports_kt": 93.0,
+     "exports_kt": 68.0,
+     "kcal_per_person_day": 37.43,
+     "ssr": 0.76,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 170.0,
+     "imports_kt": 35.0,
+     "exports_kt": 70.0,
+     "kcal_per_person_day": 145.88,
+     "ssr": 1.26,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 2819.0,
+     "imports_kt": 2047.0,
+     "exports_kt": 694.0,
+     "kcal_per_person_day": 433.7,
+     "ssr": 0.68,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 115.0,
+     "imports_kt": 28.0,
+     "exports_kt": 20.0,
+     "kcal_per_person_day": 37.74,
+     "ssr": 0.93,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 196.0,
+     "imports_kt": 1161.0,
+     "exports_kt": 987.0,
+     "kcal_per_person_day": 51.57,
+     "ssr": 0.53,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": null,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": null,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    }
+   }
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "places": 1,
+   "m49": 834,
+   "year": 2023,
+   "kcal_per_person_day": 2518.33,
+   "self_supply_kcal_weighted": 0.91,
+   "kcal_weight_covered_share": 1.0,
+   "groups_measured": 20,
+   "groups": {
+    "Cereals": {
+     "production_kt": 12789.0,
+     "imports_kt": 2062.0,
+     "exports_kt": 673.0,
+     "kcal_per_person_day": 1184.59,
+     "ssr": 0.9,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 14062.0,
+     "imports_kt": 10.0,
+     "exports_kt": 102.0,
+     "kcal_per_person_day": 375.49,
+     "ssr": 1.01,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 3589.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 4.96,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 727.0,
+     "imports_kt": 275.0,
+     "exports_kt": 237.0,
+     "kcal_per_person_day": 95.52,
+     "ssr": 0.95,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 2066.0,
+     "imports_kt": 9.0,
+     "exports_kt": 449.0,
+     "kcal_per_person_day": 165.82,
+     "ssr": 1.27,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": 284.0,
+     "imports_kt": 1.0,
+     "exports_kt": 231.0,
+     "kcal_per_person_day": 5.18,
+     "ssr": 5.26,
+     "state": "measured"
+    },
+    "Oilcrops": {
+     "production_kt": 2882.0,
+     "imports_kt": 43.0,
+     "exports_kt": 449.0,
+     "kcal_per_person_day": 72.86,
+     "ssr": 1.16,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 454.0,
+     "imports_kt": 404.0,
+     "exports_kt": 10.0,
+     "kcal_per_person_day": 220.02,
+     "ssr": 0.54,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 3144.0,
+     "imports_kt": 17.0,
+     "exports_kt": 109.0,
+     "kcal_per_person_day": 34.23,
+     "ssr": 1.03,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 5878.0,
+     "imports_kt": 15.0,
+     "exports_kt": 40.0,
+     "kcal_per_person_day": 106.26,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": 195.0,
+     "imports_kt": 4.0,
+     "exports_kt": 120.0,
+     "kcal_per_person_day": 0.62,
+     "ssr": 2.47,
+     "state": "measured"
+    },
+    "Spices": {
+     "production_kt": 19.0,
+     "imports_kt": 2.0,
+     "exports_kt": 7.0,
+     "kcal_per_person_day": 1.44,
+     "ssr": 1.36,
+     "state": "measured"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 3021.0,
+     "imports_kt": 67.0,
+     "exports_kt": 6.0,
+     "kcal_per_person_day": 47.41,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 22.0,
+     "exports_kt": 11.0,
+     "kcal_per_person_day": 0.49,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 830.0,
+     "imports_kt": 10.0,
+     "exports_kt": 12.0,
+     "kcal_per_person_day": 62.66,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 116.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 5.2,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 80.0,
+     "imports_kt": 2.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 25.38,
+     "ssr": 0.98,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 3865.0,
+     "imports_kt": 37.0,
+     "exports_kt": 1.0,
+     "kcal_per_person_day": 87.09,
+     "ssr": 0.99,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 249.0,
+     "imports_kt": 0.0,
+     "exports_kt": 0.0,
+     "kcal_per_person_day": 9.8,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 522.0,
+     "imports_kt": 2.0,
+     "exports_kt": 94.0,
+     "kcal_per_person_day": 13.3,
+     "ssr": 1.21,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 106.0,
+     "imports_kt": 0.0,
+     "exports_kt": 11.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.12,
+     "state": "measured"
+    }
+   }
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "places": 1,
+   "m49": 826,
+   "year": 2023,
+   "kcal_per_person_day": 3434.59,
+   "self_supply_kcal_weighted": 0.64,
+   "kcal_weight_covered_share": 0.96,
+   "groups_measured": 17,
+   "groups": {
+    "Cereals": {
+     "production_kt": 22055.0,
+     "imports_kt": 11013.0,
+     "exports_kt": 4173.0,
+     "kcal_per_person_day": 1021.15,
+     "ssr": 0.76,
+     "state": "measured"
+    },
+    "Starchy roots": {
+     "production_kt": 4704.0,
+     "imports_kt": 2542.0,
+     "exports_kt": 369.0,
+     "kcal_per_person_day": 120.8,
+     "ssr": 0.68,
+     "state": "measured"
+    },
+    "Sugar crops": {
+     "production_kt": 7746.0,
+     "imports_kt": 5.0,
+     "exports_kt": 2.0,
+     "kcal_per_person_day": null,
+     "ssr": 1.0,
+     "state": "measured"
+    },
+    "Sugar and sweeteners": {
+     "production_kt": 1675.0,
+     "imports_kt": 4023.0,
+     "exports_kt": 821.0,
+     "kcal_per_person_day": 327.01,
+     "ssr": 0.34,
+     "state": "measured"
+    },
+    "Pulses": {
+     "production_kt": 1141.0,
+     "imports_kt": 278.0,
+     "exports_kt": 300.0,
+     "kcal_per_person_day": 14.3,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Tree nuts": {
+     "production_kt": null,
+     "imports_kt": 791.0,
+     "exports_kt": 40.0,
+     "kcal_per_person_day": 20.18,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Oilcrops": {
+     "production_kt": 1259.0,
+     "imports_kt": 2241.0,
+     "exports_kt": 105.0,
+     "kcal_per_person_day": 39.7,
+     "ssr": 0.37,
+     "state": "measured"
+    },
+    "Vegetable oils": {
+     "production_kt": 963.0,
+     "imports_kt": 1129.0,
+     "exports_kt": 171.0,
+     "kcal_per_person_day": 500.49,
+     "ssr": 0.5,
+     "state": "measured"
+    },
+    "Vegetables": {
+     "production_kt": 2247.0,
+     "imports_kt": 10457.0,
+     "exports_kt": 811.0,
+     "kcal_per_person_day": 73.43,
+     "ssr": 0.19,
+     "state": "measured"
+    },
+    "Fruits": {
+     "production_kt": 585.0,
+     "imports_kt": 6203.0,
+     "exports_kt": 184.0,
+     "kcal_per_person_day": 107.32,
+     "ssr": 0.09,
+     "state": "measured"
+    },
+    "Stimulants": {
+     "production_kt": null,
+     "imports_kt": 1155.0,
+     "exports_kt": 404.0,
+     "kcal_per_person_day": 82.74,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Spices": {
+     "production_kt": null,
+     "imports_kt": 91.0,
+     "exports_kt": 8.0,
+     "kcal_per_person_day": 8.28,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Alcoholic beverages": {
+     "production_kt": 4440.0,
+     "imports_kt": 3604.0,
+     "exports_kt": 1760.0,
+     "kcal_per_person_day": 136.12,
+     "ssr": 0.71,
+     "state": "measured"
+    },
+    "Miscellaneous": {
+     "production_kt": null,
+     "imports_kt": 1268.0,
+     "exports_kt": 409.0,
+     "kcal_per_person_day": 39.84,
+     "ssr": null,
+     "state": "not covered: FAO leaves a value blank"
+    },
+    "Meat": {
+     "production_kt": 4107.0,
+     "imports_kt": 2424.0,
+     "exports_kt": 636.0,
+     "kcal_per_person_day": 383.21,
+     "ssr": 0.7,
+     "state": "measured"
+    },
+    "Offals": {
+     "production_kt": 233.0,
+     "imports_kt": 60.0,
+     "exports_kt": 176.0,
+     "kcal_per_person_day": 7.67,
+     "ssr": 1.99,
+     "state": "measured"
+    },
+    "Animal fats": {
+     "production_kt": 594.0,
+     "imports_kt": 208.0,
+     "exports_kt": 222.0,
+     "kcal_per_person_day": 122.68,
+     "ssr": 1.02,
+     "state": "measured"
+    },
+    "Milk": {
+     "production_kt": 15760.0,
+     "imports_kt": 9100.0,
+     "exports_kt": 3368.0,
+     "kcal_per_person_day": 358.99,
+     "ssr": 0.73,
+     "state": "measured"
+    },
+    "Eggs": {
+     "production_kt": 741.0,
+     "imports_kt": 130.0,
+     "exports_kt": 33.0,
+     "kcal_per_person_day": 38.24,
+     "ssr": 0.88,
+     "state": "measured"
+    },
+    "Fish and seafood": {
+     "production_kt": 847.0,
+     "imports_kt": 1723.0,
+     "exports_kt": 983.0,
+     "kcal_per_person_day": 32.43,
+     "ssr": 0.53,
+     "state": "measured"
+    },
+    "Other aquatic products": {
+     "production_kt": 0.0,
+     "imports_kt": 8.0,
+     "exports_kt": 3.0,
+     "kcal_per_person_day": null,
+     "ssr": 0.0,
+     "state": "measured"
+    }
+   }
+  }
+ },
+ "not_in_fao": [
+  "Japan"
+ ],
+ "source": "FAO, FAOSTAT Food Balance Sheets (2010-), bulk file https://bulks-faostat.fao.org/production/FoodBalanceSheets_E_All_Data.zip (FoodBalanceSheets_E_All_Data_NOFLAG.csv), elements 5511, 5611, 5911 and 664, years [2010, 2023]; country codes from the Atlas classification (M49)"
+}
