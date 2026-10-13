@@ -11,6 +11,10 @@ python3 compute/goods.py --selftest           # no network; the OECD slice read 
 python3 compute/goods.py                      # two OECD SDMX calls (~17 MB), writes results/goods-country.json
 python3 compute/energy.py --selftest          # no network; the World Bank reading on a fake answer
 python3 compute/energy.py                     # two World Bank API calls (slow, ~3 min), writes results/energy-country.json
+python3 compute/materials.py --selftest       # no network; the OECD material flow reading on a fake slice
+python3 compute/materials.py                  # one OECD SDMX call, writes results/materials-country.json
+python3 compute/water.py --selftest           # no network; the AQUASTAT reading on a fake answer
+python3 compute/water.py                      # one FAO query, writes results/water-country.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -373,8 +377,9 @@ reaches no page. Today the Economic|Region goods index is the only cell score (B
 Recife); waste and material use are indicators the report follows, not inputs to the FCI. Each place file also
 carries `country_bracket`, the whole country's goods trade (`trade`, from `results/atlas-country.json`), food
 self-sufficiency (`food`, from `results/food-country.json`) and the domestic share of value added in what it buys
-(`goods`, from `results/goods-country.json`) and energy made at home (`energy`, from `results/energy-country.json`); see *The
-country bracket*. No half is a cell or an input to the score,
+(`goods`, from `results/goods-country.json`) energy made at home (`energy`, from `results/energy-country.json`), materials dug at home (`materials`, from
+`results/materials-country.json`) and water from inside (`water`, from `results/water-country.json`); see *The country bracket*.
+No half is a cell or an input to the score,
 and a half with no row says `not_measured`.
 
 ## Santiago with trade taken out: ENIA and the EPF
@@ -694,3 +699,90 @@ Not in the series: Bhutan. Germany makes 30% of the energy it uses and the Nethe
 North Sea gas fields closing; Canada, Indonesia and the United States produce more than they use. The call to the Bank's
 API for every country takes about three minutes; it answers with the current year's bound ignored, so the module asks to
 2100 and takes what it has.
+
+### Materials: of the materials the country consumes, the share dug inside it
+
+`compute/materials.py` reads the OECD's economy-wide material flow accounts (registry `economic/bioregion/oecd-material-flows-sdmx`;
+OECD terms: any use including commercial, credit the OECD) in one SDMX call and writes `results/materials-country.json`.
+Domestic material consumption is domestic extraction plus imports minus exports, so **extraction over consumption is the
+share dug at home**, above 1 for a country that extracts more than it keeps. Unlike the energy half, imports and exports are
+published separately, and the material footprint, the raw materials embodied in what the country consumes wherever they were
+dug, stands beside consumption. All in tonnes: a tonne of sand and a tonne of copper weigh the same, and the four material
+groups in each place's JSON tell them apart. All 26 tracker countries answer, Bhutan, Ghana, Georgia and Tanzania included;
+EU countries carry a 2025 now-cast. `api.mjs` serves it as `country_bracket.materials`.
+
+| Country | Index places | Year | Materials dug at home | Position | Consumption, Mt | Imports ÷ consumption | Footprint ÷ consumption |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| France (FRA) | 8 | 2025 | 0.87 | net importer | 722 | 0.36 | none |
+| United States of America (USA) | 7 | 2024 | 1.01 | net exporter | 7,937 | 0.08 | 1.36 |
+| Brazil (BRA) | 5 | 2024 | 1.15 | net exporter | 4,423 | 0.02 | 0.82 |
+| Indonesia (IDN) | 5 | 2024 | 1.22 | net exporter | 2,259 | 0.05 | 0.98 |
+| Mexico (MEX) | 5 | 2024 | 1.00 | net importer | 1,574 | 0.07 | 0.93 |
+| Germany (DEU) | 3 | 2025 | 0.81 | net importer | 1,018 | 0.49 | none |
+| Austria (AUT) | 2 | 2025 | 0.86 | net importer | 140 | 0.55 | none |
+| Canada (CAN) | 2 | 2024 | 1.14 | net exporter | 2,286 | 0.06 | 0.69 |
+| Chile (CHL) | 2 | 2024 | 1.01 | net exporter | 1,049 | 0.03 | 0.28 |
+| Croatia (HRV) | 2 | 2025 | 0.86 | net importer | 53 | 0.51 | none |
+| Ghana (GHA) | 2 | 2024 | 1.03 | net exporter | 312 | 0.02 | 0.68 |
+| India (IND) | 2 | 2024 | 0.95 | net importer | 8,885 | 0.07 | 0.88 |
+| Netherlands (NLD) | 2 | 2025 | 0.55 | net importer | 141 | 2.58 | none |
+| South Africa (ZAF) | 2 | 2024 | 1.28 | net exporter | 676 | 0.05 | 0.53 |
+| Argentina (ARG) | 1 | 2024 | 1.07 | net exporter | 911 | 0.03 | 0.84 |
+| Bhutan (BTN) | 1 | 2024 | 1.10 | net exporter | 22 | 0.05 | 0.91 |
+| China (CHN) | 1 | 2024 | 0.93 | net importer | 38,043 | 0.08 | 0.96 |
+| Finland (FIN) | 1 | 2025 | 1.00 | net importer | 224 | 0.19 | none |
+| Georgia (GEO) | 1 | 2024 | 0.94 | net importer | 38 | 0.12 | 1.18 |
+| Japan (JPN) | 1 | 2024 | 0.59 | net importer | 1,389 | 0.43 | 1.60 |
+| Korea, South (KOR) | 1 | 2024 | 0.57 | net importer | 1,032 | 0.46 | 1.22 |
+| Slovenia (SVN) | 1 | 2025 | 0.80 | net importer | 31 | 0.72 | none |
+| Spain (ESP) | 1 | 2025 | 0.84 | net importer | 502 | 0.47 | none |
+| Sweden (SWE) | 1 | 2025 | 1.05 | net exporter | 242 | 0.29 | none |
+| Tanzania (TZA) | 1 | 2024 | 1.00 | net exporter | 249 | 0.01 | 1.19 |
+| United Kingdom (GBR) | 1 | 2024 | 0.86 | net importer | 749 | 0.23 | 1.61 |
+
+The Netherlands imports two and a half times what it consumes, and Rotterdam explains it: the accounts count what lands,
+and re-exports leave as exports. Japan and Korea dig under 60% of what they consume; Chile and Tanzania dig almost exactly
+what they keep, with a small surplus exported.
+
+### Water: of the renewable water the country has, the share that rises inside it
+
+`compute/water.py` reads FAO AQUASTAT through the dissemination system's query endpoint (registry
+`environmental/bioregion/fao-aquastat`, a **candidate with a licence conflict**: FAO's database terms list AQUASTAT under
+CC BY 4.0, FAO's catalogue labels the dissemination dataset CC BY-NC-SA 4.0, and the maintainer decides which governs) and
+writes `results/water-country.json`. Water is not bought abroad like goods, so "made at home" here is provenance: **one minus
+the dependency ratio**, the share of a country's total renewable water that flows in from other countries. Beside it, the share
+of what it has that it withdraws in a year. Resources are long-term averages AQUASTAT repeats each year; withdrawals carry
+their own year and symbol (I imputed, E estimate, A actual). `api.mjs` serves it as `country_bracket.water`.
+
+| Country | Index places | Year | Water from inside | Dependency ratio | Renewable, km³/yr | Withdraws of what it has |
+| --- | --- | --- | --- | --- | --- | --- |
+| France (FRA) | 8 | 2022 | 0.95 | 0.05 | 211 | 12% |
+| United States of America (USA) | 7 | 2022 | 0.92 | 0.08 | 3,069 | 13% |
+| Brazil (BRA) | 5 | 2022 | 0.66 | 0.34 | 8,647 | 1% |
+| Indonesia (IDN) | 5 | 2022 | 1.00 | 0.00 | 2,019 | 11% |
+| Mexico (MEX) | 5 | 2022 | 0.89 | 0.12 | 462 | 19% |
+| Germany (DEU) | 3 | 2022 | 0.69 | 0.30 | 154 | 15% |
+| Austria (AUT) | 2 | 2022 | 0.71 | 0.29 | 78 | 4% |
+| Canada (CAN) | 2 | 2022 | 0.98 | 0.02 | 2,902 | 1% |
+| Chile (CHL) | 2 | 2022 | 0.96 | 0.04 | 923 | 4% |
+| Croatia (HRV) | 2 | 2022 | 0.36 | 0.64 | 106 | 1% |
+| Ghana (GHA) | 2 | 2022 | 0.54 | 0.46 | 56 | 0% |
+| India (IND) | 2 | 2022 | 0.69 | 0.30 | 1,911 | 34% |
+| Netherlands (NLD) | 2 | 2022 | 0.12 | 0.88 | 91 | 9% |
+| South Africa (ZAF) | 2 | 2022 | 0.87 | 0.13 | 51 | 39% |
+| Argentina (ARG) | 1 | 2022 | 0.33 | 0.67 | 876 | 4% |
+| Bhutan (BTN) | 1 | 2022 | 1.00 | 0.00 | 78 | 0% |
+| China (CHN) | 1 | 2022 | 0.99 | 0.01 | 2,840 | 20% |
+| Finland (FIN) | 1 | 2022 | 0.97 | 0.03 | 110 | 3% |
+| Georgia (GEO) | 1 | 2022 | 0.92 | 0.08 | 63 | 2% |
+| Japan (JPN) | 1 | 2022 | 1.00 | 0.00 | 430 | 18% |
+| Korea, South (KOR) | 1 | 2022 | 0.93 | 0.07 | 70 | 42% |
+| Slovenia (SVN) | 1 | 2022 | 0.59 | 0.41 | 32 | 3% |
+| Spain (ESP) | 1 | 2022 | 1.00 | 0.00 | 112 | 26% |
+| Sweden (SWE) | 1 | 2022 | 0.98 | 0.02 | 174 | 1% |
+| Tanzania (TZA) | 1 | 2022 | 0.87 | 0.13 | 96 | 5% |
+| United Kingdom (GBR) | 1 | 2022 | 0.99 | 0.01 | 147 | 6% |
+
+Spain's renewable water is its own (0.3 of 111.5 km³ flows in), and it withdraws a quarter of it. The Netherlands lives on the
+Rhine and the Meuse: 88% of its renewable water rises elsewhere. Argentina (the Paraná), Croatia (the Danube basin) and Ghana
+(the Volta) depend on neighbours for a third to two thirds. Korea and South Africa withdraw about 40% of what they have.

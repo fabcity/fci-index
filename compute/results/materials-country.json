@@ -1,0 +1,1553 @@
+{
+ "reads_as": "The country each place sits in, as the OECD's material flow accounts read it: of the materials the country consumes, in tonnes, the share it extracted inside its own borders. Above 1 the country extracts more than it keeps and exports the rest. Tonnes weigh sand and copper alike; the four groups in the place's JSON tell them apart. The material footprint beside it counts the raw materials embodied in what the country consumes wherever they were dug. A country figure, never a city's.",
+ "licence": "OECD Terms and Conditions, Data, Permitted Use (read 2026-10-13): any purpose including commercial, credit the OECD, same acknowledgment in sub-licences. Cite: OECD (2025), Material resources (economy-wide material flow accounts), https://sdmx.oecd.org/public/rest/dataflow/OECD.ENV.EPI/DSD_MATERIAL_RESOURCES@DF_MATERIAL_RESOURCES/1.0 (accessed on 2026-10-13)",
+ "year": 2025,
+ "countries": {
+  "FRA": {
+   "name": "France",
+   "places": 8,
+   "year": 2025,
+   "made_at_home": 0.871,
+   "position": "net importer",
+   "domestic_extraction_mt": 629.0,
+   "imports_mt": 258.1,
+   "exports_mt": 165.3,
+   "domestic_material_consumption_mt": 721.8,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.358,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.091,
+     "domestic_material_consumption_mt": 258.5
+    },
+    "metals": {
+     "made_at_home": 0.01,
+     "domestic_material_consumption_mt": 15.5
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.954,
+     "domestic_material_consumption_mt": 362.9
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.006,
+     "domestic_material_consumption_mt": 84.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.838
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.847
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.858
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.857
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.862
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.868
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.871
+    }
+   ]
+  },
+  "USA": {
+   "name": "United States of America",
+   "places": 7,
+   "year": 2024,
+   "made_at_home": 1.009,
+   "position": "net exporter",
+   "domestic_extraction_mt": 8008.3,
+   "imports_mt": 650.2,
+   "exports_mt": 721.6,
+   "domestic_material_consumption_mt": 7937.0,
+   "material_footprint_mt": 10790.6,
+   "imports_share_of_consumption": 0.082,
+   "footprint_over_consumption": 1.36,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.092,
+     "domestic_material_consumption_mt": 1994.6
+    },
+    "metals": {
+     "made_at_home": 0.945,
+     "domestic_material_consumption_mt": 702.5
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.982,
+     "domestic_material_consumption_mt": 3347.1
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.993,
+     "domestic_material_consumption_mt": 1892.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.996
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.007
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.01
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.009
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.009
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.009
+    }
+   ]
+  },
+  "BRA": {
+   "name": "Brazil",
+   "places": 5,
+   "year": 2024,
+   "made_at_home": 1.15,
+   "position": "net exporter",
+   "domestic_extraction_mt": 5084.5,
+   "imports_mt": 72.0,
+   "exports_mt": 733.3,
+   "domestic_material_consumption_mt": 4423.2,
+   "material_footprint_mt": 3632.6,
+   "imports_share_of_consumption": 0.016,
+   "footprint_over_consumption": 0.82,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.071,
+     "domestic_material_consumption_mt": 2781.7
+    },
+    "metals": {
+     "made_at_home": 2.814,
+     "domestic_material_consumption_mt": 236.4
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.99,
+     "domestic_material_consumption_mt": 1267.8
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.34,
+     "domestic_material_consumption_mt": 137.3
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.136
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.142
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.142
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.145
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.148
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.15
+    }
+   ]
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "places": 5,
+   "year": 2024,
+   "made_at_home": 1.215,
+   "position": "net exporter",
+   "domestic_extraction_mt": 2744.7,
+   "imports_mt": 104.9,
+   "exports_mt": 591.1,
+   "domestic_material_consumption_mt": 2258.6,
+   "material_footprint_mt": 2220.6,
+   "imports_share_of_consumption": 0.046,
+   "footprint_over_consumption": 0.98,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.022,
+     "domestic_material_consumption_mt": 1218.9
+    },
+    "metals": {
+     "made_at_home": 1.345,
+     "domestic_material_consumption_mt": 134.1
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.989,
+     "domestic_material_consumption_mt": 652.0
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 2.658,
+     "domestic_material_consumption_mt": 253.6
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.261
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.232
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.235
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.229
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.222
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.215
+    }
+   ]
+  },
+  "MEX": {
+   "name": "Mexico",
+   "places": 5,
+   "year": 2024,
+   "made_at_home": 0.996,
+   "position": "net importer",
+   "domestic_extraction_mt": 1567.3,
+   "imports_mt": 115.5,
+   "exports_mt": 109.0,
+   "domestic_material_consumption_mt": 1573.8,
+   "material_footprint_mt": 1463.3,
+   "imports_share_of_consumption": 0.073,
+   "footprint_over_consumption": 0.93,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.944,
+     "domestic_material_consumption_mt": 488.8
+    },
+    "metals": {
+     "made_at_home": 0.99,
+     "domestic_material_consumption_mt": 488.6
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.032,
+     "domestic_material_consumption_mt": 472.7
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.085,
+     "domestic_material_consumption_mt": 123.6
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.998
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.997
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.991
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.993
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.995
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.996
+    }
+   ]
+  },
+  "DEU": {
+   "name": "Germany",
+   "places": 3,
+   "year": 2025,
+   "made_at_home": 0.813,
+   "position": "net importer",
+   "domestic_extraction_mt": 827.0,
+   "imports_mt": 503.3,
+   "exports_mt": 312.6,
+   "domestic_material_consumption_mt": 1017.7,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.495,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.942,
+     "domestic_material_consumption_mt": 271.4
+    },
+    "metals": {
+     "made_at_home": 0.014,
+     "domestic_material_consumption_mt": 34.9
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.029,
+     "domestic_material_consumption_mt": 464.8
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.375,
+     "domestic_material_consumption_mt": 246.7
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.802
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.821
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.817
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.821
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.827
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.835
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.813
+    }
+   ]
+  },
+  "AUT": {
+   "name": "Austria",
+   "places": 2,
+   "year": 2025,
+   "made_at_home": 0.86,
+   "position": "net importer",
+   "domestic_extraction_mt": 120.9,
+   "imports_mt": 76.6,
+   "exports_mt": 57.0,
+   "domestic_material_consumption_mt": 140.5,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.545,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.969,
+     "domestic_material_consumption_mt": 41.8
+    },
+    "metals": {
+     "made_at_home": 0.518,
+     "domestic_material_consumption_mt": 9.4
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.015,
+     "domestic_material_consumption_mt": 73.6
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.053,
+     "domestic_material_consumption_mt": 15.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.794
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.797
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.807
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.818
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.824
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.844
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.86
+    }
+   ]
+  },
+  "CAN": {
+   "name": "Canada",
+   "places": 2,
+   "year": 2024,
+   "made_at_home": 1.142,
+   "position": "net exporter",
+   "domestic_extraction_mt": 2610.5,
+   "imports_mt": 144.4,
+   "exports_mt": 469.2,
+   "domestic_material_consumption_mt": 2285.7,
+   "material_footprint_mt": 1581.0,
+   "imports_share_of_consumption": 0.063,
+   "footprint_over_consumption": 0.69,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.396,
+     "domestic_material_consumption_mt": 224.3
+    },
+    "metals": {
+     "made_at_home": 1.151,
+     "domestic_material_consumption_mt": 222.2
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.011,
+     "domestic_material_consumption_mt": 657.9
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.165,
+     "domestic_material_consumption_mt": 1181.2
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.141
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.143
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.144
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.143
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.142
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.142
+    }
+   ]
+  },
+  "CHL": {
+   "name": "Chile",
+   "places": 2,
+   "year": 2024,
+   "made_at_home": 1.012,
+   "position": "net exporter",
+   "domestic_extraction_mt": 1061.5,
+   "imports_mt": 35.5,
+   "exports_mt": 47.7,
+   "domestic_material_consumption_mt": 1049.4,
+   "material_footprint_mt": 289.6,
+   "imports_share_of_consumption": 0.034,
+   "footprint_over_consumption": 0.28,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.199,
+     "domestic_material_consumption_mt": 61.2
+    },
+    "metals": {
+     "made_at_home": 1.016,
+     "domestic_material_consumption_mt": 901.4
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.131,
+     "domestic_material_consumption_mt": 63.1
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.055,
+     "domestic_material_consumption_mt": 23.7
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.011
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.013
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.009
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.01
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.01
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.012
+    }
+   ]
+  },
+  "HRV": {
+   "name": "Croatia",
+   "places": 2,
+   "year": 2025,
+   "made_at_home": 0.864,
+   "position": "net importer",
+   "domestic_extraction_mt": 45.9,
+   "imports_mt": 27.0,
+   "exports_mt": 19.8,
+   "domestic_material_consumption_mt": 53.1,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.508,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.158,
+     "domestic_material_consumption_mt": 13.4
+    },
+    "metals": {
+     "made_at_home": 0.0,
+     "domestic_material_consumption_mt": 1.3
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.927,
+     "domestic_material_consumption_mt": 31.6
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.159,
+     "domestic_material_consumption_mt": 6.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.958
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.966
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.959
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.909
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.882
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.869
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.864
+    }
+   ]
+  },
+  "GHA": {
+   "name": "Ghana",
+   "places": 2,
+   "year": 2024,
+   "made_at_home": 1.032,
+   "position": "net exporter",
+   "domestic_extraction_mt": 322.2,
+   "imports_mt": 6.5,
+   "exports_mt": 16.5,
+   "domestic_material_consumption_mt": 312.2,
+   "material_footprint_mt": 213.3,
+   "imports_share_of_consumption": 0.021,
+   "footprint_over_consumption": 0.68,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.989,
+     "domestic_material_consumption_mt": 139.1
+    },
+    "metals": {
+     "made_at_home": 1.054,
+     "domestic_material_consumption_mt": 96.7
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.979,
+     "domestic_material_consumption_mt": 73.8
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 4.052,
+     "domestic_material_consumption_mt": 2.6
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.037
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.036
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.032
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.032
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.033
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.032
+    }
+   ]
+  },
+  "IND": {
+   "name": "India",
+   "places": 2,
+   "year": 2024,
+   "made_at_home": 0.948,
+   "position": "net importer",
+   "domestic_extraction_mt": 8427.1,
+   "imports_mt": 641.1,
+   "exports_mt": 183.2,
+   "domestic_material_consumption_mt": 8885.0,
+   "material_footprint_mt": 7807.7,
+   "imports_share_of_consumption": 0.072,
+   "footprint_over_consumption": 0.88,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.009,
+     "domestic_material_consumption_mt": 3150.3
+    },
+    "metals": {
+     "made_at_home": 1.114,
+     "domestic_material_consumption_mt": 281.2
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.995,
+     "domestic_material_consumption_mt": 4000.4
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.657,
+     "domestic_material_consumption_mt": 1453.0
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.935
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.944
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.947
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.947
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.948
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.948
+    }
+   ]
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "places": 2,
+   "year": 2025,
+   "made_at_home": 0.552,
+   "position": "net importer",
+   "domestic_extraction_mt": 77.8,
+   "imports_mt": 363.8,
+   "exports_mt": 300.7,
+   "domestic_material_consumption_mt": 140.9,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 2.582,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.777,
+     "domestic_material_consumption_mt": 54.7
+    },
+    "metals": {
+     "made_at_home": 0.0,
+     "domestic_material_consumption_mt": 0.7
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.886,
+     "domestic_material_consumption_mt": 31.4
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.138,
+     "domestic_material_consumption_mt": 54.2
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.585
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.583
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.61
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.533
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.554
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.52
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.552
+    }
+   ]
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "places": 2,
+   "year": 2024,
+   "made_at_home": 1.283,
+   "position": "net exporter",
+   "domestic_extraction_mt": 867.8,
+   "imports_mt": 31.7,
+   "exports_mt": 223.1,
+   "domestic_material_consumption_mt": 676.4,
+   "material_footprint_mt": 355.4,
+   "imports_share_of_consumption": 0.047,
+   "footprint_over_consumption": 0.53,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.05,
+     "domestic_material_consumption_mt": 176.7
+    },
+    "metals": {
+     "made_at_home": 1.92,
+     "domestic_material_consumption_mt": 132.7
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.001,
+     "domestic_material_consumption_mt": 188.4
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.337,
+     "domestic_material_consumption_mt": 178.6
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.237
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.267
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.272
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.275
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.279
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.283
+    }
+   ]
+  },
+  "ARG": {
+   "name": "Argentina",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 1.073,
+   "position": "net exporter",
+   "domestic_extraction_mt": 976.9,
+   "imports_mt": 25.6,
+   "exports_mt": 91.9,
+   "domestic_material_consumption_mt": 910.6,
+   "material_footprint_mt": 760.6,
+   "imports_share_of_consumption": 0.028,
+   "footprint_over_consumption": 0.84,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.134,
+     "domestic_material_consumption_mt": 593.4
+    },
+    "metals": {
+     "made_at_home": 0.801,
+     "domestic_material_consumption_mt": 29.5
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.987,
+     "domestic_material_consumption_mt": 216.3
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.938,
+     "domestic_material_consumption_mt": 71.4
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.101
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.093
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.077
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.075
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.074
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.073
+    }
+   ]
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 1.104,
+   "position": "net exporter",
+   "domestic_extraction_mt": 24.3,
+   "imports_mt": 1.0,
+   "exports_mt": 3.3,
+   "domestic_material_consumption_mt": 22.0,
+   "material_footprint_mt": 20.0,
+   "imports_share_of_consumption": 0.046,
+   "footprint_over_consumption": 0.91,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.941,
+     "domestic_material_consumption_mt": 4.9
+    },
+    "metals": {
+     "made_at_home": -0.76,
+     "domestic_material_consumption_mt": -0.0
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.15,
+     "domestic_material_consumption_mt": 16.9
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.003,
+     "domestic_material_consumption_mt": 0.2
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.107
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.108
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.107
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.106
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.104
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.104
+    }
+   ]
+  },
+  "CHN": {
+   "name": "China",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 0.926,
+   "position": "net importer",
+   "domestic_extraction_mt": 35241.7,
+   "imports_mt": 3052.8,
+   "exports_mt": 251.5,
+   "domestic_material_consumption_mt": 38042.9,
+   "material_footprint_mt": 36546.0,
+   "imports_share_of_consumption": 0.08,
+   "footprint_over_consumption": 0.96,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.918,
+     "domestic_material_consumption_mt": 4440.7
+    },
+    "metals": {
+     "made_at_home": 0.589,
+     "domestic_material_consumption_mt": 3628.7
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.003,
+     "domestic_material_consumption_mt": 24669.8
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.809,
+     "domestic_material_consumption_mt": 5303.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.929
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.927
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.926
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.926
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.926
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.926
+    }
+   ]
+  },
+  "FIN": {
+   "name": "Finland",
+   "places": 1,
+   "year": 2025,
+   "made_at_home": 0.999,
+   "position": "net importer",
+   "domestic_extraction_mt": 223.3,
+   "imports_mt": 41.9,
+   "exports_mt": 41.8,
+   "domestic_material_consumption_mt": 223.5,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.188,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.305,
+     "domestic_material_consumption_mt": 36.9
+    },
+    "metals": {
+     "made_at_home": 0.928,
+     "domestic_material_consumption_mt": 33.4
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.999,
+     "domestic_material_consumption_mt": 142.8
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.139,
+     "domestic_material_consumption_mt": 10.3
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.973
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.965
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.969
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.982
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.986
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.983
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.999
+    }
+   ]
+  },
+  "GEO": {
+   "name": "Georgia",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 0.935,
+   "position": "net importer",
+   "domestic_extraction_mt": 35.3,
+   "imports_mt": 4.4,
+   "exports_mt": 1.9,
+   "domestic_material_consumption_mt": 37.8,
+   "material_footprint_mt": 44.7,
+   "imports_share_of_consumption": 0.116,
+   "footprint_over_consumption": 1.18,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.897,
+     "domestic_material_consumption_mt": 6.1
+    },
+    "metals": {
+     "made_at_home": 0.982,
+     "domestic_material_consumption_mt": 5.6
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.002,
+     "domestic_material_consumption_mt": 24.1
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.068,
+     "domestic_material_consumption_mt": 1.9
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.913
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.917
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.927
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.929
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.933
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.935
+    }
+   ]
+  },
+  "JPN": {
+   "name": "Japan",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 0.592,
+   "position": "net importer",
+   "domestic_extraction_mt": 823.1,
+   "imports_mt": 604.2,
+   "exports_mt": 38.1,
+   "domestic_material_consumption_mt": 1389.3,
+   "material_footprint_mt": 2217.5,
+   "imports_share_of_consumption": 0.435,
+   "footprint_over_consumption": 1.6,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.545,
+     "domestic_material_consumption_mt": 160.4
+    },
+    "metals": {
+     "made_at_home": 0.005,
+     "domestic_material_consumption_mt": 120.6
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.981,
+     "domestic_material_consumption_mt": 746.5
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.008,
+     "domestic_material_consumption_mt": 361.6
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.541
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.566
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.564
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.574
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.585
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.592
+    }
+   ]
+  },
+  "KOR": {
+   "name": "Korea, South",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 0.571,
+   "position": "net importer",
+   "domestic_extraction_mt": 589.3,
+   "imports_mt": 470.6,
+   "exports_mt": 28.3,
+   "domestic_material_consumption_mt": 1031.6,
+   "material_footprint_mt": 1258.0,
+   "imports_share_of_consumption": 0.456,
+   "footprint_over_consumption": 1.22,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.489,
+     "domestic_material_consumption_mt": 92.9
+    },
+    "metals": {
+     "made_at_home": 0.018,
+     "domestic_material_consumption_mt": 85.2
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.977,
+     "domestic_material_consumption_mt": 553.7
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.004,
+     "domestic_material_consumption_mt": 299.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.532
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.554
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.556
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.56
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.565
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.571
+    }
+   ]
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "places": 1,
+   "year": 2025,
+   "made_at_home": 0.804,
+   "position": "net importer",
+   "domestic_extraction_mt": 25.1,
+   "imports_mt": 22.3,
+   "exports_mt": 16.2,
+   "domestic_material_consumption_mt": 31.2,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.717,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.09,
+     "domestic_material_consumption_mt": 6.2
+    },
+    "metals": {
+     "made_at_home": 0.0,
+     "domestic_material_consumption_mt": 0.8
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.917,
+     "domestic_material_consumption_mt": 18.0
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.288,
+     "domestic_material_consumption_mt": 6.1
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.861
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.874
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.876
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.836
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.829
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.843
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.804
+    }
+   ]
+  },
+  "ESP": {
+   "name": "Spain",
+   "places": 1,
+   "year": 2025,
+   "made_at_home": 0.839,
+   "position": "net importer",
+   "domestic_extraction_mt": 421.4,
+   "imports_mt": 235.0,
+   "exports_mt": 154.4,
+   "domestic_material_consumption_mt": 502.0,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.468,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.921,
+     "domestic_material_consumption_mt": 143.7
+    },
+    "metals": {
+     "made_at_home": 0.547,
+     "domestic_material_consumption_mt": 35.5
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 1.094,
+     "domestic_material_consumption_mt": 246.4
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.002,
+     "domestic_material_consumption_mt": 76.4
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.813
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.857
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.848
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.81
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.822
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.832
+    },
+    {
+     "year": 2025,
+     "made_at_home": 0.839
+    }
+   ]
+  },
+  "SWE": {
+   "name": "Sweden",
+   "places": 1,
+   "year": 2025,
+   "made_at_home": 1.05,
+   "position": "net exporter",
+   "domestic_extraction_mt": 254.2,
+   "imports_mt": 71.2,
+   "exports_mt": 83.3,
+   "domestic_material_consumption_mt": 242.0,
+   "material_footprint_mt": null,
+   "imports_share_of_consumption": 0.294,
+   "footprint_over_consumption": null,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.067,
+     "domestic_material_consumption_mt": 65.2
+    },
+    "metals": {
+     "made_at_home": 1.36,
+     "domestic_material_consumption_mt": 64.0
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.977,
+     "domestic_material_consumption_mt": 99.1
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.05,
+     "domestic_material_consumption_mt": 13.7
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.025
+    },
+    {
+     "year": 2020,
+     "made_at_home": 1.071
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.062
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.047
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.053
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.027
+    },
+    {
+     "year": 2025,
+     "made_at_home": 1.05
+    }
+   ]
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 1.001,
+   "position": "net exporter",
+   "domestic_extraction_mt": 249.4,
+   "imports_mt": 3.3,
+   "exports_mt": 3.6,
+   "domestic_material_consumption_mt": 249.0,
+   "material_footprint_mt": 295.5,
+   "imports_share_of_consumption": 0.013,
+   "footprint_over_consumption": 1.19,
+   "groups": {
+    "biomass": {
+     "made_at_home": 1.009,
+     "domestic_material_consumption_mt": 179.9
+    },
+    "metals": {
+     "made_at_home": 0.979,
+     "domestic_material_consumption_mt": 28.2
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.984,
+     "domestic_material_consumption_mt": 39.5
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 1.0,
+     "domestic_material_consumption_mt": 1.3
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 1.0
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.999
+    },
+    {
+     "year": 2021,
+     "made_at_home": 1.001
+    },
+    {
+     "year": 2022,
+     "made_at_home": 1.001
+    },
+    {
+     "year": 2023,
+     "made_at_home": 1.001
+    },
+    {
+     "year": 2024,
+     "made_at_home": 1.001
+    }
+   ]
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "places": 1,
+   "year": 2024,
+   "made_at_home": 0.861,
+   "position": "net importer",
+   "domestic_extraction_mt": 645.2,
+   "imports_mt": 170.5,
+   "exports_mt": 66.6,
+   "domestic_material_consumption_mt": 749.2,
+   "material_footprint_mt": 1204.4,
+   "imports_share_of_consumption": 0.228,
+   "footprint_over_consumption": 1.61,
+   "groups": {
+    "biomass": {
+     "made_at_home": 0.756,
+     "domestic_material_consumption_mt": 192.6
+    },
+    "metals": {
+     "made_at_home": 0.001,
+     "domestic_material_consumption_mt": 12.5
+    },
+    "non_metallic_minerals": {
+     "made_at_home": 0.991,
+     "domestic_material_consumption_mt": 419.4
+    },
+    "fossil_energy_materials": {
+     "made_at_home": 0.672,
+     "domestic_material_consumption_mt": 124.8
+    }
+   },
+   "series": [
+    {
+     "year": 2019,
+     "made_at_home": 0.864
+    },
+    {
+     "year": 2020,
+     "made_at_home": 0.869
+    },
+    {
+     "year": 2021,
+     "made_at_home": 0.855
+    },
+    {
+     "year": 2022,
+     "made_at_home": 0.857
+    },
+    {
+     "year": 2023,
+     "made_at_home": 0.859
+    },
+    {
+     "year": 2024,
+     "made_at_home": 0.861
+    }
+   ]
+  }
+ },
+ "not_in_oecd": [],
+ "source": "OECD, Material resources: economy-wide material flow accounts, DSD_MATERIAL_RESOURCES@DF_MATERIAL_RESOURCES, measures DEU, IMP, EXP, DMC, MF in tonnes, groups TOT, BIO, MET, IND, FUEL, 2019-2025: https://sdmx.oecd.org/public/rest/data/OECD.ENV.EPI,DSD_MATERIAL_RESOURCES@DF_MATERIAL_RESOURCES,1.0/"
+}
