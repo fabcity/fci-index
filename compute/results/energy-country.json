@@ -1,0 +1,1561 @@
+{
+ "reads_as": "The country each place sits in, as the World Bank reads its energy: of the energy the country uses, the share it produces itself, which is one minus its net energy imports as a share of use. Above 1 the country produces more than it uses and exports the rest. Net imports are imports less exports, so a country that imports oil and exports gas can read as self-supplied; gross imports are not published here. A country figure, never a city's.",
+ "licence": "World Bank World Development Indicators, CC BY-4.0 (the series' own License_Type, read 2026-10-13), compiled by the World Bank from IEA energy statistics; cite The World Bank: World Development Indicators, EG.IMP.CONS.ZS and EG.USE.PCAP.KG.OE",
+ "year": 2024,
+ "countries": {
+  "FRA": {
+   "name": "France",
+   "places": 8,
+   "year": 2024,
+   "net_imports_share_of_use": 0.418,
+   "made_at_home": 0.582,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 3183,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.476,
+     "made_at_home": 0.524
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.491,
+     "made_at_home": 0.509
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.506,
+     "made_at_home": 0.494
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.487,
+     "made_at_home": 0.513
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.497,
+     "made_at_home": 0.503
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.457,
+     "made_at_home": 0.543
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.455,
+     "made_at_home": 0.545
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.543,
+     "made_at_home": 0.457
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.47,
+     "made_at_home": 0.53
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.418,
+     "made_at_home": 0.582
+    }
+   ]
+  },
+  "USA": {
+   "name": "United States of America",
+   "places": 7,
+   "year": 2024,
+   "net_imports_share_of_use": -0.098,
+   "made_at_home": 1.098,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 6454,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.117,
+     "made_at_home": 0.883
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.123,
+     "made_at_home": 0.877
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.082,
+     "made_at_home": 0.918
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.037,
+     "made_at_home": 0.963
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.007,
+     "made_at_home": 1.007
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.037,
+     "made_at_home": 1.037
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.039,
+     "made_at_home": 1.039
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.063,
+     "made_at_home": 1.063
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.087,
+     "made_at_home": 1.087
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.098,
+     "made_at_home": 1.098
+    }
+   ]
+  },
+  "BRA": {
+   "name": "Brazil",
+   "places": 5,
+   "year": 2024,
+   "net_imports_share_of_use": -0.108,
+   "made_at_home": 1.108,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 1528,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.086,
+     "made_at_home": 0.914
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.027,
+     "made_at_home": 0.973
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.011,
+     "made_at_home": 0.989
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": -0.008,
+     "made_at_home": 1.008
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.041,
+     "made_at_home": 1.041
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.112,
+     "made_at_home": 1.112
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.038,
+     "made_at_home": 1.038
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.067,
+     "made_at_home": 1.067
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.126,
+     "made_at_home": 1.126
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.108,
+     "made_at_home": 1.108
+    }
+   ]
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "places": 5,
+   "year": 2024,
+   "net_imports_share_of_use": -0.928,
+   "made_at_home": 1.928,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 1020,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": -1.085,
+     "made_at_home": 2.085
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": -1.057,
+     "made_at_home": 2.057
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": -0.997,
+     "made_at_home": 1.997
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": -0.971,
+     "made_at_home": 1.971
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.986,
+     "made_at_home": 1.986
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.861,
+     "made_at_home": 1.861
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.842,
+     "made_at_home": 1.842
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.811,
+     "made_at_home": 1.811
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.883,
+     "made_at_home": 1.883
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.928,
+     "made_at_home": 1.928
+    }
+   ]
+  },
+  "MEX": {
+   "name": "Mexico",
+   "places": 5,
+   "year": 2024,
+   "net_imports_share_of_use": 0.274,
+   "made_at_home": 0.726,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 1498,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": -0.008,
+     "made_at_home": 1.008
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.047,
+     "made_at_home": 0.953
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.112,
+     "made_at_home": 0.888
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.17,
+     "made_at_home": 0.83
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.186,
+     "made_at_home": 0.814
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.115,
+     "made_at_home": 0.885
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.156,
+     "made_at_home": 0.844
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.17,
+     "made_at_home": 0.83
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.175,
+     "made_at_home": 0.825
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.274,
+     "made_at_home": 0.726
+    }
+   ]
+  },
+  "DEU": {
+   "name": "Germany",
+   "places": 3,
+   "year": 2024,
+   "net_imports_share_of_use": 0.703,
+   "made_at_home": 0.297,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2874,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.644,
+     "made_at_home": 0.356
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.663,
+     "made_at_home": 0.337
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.666,
+     "made_at_home": 0.334
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.662,
+     "made_at_home": 0.338
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.699,
+     "made_at_home": 0.301
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.654,
+     "made_at_home": 0.346
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.654,
+     "made_at_home": 0.346
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.718,
+     "made_at_home": 0.282
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.703,
+     "made_at_home": 0.297
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.703,
+     "made_at_home": 0.297
+    }
+   ]
+  },
+  "AUT": {
+   "name": "Austria",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": 0.562,
+   "made_at_home": 0.438,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 3294,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.621,
+     "made_at_home": 0.379
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.641,
+     "made_at_home": 0.359
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.659,
+     "made_at_home": 0.341
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.665,
+     "made_at_home": 0.335
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.744,
+     "made_at_home": 0.256
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.596,
+     "made_at_home": 0.404
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.532,
+     "made_at_home": 0.468
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.766,
+     "made_at_home": 0.234
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.631,
+     "made_at_home": 0.369
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.562,
+     "made_at_home": 0.438
+    }
+   ]
+  },
+  "CAN": {
+   "name": "Canada",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": -0.95,
+   "made_at_home": 1.95,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 7119,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": -0.684,
+     "made_at_home": 1.684
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": -0.703,
+     "made_at_home": 1.703
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": -0.715,
+     "made_at_home": 1.715
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": -0.753,
+     "made_at_home": 1.753
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.769,
+     "made_at_home": 1.769
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.81,
+     "made_at_home": 1.81
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.858,
+     "made_at_home": 1.858
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.885,
+     "made_at_home": 1.885
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.899,
+     "made_at_home": 1.899
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.95,
+     "made_at_home": 1.95
+    }
+   ]
+  },
+  "CHL": {
+   "name": "Chile",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": 0.615,
+   "made_at_home": 0.385,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2067,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.682,
+     "made_at_home": 0.318
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.692,
+     "made_at_home": 0.308
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.684,
+     "made_at_home": 0.316
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.677,
+     "made_at_home": 0.323
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.692,
+     "made_at_home": 0.308
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.667,
+     "made_at_home": 0.333
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.689,
+     "made_at_home": 0.311
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.68,
+     "made_at_home": 0.32
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.617,
+     "made_at_home": 0.383
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.615,
+     "made_at_home": 0.385
+    }
+   ]
+  },
+  "HRV": {
+   "name": "Croatia",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": 0.627,
+   "made_at_home": 0.373,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2233,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.496,
+     "made_at_home": 0.504
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.493,
+     "made_at_home": 0.507
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.543,
+     "made_at_home": 0.457
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.541,
+     "made_at_home": 0.459
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.578,
+     "made_at_home": 0.422
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.542,
+     "made_at_home": 0.458
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.554,
+     "made_at_home": 0.446
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.619,
+     "made_at_home": 0.381
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.573,
+     "made_at_home": 0.427
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.627,
+     "made_at_home": 0.373
+    }
+   ]
+  },
+  "GHA": {
+   "name": "Ghana",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": -0.051,
+   "made_at_home": 1.051,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 395,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": -0.077,
+     "made_at_home": 1.077
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.054,
+     "made_at_home": 0.946
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": -0.34,
+     "made_at_home": 1.34
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": -0.311,
+     "made_at_home": 1.311
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.403,
+     "made_at_home": 1.403
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.333,
+     "made_at_home": 1.333
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.248,
+     "made_at_home": 1.248
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.222,
+     "made_at_home": 1.222
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.094,
+     "made_at_home": 1.094
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.051,
+     "made_at_home": 1.051
+    }
+   ]
+  },
+  "IND": {
+   "name": "India",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": 0.36,
+   "made_at_home": 0.64,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 777,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.373,
+     "made_at_home": 0.627
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.374,
+     "made_at_home": 0.626
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.374,
+     "made_at_home": 0.626
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.377,
+     "made_at_home": 0.623
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.393,
+     "made_at_home": 0.607
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.374,
+     "made_at_home": 0.626
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.353,
+     "made_at_home": 0.647
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.367,
+     "made_at_home": 0.633
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.37,
+     "made_at_home": 0.63
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.36,
+     "made_at_home": 0.64
+    }
+   ]
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": 0.884,
+   "made_at_home": 0.116,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 3419,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.588,
+     "made_at_home": 0.412
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.555,
+     "made_at_home": 0.445
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.623,
+     "made_at_home": 0.377
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.717,
+     "made_at_home": 0.283
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.783,
+     "made_at_home": 0.217
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.817,
+     "made_at_home": 0.183
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.7,
+     "made_at_home": 0.3
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.994,
+     "made_at_home": 0.006
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.869,
+     "made_at_home": 0.131
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.884,
+     "made_at_home": 0.116
+    }
+   ]
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "places": 2,
+   "year": 2024,
+   "net_imports_share_of_use": -0.136,
+   "made_at_home": 1.136,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 1907,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": -0.176,
+     "made_at_home": 1.176
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": -0.143,
+     "made_at_home": 1.143
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": -0.154,
+     "made_at_home": 1.154
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": -0.17,
+     "made_at_home": 1.17
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": -0.133,
+     "made_at_home": 1.133
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": -0.191,
+     "made_at_home": 1.191
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": -0.098,
+     "made_at_home": 1.098
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": -0.142,
+     "made_at_home": 1.142
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.129,
+     "made_at_home": 1.129
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.136,
+     "made_at_home": 1.136
+    }
+   ]
+  },
+  "ARG": {
+   "name": "Argentina",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": -0.139,
+   "made_at_home": 1.139,
+   "position": "net exporter",
+   "energy_use_kg_oe_per_person": 1737,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.135,
+     "made_at_home": 0.865
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.12,
+     "made_at_home": 0.88
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.132,
+     "made_at_home": 0.868
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.086,
+     "made_at_home": 0.914
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.025,
+     "made_at_home": 0.975
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.012,
+     "made_at_home": 0.988
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.06,
+     "made_at_home": 0.94
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.02,
+     "made_at_home": 0.98
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": -0.032,
+     "made_at_home": 1.032
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": -0.139,
+     "made_at_home": 1.139
+    }
+   ]
+  },
+  "CHN": {
+   "name": "China",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.24,
+   "made_at_home": 0.76,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2947,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.167,
+     "made_at_home": 0.833
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.192,
+     "made_at_home": 0.808
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.204,
+     "made_at_home": 0.796
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.217,
+     "made_at_home": 0.783
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.222,
+     "made_at_home": 0.778
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.23,
+     "made_at_home": 0.77
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.217,
+     "made_at_home": 0.783
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.203,
+     "made_at_home": 0.797
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.233,
+     "made_at_home": 0.767
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.24,
+     "made_at_home": 0.76
+    }
+   ]
+  },
+  "FIN": {
+   "name": "Finland",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.339,
+   "made_at_home": 0.661,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 5647,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.485,
+     "made_at_home": 0.515
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.467,
+     "made_at_home": 0.533
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.453,
+     "made_at_home": 0.547
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.468,
+     "made_at_home": 0.532
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.444,
+     "made_at_home": 0.556
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.439,
+     "made_at_home": 0.561
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.387,
+     "made_at_home": 0.613
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.424,
+     "made_at_home": 0.576
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.304,
+     "made_at_home": 0.696
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.339,
+     "made_at_home": 0.661
+    }
+   ]
+  },
+  "GEO": {
+   "name": "Georgia",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.811,
+   "made_at_home": 0.189,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 1551,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.738,
+     "made_at_home": 0.262
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.731,
+     "made_at_home": 0.269
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.744,
+     "made_at_home": 0.256
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.773,
+     "made_at_home": 0.227
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.807,
+     "made_at_home": 0.193
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.806,
+     "made_at_home": 0.194
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.782,
+     "made_at_home": 0.218
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.796,
+     "made_at_home": 0.204
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.799,
+     "made_at_home": 0.201
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.811,
+     "made_at_home": 0.189
+    }
+   ]
+  },
+  "JPN": {
+   "name": "Japan",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.873,
+   "made_at_home": 0.127,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 3004,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.948,
+     "made_at_home": 0.052
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.938,
+     "made_at_home": 0.062
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.931,
+     "made_at_home": 0.069
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.914,
+     "made_at_home": 0.086
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.906,
+     "made_at_home": 0.094
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.896,
+     "made_at_home": 0.104
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.887,
+     "made_at_home": 0.113
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.899,
+     "made_at_home": 0.101
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.872,
+     "made_at_home": 0.128
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.873,
+     "made_at_home": 0.127
+    }
+   ]
+  },
+  "KOR": {
+   "name": "Korea, South",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.832,
+   "made_at_home": 0.168,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 5564,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.869,
+     "made_at_home": 0.131
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.872,
+     "made_at_home": 0.128
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.886,
+     "made_at_home": 0.114
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.894,
+     "made_at_home": 0.106
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.881,
+     "made_at_home": 0.119
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.845,
+     "made_at_home": 0.155
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.847,
+     "made_at_home": 0.153
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.852,
+     "made_at_home": 0.148
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.84,
+     "made_at_home": 0.16
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.832,
+     "made_at_home": 0.168
+    }
+   ]
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.46,
+   "made_at_home": 0.54,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2999,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.491,
+     "made_at_home": 0.509
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.492,
+     "made_at_home": 0.508
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.511,
+     "made_at_home": 0.489
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.522,
+     "made_at_home": 0.478
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.528,
+     "made_at_home": 0.472
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.458,
+     "made_at_home": 0.542
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.487,
+     "made_at_home": 0.513
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.536,
+     "made_at_home": 0.464
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.489,
+     "made_at_home": 0.511
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.46,
+     "made_at_home": 0.54
+    }
+   ]
+  },
+  "ESP": {
+   "name": "Spain",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.784,
+   "made_at_home": 0.216,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2306,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.8,
+     "made_at_home": 0.2
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.789,
+     "made_at_home": 0.211
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.809,
+     "made_at_home": 0.191
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.81,
+     "made_at_home": 0.19
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.829,
+     "made_at_home": 0.171
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.735,
+     "made_at_home": 0.265
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.754,
+     "made_at_home": 0.246
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.827,
+     "made_at_home": 0.173
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.768,
+     "made_at_home": 0.232
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.784,
+     "made_at_home": 0.216
+    }
+   ]
+  },
+  "SWE": {
+   "name": "Sweden",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.277,
+   "made_at_home": 0.723,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 4329,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.329,
+     "made_at_home": 0.671
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.354,
+     "made_at_home": 0.646
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.287,
+     "made_at_home": 0.713
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.307,
+     "made_at_home": 0.693
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.32,
+     "made_at_home": 0.68
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.344,
+     "made_at_home": 0.656
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.225,
+     "made_at_home": 0.775
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.287,
+     "made_at_home": 0.713
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.278,
+     "made_at_home": 0.722
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.277,
+     "made_at_home": 0.723
+    }
+   ]
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.151,
+   "made_at_home": 0.849,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 389,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.146,
+     "made_at_home": 0.854
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.141,
+     "made_at_home": 0.859
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.129,
+     "made_at_home": 0.871
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.128,
+     "made_at_home": 0.872
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.131,
+     "made_at_home": 0.869
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.13,
+     "made_at_home": 0.87
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.137,
+     "made_at_home": 0.863
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.129,
+     "made_at_home": 0.871
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.109,
+     "made_at_home": 0.891
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.151,
+     "made_at_home": 0.849
+    }
+   ]
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "places": 1,
+   "year": 2024,
+   "net_imports_share_of_use": 0.476,
+   "made_at_home": 0.524,
+   "position": "net importer",
+   "energy_use_kg_oe_per_person": 2095,
+   "energy_use_year": 2024,
+   "series": [
+    {
+     "year": 2015,
+     "net_imports_share_of_use": 0.403,
+     "made_at_home": 0.597
+    },
+    {
+     "year": 2016,
+     "net_imports_share_of_use": 0.38,
+     "made_at_home": 0.62
+    },
+    {
+     "year": 2017,
+     "net_imports_share_of_use": 0.38,
+     "made_at_home": 0.62
+    },
+    {
+     "year": 2018,
+     "net_imports_share_of_use": 0.382,
+     "made_at_home": 0.618
+    },
+    {
+     "year": 2019,
+     "net_imports_share_of_use": 0.365,
+     "made_at_home": 0.635
+    },
+    {
+     "year": 2020,
+     "net_imports_share_of_use": 0.285,
+     "made_at_home": 0.715
+    },
+    {
+     "year": 2021,
+     "net_imports_share_of_use": 0.389,
+     "made_at_home": 0.611
+    },
+    {
+     "year": 2022,
+     "net_imports_share_of_use": 0.389,
+     "made_at_home": 0.611
+    },
+    {
+     "year": 2023,
+     "net_imports_share_of_use": 0.434,
+     "made_at_home": 0.566
+    },
+    {
+     "year": 2024,
+     "net_imports_share_of_use": 0.476,
+     "made_at_home": 0.524
+    }
+   ]
+  }
+ },
+ "not_in_wdi": [
+  "Bhutan"
+ ],
+ "source": "World Bank WDI API v2, EG.IMP.CONS.ZS (net energy imports, % of energy use) and EG.USE.PCAP.KG.OE (energy use, kg of oil equivalent per person), 2015-2024, database last updated 2026-10-08"
+}

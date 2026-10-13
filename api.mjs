@@ -37,15 +37,18 @@ if (!FCI || !FCI_SCORE) throw new Error("js/data.js or js/fci-score.js did not l
 const results = JSON.parse(fs.readFileSync(path.join(HERE, RESULTS), "utf8"));
 const FOOD = "compute/results/food-country.json";     // the same bracket, food: FAO's self-sufficiency ratios (compute/food.py)
 const GOODS = "compute/results/goods-country.json";   // and goods: OECD TiVA's domestic share of value added in final demand (compute/goods.py)
+const ENERGY = "compute/results/energy-country.json"; // and energy: the share of its energy use the country produces itself (compute/energy.py)
 const atlas = JSON.parse(fs.readFileSync(path.join(HERE, ATLAS), "utf8"));
 const food = JSON.parse(fs.readFileSync(path.join(HERE, FOOD), "utf8"));
 const tiva = JSON.parse(fs.readFileSync(path.join(HERE, GOODS), "utf8"));
+const energy = JSON.parse(fs.readFileSync(path.join(HERE, ENERGY), "utf8"));
 const DOWNSCALE = "compute/results/downscale-check.json";   // the region bracket: a national figure split to the place's NUTS2 region, modelled (compute/downscale.py)
 const downscale = JSON.parse(fs.readFileSync(path.join(HERE, DOWNSCALE), "utf8"));
-// One bracket per tracker country: { iso, name, places, trade, food, goods }. A half with no row says not_measured, never zero.
+// One bracket per tracker country: { iso, name, places, trade, food, goods, energy }. A half with no row says not_measured, never zero.
 const half = (res, file) => Object.fromEntries(Object.entries(res.countries).map(([iso, { name, places, m49, ...c }]) =>
   [name, { iso, name, places, half: { reads_as: res.reads_as, source: res.source, licence: res.licence, pipeline: REPO + file, ...c } }]));
-const HALVES = { trade: [half(atlas, ATLAS), "the Atlas tables"], food: [half(food, FOOD), "the Food Balance Sheets"], goods: [half(tiva, GOODS), "the OECD TiVA tables"] };
+const HALVES = { trade: [half(atlas, ATLAS), "the Atlas tables"], food: [half(food, FOOD), "the Food Balance Sheets"], goods: [half(tiva, GOODS), "the OECD TiVA tables"],
+                 energy: [half(energy, ENERGY), "the World Bank's energy series"] };
 const bracketOf = (country) => {
   const found = Object.values(HALVES).map(([of]) => of[country]).find(Boolean);
   if (!found) return { not_measured: `${country} has no row in ${Object.values(HALVES).map(([, what]) => what).join(", ")}` };
@@ -194,23 +197,25 @@ fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, plac
 // each country holds. The long per-country detail (the trade series, FAO's 21 groups, TiVA's 80 industries) stays in
 // places/<slug>.json; here each half keeps its headline figures and its source and licence. Not an index: no score.
 const trim = { trade: ({ series, sectors, ...t }) => ({ ...t, sectors }), food: ({ groups, ...f }) => ({ ...f, groups: Object.fromEntries(Object.entries(groups || {}).map(([g, v]) => [g, v.ssr])) }),
-               goods: ({ industries, series, ...g }) => g };
+               goods: ({ industries, series, ...g }) => g, energy: ({ series, ...e }) => e };
 const countries = {};
 for (const p of places) {
   const b = brackets[p.slug].country;
   if (!b.iso) continue;
   countries[b.iso] = countries[b.iso] || { iso: b.iso, name: b.name, places: [],
-    ...Object.fromEntries(["trade", "food", "goods"].map((k) => [k, b[k].not_measured ? b[k] : trim[k](b[k])])) };
+    ...Object.fromEntries(["trade", "food", "goods", "energy"].map((k) => [k, b[k].not_measured ? b[k] : trim[k](b[k])])) };
   countries[b.iso].places.push({ slug: p.slug, name: p.name, territory: p.territory, region_bracket: brackets[p.slug].region.state || "none" });
 }
 const absent = places.filter((p) => !brackets[p.slug].country.iso).map((p) => ({ country: p.country, slug: p.slug, why: brackets[p.slug].country.not_measured }));
 const rows = Object.values(countries).sort((a, b) => b.places.length - a.places.length || a.name.localeCompare(b.name));
 fs.writeFileSync(path.join(out, "countries.json"), JSON.stringify({ ...head,
-  reads_as: "The country each place sits in, as three open sources read it: the Atlas of Economic Complexity (goods trade), FAO's Food "
-          + "Balance Sheets (food grown at home) and the OECD's trade in value added tables (value added made at home). National figures "
+  reads_as: "The country each place sits in, as four open sources read it: the Atlas of Economic Complexity (goods trade), FAO's Food "
+          + "Balance Sheets (food grown at home), the OECD's trade in value added tables (value added made at home) and the World Bank's "
+          + "energy series (energy made at home). National figures "
           + "beside the places, never a place's own and never an index: nothing here enters a score. A half with no row says not_measured.",
   counts: { countries: rows.length, places: places.length, trade: rows.filter((c) => !c.trade.not_measured).length,
-            food: rows.filter((c) => !c.food.not_measured).length, goods: rows.filter((c) => !c.goods.not_measured).length },
+            food: rows.filter((c) => !c.food.not_measured).length, goods: rows.filter((c) => !c.goods.not_measured).length,
+            energy: rows.filter((c) => !c.energy.not_measured).length },
   countries: rows, not_in_any_source: absent }, null, 1) + "\n");
 console.log(`countries.json: ${rows.length} countries (${absent.length} with no source), ${places.length} places`);
 const csvCell = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
