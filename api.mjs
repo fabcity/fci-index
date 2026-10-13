@@ -188,6 +188,31 @@ fs.writeFileSync(path.join(out, "index.json"), JSON.stringify({ ...head, counts:
   statuses: FCI_SCORE.STATUS, places: summaries }, null, 1) + "\n");
 // `places` stays what the pipeline MEASURED; the brackets are modelled or national and live under their own key.
 fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, places: measured, brackets, planet: PLANET }, null, 1) + "\n");
+
+/* ---- countries.json: the country bracket for every country in the tracker, one row each ------------------------ */
+// The reference table behind /countries: the three national halves (Atlas trade, FAO food, OECD goods) with the places
+// each country holds. The long per-country detail (the trade series, FAO's 21 groups, TiVA's 80 industries) stays in
+// places/<slug>.json; here each half keeps its headline figures and its source and licence. Not an index: no score.
+const trim = { trade: ({ series, sectors, ...t }) => ({ ...t, sectors }), food: ({ groups, ...f }) => ({ ...f, groups: Object.fromEntries(Object.entries(groups || {}).map(([g, v]) => [g, v.ssr])) }),
+               goods: ({ industries, series, ...g }) => g };
+const countries = {};
+for (const p of places) {
+  const b = brackets[p.slug].country;
+  if (!b.iso) continue;
+  countries[b.iso] = countries[b.iso] || { iso: b.iso, name: b.name, places: [],
+    ...Object.fromEntries(["trade", "food", "goods"].map((k) => [k, b[k].not_measured ? b[k] : trim[k](b[k])])) };
+  countries[b.iso].places.push({ slug: p.slug, name: p.name, territory: p.territory, region_bracket: brackets[p.slug].region.state || "none" });
+}
+const absent = places.filter((p) => !brackets[p.slug].country.iso).map((p) => ({ country: p.country, slug: p.slug, why: brackets[p.slug].country.not_measured }));
+const rows = Object.values(countries).sort((a, b) => b.places.length - a.places.length || a.name.localeCompare(b.name));
+fs.writeFileSync(path.join(out, "countries.json"), JSON.stringify({ ...head,
+  reads_as: "The country each place sits in, as three open sources read it: the Atlas of Economic Complexity (goods trade), FAO's Food "
+          + "Balance Sheets (food grown at home) and the OECD's trade in value added tables (value added made at home). National figures "
+          + "beside the places, never a place's own and never an index: nothing here enters a score. A half with no row says not_measured.",
+  counts: { countries: rows.length, places: places.length, trade: rows.filter((c) => !c.trade.not_measured).length,
+            food: rows.filter((c) => !c.food.not_measured).length, goods: rows.filter((c) => !c.goods.not_measured).length },
+  countries: rows, not_in_any_source: absent }, null, 1) + "\n");
+console.log(`countries.json: ${rows.length} countries (${absent.length} with no source), ${places.length} places`);
 const csvCell = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
 const COLS = ["slug", "name", "country", "territory", "status", "fci", "fci_low", "fci_high", "dido", "one_minus_pito", "rho", "cells_open", "cells_measured", "pito_weight_measured_share"];
 fs.writeFileSync(path.join(out, "index.csv"), [COLS.join(","), ...summaries.map((s) => [s.slug, s.name, s.country, s.territory, s.status, s.fci,
