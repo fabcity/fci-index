@@ -9,6 +9,8 @@ python3 compute/food.py --selftest            # no network; FAO's self-sufficien
 python3 compute/food.py                       # fetches FAOSTAT's balance sheets (22 MB zip), writes results/food-country.json
 python3 compute/goods.py --selftest           # no network; the OECD slice read on a fake table
 python3 compute/goods.py                      # two OECD SDMX calls (~17 MB), writes results/goods-country.json
+python3 compute/energy.py --selftest          # no network; the World Bank reading on a fake answer
+python3 compute/energy.py                     # two World Bank API calls (slow, ~3 min), writes results/energy-country.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -371,7 +373,8 @@ reaches no page. Today the Economic|Region goods index is the only cell score (B
 Recife); waste and material use are indicators the report follows, not inputs to the FCI. Each place file also
 carries `country_bracket`, the whole country's goods trade (`trade`, from `results/atlas-country.json`), food
 self-sufficiency (`food`, from `results/food-country.json`) and the domestic share of value added in what it buys
-(`goods`, from `results/goods-country.json`); see *The country bracket*. No half is a cell or an input to the score,
+(`goods`, from `results/goods-country.json`) and energy made at home (`energy`, from `results/energy-country.json`); see *The
+country bracket*. No half is a cell or an input to the score,
 and a half with no row says `not_measured`.
 
 ## Santiago with trade taken out: ENIA and the EPF
@@ -647,3 +650,47 @@ Direction was checked, not assumed: for a reporting country the shares over all 
 reporting country is the buyer and the counterpart the maker. The series runs from 2019, Boeing's year, to the tables'
 last year; the host answers 429 after a few calls and 403 to `lastNObservations`, so the run makes two calls for all
 countries at once and reads the latest year from the first.
+
+### Energy: of the energy the country uses, the share it produces itself
+
+`compute/energy.py` reads two World Bank WDI series (registry `economic/planet/worldbank-wdi`; the series' own
+License_Type reads CC BY-4.0, compiled by the Bank from IEA energy statistics) and writes `results/energy-country.json`.
+`EG.IMP.CONS.ZS` is net energy imports as a share of energy use, imports less exports over production plus imports minus
+exports plus stock changes; so **energy made at home is one minus that**, and a negative net share is a net exporter
+producing more than it uses. `EG.USE.PCAP.KG.OE` gives the scale. The Bank retired the production and use series in
+tonnes of oil equivalent, so gross imports and exports are not published separately here: this half can say "made at
+home" and "net imports", never imports alone, and a country that imports oil and exports gas reads as self-supplied.
+`api.mjs` serves it as `country_bracket.energy`. 2024, every tracker country the series covers:
+
+| Country | Index places | Energy made at home | Net imports, share of use | Position | Energy use, kg oil eq. per person |
+| --- | --- | --- | --- | --- | --- |
+| France (FRA) | 8 | 0.58 | +0.42 | net importer | 3,183 (2024) |
+| United States of America (USA) | 7 | 1.10 | -0.10 | net exporter | 6,454 (2024) |
+| Brazil (BRA) | 5 | 1.11 | -0.11 | net exporter | 1,528 (2024) |
+| Indonesia (IDN) | 5 | 1.93 | -0.93 | net exporter | 1,020 (2024) |
+| Mexico (MEX) | 5 | 0.73 | +0.27 | net importer | 1,498 (2024) |
+| Germany (DEU) | 3 | 0.30 | +0.70 | net importer | 2,874 (2024) |
+| Austria (AUT) | 2 | 0.44 | +0.56 | net importer | 3,294 (2024) |
+| Canada (CAN) | 2 | 1.95 | -0.95 | net exporter | 7,119 (2024) |
+| Chile (CHL) | 2 | 0.39 | +0.61 | net importer | 2,067 (2024) |
+| Croatia (HRV) | 2 | 0.37 | +0.63 | net importer | 2,233 (2024) |
+| Ghana (GHA) | 2 | 1.05 | -0.05 | net exporter | 395 (2024) |
+| India (IND) | 2 | 0.64 | +0.36 | net importer | 777 (2024) |
+| Netherlands (NLD) | 2 | 0.12 | +0.88 | net importer | 3,419 (2024) |
+| South Africa (ZAF) | 2 | 1.14 | -0.14 | net exporter | 1,907 (2024) |
+| Argentina (ARG) | 1 | 1.14 | -0.14 | net exporter | 1,737 (2024) |
+| China (CHN) | 1 | 0.76 | +0.24 | net importer | 2,947 (2024) |
+| Finland (FIN) | 1 | 0.66 | +0.34 | net importer | 5,647 (2024) |
+| Georgia (GEO) | 1 | 0.19 | +0.81 | net importer | 1,551 (2024) |
+| Japan (JPN) | 1 | 0.13 | +0.87 | net importer | 3,004 (2024) |
+| Korea, South (KOR) | 1 | 0.17 | +0.83 | net importer | 5,564 (2024) |
+| Slovenia (SVN) | 1 | 0.54 | +0.46 | net importer | 2,999 (2024) |
+| Spain (ESP) | 1 | 0.22 | +0.78 | net importer | 2,306 (2024) |
+| Sweden (SWE) | 1 | 0.72 | +0.28 | net importer | 4,329 (2024) |
+| Tanzania (TZA) | 1 | 0.85 | +0.15 | net importer | 389 (2024) |
+| United Kingdom (GBR) | 1 | 0.52 | +0.48 | net importer | 2,095 (2024) |
+
+Not in the series: Bhutan. Germany makes 30% of the energy it uses and the Netherlands 12%, with the
+North Sea gas fields closing; Canada, Indonesia and the United States produce more than they use. The call to the Bank's
+API for every country takes about three minutes; it answers with the current year's bound ignored, so the module asks to
+2100 and takes what it has.
