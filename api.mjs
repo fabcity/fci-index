@@ -18,6 +18,7 @@ const [site, out] = process.argv.slice(2);
 if (!site || !out) { console.error("usage: node api.mjs <site source dir> <out dir>"); process.exit(2); }
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const RESULTS = "compute/results/fabcity-index-2019.json";
+const ATLAS = "compute/results/atlas-country.json";   // the country bracket (compute/atlas.py): not a cell, served beside each place
 // The registry at main's current commit, not at `main`: raw.githubusercontent caches a branch URL for about five
 // minutes, so a deploy right after a registry merge used to publish the registry from before it (28 Sep, #73).
 const REPO_API = "https://api.github.com/repos/fabcity/awesome-fabcity-data/commits/main";
@@ -34,6 +35,8 @@ const { FCI, FCI_SCORE } = ctx.window;
 if (!FCI || !FCI_SCORE) throw new Error("js/data.js or js/fci-score.js did not load");
 
 const results = JSON.parse(fs.readFileSync(path.join(HERE, RESULTS), "utf8"));
+const atlas = JSON.parse(fs.readFileSync(path.join(HERE, ATLAS), "utf8"));
+const bracketOf = Object.fromEntries(Object.entries(atlas.countries).map(([iso, c]) => [c.name, { iso, ...c }]));
 const get = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(`${u} returned ${r.status}`); return r.json(); };
 const sha = (await (await fetch(REPO_API, { headers: { accept: "application/vnd.github.sha" } })).text()).trim();
 if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error(`could not read the registry's main commit from ${REPO_API}: ${sha.slice(0, 120)}`);
@@ -142,8 +145,11 @@ for (const p of places) {
   const links = { page: `${BASE}/city?locality=${p.slug}`, report: `${BASE}/report?locality=${p.slug}`, json: `${BASE}/api/v0/places/${p.slug}.json` };
   const { cells, ...summary } = sc;
   summaries.push({ ...p, ...summary, links });
+  // The country's goods trade, from the Atlas (compute/atlas.py). A bracket, never a cell: it does not touch the score.
+  const country_bracket = bracketOf[p.country] ? { reads_as: atlas.reads_as, source: atlas.source, licence: atlas.licence, pipeline: REPO + ATLAS, ...bracketOf[p.country] }
+                                               : { not_measured: `${p.country} has no row in the Atlas tables`, pipeline: REPO + ATLAS };
   fs.writeFileSync(path.join(out, "places", `${p.slug}.json`), JSON.stringify({ ...head, place: p, score: summary, actions,
-    cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, planet: PLANET, links }, null, 1) + "\n");
+    cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, planet: PLANET, links }, null, 1) + "\n");
 }
 const count = (s) => summaries.filter((x) => x.status === s).length;
 if (count("complete") + count("partial") + count("simulated") !== places.length) throw new Error("statuses do not partition the places");

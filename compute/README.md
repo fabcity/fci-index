@@ -3,6 +3,8 @@
 ```bash
 python3 compute/fabcity_index.py --selftest   # no network; must reproduce Hamburg's 37
 python3 compute/fabcity_index.py              # fetches Eurostat, writes results/fabcity-index-2019.json
+python3 compute/atlas.py --selftest           # no network; the country bracket's arithmetic on a fake table
+python3 compute/atlas.py                      # fetches the Atlas tables (~43 MB), writes results/atlas-country.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -362,7 +364,9 @@ The site build (`build.sh`) runs `node api.mjs`, which maps these results to cel
 section is the only place that does) and scores every place with the pages' own `js/fci-score.js`. It writes
 `/api/v0/index.json`, `index.csv`, `places/<slug>.json` and `measured.json`. A result that `api.mjs` does not map
 reaches no page. Today the Economic|Region goods index is the only cell score (Barcelona, Hamburg, São Paulo,
-Recife); waste and material use are indicators the report follows, not inputs to the FCI.
+Recife); waste and material use are indicators the report follows, not inputs to the FCI. Each place file also
+carries `country_bracket`, the whole country's goods trade from `results/atlas-country.json` (see *The country
+bracket*), which is neither a cell nor an input to the score.
 
 ## Santiago with trade taken out: ENIA and the EPF
 
@@ -390,3 +394,60 @@ Recife); waste and material use are indicators the report follows, not inputs to
 **Licence and access.** INE publishes under CC BY-SA 4.0, so these figures are share-alike. INE's server drops connections for minutes at a time, so the pipeline reads a committed extract, `data/ine-chile-enia-epf-extract.json`. Rebuild it with `python3 compute/trade.py --extract-cl`.
 
 **Customs cross-check (not an input).** Chile's customs export declarations (`aduanas-chile-registros-comercio-exterior`) record each line's region of origin. Region 13's 2019 ordinary goods exports, operation 200, total US$6.72 bn. That figure excludes services exports (operations 202 and 211) and seven lines, US$442.5 M in total, whose value per kilogram is more than 100 times their tariff code's median. One of those lines is US$353.6 M for 3,753 handbags.
+
+## The country bracket: what the whole country buys and sells abroad
+
+`compute/atlas.py` reads the Atlas of Economic Complexity's bulk tables (Growth Lab at Harvard University, CC0 on
+Harvard Dataverse, registry `economic/planet/atlas-economic-complexity`) and writes `results/atlas-country.json`:
+for every country in the tracker, the latest year's goods exports and imports in current US dollars, the same by
+the Atlas's ten goods sectors, ECI, the yearly series back to 1995, and the share of the import bill that falls in
+HS2 chapters the country already net-exports. `api.mjs` serves it on every place as `country_bracket`. **It is not a
+cell and it does not touch any score**: the Atlas's resolution is a country, and no cell is a country. It is the
+national bracket a place's own trade sits inside, for all 26 countries at once, where the measured regional rows
+above cover four.
+
+2024, all 26 countries behind the tracker's 61 places:
+
+| Country | Index places | Exports | Imports | Exports ÷ imports | Imports in chapters it net-exports | ECI | Weakest goods sector |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| France (FRA) | 8 | 595 bn | 689 bn | 0.86 | 22% | 1.09 | Other 0.08 |
+| United States of America (USA) | 7 | 2,038 bn | 3,068 bn | 0.66 | 16% | 1.12 | Textiles, garments, footwear and furniture 0.20 |
+| Brazil (BRA) | 5 | 329 bn | 265 bn | 1.24 | 22% | 0.35 | Other 0.08 |
+| Indonesia (IDN) | 5 | 259 bn | 219 bn | 1.18 | 37% | 0.22 | Machinery and instruments 0.25 |
+| Mexico (MEX) | 5 | 636 bn | 590 bn | 1.08 | 40% | 0.94 | Chemicals and plastics 0.37 |
+| Germany (DEU) | 3 | 1,502 bn | 1,244 bn | 1.21 | 52% | 1.35 | Minerals, fuels, ores and salts 0.40 |
+| Austria (AUT) | 2 | 192 bn | 188 bn | 1.02 | 50% | 1.25 | Other 0.46 |
+| Canada (CAN) | 2 | 570 bn | 553 bn | 1.03 | 23% | 0.78 | Textiles, garments, footwear and furniture 0.33 |
+| Chile (CHL) | 2 | 93 bn | 81 bn | 1.15 | 6% | -0.05 | Electronics 0.06 |
+| Croatia (HRV) | 2 | 23 bn | 44 bn | 0.53 | 4% | 0.82 | Other 0.21 |
+| Ghana (GHA) | 2 | 13 bn | 21 bn | 0.63 | 9% | -1.14 | Electronics 0.01 |
+| India (IND) | 2 | 416 bn | 607 bn | 0.69 | 9% | 0.71 | Other 0.13 |
+| Netherlands (NLD) | 2 | 565 bn | 667 bn | 0.85 | 23% | 0.95 | Minerals, fuels, ores and salts 0.52 |
+| South Africa (ZAF) | 2 | 128 bn | 96 bn | 1.33 | 24% | 0.38 | Electronics 0.24 |
+| Argentina (ARG) | 1 | 77 bn | 57 bn | 1.35 | 14% | -0.05 | Electronics 0.02 |
+| Bhutan (BTN) | 1 | 0.4 bn | 1.4 bn | 0.31 | 7% | -0.35 | Stone, glass and ceramics 0.00 |
+| China (CHN) | 1 | 3,460 bn | 2,091 bn | 1.65 | 40% | 1.27 | Minerals, fuels, ores and salts 0.10 |
+| Finland (FIN) | 1 | 71 bn | 71 bn | 0.99 | 28% | 1.15 | Textiles, garments, footwear and furniture 0.31 |
+| Georgia (GEO) | 1 | 6.1 bn | 17 bn | 0.36 | 4% | 0.26 | Electronics 0.08 |
+| Japan (JPN) | 1 | 694 bn | 622 bn | 1.12 | 49% | 1.73 | Minerals, fuels, ores and salts 0.07 |
+| Korea, South (KOR) | 1 | 681 bn | 555 bn | 1.23 | 49% | 1.60 | Other 0.20 |
+| Slovenia (SVN) | 1 | 69 bn | 72 bn | 0.96 | 31% | 1.28 | Minerals, fuels, ores and salts 0.67 |
+| Spain (ESP) | 1 | 369 bn | 398 bn | 0.93 | 30% | 0.81 | Other 0.28 |
+| Sweden (SWE) | 1 | 179 bn | 178 bn | 1.01 | 44% | 1.24 | Other 0.20 |
+| Tanzania (TZA) | 1 | 8.1 bn | 21 bn | 0.39 | 2% | -0.92 | Electronics 0.02 |
+| United Kingdom (GBR) | 1 | 448 bn | 691 bn | 0.65 | 21% | 1.25 | Other 0.26 |
+
+**Exports over imports is a trade balance written as a ratio.** It is not the share of consumption met by local
+production, which is the term PITO is built on: France at 0.86 does not make 86% of what it consumes, it sells abroad
+86 cents for every dollar it buys. A country that exports cars and imports food can sit at 1.00 and feed nobody. The
+last column is the share of imports in chapters the country already exports more of than it imports: goods it makes
+competitively and still buys from abroad, which is where local production is at least plausible. Germany, Austria,
+Japan and Korea sit near half; Chile, Croatia, Georgia and Tanzania under 7%.
+
+Three caveats travel with every row. **Re-exports are inside**: the Netherlands' imports include what lands at
+Rotterdam and leaves again, and the Atlas does not separate re-exports. This is Boeing's transhipment objection at
+national scale, and it bites where a country is a gateway. **Goods only**: services are a separate Atlas table, so
+France's tourism and the UK's finance are invisible here. **A country is not a city**: Chile at 1.15 says nothing
+about Santiago. A tracker country with no Atlas row is listed in `not_in_atlas`, and its places say `not_measured`,
+never zero. The Atlas reconciles exporter and importer reports, so these are its mirror statistics, not raw customs
+records; the table version and release date are in the result's `source`.

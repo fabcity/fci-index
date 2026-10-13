@@ -1,0 +1,6405 @@
+{
+ "reads_as": "The country each place sits in, as the Atlas of Economic Complexity records its goods trade: what the whole country exports and imports, by sector, in current US dollars. Exports over imports is a trade balance written as a ratio, NOT the share of consumption met by local production: a country that exports cars and imports food can sit at 1.00 and feed nobody. Re-exports are inside the figures (a gateway country like the Netherlands most of all). A country's figure says nothing about its cities; it is the bracket a place's own trade sits inside.",
+ "licence": "CC0 1.0 (the Dataverse record); goods trade only, services are a separate Atlas table",
+ "year": 2024,
+ "countries": {
+  "FRA": {
+   "name": "France",
+   "places": 8,
+   "year": 2024,
+   "exports_usd": 594735001682.0,
+   "imports_usd": 688902633459.0,
+   "exports_over_imports": 0.86,
+   "eci": 1.086,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 129322436283.0,
+     "imports_usd": 98846576220.0,
+     "exports_over_imports": 1.31
+    },
+    "Electronics": {
+     "exports_usd": 42139493420.0,
+     "imports_usd": 54200448639.0,
+     "exports_over_imports": 0.78
+    },
+    "Machinery and instruments": {
+     "exports_usd": 91904048101.0,
+     "imports_usd": 98203688839.0,
+     "exports_over_imports": 0.94
+    },
+    "Metals": {
+     "exports_usd": 37629092406.0,
+     "imports_usd": 45238023049.0,
+     "exports_over_imports": 0.83
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 25751113914.0,
+     "imports_usd": 65483691632.0,
+     "exports_over_imports": 0.39
+    },
+    "Other": {
+     "exports_usd": 5268746224.0,
+     "imports_usd": 64596903945.0,
+     "exports_over_imports": 0.08
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 24859508949.0,
+     "imports_usd": 24959087746.0,
+     "exports_over_imports": 1.0
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 31494618089.0,
+     "imports_usd": 55396956695.0,
+     "exports_over_imports": 0.57
+    },
+    "Transport vehicles": {
+     "exports_usd": 98299537064.0,
+     "imports_usd": 89346179224.0,
+     "exports_over_imports": 1.1
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 108066407232.0,
+     "imports_usd": 92631077470.0,
+     "exports_over_imports": 1.17
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.22,
+   "hs2_chapters_net_exported": 34,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 268119828250.0,
+     "imports_usd": 261624206603.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 1996,
+     "exports_usd": 274554753834.0,
+     "imports_usd": 260624064325.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 1997,
+     "exports_usd": 276192348465.0,
+     "imports_usd": 250795794055.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 1998,
+     "exports_usd": 288111388874.0,
+     "imports_usd": 267337876001.0,
+     "exports_over_imports": 1.08
+    },
+    {
+     "year": 1999,
+     "exports_usd": 286225423347.0,
+     "imports_usd": 268470521519.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2000,
+     "exports_usd": 289451218474.0,
+     "imports_usd": 282823156948.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2001,
+     "exports_usd": 286773650985.0,
+     "imports_usd": 270882513164.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2002,
+     "exports_usd": 297765294496.0,
+     "imports_usd": 282756786186.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2003,
+     "exports_usd": 354854578400.0,
+     "imports_usd": 337769347628.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2004,
+     "exports_usd": 408975235730.0,
+     "imports_usd": 404981321839.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2005,
+     "exports_usd": 428814956587.0,
+     "imports_usd": 445663040968.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2006,
+     "exports_usd": 473038554699.0,
+     "imports_usd": 494123164246.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2007,
+     "exports_usd": 543644701334.0,
+     "imports_usd": 572871866839.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2008,
+     "exports_usd": 589903457862.0,
+     "imports_usd": 641748969727.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2009,
+     "exports_usd": 462831502802.0,
+     "imports_usd": 499063556165.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2010,
+     "exports_usd": 499291970466.0,
+     "imports_usd": 552596737433.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2011,
+     "exports_usd": 570712923999.0,
+     "imports_usd": 657691498024.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2012,
+     "exports_usd": 540588484191.0,
+     "imports_usd": 612454902698.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 2013,
+     "exports_usd": 553261289557.0,
+     "imports_usd": 616870161938.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2014,
+     "exports_usd": 557200040734.0,
+     "imports_usd": 605719812052.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2015,
+     "exports_usd": 481708313280.0,
+     "imports_usd": 514847799288.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2016,
+     "exports_usd": 479971933275.0,
+     "imports_usd": 509644943472.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2017,
+     "exports_usd": 508222735789.0,
+     "imports_usd": 558171257275.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2018,
+     "exports_usd": 549115933400.0,
+     "imports_usd": 597761710284.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2019,
+     "exports_usd": 543601982856.0,
+     "imports_usd": 579102010863.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2020,
+     "exports_usd": 462171458496.0,
+     "imports_usd": 546924696788.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 2021,
+     "exports_usd": 550666566408.0,
+     "imports_usd": 680591682795.0,
+     "exports_over_imports": 0.81
+    },
+    {
+     "year": 2022,
+     "exports_usd": 584320521075.0,
+     "imports_usd": 753761725330.0,
+     "exports_over_imports": 0.78
+    },
+    {
+     "year": 2023,
+     "exports_usd": 615080635631.0,
+     "imports_usd": 721699463510.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 2024,
+     "exports_usd": 594735001682.0,
+     "imports_usd": 688902633459.0,
+     "exports_over_imports": 0.86
+    }
+   ]
+  },
+  "USA": {
+   "name": "United States of America",
+   "places": 7,
+   "year": 2024,
+   "exports_usd": 2038155244576.0,
+   "imports_usd": 3068486960492.0,
+   "exports_over_imports": 0.66,
+   "eci": 1.121,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 330950532987.0,
+     "imports_usd": 427590761745.0,
+     "exports_over_imports": 0.77
+    },
+    "Electronics": {
+     "exports_usd": 204219359517.0,
+     "imports_usd": 428607802838.0,
+     "exports_over_imports": 0.48
+    },
+    "Machinery and instruments": {
+     "exports_usd": 373274319363.0,
+     "imports_usd": 678016576957.0,
+     "exports_over_imports": 0.55
+    },
+    "Metals": {
+     "exports_usd": 88699204551.0,
+     "imports_usd": 160312962290.0,
+     "exports_over_imports": 0.55
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 329344697353.0,
+     "imports_usd": 229880524272.0,
+     "exports_over_imports": 1.43
+    },
+    "Other": {
+     "exports_usd": 198075822723.0,
+     "imports_usd": 105189639560.0,
+     "exports_over_imports": 1.88
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 83342420262.0,
+     "imports_usd": 105675801411.0,
+     "exports_over_imports": 0.79
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 46854413976.0,
+     "imports_usd": 234869999534.0,
+     "exports_over_imports": 0.2
+    },
+    "Transport vehicles": {
+     "exports_usd": 166905057659.0,
+     "imports_usd": 411616990900.0,
+     "exports_over_imports": 0.41
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 216489416185.0,
+     "imports_usd": 286725900985.0,
+     "exports_over_imports": 0.76
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.16,
+   "hs2_chapters_net_exported": 23,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 581745906126.0,
+     "imports_usd": 737312484449.0,
+     "exports_over_imports": 0.79
+    },
+    {
+     "year": 1996,
+     "exports_usd": 608319862298.0,
+     "imports_usd": 774818031962.0,
+     "exports_over_imports": 0.79
+    },
+    {
+     "year": 1997,
+     "exports_usd": 677177006432.0,
+     "imports_usd": 845362429428.0,
+     "exports_over_imports": 0.8
+    },
+    {
+     "year": 1998,
+     "exports_usd": 672504710968.0,
+     "imports_usd": 872057945996.0,
+     "exports_over_imports": 0.77
+    },
+    {
+     "year": 1999,
+     "exports_usd": 686566492526.0,
+     "imports_usd": 975863372024.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2000,
+     "exports_usd": 768968269010.0,
+     "imports_usd": 1131393942339.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2001,
+     "exports_usd": 717166135529.0,
+     "imports_usd": 1056268983187.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2002,
+     "exports_usd": 687607812633.0,
+     "imports_usd": 1104534402505.0,
+     "exports_over_imports": 0.62
+    },
+    {
+     "year": 2003,
+     "exports_usd": 713179011277.0,
+     "imports_usd": 1195680864043.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 2004,
+     "exports_usd": 804469891064.0,
+     "imports_usd": 1407341014155.0,
+     "exports_over_imports": 0.57
+    },
+    {
+     "year": 2005,
+     "exports_usd": 875206642519.0,
+     "imports_usd": 1582654748400.0,
+     "exports_over_imports": 0.55
+    },
+    {
+     "year": 2006,
+     "exports_usd": 1001418405460.0,
+     "imports_usd": 1731790475349.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 2007,
+     "exports_usd": 1116753269715.0,
+     "imports_usd": 1836594128609.0,
+     "exports_over_imports": 0.61
+    },
+    {
+     "year": 2008,
+     "exports_usd": 1244388286422.0,
+     "imports_usd": 1933056160040.0,
+     "exports_over_imports": 0.64
+    },
+    {
+     "year": 2009,
+     "exports_usd": 1019880086551.0,
+     "imports_usd": 1435466862371.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2010,
+     "exports_usd": 1221506720778.0,
+     "imports_usd": 1766694196079.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2011,
+     "exports_usd": 1441867113259.0,
+     "imports_usd": 2034160179278.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2012,
+     "exports_usd": 1506388686745.0,
+     "imports_usd": 2071896192463.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2013,
+     "exports_usd": 1560796402492.0,
+     "imports_usd": 2068365115490.0,
+     "exports_over_imports": 0.75
+    },
+    {
+     "year": 2014,
+     "exports_usd": 1576739024935.0,
+     "imports_usd": 2147828369076.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2015,
+     "exports_usd": 1464895675495.0,
+     "imports_usd": 2037915801583.0,
+     "exports_over_imports": 0.72
+    },
+    {
+     "year": 2016,
+     "exports_usd": 1401778435932.0,
+     "imports_usd": 2006953852298.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2017,
+     "exports_usd": 1475562586459.0,
+     "imports_usd": 2144374939912.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2018,
+     "exports_usd": 1598967265278.0,
+     "imports_usd": 2344428606906.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2019,
+     "exports_usd": 1565204997869.0,
+     "imports_usd": 2303561649304.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2020,
+     "exports_usd": 1371254261176.0,
+     "imports_usd": 2244159032312.0,
+     "exports_over_imports": 0.61
+    },
+    {
+     "year": 2021,
+     "exports_usd": 1701977703646.0,
+     "imports_usd": 2740424648717.0,
+     "exports_over_imports": 0.62
+    },
+    {
+     "year": 2022,
+     "exports_usd": 2006642464479.0,
+     "imports_usd": 3090539947560.0,
+     "exports_over_imports": 0.65
+    },
+    {
+     "year": 2023,
+     "exports_usd": 1963529403316.0,
+     "imports_usd": 2956121038427.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2024,
+     "exports_usd": 2038155244576.0,
+     "imports_usd": 3068486960492.0,
+     "exports_over_imports": 0.66
+    }
+   ]
+  },
+  "BRA": {
+   "name": "Brazil",
+   "places": 5,
+   "year": 2024,
+   "exports_usd": 329458988761.0,
+   "imports_usd": 264699858846.0,
+   "exports_over_imports": 1.24,
+   "eci": 0.348,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 16929127916.0,
+     "imports_usd": 63151689919.0,
+     "exports_over_imports": 0.27
+    },
+    "Electronics": {
+     "exports_usd": 4589576515.0,
+     "imports_usd": 29594880172.0,
+     "exports_over_imports": 0.16
+    },
+    "Machinery and instruments": {
+     "exports_usd": 14438763137.0,
+     "imports_usd": 45971762049.0,
+     "exports_over_imports": 0.31
+    },
+    "Metals": {
+     "exports_usd": 17635305129.0,
+     "imports_usd": 17295357997.0,
+     "exports_over_imports": 1.02
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 90478051641.0,
+     "imports_usd": 30152764380.0,
+     "exports_over_imports": 3.0
+    },
+    "Other": {
+     "exports_usd": 1627110977.0,
+     "imports_usd": 19691121303.0,
+     "exports_over_imports": 0.08
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 6194796052.0,
+     "imports_usd": 2878790637.0,
+     "exports_over_imports": 2.15
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 8228285931.0,
+     "imports_usd": 9746832643.0,
+     "exports_over_imports": 0.84
+    },
+    "Transport vehicles": {
+     "exports_usd": 17616249919.0,
+     "imports_usd": 28607381506.0,
+     "exports_over_imports": 0.62
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 151721721544.0,
+     "imports_usd": 17609278240.0,
+     "exports_over_imports": 8.62
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.22,
+   "hs2_chapters_net_exported": 43,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 46296055570.0,
+     "imports_usd": 50203228718.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 1996,
+     "exports_usd": 46860413331.0,
+     "imports_usd": 53160426784.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 1997,
+     "exports_usd": 50963236340.0,
+     "imports_usd": 61164058598.0,
+     "exports_over_imports": 0.83
+    },
+    {
+     "year": 1998,
+     "exports_usd": 48973109598.0,
+     "imports_usd": 57310185898.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 1999,
+     "exports_usd": 46382706871.0,
+     "imports_usd": 48590901533.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2000,
+     "exports_usd": 54332695987.0,
+     "imports_usd": 57004008969.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2001,
+     "exports_usd": 57275714914.0,
+     "imports_usd": 57402530922.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2002,
+     "exports_usd": 56793197419.0,
+     "imports_usd": 49119687218.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2003,
+     "exports_usd": 70514103521.0,
+     "imports_usd": 49339298937.0,
+     "exports_over_imports": 1.43
+    },
+    {
+     "year": 2004,
+     "exports_usd": 95589707642.0,
+     "imports_usd": 63786618278.0,
+     "exports_over_imports": 1.5
+    },
+    {
+     "year": 2005,
+     "exports_usd": 116677508048.0,
+     "imports_usd": 74198424983.0,
+     "exports_over_imports": 1.57
+    },
+    {
+     "year": 2006,
+     "exports_usd": 135443659563.0,
+     "imports_usd": 90675270080.0,
+     "exports_over_imports": 1.49
+    },
+    {
+     "year": 2007,
+     "exports_usd": 160083936970.0,
+     "imports_usd": 120998739493.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2008,
+     "exports_usd": 199391419547.0,
+     "imports_usd": 169913111690.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2009,
+     "exports_usd": 152068020677.0,
+     "imports_usd": 125913271633.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2010,
+     "exports_usd": 196224836103.0,
+     "imports_usd": 179784286629.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2011,
+     "exports_usd": 244372343719.0,
+     "imports_usd": 223616259099.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2012,
+     "exports_usd": 233381361848.0,
+     "imports_usd": 225604034097.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2013,
+     "exports_usd": 220754624515.0,
+     "imports_usd": 232507330531.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2014,
+     "exports_usd": 213623932195.0,
+     "imports_usd": 222224319841.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2015,
+     "exports_usd": 181969655847.0,
+     "imports_usd": 162983059970.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2016,
+     "exports_usd": 175412264803.0,
+     "imports_usd": 136855074195.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2017,
+     "exports_usd": 206807711210.0,
+     "imports_usd": 160848037349.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 2018,
+     "exports_usd": 223334281519.0,
+     "imports_usd": 176607172775.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 2019,
+     "exports_usd": 214215460315.0,
+     "imports_usd": 176951866539.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2020,
+     "exports_usd": 205153958674.0,
+     "imports_usd": 158175396025.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 2021,
+     "exports_usd": 280923730249.0,
+     "imports_usd": 222969322160.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 2022,
+     "exports_usd": 324076310374.0,
+     "imports_usd": 256179390768.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 2023,
+     "exports_usd": 328837888687.0,
+     "imports_usd": 237143416876.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2024,
+     "exports_usd": 329458988761.0,
+     "imports_usd": 264699858846.0,
+     "exports_over_imports": 1.24
+    }
+   ]
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "places": 5,
+   "year": 2024,
+   "exports_usd": 259316674858.0,
+   "imports_usd": 218986521339.0,
+   "exports_over_imports": 1.18,
+   "eci": 0.222,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 20377814467.0,
+     "imports_usd": 32360076350.0,
+     "exports_over_imports": 0.63
+    },
+    "Electronics": {
+     "exports_usd": 14083713031.0,
+     "imports_usd": 26074589284.0,
+     "exports_over_imports": 0.54
+    },
+    "Machinery and instruments": {
+     "exports_usd": 9625835179.0,
+     "imports_usd": 38429813406.0,
+     "exports_over_imports": 0.25
+    },
+    "Metals": {
+     "exports_usd": 42338558330.0,
+     "imports_usd": 21111025642.0,
+     "exports_over_imports": 2.01
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 62778855138.0,
+     "imports_usd": 33405907840.0,
+     "exports_over_imports": 1.88
+    },
+    "Other": {
+     "exports_usd": 2850749157.0,
+     "imports_usd": 3886526236.0,
+     "exports_over_imports": 0.73
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 8646376743.0,
+     "imports_usd": 6378467062.0,
+     "exports_over_imports": 1.36
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 20530686311.0,
+     "imports_usd": 13477788794.0,
+     "exports_over_imports": 1.52
+    },
+    "Transport vehicles": {
+     "exports_usd": 12737244061.0,
+     "imports_usd": 13615041891.0,
+     "exports_over_imports": 0.94
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 65346842441.0,
+     "imports_usd": 30247284834.0,
+     "exports_over_imports": 2.16
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.37,
+   "hs2_chapters_net_exported": 38,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 47067400677.0,
+     "imports_usd": 37979817548.0,
+     "exports_over_imports": 1.24
+    },
+    {
+     "year": 1996,
+     "exports_usd": 51179691782.0,
+     "imports_usd": 39465007033.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 1997,
+     "exports_usd": 55641244944.0,
+     "imports_usd": 41370492414.0,
+     "exports_over_imports": 1.34
+    },
+    {
+     "year": 1998,
+     "exports_usd": 51423588162.0,
+     "imports_usd": 22238480478.0,
+     "exports_over_imports": 2.31
+    },
+    {
+     "year": 1999,
+     "exports_usd": 53155177984.0,
+     "imports_usd": 23780955767.0,
+     "exports_over_imports": 2.24
+    },
+    {
+     "year": 2000,
+     "exports_usd": 62784609053.0,
+     "imports_usd": 32227740301.0,
+     "exports_over_imports": 1.95
+    },
+    {
+     "year": 2001,
+     "exports_usd": 58013600620.0,
+     "imports_usd": 30597213896.0,
+     "exports_over_imports": 1.9
+    },
+    {
+     "year": 2002,
+     "exports_usd": 60090617904.0,
+     "imports_usd": 32205609472.0,
+     "exports_over_imports": 1.87
+    },
+    {
+     "year": 2003,
+     "exports_usd": 66830950387.0,
+     "imports_usd": 40381452091.0,
+     "exports_over_imports": 1.65
+    },
+    {
+     "year": 2004,
+     "exports_usd": 78787334927.0,
+     "imports_usd": 50549997137.0,
+     "exports_over_imports": 1.56
+    },
+    {
+     "year": 2005,
+     "exports_usd": 90455961288.0,
+     "imports_usd": 61454180296.0,
+     "exports_over_imports": 1.47
+    },
+    {
+     "year": 2006,
+     "exports_usd": 103185949097.0,
+     "imports_usd": 63684604945.0,
+     "exports_over_imports": 1.62
+    },
+    {
+     "year": 2007,
+     "exports_usd": 120822140009.0,
+     "imports_usd": 77485497389.0,
+     "exports_over_imports": 1.56
+    },
+    {
+     "year": 2008,
+     "exports_usd": 142638359523.0,
+     "imports_usd": 117668546655.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2009,
+     "exports_usd": 117463851171.0,
+     "imports_usd": 90909069381.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 2010,
+     "exports_usd": 154065200880.0,
+     "imports_usd": 126361015203.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2011,
+     "exports_usd": 206141416815.0,
+     "imports_usd": 166948170732.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 2012,
+     "exports_usd": 188668974240.0,
+     "imports_usd": 181554769482.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 2013,
+     "exports_usd": 179915153544.0,
+     "imports_usd": 180371119011.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2014,
+     "exports_usd": 173778529252.0,
+     "imports_usd": 173320570477.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2015,
+     "exports_usd": 148897678515.0,
+     "imports_usd": 134508605874.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2016,
+     "exports_usd": 143068353750.0,
+     "imports_usd": 127294550868.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2017,
+     "exports_usd": 165835482712.0,
+     "imports_usd": 144906128490.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2018,
+     "exports_usd": 177183935803.0,
+     "imports_usd": 164956638526.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2019,
+     "exports_usd": 167375340822.0,
+     "imports_usd": 156595920764.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2020,
+     "exports_usd": 158446800860.0,
+     "imports_usd": 129722362479.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2021,
+     "exports_usd": 224968531677.0,
+     "imports_usd": 179362961917.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2022,
+     "exports_usd": 290323195989.0,
+     "imports_usd": 217026160702.0,
+     "exports_over_imports": 1.34
+    },
+    {
+     "year": 2023,
+     "exports_usd": 253919504684.0,
+     "imports_usd": 205359617011.0,
+     "exports_over_imports": 1.24
+    },
+    {
+     "year": 2024,
+     "exports_usd": 259316674858.0,
+     "imports_usd": 218986521339.0,
+     "exports_over_imports": 1.18
+    }
+   ]
+  },
+  "MEX": {
+   "name": "Mexico",
+   "places": 5,
+   "year": 2024,
+   "exports_usd": 636463167162.0,
+   "imports_usd": 590418784917.0,
+   "exports_over_imports": 1.08,
+   "eci": 0.941,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 28774952632.0,
+     "imports_usd": 77363626261.0,
+     "exports_over_imports": 0.37
+    },
+    "Electronics": {
+     "exports_usd": 101837869942.0,
+     "imports_usd": 107480453567.0,
+     "exports_over_imports": 0.95
+    },
+    "Machinery and instruments": {
+     "exports_usd": 136690319719.0,
+     "imports_usd": 127442866302.0,
+     "exports_over_imports": 1.07
+    },
+    "Metals": {
+     "exports_usd": 21559138173.0,
+     "imports_usd": 51391021550.0,
+     "exports_over_imports": 0.42
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 33506936492.0,
+     "imports_usd": 45925183499.0,
+     "exports_over_imports": 0.73
+    },
+    "Other": {
+     "exports_usd": 67922735787.0,
+     "imports_usd": 27631432672.0,
+     "exports_over_imports": 2.46
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 13269295995.0,
+     "imports_usd": 5895185117.0,
+     "exports_over_imports": 2.25
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 22991383823.0,
+     "imports_usd": 24550223910.0,
+     "exports_over_imports": 0.94
+    },
+    "Transport vehicles": {
+     "exports_usd": 155012403367.0,
+     "imports_usd": 66717835026.0,
+     "exports_over_imports": 2.32
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 54898131232.0,
+     "imports_usd": 56020957013.0,
+     "exports_over_imports": 0.98
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.4,
+   "hs2_chapters_net_exported": 26,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 78107373625.0,
+     "imports_usd": 61659054808.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 1996,
+     "exports_usd": 91791092114.0,
+     "imports_usd": 75047218820.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 1997,
+     "exports_usd": 106708115994.0,
+     "imports_usd": 94120984194.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 1998,
+     "exports_usd": 114235393828.0,
+     "imports_usd": 105813341962.0,
+     "exports_over_imports": 1.08
+    },
+    {
+     "year": 1999,
+     "exports_usd": 130586374587.0,
+     "imports_usd": 115341227540.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2000,
+     "exports_usd": 160363141928.0,
+     "imports_usd": 147465091140.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2001,
+     "exports_usd": 154815344088.0,
+     "imports_usd": 139533088202.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2002,
+     "exports_usd": 158871748160.0,
+     "imports_usd": 138694757548.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2003,
+     "exports_usd": 165170889907.0,
+     "imports_usd": 140994796677.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2004,
+     "exports_usd": 189003627059.0,
+     "imports_usd": 163686758225.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2005,
+     "exports_usd": 210590699287.0,
+     "imports_usd": 185339513148.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2006,
+     "exports_usd": 247232922195.0,
+     "imports_usd": 215689974292.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2007,
+     "exports_usd": 271391790693.0,
+     "imports_usd": 232813881822.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2008,
+     "exports_usd": 285875977152.0,
+     "imports_usd": 256007782009.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2009,
+     "exports_usd": 229334379545.0,
+     "imports_usd": 206265670397.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2010,
+     "exports_usd": 303028250791.0,
+     "imports_usd": 263793074057.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2011,
+     "exports_usd": 352949639147.0,
+     "imports_usd": 316801515297.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2012,
+     "exports_usd": 375878886807.0,
+     "imports_usd": 340976591539.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2013,
+     "exports_usd": 379516954703.0,
+     "imports_usd": 354508569246.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2014,
+     "exports_usd": 390790983449.0,
+     "imports_usd": 373604027288.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2015,
+     "exports_usd": 385242469328.0,
+     "imports_usd": 370741729071.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 2016,
+     "exports_usd": 382192240263.0,
+     "imports_usd": 362829861734.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2017,
+     "exports_usd": 413786023326.0,
+     "imports_usd": 389980590908.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2018,
+     "exports_usd": 455687660654.0,
+     "imports_usd": 428871550824.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2019,
+     "exports_usd": 466908823448.0,
+     "imports_usd": 418703868666.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2020,
+     "exports_usd": 423214972563.0,
+     "imports_usd": 353692051913.0,
+     "exports_over_imports": 1.2
+    },
+    {
+     "year": 2021,
+     "exports_usd": 501226623766.0,
+     "imports_usd": 470103584439.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2022,
+     "exports_usd": 582138002266.0,
+     "imports_usd": 548438275347.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2023,
+     "exports_usd": 606418400734.0,
+     "imports_usd": 564296886116.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2024,
+     "exports_usd": 636463167162.0,
+     "imports_usd": 590418784917.0,
+     "exports_over_imports": 1.08
+    }
+   ]
+  },
+  "DEU": {
+   "name": "Germany",
+   "places": 3,
+   "year": 2024,
+   "exports_usd": 1502373655040.0,
+   "imports_usd": 1243695345086.0,
+   "exports_over_imports": 1.21,
+   "eci": 1.355,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 295938167676.0,
+     "imports_usd": 195811397302.0,
+     "exports_over_imports": 1.51
+    },
+    "Electronics": {
+     "exports_usd": 160608209592.0,
+     "imports_usd": 164813858417.0,
+     "exports_over_imports": 0.97
+    },
+    "Machinery and instruments": {
+     "exports_usd": 325914966909.0,
+     "imports_usd": 201590400250.0,
+     "exports_over_imports": 1.62
+    },
+    "Metals": {
+     "exports_usd": 107221848547.0,
+     "imports_usd": 94041376504.0,
+     "exports_over_imports": 1.14
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 31771758295.0,
+     "imports_usd": 79568898751.0,
+     "exports_over_imports": 0.4
+    },
+    "Other": {
+     "exports_usd": 48388135571.0,
+     "imports_usd": 88314985188.0,
+     "exports_over_imports": 0.55
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 41430444891.0,
+     "imports_usd": 29840462986.0,
+     "exports_over_imports": 1.39
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 64359880760.0,
+     "imports_usd": 90530011332.0,
+     "exports_over_imports": 0.71
+    },
+    "Transport vehicles": {
+     "exports_usd": 294989857689.0,
+     "imports_usd": 153295738816.0,
+     "exports_over_imports": 1.92
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 131750385110.0,
+     "imports_usd": 145888215540.0,
+     "exports_over_imports": 0.9
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.52,
+   "hs2_chapters_net_exported": 44,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 487799331229.0,
+     "imports_usd": 437498362832.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 1996,
+     "exports_usd": 485825428444.0,
+     "imports_usd": 422585993949.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 1997,
+     "exports_usd": 475830287702.0,
+     "imports_usd": 411482651276.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 1998,
+     "exports_usd": 501422647182.0,
+     "imports_usd": 430660926341.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 1999,
+     "exports_usd": 492318190652.0,
+     "imports_usd": 428420824231.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2000,
+     "exports_usd": 511144473199.0,
+     "imports_usd": 451886808537.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2001,
+     "exports_usd": 532928392109.0,
+     "imports_usd": 435142574055.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2002,
+     "exports_usd": 580133566970.0,
+     "imports_usd": 442007129263.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2003,
+     "exports_usd": 705046265221.0,
+     "imports_usd": 535193175353.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2004,
+     "exports_usd": 850916908735.0,
+     "imports_usd": 647469532310.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2005,
+     "exports_usd": 916555576253.0,
+     "imports_usd": 693926783061.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2006,
+     "exports_usd": 1041636715041.0,
+     "imports_usd": 813380352078.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2007,
+     "exports_usd": 1233842940619.0,
+     "imports_usd": 943333426556.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2008,
+     "exports_usd": 1362088171581.0,
+     "imports_usd": 1051547142435.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 2009,
+     "exports_usd": 1038588084655.0,
+     "imports_usd": 814927147313.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 2010,
+     "exports_usd": 1188381254374.0,
+     "imports_usd": 937715719643.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 2011,
+     "exports_usd": 1393929723595.0,
+     "imports_usd": 1111866289381.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2012,
+     "exports_usd": 1320471269958.0,
+     "imports_usd": 1029617220391.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2013,
+     "exports_usd": 1364205304384.0,
+     "imports_usd": 1050725746713.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 2014,
+     "exports_usd": 1406331938747.0,
+     "imports_usd": 1089957128507.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 2015,
+     "exports_usd": 1247205666917.0,
+     "imports_usd": 944543135647.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2016,
+     "exports_usd": 1251888012953.0,
+     "imports_usd": 958923162012.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2017,
+     "exports_usd": 1343152137181.0,
+     "imports_usd": 1014830175927.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2018,
+     "exports_usd": 1454998053865.0,
+     "imports_usd": 1155991601630.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 2019,
+     "exports_usd": 1386212970403.0,
+     "imports_usd": 1107828067831.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2020,
+     "exports_usd": 1308995703852.0,
+     "imports_usd": 1053181665274.0,
+     "exports_over_imports": 1.24
+    },
+    {
+     "year": 2021,
+     "exports_usd": 1553187970841.0,
+     "imports_usd": 1260399226757.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 2022,
+     "exports_usd": 1570085421832.0,
+     "imports_usd": 1387186702956.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2023,
+     "exports_usd": 1569197169313.0,
+     "imports_usd": 1333874110538.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2024,
+     "exports_usd": 1502373655040.0,
+     "imports_usd": 1243695345086.0,
+     "exports_over_imports": 1.21
+    }
+   ]
+  },
+  "AUT": {
+   "name": "Austria",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 191532126061.0,
+   "imports_usd": 187878410294.0,
+   "exports_over_imports": 1.02,
+   "eci": 1.248,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 35621759093.0,
+     "imports_usd": 28629764794.0,
+     "exports_over_imports": 1.24
+    },
+    "Electronics": {
+     "exports_usd": 17710143313.0,
+     "imports_usd": 18741321067.0,
+     "exports_over_imports": 0.94
+    },
+    "Machinery and instruments": {
+     "exports_usd": 37630853693.0,
+     "imports_usd": 28477247548.0,
+     "exports_over_imports": 1.32
+    },
+    "Metals": {
+     "exports_usd": 24852991480.0,
+     "imports_usd": 18253009096.0,
+     "exports_over_imports": 1.36
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 5952156259.0,
+     "imports_usd": 11963789682.0,
+     "exports_over_imports": 0.5
+    },
+    "Other": {
+     "exports_usd": 8277484683.0,
+     "imports_usd": 18153757583.0,
+     "exports_over_imports": 0.46
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 4836333628.0,
+     "imports_usd": 5288465749.0,
+     "exports_over_imports": 0.91
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 8391874214.0,
+     "imports_usd": 14611166195.0,
+     "exports_over_imports": 0.57
+    },
+    "Transport vehicles": {
+     "exports_usd": 21261382861.0,
+     "imports_usd": 19477017235.0,
+     "exports_over_imports": 1.09
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 26997146837.0,
+     "imports_usd": 24282871345.0,
+     "exports_over_imports": 1.11
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.5,
+   "hs2_chapters_net_exported": 36,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 50490668602.0,
+     "imports_usd": 62428748668.0,
+     "exports_over_imports": 0.81
+    },
+    {
+     "year": 1996,
+     "exports_usd": 50260589142.0,
+     "imports_usd": 63663909923.0,
+     "exports_over_imports": 0.79
+    },
+    {
+     "year": 1997,
+     "exports_usd": 50473574134.0,
+     "imports_usd": 61172230851.0,
+     "exports_over_imports": 0.83
+    },
+    {
+     "year": 1998,
+     "exports_usd": 54207397032.0,
+     "imports_usd": 64458328438.0,
+     "exports_over_imports": 0.84
+    },
+    {
+     "year": 1999,
+     "exports_usd": 54710217723.0,
+     "imports_usd": 63377584662.0,
+     "exports_over_imports": 0.86
+    },
+    {
+     "year": 2000,
+     "exports_usd": 56539446419.0,
+     "imports_usd": 64737389879.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2001,
+     "exports_usd": 58059277674.0,
+     "imports_usd": 65829095754.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 2002,
+     "exports_usd": 63748535142.0,
+     "imports_usd": 68967734568.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2003,
+     "exports_usd": 78082833315.0,
+     "imports_usd": 85987913849.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2004,
+     "exports_usd": 96334514839.0,
+     "imports_usd": 104708023526.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2005,
+     "exports_usd": 102111965946.0,
+     "imports_usd": 112384038335.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2006,
+     "exports_usd": 119277996730.0,
+     "imports_usd": 125687677226.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2007,
+     "exports_usd": 143052045043.0,
+     "imports_usd": 146046119293.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2008,
+     "exports_usd": 155026324330.0,
+     "imports_usd": 162454565911.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2009,
+     "exports_usd": 119248772595.0,
+     "imports_usd": 126831170363.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2010,
+     "exports_usd": 134071427406.0,
+     "imports_usd": 139567824234.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2011,
+     "exports_usd": 158503248084.0,
+     "imports_usd": 166459823891.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2012,
+     "exports_usd": 148216256624.0,
+     "imports_usd": 154839712647.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2013,
+     "exports_usd": 156111165819.0,
+     "imports_usd": 160122520178.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2014,
+     "exports_usd": 159556609532.0,
+     "imports_usd": 160667428359.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2015,
+     "exports_usd": 136292354809.0,
+     "imports_usd": 139159060699.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2016,
+     "exports_usd": 135747824044.0,
+     "imports_usd": 139956944332.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2017,
+     "exports_usd": 145787566167.0,
+     "imports_usd": 153988794525.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2018,
+     "exports_usd": 164630752814.0,
+     "imports_usd": 169298456732.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2019,
+     "exports_usd": 162104892008.0,
+     "imports_usd": 163463702867.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2020,
+     "exports_usd": 150891230685.0,
+     "imports_usd": 154683332967.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2021,
+     "exports_usd": 180835724131.0,
+     "imports_usd": 195062903067.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2022,
+     "exports_usd": 196263833305.0,
+     "imports_usd": 205902370394.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2023,
+     "exports_usd": 199871687606.0,
+     "imports_usd": 201076280912.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2024,
+     "exports_usd": 191532126061.0,
+     "imports_usd": 187878410294.0,
+     "exports_over_imports": 1.02
+    }
+   ]
+  },
+  "CAN": {
+   "name": "Canada",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 569512582883.0,
+   "imports_usd": 552524707491.0,
+   "exports_over_imports": 1.03,
+   "eci": 0.781,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 57779760916.0,
+     "imports_usd": 76653122738.0,
+     "exports_over_imports": 0.75
+    },
+    "Electronics": {
+     "exports_usd": 16307105764.0,
+     "imports_usd": 46981174910.0,
+     "exports_over_imports": 0.35
+    },
+    "Machinery and instruments": {
+     "exports_usd": 49986160508.0,
+     "imports_usd": 98050133882.0,
+     "exports_over_imports": 0.51
+    },
+    "Metals": {
+     "exports_usd": 40246600491.0,
+     "imports_usd": 36059826338.0,
+     "exports_over_imports": 1.12
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 153968093983.0,
+     "imports_usd": 36525034938.0,
+     "exports_over_imports": 4.22
+    },
+    "Other": {
+     "exports_usd": 36897943999.0,
+     "imports_usd": 48088542710.0,
+     "exports_over_imports": 0.77
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 34491902960.0,
+     "imports_usd": 23535330826.0,
+     "exports_over_imports": 1.47
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 9508253548.0,
+     "imports_usd": 28998249895.0,
+     "exports_over_imports": 0.33
+    },
+    "Transport vehicles": {
+     "exports_usd": 70138523569.0,
+     "imports_usd": 91124793691.0,
+     "exports_over_imports": 0.77
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 100188237145.0,
+     "imports_usd": 66508497563.0,
+     "exports_over_imports": 1.51
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.23,
+   "hs2_chapters_net_exported": 33,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 190635528740.0,
+     "imports_usd": 164907868803.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 1996,
+     "exports_usd": 200690014870.0,
+     "imports_usd": 164572444958.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 1997,
+     "exports_usd": 213082085378.0,
+     "imports_usd": 190008035177.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 1998,
+     "exports_usd": 214119968697.0,
+     "imports_usd": 197395503362.0,
+     "exports_over_imports": 1.08
+    },
+    {
+     "year": 1999,
+     "exports_usd": 237398299368.0,
+     "imports_usd": 211521910009.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2000,
+     "exports_usd": 272562508420.0,
+     "imports_usd": 236517476378.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2001,
+     "exports_usd": 254405868881.0,
+     "imports_usd": 216360870531.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2002,
+     "exports_usd": 250273299735.0,
+     "imports_usd": 218073613931.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2003,
+     "exports_usd": 265700841371.0,
+     "imports_usd": 229079575717.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2004,
+     "exports_usd": 311454083379.0,
+     "imports_usd": 261300514395.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2005,
+     "exports_usd": 352326631372.0,
+     "imports_usd": 296070737949.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2006,
+     "exports_usd": 377527935268.0,
+     "imports_usd": 325039846818.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2007,
+     "exports_usd": 404653983240.0,
+     "imports_usd": 356744859017.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2008,
+     "exports_usd": 442175386095.0,
+     "imports_usd": 373762001121.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2009,
+     "exports_usd": 305873419981.0,
+     "imports_usd": 300780857327.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2010,
+     "exports_usd": 375732675623.0,
+     "imports_usd": 369280927602.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2011,
+     "exports_usd": 435181577369.0,
+     "imports_usd": 432929247720.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2012,
+     "exports_usd": 442066231970.0,
+     "imports_usd": 450226761974.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2013,
+     "exports_usd": 447731252207.0,
+     "imports_usd": 463752961608.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2014,
+     "exports_usd": 466595709917.0,
+     "imports_usd": 451399128020.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2015,
+     "exports_usd": 398546902779.0,
+     "imports_usd": 408394708294.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2016,
+     "exports_usd": 373940113397.0,
+     "imports_usd": 387074551098.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2017,
+     "exports_usd": 405754636420.0,
+     "imports_usd": 405082888114.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2018,
+     "exports_usd": 437429015238.0,
+     "imports_usd": 435362316396.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2019,
+     "exports_usd": 438113666971.0,
+     "imports_usd": 429188031830.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2020,
+     "exports_usd": 377667663862.0,
+     "imports_usd": 383523322276.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2021,
+     "exports_usd": 487208084399.0,
+     "imports_usd": 475757898238.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2022,
+     "exports_usd": 600069697454.0,
+     "imports_usd": 545512417548.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2023,
+     "exports_usd": 572857919280.0,
+     "imports_usd": 537639441417.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2024,
+     "exports_usd": 569512582883.0,
+     "imports_usd": 552524707491.0,
+     "exports_over_imports": 1.03
+    }
+   ]
+  },
+  "CHL": {
+   "name": "Chile",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 93038322523.0,
+   "imports_usd": 80781734647.0,
+   "exports_over_imports": 1.15,
+   "eci": -0.046,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 7371942094.0,
+     "imports_usd": 11292435792.0,
+     "exports_over_imports": 0.65
+    },
+    "Electronics": {
+     "exports_usd": 411406182.0,
+     "imports_usd": 6631764386.0,
+     "exports_over_imports": 0.06
+    },
+    "Machinery and instruments": {
+     "exports_usd": 907111099.0,
+     "imports_usd": 12201887694.0,
+     "exports_over_imports": 0.07
+    },
+    "Metals": {
+     "exports_usd": 19434589854.0,
+     "imports_usd": 4403503005.0,
+     "exports_over_imports": 4.41
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 33554768622.0,
+     "imports_usd": 14556424977.0,
+     "exports_over_imports": 2.31
+    },
+    "Other": {
+     "exports_usd": 230632537.0,
+     "imports_usd": 3896711178.0,
+     "exports_over_imports": 0.06
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 1809553851.0,
+     "imports_usd": 782644081.0,
+     "exports_over_imports": 2.31
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 553320892.0,
+     "imports_usd": 6575457774.0,
+     "exports_over_imports": 0.08
+    },
+    "Transport vehicles": {
+     "exports_usd": 535131142.0,
+     "imports_usd": 9185858527.0,
+     "exports_over_imports": 0.06
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 28229866250.0,
+     "imports_usd": 11255047233.0,
+     "exports_over_imports": 2.51
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.06,
+   "hs2_chapters_net_exported": 23,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 15475038171.0,
+     "imports_usd": 14845432117.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 1996,
+     "exports_usd": 14651279381.0,
+     "imports_usd": 16401244472.0,
+     "exports_over_imports": 0.89
+    },
+    {
+     "year": 1997,
+     "exports_usd": 15695049527.0,
+     "imports_usd": 17868698019.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 1998,
+     "exports_usd": 13910351218.0,
+     "imports_usd": 16078176998.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 1999,
+     "exports_usd": 14317279278.0,
+     "imports_usd": 13127088481.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2000,
+     "exports_usd": 17144649986.0,
+     "imports_usd": 16327291036.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2001,
+     "exports_usd": 17465854286.0,
+     "imports_usd": 15509885539.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2002,
+     "exports_usd": 16768260849.0,
+     "imports_usd": 14576120651.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2003,
+     "exports_usd": 20800854494.0,
+     "imports_usd": 16863130575.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 2004,
+     "exports_usd": 31336188510.0,
+     "imports_usd": 21757078525.0,
+     "exports_over_imports": 1.44
+    },
+    {
+     "year": 2005,
+     "exports_usd": 40286318123.0,
+     "imports_usd": 29041449679.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2006,
+     "exports_usd": 55114471109.0,
+     "imports_usd": 34329247770.0,
+     "exports_over_imports": 1.61
+    },
+    {
+     "year": 2007,
+     "exports_usd": 65564536400.0,
+     "imports_usd": 41504952640.0,
+     "exports_over_imports": 1.58
+    },
+    {
+     "year": 2008,
+     "exports_usd": 61632251067.0,
+     "imports_usd": 54838039000.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2009,
+     "exports_usd": 53104817015.0,
+     "imports_usd": 38536743453.0,
+     "exports_over_imports": 1.38
+    },
+    {
+     "year": 2010,
+     "exports_usd": 69473031088.0,
+     "imports_usd": 51550996800.0,
+     "exports_over_imports": 1.35
+    },
+    {
+     "year": 2011,
+     "exports_usd": 75800436536.0,
+     "imports_usd": 66350308284.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2012,
+     "exports_usd": 75016265706.0,
+     "imports_usd": 71545780425.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2013,
+     "exports_usd": 71700228115.0,
+     "imports_usd": 70214715322.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2014,
+     "exports_usd": 71402515667.0,
+     "imports_usd": 65108577016.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2015,
+     "exports_usd": 58312769357.0,
+     "imports_usd": 58607214922.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2016,
+     "exports_usd": 56392946596.0,
+     "imports_usd": 55141347824.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2017,
+     "exports_usd": 64350148925.0,
+     "imports_usd": 60467800143.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2018,
+     "exports_usd": 68881656244.0,
+     "imports_usd": 68308160747.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2019,
+     "exports_usd": 64772210959.0,
+     "imports_usd": 65666923103.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2020,
+     "exports_usd": 72386652487.0,
+     "imports_usd": 55267677745.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2021,
+     "exports_usd": 86287171541.0,
+     "imports_usd": 84651171881.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2022,
+     "exports_usd": 94437957506.0,
+     "imports_usd": 92519064279.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2023,
+     "exports_usd": 90827978867.0,
+     "imports_usd": 80260401834.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2024,
+     "exports_usd": 93038322523.0,
+     "imports_usd": 80781734647.0,
+     "exports_over_imports": 1.15
+    }
+   ]
+  },
+  "HRV": {
+   "name": "Croatia",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 23012246424.0,
+   "imports_usd": 43679597940.0,
+   "exports_over_imports": 0.53,
+   "eci": 0.821,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 3234606879.0,
+     "imports_usd": 6523849683.0,
+     "exports_over_imports": 0.5
+    },
+    "Electronics": {
+     "exports_usd": 2183112606.0,
+     "imports_usd": 3276364369.0,
+     "exports_over_imports": 0.67
+    },
+    "Machinery and instruments": {
+     "exports_usd": 2237681615.0,
+     "imports_usd": 5123205944.0,
+     "exports_over_imports": 0.44
+    },
+    "Metals": {
+     "exports_usd": 1971891865.0,
+     "imports_usd": 3740557592.0,
+     "exports_over_imports": 0.53
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 3280917448.0,
+     "imports_usd": 6559777553.0,
+     "exports_over_imports": 0.5
+    },
+    "Other": {
+     "exports_usd": 157886155.0,
+     "imports_usd": 746361963.0,
+     "exports_over_imports": 0.21
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 738673320.0,
+     "imports_usd": 1183558141.0,
+     "exports_over_imports": 0.62
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 2218879252.0,
+     "imports_usd": 4054871920.0,
+     "exports_over_imports": 0.55
+    },
+    "Transport vehicles": {
+     "exports_usd": 1669772767.0,
+     "imports_usd": 4532670104.0,
+     "exports_over_imports": 0.37
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 5318824517.0,
+     "imports_usd": 7938380671.0,
+     "exports_over_imports": 0.67
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.04,
+   "hs2_chapters_net_exported": 12,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 4343962094.0,
+     "imports_usd": 7215844248.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 1996,
+     "exports_usd": 4331500734.0,
+     "imports_usd": 7407116058.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 1997,
+     "exports_usd": 4014841366.0,
+     "imports_usd": 8092426888.0,
+     "exports_over_imports": 0.5
+    },
+    {
+     "year": 1998,
+     "exports_usd": 4299235307.0,
+     "imports_usd": 7366145398.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 1999,
+     "exports_usd": 3918622672.0,
+     "imports_usd": 6518192068.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 2000,
+     "exports_usd": 3900731101.0,
+     "imports_usd": 6688012965.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 2001,
+     "exports_usd": 4005069722.0,
+     "imports_usd": 7645363053.0,
+     "exports_over_imports": 0.52
+    },
+    {
+     "year": 2002,
+     "exports_usd": 4338910065.0,
+     "imports_usd": 9475324758.0,
+     "exports_over_imports": 0.46
+    },
+    {
+     "year": 2003,
+     "exports_usd": 5265257740.0,
+     "imports_usd": 12256701881.0,
+     "exports_over_imports": 0.43
+    },
+    {
+     "year": 2004,
+     "exports_usd": 7096598968.0,
+     "imports_usd": 14747341439.0,
+     "exports_over_imports": 0.48
+    },
+    {
+     "year": 2005,
+     "exports_usd": 7578868340.0,
+     "imports_usd": 16266466449.0,
+     "exports_over_imports": 0.47
+    },
+    {
+     "year": 2006,
+     "exports_usd": 9583928363.0,
+     "imports_usd": 19056138410.0,
+     "exports_over_imports": 0.5
+    },
+    {
+     "year": 2007,
+     "exports_usd": 11421655484.0,
+     "imports_usd": 23438866713.0,
+     "exports_over_imports": 0.49
+    },
+    {
+     "year": 2008,
+     "exports_usd": 12505123757.0,
+     "imports_usd": 27836126633.0,
+     "exports_over_imports": 0.45
+    },
+    {
+     "year": 2009,
+     "exports_usd": 9849528097.0,
+     "imports_usd": 19163639065.0,
+     "exports_over_imports": 0.51
+    },
+    {
+     "year": 2010,
+     "exports_usd": 11060897681.0,
+     "imports_usd": 18688260007.0,
+     "exports_over_imports": 0.59
+    },
+    {
+     "year": 2011,
+     "exports_usd": 12956466393.0,
+     "imports_usd": 21549004321.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 2012,
+     "exports_usd": 11745507178.0,
+     "imports_usd": 18685969447.0,
+     "exports_over_imports": 0.63
+    },
+    {
+     "year": 2013,
+     "exports_usd": 11979543433.0,
+     "imports_usd": 20851294837.0,
+     "exports_over_imports": 0.57
+    },
+    {
+     "year": 2014,
+     "exports_usd": 12471145992.0,
+     "imports_usd": 22077118236.0,
+     "exports_over_imports": 0.56
+    },
+    {
+     "year": 2015,
+     "exports_usd": 11627058369.0,
+     "imports_usd": 20197368822.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 2016,
+     "exports_usd": 12470393204.0,
+     "imports_usd": 21051884017.0,
+     "exports_over_imports": 0.59
+    },
+    {
+     "year": 2017,
+     "exports_usd": 13926664654.0,
+     "imports_usd": 24124583571.0,
+     "exports_over_imports": 0.58
+    },
+    {
+     "year": 2018,
+     "exports_usd": 15404292643.0,
+     "imports_usd": 27916225904.0,
+     "exports_over_imports": 0.55
+    },
+    {
+     "year": 2019,
+     "exports_usd": 15304122402.0,
+     "imports_usd": 28616570507.0,
+     "exports_over_imports": 0.53
+    },
+    {
+     "year": 2020,
+     "exports_usd": 15272696824.0,
+     "imports_usd": 25843051837.0,
+     "exports_over_imports": 0.59
+    },
+    {
+     "year": 2021,
+     "exports_usd": 19963678204.0,
+     "imports_usd": 33341995303.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 2022,
+     "exports_usd": 23063035382.0,
+     "imports_usd": 41162817765.0,
+     "exports_over_imports": 0.56
+    },
+    {
+     "year": 2023,
+     "exports_usd": 22196781798.0,
+     "imports_usd": 41047795464.0,
+     "exports_over_imports": 0.54
+    },
+    {
+     "year": 2024,
+     "exports_usd": 23012246424.0,
+     "imports_usd": 43679597940.0,
+     "exports_over_imports": 0.53
+    }
+   ]
+  },
+  "GHA": {
+   "name": "Ghana",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 13104901924.0,
+   "imports_usd": 20710375767.0,
+   "exports_over_imports": 0.63,
+   "eci": -1.138,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 314467366.0,
+     "imports_usd": 3448740348.0,
+     "exports_over_imports": 0.09
+    },
+    "Electronics": {
+     "exports_usd": 10998960.0,
+     "imports_usd": 1512245067.0,
+     "exports_over_imports": 0.01
+    },
+    "Machinery and instruments": {
+     "exports_usd": 29297962.0,
+     "imports_usd": 3225518347.0,
+     "exports_over_imports": 0.01
+    },
+    "Metals": {
+     "exports_usd": 316597559.0,
+     "imports_usd": 1984232387.0,
+     "exports_over_imports": 0.16
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 3980838979.0,
+     "imports_usd": 1943605659.0,
+     "exports_over_imports": 2.05
+    },
+    "Other": {
+     "exports_usd": 208896401.0,
+     "imports_usd": 236698789.0,
+     "exports_over_imports": 0.88
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 4866439038.0,
+     "imports_usd": 366746585.0,
+     "exports_over_imports": 13.27
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 97143778.0,
+     "imports_usd": 2507048020.0,
+     "exports_over_imports": 0.04
+    },
+    "Transport vehicles": {
+     "exports_usd": 13355683.0,
+     "imports_usd": 1671467133.0,
+     "exports_over_imports": 0.01
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 3266866198.0,
+     "imports_usd": 3814073432.0,
+     "exports_over_imports": 0.86
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.09,
+   "hs2_chapters_net_exported": 15,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 1310600070.0,
+     "imports_usd": 1907125829.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 1996,
+     "exports_usd": 1479008983.0,
+     "imports_usd": 2481027308.0,
+     "exports_over_imports": 0.6
+    },
+    {
+     "year": 1997,
+     "exports_usd": 1371353778.0,
+     "imports_usd": 2776712203.0,
+     "exports_over_imports": 0.49
+    },
+    {
+     "year": 1998,
+     "exports_usd": 1479992863.0,
+     "imports_usd": 2718523817.0,
+     "exports_over_imports": 0.54
+    },
+    {
+     "year": 1999,
+     "exports_usd": 1548691281.0,
+     "imports_usd": 2626807334.0,
+     "exports_over_imports": 0.59
+    },
+    {
+     "year": 2000,
+     "exports_usd": 1812383335.0,
+     "imports_usd": 2569918650.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2001,
+     "exports_usd": 1670365909.0,
+     "imports_usd": 2475072257.0,
+     "exports_over_imports": 0.67
+    },
+    {
+     "year": 2002,
+     "exports_usd": 1803366132.0,
+     "imports_usd": 2695521893.0,
+     "exports_over_imports": 0.67
+    },
+    {
+     "year": 2003,
+     "exports_usd": 2245854279.0,
+     "imports_usd": 3399925944.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2004,
+     "exports_usd": 2148188749.0,
+     "imports_usd": 3842346873.0,
+     "exports_over_imports": 0.56
+    },
+    {
+     "year": 2005,
+     "exports_usd": 2626441924.0,
+     "imports_usd": 4930437467.0,
+     "exports_over_imports": 0.53
+    },
+    {
+     "year": 2006,
+     "exports_usd": 3112682202.0,
+     "imports_usd": 6094271604.0,
+     "exports_over_imports": 0.51
+    },
+    {
+     "year": 2007,
+     "exports_usd": 3493053715.0,
+     "imports_usd": 7979574807.0,
+     "exports_over_imports": 0.44
+    },
+    {
+     "year": 2008,
+     "exports_usd": 4327682393.0,
+     "imports_usd": 10436396196.0,
+     "exports_over_imports": 0.41
+    },
+    {
+     "year": 2009,
+     "exports_usd": 3933434308.0,
+     "imports_usd": 8164675811.0,
+     "exports_over_imports": 0.48
+    },
+    {
+     "year": 2010,
+     "exports_usd": 4119011575.0,
+     "imports_usd": 9953093493.0,
+     "exports_over_imports": 0.41
+    },
+    {
+     "year": 2011,
+     "exports_usd": 13490281686.0,
+     "imports_usd": 14501621842.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2012,
+     "exports_usd": 11700203112.0,
+     "imports_usd": 17786863140.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2013,
+     "exports_usd": 11816115353.0,
+     "imports_usd": 16732943519.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2014,
+     "exports_usd": 13200781814.0,
+     "imports_usd": 15414737416.0,
+     "exports_over_imports": 0.86
+    },
+    {
+     "year": 2015,
+     "exports_usd": 11235049489.0,
+     "imports_usd": 15231065015.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2016,
+     "exports_usd": 10864695904.0,
+     "imports_usd": 14057583415.0,
+     "exports_over_imports": 0.77
+    },
+    {
+     "year": 2017,
+     "exports_usd": 12345442104.0,
+     "imports_usd": 14223837817.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2018,
+     "exports_usd": 14935173596.0,
+     "imports_usd": 14039812658.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2019,
+     "exports_usd": 15145451564.0,
+     "imports_usd": 15818680186.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2020,
+     "exports_usd": 11381045272.0,
+     "imports_usd": 16800968144.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2021,
+     "exports_usd": 13813759318.0,
+     "imports_usd": 20427376321.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2022,
+     "exports_usd": 16558874930.0,
+     "imports_usd": 19171953600.0,
+     "exports_over_imports": 0.86
+    },
+    {
+     "year": 2023,
+     "exports_usd": 15492898721.0,
+     "imports_usd": 20188838397.0,
+     "exports_over_imports": 0.77
+    },
+    {
+     "year": 2024,
+     "exports_usd": 13104901924.0,
+     "imports_usd": 20710375767.0,
+     "exports_over_imports": 0.63
+    }
+   ]
+  },
+  "IND": {
+   "name": "India",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 416457390569.0,
+   "imports_usd": 607065670733.0,
+   "exports_over_imports": 0.69,
+   "eci": 0.707,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 72596193521.0,
+     "imports_usd": 74384729179.0,
+     "exports_over_imports": 0.98
+    },
+    "Electronics": {
+     "exports_usd": 37097244182.0,
+     "imports_usd": 66142036927.0,
+     "exports_over_imports": 0.56
+    },
+    "Machinery and instruments": {
+     "exports_usd": 38097674603.0,
+     "imports_usd": 72152045646.0,
+     "exports_over_imports": 0.53
+    },
+    "Metals": {
+     "exports_usd": 32803982910.0,
+     "imports_usd": 41492401925.0,
+     "exports_over_imports": 0.79
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 69439589199.0,
+     "imports_usd": 183256639076.0,
+     "exports_over_imports": 0.38
+    },
+    "Other": {
+     "exports_usd": 1907337377.0,
+     "imports_usd": 14860727745.0,
+     "exports_over_imports": 0.13
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 33731969682.0,
+     "imports_usd": 79575502817.0,
+     "exports_over_imports": 0.42
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 40924786656.0,
+     "imports_usd": 14260283182.0,
+     "exports_over_imports": 2.87
+    },
+    "Transport vehicles": {
+     "exports_usd": 33490120339.0,
+     "imports_usd": 20203603525.0,
+     "exports_over_imports": 1.66
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 56368492100.0,
+     "imports_usd": 40737700711.0,
+     "exports_over_imports": 1.38
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.09,
+   "hs2_chapters_net_exported": 48,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 32458001123.0,
+     "imports_usd": 32029403460.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 1996,
+     "exports_usd": 34942456829.0,
+     "imports_usd": 33156505845.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 1997,
+     "exports_usd": 36124500036.0,
+     "imports_usd": 35960047064.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 1998,
+     "exports_usd": 34572465138.0,
+     "imports_usd": 38580266158.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 1999,
+     "exports_usd": 36963477374.0,
+     "imports_usd": 45761783555.0,
+     "exports_over_imports": 0.81
+    },
+    {
+     "year": 2000,
+     "exports_usd": 41716180940.0,
+     "imports_usd": 39289464225.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2001,
+     "exports_usd": 42420433080.0,
+     "imports_usd": 36540442291.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2002,
+     "exports_usd": 49552598489.0,
+     "imports_usd": 40333469015.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 2003,
+     "exports_usd": 61038286493.0,
+     "imports_usd": 52080527264.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2004,
+     "exports_usd": 80524318841.0,
+     "imports_usd": 70188301169.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2005,
+     "exports_usd": 100953146272.0,
+     "imports_usd": 97587312704.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2006,
+     "exports_usd": 122962995615.0,
+     "imports_usd": 153039988862.0,
+     "exports_over_imports": 0.8
+    },
+    {
+     "year": 2007,
+     "exports_usd": 153121614817.0,
+     "imports_usd": 209890556065.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2008,
+     "exports_usd": 190845563419.0,
+     "imports_usd": 283323078196.0,
+     "exports_over_imports": 0.67
+    },
+    {
+     "year": 2009,
+     "exports_usd": 167264614244.0,
+     "imports_usd": 243960149003.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2010,
+     "exports_usd": 218191727587.0,
+     "imports_usd": 322151347876.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2011,
+     "exports_usd": 280659426436.0,
+     "imports_usd": 418212908806.0,
+     "exports_over_imports": 0.67
+    },
+    {
+     "year": 2012,
+     "exports_usd": 280703352648.0,
+     "imports_usd": 424623125615.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2013,
+     "exports_usd": 320139223872.0,
+     "imports_usd": 403884875889.0,
+     "exports_over_imports": 0.79
+    },
+    {
+     "year": 2014,
+     "exports_usd": 300967267891.0,
+     "imports_usd": 404592964828.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2015,
+     "exports_usd": 256188969332.0,
+     "imports_usd": 338236890485.0,
+     "exports_over_imports": 0.76
+    },
+    {
+     "year": 2016,
+     "exports_usd": 251708231532.0,
+     "imports_usd": 310858826574.0,
+     "exports_over_imports": 0.81
+    },
+    {
+     "year": 2017,
+     "exports_usd": 281741711218.0,
+     "imports_usd": 389023962792.0,
+     "exports_over_imports": 0.72
+    },
+    {
+     "year": 2018,
+     "exports_usd": 307745616654.0,
+     "imports_usd": 449285587591.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2019,
+     "exports_usd": 305573980430.0,
+     "imports_usd": 418528395417.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2020,
+     "exports_usd": 263428043320.0,
+     "imports_usd": 325948720138.0,
+     "exports_over_imports": 0.81
+    },
+    {
+     "year": 2021,
+     "exports_usd": 374952030770.0,
+     "imports_usd": 507692924040.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2022,
+     "exports_usd": 428387162091.0,
+     "imports_usd": 626365645446.0,
+     "exports_over_imports": 0.68
+    },
+    {
+     "year": 2023,
+     "exports_usd": 410389723963.0,
+     "imports_usd": 576965763747.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2024,
+     "exports_usd": 416457390569.0,
+     "imports_usd": 607065670733.0,
+     "exports_over_imports": 0.69
+    }
+   ]
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 564915108363.0,
+   "imports_usd": 667390741591.0,
+   "exports_over_imports": 0.85,
+   "eci": 0.947,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 100219187922.0,
+     "imports_usd": 105889736909.0,
+     "exports_over_imports": 0.95
+    },
+    "Electronics": {
+     "exports_usd": 49809054431.0,
+     "imports_usd": 67636391394.0,
+     "exports_over_imports": 0.74
+    },
+    "Machinery and instruments": {
+     "exports_usd": 126474789287.0,
+     "imports_usd": 118684764140.0,
+     "exports_over_imports": 1.07
+    },
+    "Metals": {
+     "exports_usd": 28529966415.0,
+     "imports_usd": 36296042879.0,
+     "exports_over_imports": 0.79
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 67186755411.0,
+     "imports_usd": 129756947743.0,
+     "exports_over_imports": 0.52
+    },
+    "Other": {
+     "exports_usd": 17948606990.0,
+     "imports_usd": 26603012301.0,
+     "exports_over_imports": 0.67
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 4767588013.0,
+     "imports_usd": 6955023462.0,
+     "exports_over_imports": 0.69
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 24204915302.0,
+     "imports_usd": 33422178835.0,
+     "exports_over_imports": 0.72
+    },
+    "Transport vehicles": {
+     "exports_usd": 26566643819.0,
+     "imports_usd": 44633894862.0,
+     "exports_over_imports": 0.6
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 119207600773.0,
+     "imports_usd": 97512749066.0,
+     "exports_over_imports": 1.22
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.23,
+   "hs2_chapters_net_exported": 37,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 160373277980.0,
+     "imports_usd": 152596701083.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 1996,
+     "exports_usd": 161403369366.0,
+     "imports_usd": 155073952081.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 1997,
+     "exports_usd": 168260562854.0,
+     "imports_usd": 161832101798.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 1998,
+     "exports_usd": 166505679533.0,
+     "imports_usd": 151214445358.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 1999,
+     "exports_usd": 166073563010.0,
+     "imports_usd": 161298304885.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2000,
+     "exports_usd": 178547427536.0,
+     "imports_usd": 168027526462.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2001,
+     "exports_usd": 170114866720.0,
+     "imports_usd": 161555714197.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2002,
+     "exports_usd": 178754640694.0,
+     "imports_usd": 161770900309.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2003,
+     "exports_usd": 218934619241.0,
+     "imports_usd": 207893971908.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2004,
+     "exports_usd": 269705398412.0,
+     "imports_usd": 263635754363.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2005,
+     "exports_usd": 301597379856.0,
+     "imports_usd": 297961819998.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2006,
+     "exports_usd": 346391859648.0,
+     "imports_usd": 341807386544.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2007,
+     "exports_usd": 411370786927.0,
+     "imports_usd": 407662382724.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2008,
+     "exports_usd": 465059341288.0,
+     "imports_usd": 468157438149.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2009,
+     "exports_usd": 357433381660.0,
+     "imports_usd": 369572963938.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2010,
+     "exports_usd": 414982464179.0,
+     "imports_usd": 428931026823.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2011,
+     "exports_usd": 504039497086.0,
+     "imports_usd": 528041642178.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2012,
+     "exports_usd": 490348581299.0,
+     "imports_usd": 516499531122.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2013,
+     "exports_usd": 504704486377.0,
+     "imports_usd": 522866487154.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2014,
+     "exports_usd": 503198511232.0,
+     "imports_usd": 524958580547.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2015,
+     "exports_usd": 408908813441.0,
+     "imports_usd": 422565730676.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2016,
+     "exports_usd": 405184759525.0,
+     "imports_usd": 416026654351.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2017,
+     "exports_usd": 444502118568.0,
+     "imports_usd": 472444839180.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2018,
+     "exports_usd": 505076693033.0,
+     "imports_usd": 539333923394.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2019,
+     "exports_usd": 493250410524.0,
+     "imports_usd": 526876627627.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2020,
+     "exports_usd": 481850885516.0,
+     "imports_usd": 497812223781.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2021,
+     "exports_usd": 594362349846.0,
+     "imports_usd": 628610794099.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2022,
+     "exports_usd": 627251539936.0,
+     "imports_usd": 714283667341.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 2023,
+     "exports_usd": 579189255747.0,
+     "imports_usd": 677803068396.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 2024,
+     "exports_usd": 564915108363.0,
+     "imports_usd": 667390741591.0,
+     "exports_over_imports": 0.85
+    }
+   ]
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "places": 2,
+   "year": 2024,
+   "exports_usd": 127793202368.0,
+   "imports_usd": 96265216115.0,
+   "exports_over_imports": 1.33,
+   "eci": 0.377,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 8079263790.0,
+     "imports_usd": 14390490289.0,
+     "exports_over_imports": 0.56
+    },
+    "Electronics": {
+     "exports_usd": 2177892589.0,
+     "imports_usd": 8982686999.0,
+     "exports_over_imports": 0.24
+    },
+    "Machinery and instruments": {
+     "exports_usd": 6257571797.0,
+     "imports_usd": 15909778126.0,
+     "exports_over_imports": 0.39
+    },
+    "Metals": {
+     "exports_usd": 11230867150.0,
+     "imports_usd": 5954741376.0,
+     "exports_over_imports": 1.89
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 26867142073.0,
+     "imports_usd": 16386247575.0,
+     "exports_over_imports": 1.64
+    },
+    "Other": {
+     "exports_usd": 1212246825.0,
+     "imports_usd": 3751356615.0,
+     "exports_over_imports": 0.32
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 39462573309.0,
+     "imports_usd": 3818954391.0,
+     "exports_over_imports": 10.33
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 2000535301.0,
+     "imports_usd": 6784055197.0,
+     "exports_over_imports": 0.29
+    },
+    "Transport vehicles": {
+     "exports_usd": 14635797718.0,
+     "imports_usd": 11160197382.0,
+     "exports_over_imports": 1.31
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 15869311816.0,
+     "imports_usd": 9126708165.0,
+     "exports_over_imports": 1.74
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.24,
+   "hs2_chapters_net_exported": 37,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 21293214240.0,
+     "imports_usd": 25031444620.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 1996,
+     "exports_usd": 25033200583.0,
+     "imports_usd": 25005396336.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 1997,
+     "exports_usd": 25604587468.0,
+     "imports_usd": 22948338657.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 1998,
+     "exports_usd": 23762599537.0,
+     "imports_usd": 23376323573.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 1999,
+     "exports_usd": 26515652489.0,
+     "imports_usd": 22285322301.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2000,
+     "exports_usd": 32440642377.0,
+     "imports_usd": 24464588140.0,
+     "exports_over_imports": 1.33
+    },
+    {
+     "year": 2001,
+     "exports_usd": 33941521367.0,
+     "imports_usd": 23797152754.0,
+     "exports_over_imports": 1.43
+    },
+    {
+     "year": 2002,
+     "exports_usd": 34903285944.0,
+     "imports_usd": 24365697461.0,
+     "exports_over_imports": 1.43
+    },
+    {
+     "year": 2003,
+     "exports_usd": 42677333657.0,
+     "imports_usd": 30644101993.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2004,
+     "exports_usd": 53409012193.0,
+     "imports_usd": 42192383959.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 2005,
+     "exports_usd": 58038412389.0,
+     "imports_usd": 50382258519.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2006,
+     "exports_usd": 64804778757.0,
+     "imports_usd": 61883577623.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2007,
+     "exports_usd": 79584823310.0,
+     "imports_usd": 72997838166.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2008,
+     "exports_usd": 95553099355.0,
+     "imports_usd": 82142517085.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2009,
+     "exports_usd": 74234454916.0,
+     "imports_usd": 59005059771.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 2010,
+     "exports_usd": 89580525235.0,
+     "imports_usd": 76586960096.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2011,
+     "exports_usd": 117162788100.0,
+     "imports_usd": 99175969878.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2012,
+     "exports_usd": 119335490621.0,
+     "imports_usd": 101903095760.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2013,
+     "exports_usd": 116620722763.0,
+     "imports_usd": 100012842344.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2014,
+     "exports_usd": 110633636422.0,
+     "imports_usd": 95042626134.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2015,
+     "exports_usd": 92022648690.0,
+     "imports_usd": 80662534553.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2016,
+     "exports_usd": 84197856500.0,
+     "imports_usd": 69590978324.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2017,
+     "exports_usd": 94995664483.0,
+     "imports_usd": 78068863871.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2018,
+     "exports_usd": 103088772948.0,
+     "imports_usd": 84667012450.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2019,
+     "exports_usd": 99614228819.0,
+     "imports_usd": 82137777991.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2020,
+     "exports_usd": 92221914707.0,
+     "imports_usd": 66179545804.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2021,
+     "exports_usd": 130955056477.0,
+     "imports_usd": 88571424613.0,
+     "exports_over_imports": 1.48
+    },
+    {
+     "year": 2022,
+     "exports_usd": 134812135820.0,
+     "imports_usd": 104411220998.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 2023,
+     "exports_usd": 127359511621.0,
+     "imports_usd": 101782287978.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2024,
+     "exports_usd": 127793202368.0,
+     "imports_usd": 96265216115.0,
+     "exports_over_imports": 1.33
+    }
+   ]
+  },
+  "ARG": {
+   "name": "Argentina",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 77102624869.0,
+   "imports_usd": 57176212208.0,
+   "exports_over_imports": 1.35,
+   "eci": -0.053,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 3611152872.0,
+     "imports_usd": 13041771426.0,
+     "exports_over_imports": 0.28
+    },
+    "Electronics": {
+     "exports_usd": 97779360.0,
+     "imports_usd": 5050324968.0,
+     "exports_over_imports": 0.02
+    },
+    "Machinery and instruments": {
+     "exports_usd": 910344017.0,
+     "imports_usd": 11266761161.0,
+     "exports_over_imports": 0.08
+    },
+    "Metals": {
+     "exports_usd": 1461474581.0,
+     "imports_usd": 3182954075.0,
+     "exports_over_imports": 0.46
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 6971460604.0,
+     "imports_usd": 5046466499.0,
+     "exports_over_imports": 1.38
+    },
+    "Other": {
+     "exports_usd": 19045248677.0,
+     "imports_usd": 1867693192.0,
+     "exports_over_imports": 10.2
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 2837075851.0,
+     "imports_usd": 561455826.0,
+     "exports_over_imports": 5.05
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 326682544.0,
+     "imports_usd": 2291334578.0,
+     "exports_over_imports": 0.14
+    },
+    "Transport vehicles": {
+     "exports_usd": 6585141276.0,
+     "imports_usd": 8329037069.0,
+     "exports_over_imports": 0.79
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 35256265087.0,
+     "imports_usd": 6538413414.0,
+     "exports_over_imports": 5.39
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.14,
+   "hs2_chapters_net_exported": 26,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 21097805928.0,
+     "imports_usd": 18887718784.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 1996,
+     "exports_usd": 24016639643.0,
+     "imports_usd": 22432610317.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 1997,
+     "exports_usd": 25796477348.0,
+     "imports_usd": 27916921770.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 1998,
+     "exports_usd": 25473398112.0,
+     "imports_usd": 28385443290.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 1999,
+     "exports_usd": 22591834443.0,
+     "imports_usd": 22858321552.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2000,
+     "exports_usd": 25529011340.0,
+     "imports_usd": 22792250173.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2001,
+     "exports_usd": 26140261015.0,
+     "imports_usd": 18470003061.0,
+     "exports_over_imports": 1.42
+    },
+    {
+     "year": 2002,
+     "exports_usd": 25056109071.0,
+     "imports_usd": 7926056384.0,
+     "exports_over_imports": 3.16
+    },
+    {
+     "year": 2003,
+     "exports_usd": 29022253633.0,
+     "imports_usd": 13042860474.0,
+     "exports_over_imports": 2.23
+    },
+    {
+     "year": 2004,
+     "exports_usd": 34427352668.0,
+     "imports_usd": 20694264239.0,
+     "exports_over_imports": 1.66
+    },
+    {
+     "year": 2005,
+     "exports_usd": 39335303200.0,
+     "imports_usd": 26183729237.0,
+     "exports_over_imports": 1.5
+    },
+    {
+     "year": 2006,
+     "exports_usd": 45313402321.0,
+     "imports_usd": 31241396392.0,
+     "exports_over_imports": 1.45
+    },
+    {
+     "year": 2007,
+     "exports_usd": 55086415097.0,
+     "imports_usd": 40640009071.0,
+     "exports_over_imports": 1.36
+    },
+    {
+     "year": 2008,
+     "exports_usd": 70318111365.0,
+     "imports_usd": 50814386307.0,
+     "exports_over_imports": 1.38
+    },
+    {
+     "year": 2009,
+     "exports_usd": 54795713277.0,
+     "imports_usd": 34812430252.0,
+     "exports_over_imports": 1.57
+    },
+    {
+     "year": 2010,
+     "exports_usd": 65182284323.0,
+     "imports_usd": 52243456476.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2011,
+     "exports_usd": 79810713777.0,
+     "imports_usd": 67046406132.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2012,
+     "exports_usd": 77895159451.0,
+     "imports_usd": 62249078807.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2013,
+     "exports_usd": 73319879499.0,
+     "imports_usd": 69760744718.0,
+     "exports_over_imports": 1.05
+    },
+    {
+     "year": 2014,
+     "exports_usd": 65577881493.0,
+     "imports_usd": 59714937467.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2015,
+     "exports_usd": 55426387883.0,
+     "imports_usd": 55016586589.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2016,
+     "exports_usd": 56013378512.0,
+     "imports_usd": 50829279891.0,
+     "exports_over_imports": 1.1
+    },
+    {
+     "year": 2017,
+     "exports_usd": 56179772490.0,
+     "imports_usd": 61560039494.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2018,
+     "exports_usd": 59311186263.0,
+     "imports_usd": 59751601434.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2019,
+     "exports_usd": 62490796472.0,
+     "imports_usd": 44997387709.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2020,
+     "exports_usd": 55351712451.0,
+     "imports_usd": 39714602165.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2021,
+     "exports_usd": 75039308655.0,
+     "imports_usd": 57297972412.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2022,
+     "exports_usd": 84904468711.0,
+     "imports_usd": 73455625445.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2023,
+     "exports_usd": 66654565796.0,
+     "imports_usd": 67883768755.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2024,
+     "exports_usd": 77102624869.0,
+     "imports_usd": 57176212208.0,
+     "exports_over_imports": 1.35
+    }
+   ]
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 442051820.0,
+   "imports_usd": 1441152986.0,
+   "exports_over_imports": 0.31,
+   "eci": -0.349,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 10645857.0,
+     "imports_usd": 114073466.0,
+     "exports_over_imports": 0.09
+    },
+    "Electronics": {
+     "exports_usd": 1176754.0,
+     "imports_usd": 193903332.0,
+     "exports_over_imports": 0.01
+    },
+    "Machinery and instruments": {
+     "exports_usd": 1597885.0,
+     "imports_usd": 145569585.0,
+     "exports_over_imports": 0.01
+    },
+    "Metals": {
+     "exports_usd": 170940593.0,
+     "imports_usd": 144266025.0,
+     "exports_over_imports": 1.18
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 75030412.0,
+     "imports_usd": 279338661.0,
+     "exports_over_imports": 0.27
+    },
+    "Other": {
+     "exports_usd": 73085737.0,
+     "imports_usd": 3253939.0,
+     "exports_over_imports": 22.46
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 363323.0,
+     "imports_usd": 117876857.0,
+     "exports_over_imports": 0.0
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 221732.0,
+     "imports_usd": 40387810.0,
+     "exports_over_imports": 0.01
+    },
+    "Transport vehicles": {
+     "exports_usd": 78999978.0,
+     "imports_usd": 133407211.0,
+     "exports_over_imports": 0.59
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 29989549.0,
+     "imports_usd": 269076100.0,
+     "exports_over_imports": 0.11
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.07,
+   "hs2_chapters_net_exported": 6,
+   "hs2_chapters_reported": 93,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 46633035.0,
+     "imports_usd": 36882821.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 1996,
+     "exports_usd": 40891064.0,
+     "imports_usd": 35354549.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 1997,
+     "exports_usd": 22201896.0,
+     "imports_usd": 42928211.0,
+     "exports_over_imports": 0.52
+    },
+    {
+     "year": 1998,
+     "exports_usd": 14786989.0,
+     "imports_usd": 44024023.0,
+     "exports_over_imports": 0.34
+    },
+    {
+     "year": 1999,
+     "exports_usd": 26223963.0,
+     "imports_usd": 42083566.0,
+     "exports_over_imports": 0.62
+    },
+    {
+     "year": 2000,
+     "exports_usd": 23553236.0,
+     "imports_usd": 29526812.0,
+     "exports_over_imports": 0.8
+    },
+    {
+     "year": 2001,
+     "exports_usd": 28279573.0,
+     "imports_usd": 30306223.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2002,
+     "exports_usd": 31358223.0,
+     "imports_usd": 48559436.0,
+     "exports_over_imports": 0.65
+    },
+    {
+     "year": 2003,
+     "exports_usd": 57531648.0,
+     "imports_usd": 121693497.0,
+     "exports_over_imports": 0.47
+    },
+    {
+     "year": 2004,
+     "exports_usd": 57583938.0,
+     "imports_usd": 244734322.0,
+     "exports_over_imports": 0.24
+    },
+    {
+     "year": 2005,
+     "exports_usd": 140386041.0,
+     "imports_usd": 167254371.0,
+     "exports_over_imports": 0.84
+    },
+    {
+     "year": 2006,
+     "exports_usd": 200209399.0,
+     "imports_usd": 133633559.0,
+     "exports_over_imports": 1.5
+    },
+    {
+     "year": 2007,
+     "exports_usd": 335155334.0,
+     "imports_usd": 172416188.0,
+     "exports_over_imports": 1.94
+    },
+    {
+     "year": 2008,
+     "exports_usd": 177400990.0,
+     "imports_usd": 211964099.0,
+     "exports_over_imports": 0.84
+    },
+    {
+     "year": 2009,
+     "exports_usd": 170138995.0,
+     "imports_usd": 195096004.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2010,
+     "exports_usd": 215975226.0,
+     "imports_usd": 311994061.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2011,
+     "exports_usd": 280446473.0,
+     "imports_usd": 405462421.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2012,
+     "exports_usd": 215038669.0,
+     "imports_usd": 339517303.0,
+     "exports_over_imports": 0.63
+    },
+    {
+     "year": 2013,
+     "exports_usd": 153162913.0,
+     "imports_usd": 267692355.0,
+     "exports_over_imports": 0.57
+    },
+    {
+     "year": 2014,
+     "exports_usd": 171124684.0,
+     "imports_usd": 265770322.0,
+     "exports_over_imports": 0.64
+    },
+    {
+     "year": 2015,
+     "exports_usd": 258008030.0,
+     "imports_usd": 515832194.0,
+     "exports_over_imports": 0.5
+    },
+    {
+     "year": 2016,
+     "exports_usd": 142488312.0,
+     "imports_usd": 462800247.0,
+     "exports_over_imports": 0.31
+    },
+    {
+     "year": 2017,
+     "exports_usd": 290017547.0,
+     "imports_usd": 579035108.0,
+     "exports_over_imports": 0.5
+    },
+    {
+     "year": 2018,
+     "exports_usd": 397237523.0,
+     "imports_usd": 832696176.0,
+     "exports_over_imports": 0.48
+    },
+    {
+     "year": 2019,
+     "exports_usd": 362078589.0,
+     "imports_usd": 840998320.0,
+     "exports_over_imports": 0.43
+    },
+    {
+     "year": 2020,
+     "exports_usd": 253878195.0,
+     "imports_usd": 838219312.0,
+     "exports_over_imports": 0.3
+    },
+    {
+     "year": 2021,
+     "exports_usd": 365010284.0,
+     "imports_usd": 1125133448.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2022,
+     "exports_usd": 451526764.0,
+     "imports_usd": 1387795046.0,
+     "exports_over_imports": 0.33
+    },
+    {
+     "year": 2023,
+     "exports_usd": 518581486.0,
+     "imports_usd": 1232729822.0,
+     "exports_over_imports": 0.42
+    },
+    {
+     "year": 2024,
+     "exports_usd": 442051820.0,
+     "imports_usd": 1441152986.0,
+     "exports_over_imports": 0.31
+    }
+   ]
+  },
+  "CHN": {
+   "name": "China",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 3459825341457.0,
+   "imports_usd": 2090696825555.0,
+   "exports_over_imports": 1.65,
+   "eci": 1.269,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 356978196582.0,
+     "imports_usd": 216751333586.0,
+     "exports_over_imports": 1.65
+    },
+    "Electronics": {
+     "exports_usd": 837833962371.0,
+     "imports_usd": 315432958306.0,
+     "exports_over_imports": 2.66
+    },
+    "Machinery and instruments": {
+     "exports_usd": 744286616549.0,
+     "imports_usd": 247346096036.0,
+     "exports_over_imports": 3.01
+    },
+    "Metals": {
+     "exports_usd": 271998203193.0,
+     "imports_usd": 126679032195.0,
+     "exports_over_imports": 2.15
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 57693433133.0,
+     "imports_usd": 569492947143.0,
+     "exports_over_imports": 0.1
+    },
+    "Other": {
+     "exports_usd": 176494565920.0,
+     "imports_usd": 198684233288.0,
+     "exports_over_imports": 0.89
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 91853756152.0,
+     "imports_usd": 88266157551.0,
+     "exports_over_imports": 1.04
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 466254106257.0,
+     "imports_usd": 36758237542.0,
+     "exports_over_imports": 12.68
+    },
+    "Transport vehicles": {
+     "exports_usd": 279800305439.0,
+     "imports_usd": 65162821167.0,
+     "exports_over_imports": 4.29
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 176632195861.0,
+     "imports_usd": 226123008741.0,
+     "exports_over_imports": 0.78
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.4,
+   "hs2_chapters_net_exported": 64,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 186077924667.0,
+     "imports_usd": 133340004126.0,
+     "exports_over_imports": 1.4
+    },
+    {
+     "year": 1996,
+     "exports_usd": 194203246477.0,
+     "imports_usd": 147652009044.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 1997,
+     "exports_usd": 228846684370.0,
+     "imports_usd": 141685155053.0,
+     "exports_over_imports": 1.62
+    },
+    {
+     "year": 1998,
+     "exports_usd": 229601715288.0,
+     "imports_usd": 133540373984.0,
+     "exports_over_imports": 1.72
+    },
+    {
+     "year": 1999,
+     "exports_usd": 250357761753.0,
+     "imports_usd": 151073853328.0,
+     "exports_over_imports": 1.66
+    },
+    {
+     "year": 2000,
+     "exports_usd": 312362931093.0,
+     "imports_usd": 187347925140.0,
+     "exports_over_imports": 1.67
+    },
+    {
+     "year": 2001,
+     "exports_usd": 323220247659.0,
+     "imports_usd": 201701602260.0,
+     "exports_over_imports": 1.6
+    },
+    {
+     "year": 2002,
+     "exports_usd": 396115038203.0,
+     "imports_usd": 244034556362.0,
+     "exports_over_imports": 1.62
+    },
+    {
+     "year": 2003,
+     "exports_usd": 513903214162.0,
+     "imports_usd": 339276738788.0,
+     "exports_over_imports": 1.51
+    },
+    {
+     "year": 2004,
+     "exports_usd": 688855979001.0,
+     "imports_usd": 459926831943.0,
+     "exports_over_imports": 1.5
+    },
+    {
+     "year": 2005,
+     "exports_usd": 868060239435.0,
+     "imports_usd": 528580434432.0,
+     "exports_over_imports": 1.64
+    },
+    {
+     "year": 2006,
+     "exports_usd": 1063566263093.0,
+     "imports_usd": 628113364646.0,
+     "exports_over_imports": 1.69
+    },
+    {
+     "year": 2007,
+     "exports_usd": 1324670577181.0,
+     "imports_usd": 770276109228.0,
+     "exports_over_imports": 1.72
+    },
+    {
+     "year": 2008,
+     "exports_usd": 1516276408198.0,
+     "imports_usd": 876381885321.0,
+     "exports_over_imports": 1.73
+    },
+    {
+     "year": 2009,
+     "exports_usd": 1278103403722.0,
+     "imports_usd": 792072192174.0,
+     "exports_over_imports": 1.61
+    },
+    {
+     "year": 2010,
+     "exports_usd": 1649189714906.0,
+     "imports_usd": 1123335057515.0,
+     "exports_over_imports": 1.47
+    },
+    {
+     "year": 2011,
+     "exports_usd": 1946792356276.0,
+     "imports_usd": 1395781136704.0,
+     "exports_over_imports": 1.39
+    },
+    {
+     "year": 2012,
+     "exports_usd": 2065917763059.0,
+     "imports_usd": 1413173586235.0,
+     "exports_over_imports": 1.46
+    },
+    {
+     "year": 2013,
+     "exports_usd": 2207136277619.0,
+     "imports_usd": 1521271738964.0,
+     "exports_over_imports": 1.45
+    },
+    {
+     "year": 2014,
+     "exports_usd": 2327303135000.0,
+     "imports_usd": 1527918058058.0,
+     "exports_over_imports": 1.52
+    },
+    {
+     "year": 2015,
+     "exports_usd": 2238668198404.0,
+     "imports_usd": 1295361257925.0,
+     "exports_over_imports": 1.73
+    },
+    {
+     "year": 2016,
+     "exports_usd": 2106488560708.0,
+     "imports_usd": 1244195287373.0,
+     "exports_over_imports": 1.69
+    },
+    {
+     "year": 2017,
+     "exports_usd": 2273693715715.0,
+     "imports_usd": 1445496094030.0,
+     "exports_over_imports": 1.57
+    },
+    {
+     "year": 2018,
+     "exports_usd": 2466133757274.0,
+     "imports_usd": 1668792872409.0,
+     "exports_over_imports": 1.48
+    },
+    {
+     "year": 2019,
+     "exports_usd": 2457739657934.0,
+     "imports_usd": 1648773952239.0,
+     "exports_over_imports": 1.49
+    },
+    {
+     "year": 2020,
+     "exports_usd": 2556050538558.0,
+     "imports_usd": 1647487636505.0,
+     "exports_over_imports": 1.55
+    },
+    {
+     "year": 2021,
+     "exports_usd": 3200344367475.0,
+     "imports_usd": 2117917657332.0,
+     "exports_over_imports": 1.51
+    },
+    {
+     "year": 2022,
+     "exports_usd": 3503332992913.0,
+     "imports_usd": 2152209434216.0,
+     "exports_over_imports": 1.63
+    },
+    {
+     "year": 2023,
+     "exports_usd": 3296169257973.0,
+     "imports_usd": 2060651969577.0,
+     "exports_over_imports": 1.6
+    },
+    {
+     "year": 2024,
+     "exports_usd": 3459825341457.0,
+     "imports_usd": 2090696825555.0,
+     "exports_over_imports": 1.65
+    }
+   ]
+  },
+  "FIN": {
+   "name": "Finland",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 70560171149.0,
+   "imports_usd": 71232918234.0,
+   "exports_over_imports": 0.99,
+   "eci": 1.145,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 8679796164.0,
+     "imports_usd": 8540039277.0,
+     "exports_over_imports": 1.02
+    },
+    "Electronics": {
+     "exports_usd": 6661501470.0,
+     "imports_usd": 7455283182.0,
+     "exports_over_imports": 0.89
+    },
+    "Machinery and instruments": {
+     "exports_usd": 13357664163.0,
+     "imports_usd": 11141146335.0,
+     "exports_over_imports": 1.2
+    },
+    "Metals": {
+     "exports_usd": 10347258526.0,
+     "imports_usd": 7182315219.0,
+     "exports_over_imports": 1.44
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 6274779516.0,
+     "imports_usd": 12119884266.0,
+     "exports_over_imports": 0.52
+    },
+    "Other": {
+     "exports_usd": 3175553893.0,
+     "imports_usd": 5646051875.0,
+     "exports_over_imports": 0.56
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 1346978757.0,
+     "imports_usd": 862435727.0,
+     "exports_over_imports": 1.56
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 1150472718.0,
+     "imports_usd": 3692635643.0,
+     "exports_over_imports": 0.31
+    },
+    "Transport vehicles": {
+     "exports_usd": 5389476429.0,
+     "imports_usd": 6400485559.0,
+     "exports_over_imports": 0.84
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 14176689513.0,
+     "imports_usd": 8192641151.0,
+     "exports_over_imports": 1.73
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.28,
+   "hs2_chapters_net_exported": 22,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 37511040745.0,
+     "imports_usd": 27430317370.0,
+     "exports_over_imports": 1.37
+    },
+    {
+     "year": 1996,
+     "exports_usd": 36906263881.0,
+     "imports_usd": 29314585620.0,
+     "exports_over_imports": 1.26
+    },
+    {
+     "year": 1997,
+     "exports_usd": 37984985532.0,
+     "imports_usd": 28942813309.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 1998,
+     "exports_usd": 39542602844.0,
+     "imports_usd": 30153722001.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 1999,
+     "exports_usd": 38982293852.0,
+     "imports_usd": 30000924562.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 2000,
+     "exports_usd": 43110139917.0,
+     "imports_usd": 32152342889.0,
+     "exports_over_imports": 1.34
+    },
+    {
+     "year": 2001,
+     "exports_usd": 40742470599.0,
+     "imports_usd": 31740095439.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2002,
+     "exports_usd": 41969944389.0,
+     "imports_usd": 31750086651.0,
+     "exports_over_imports": 1.32
+    },
+    {
+     "year": 2003,
+     "exports_usd": 49281825568.0,
+     "imports_usd": 40786083521.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2004,
+     "exports_usd": 58221898506.0,
+     "imports_usd": 50356384966.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2005,
+     "exports_usd": 65348005452.0,
+     "imports_usd": 58991909099.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2006,
+     "exports_usd": 74006428444.0,
+     "imports_usd": 69280258126.0,
+     "exports_over_imports": 1.07
+    },
+    {
+     "year": 2007,
+     "exports_usd": 86809477985.0,
+     "imports_usd": 81812546740.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2008,
+     "exports_usd": 91984757507.0,
+     "imports_usd": 90675125247.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2009,
+     "exports_usd": 61135020296.0,
+     "imports_usd": 59384597545.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2010,
+     "exports_usd": 65586638042.0,
+     "imports_usd": 66251312016.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2011,
+     "exports_usd": 75979193535.0,
+     "imports_usd": 82664051252.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2012,
+     "exports_usd": 69737855701.0,
+     "imports_usd": 73538190236.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2013,
+     "exports_usd": 69683394347.0,
+     "imports_usd": 74361065067.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2014,
+     "exports_usd": 70166461747.0,
+     "imports_usd": 73378534661.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2015,
+     "exports_usd": 56144299794.0,
+     "imports_usd": 56020426681.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2016,
+     "exports_usd": 53877583151.0,
+     "imports_usd": 56212769648.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2017,
+     "exports_usd": 64721990444.0,
+     "imports_usd": 63772132311.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2018,
+     "exports_usd": 72237450017.0,
+     "imports_usd": 71285786093.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 2019,
+     "exports_usd": 67688427713.0,
+     "imports_usd": 67620333183.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2020,
+     "exports_usd": 60569068297.0,
+     "imports_usd": 63062576037.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2021,
+     "exports_usd": 75213090484.0,
+     "imports_usd": 79886444605.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2022,
+     "exports_usd": 78606973572.0,
+     "imports_usd": 87430099666.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2023,
+     "exports_usd": 74303520792.0,
+     "imports_usd": 75937817584.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2024,
+     "exports_usd": 70560171149.0,
+     "imports_usd": 71232918234.0,
+     "exports_over_imports": 0.99
+    }
+   ]
+  },
+  "GEO": {
+   "name": "Georgia",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 6091310156.0,
+   "imports_usd": 17091766624.0,
+   "exports_over_imports": 0.36,
+   "eci": 0.26,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 534968440.0,
+     "imports_usd": 2146246180.0,
+     "exports_over_imports": 0.25
+    },
+    "Electronics": {
+     "exports_usd": 84584067.0,
+     "imports_usd": 1040773940.0,
+     "exports_over_imports": 0.08
+    },
+    "Machinery and instruments": {
+     "exports_usd": 235157460.0,
+     "imports_usd": 1725196159.0,
+     "exports_over_imports": 0.14
+    },
+    "Metals": {
+     "exports_usd": 455857377.0,
+     "imports_usd": 1113679027.0,
+     "exports_over_imports": 0.41
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 511852584.0,
+     "imports_usd": 2227763169.0,
+     "exports_over_imports": 0.23
+    },
+    "Other": {
+     "exports_usd": 229538359.0,
+     "imports_usd": 238472700.0,
+     "exports_over_imports": 0.96
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 134420990.0,
+     "imports_usd": 1030891640.0,
+     "exports_over_imports": 0.13
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 315243180.0,
+     "imports_usd": 953824614.0,
+     "exports_over_imports": 0.33
+    },
+    "Transport vehicles": {
+     "exports_usd": 1961576000.0,
+     "imports_usd": 3501957764.0,
+     "exports_over_imports": 0.56
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 1628111699.0,
+     "imports_usd": 3112961431.0,
+     "exports_over_imports": 0.52
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.04,
+   "hs2_chapters_net_exported": 9,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 99568902.0,
+     "imports_usd": 377266708.0,
+     "exports_over_imports": 0.26
+    },
+    {
+     "year": 1996,
+     "exports_usd": 246037690.0,
+     "imports_usd": 971489910.0,
+     "exports_over_imports": 0.25
+    },
+    {
+     "year": 1997,
+     "exports_usd": 369812027.0,
+     "imports_usd": 1212397273.0,
+     "exports_over_imports": 0.31
+    },
+    {
+     "year": 1998,
+     "exports_usd": 318336608.0,
+     "imports_usd": 1089589268.0,
+     "exports_over_imports": 0.29
+    },
+    {
+     "year": 1999,
+     "exports_usd": 384057836.0,
+     "imports_usd": 770575775.0,
+     "exports_over_imports": 0.5
+    },
+    {
+     "year": 2000,
+     "exports_usd": 592940470.0,
+     "imports_usd": 843816403.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2001,
+     "exports_usd": 576367419.0,
+     "imports_usd": 913159222.0,
+     "exports_over_imports": 0.63
+    },
+    {
+     "year": 2002,
+     "exports_usd": 584585635.0,
+     "imports_usd": 936472746.0,
+     "exports_over_imports": 0.62
+    },
+    {
+     "year": 2003,
+     "exports_usd": 966830041.0,
+     "imports_usd": 1456854003.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2004,
+     "exports_usd": 1161952554.0,
+     "imports_usd": 2099155070.0,
+     "exports_over_imports": 0.55
+    },
+    {
+     "year": 2005,
+     "exports_usd": 1325646469.0,
+     "imports_usd": 2567523758.0,
+     "exports_over_imports": 0.52
+    },
+    {
+     "year": 2006,
+     "exports_usd": 1656584668.0,
+     "imports_usd": 3631754284.0,
+     "exports_over_imports": 0.46
+    },
+    {
+     "year": 2007,
+     "exports_usd": 1630081075.0,
+     "imports_usd": 4983709896.0,
+     "exports_over_imports": 0.33
+    },
+    {
+     "year": 2008,
+     "exports_usd": 2145197852.0,
+     "imports_usd": 6739071076.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2009,
+     "exports_usd": 1523412029.0,
+     "imports_usd": 4436940197.0,
+     "exports_over_imports": 0.34
+    },
+    {
+     "year": 2010,
+     "exports_usd": 2086780503.0,
+     "imports_usd": 5476639835.0,
+     "exports_over_imports": 0.38
+    },
+    {
+     "year": 2011,
+     "exports_usd": 2860425308.0,
+     "imports_usd": 7600085381.0,
+     "exports_over_imports": 0.38
+    },
+    {
+     "year": 2012,
+     "exports_usd": 2673260885.0,
+     "imports_usd": 8761624643.0,
+     "exports_over_imports": 0.31
+    },
+    {
+     "year": 2013,
+     "exports_usd": 2938375936.0,
+     "imports_usd": 9228218526.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2014,
+     "exports_usd": 3037423346.0,
+     "imports_usd": 9321577831.0,
+     "exports_over_imports": 0.33
+    },
+    {
+     "year": 2015,
+     "exports_usd": 2386976312.0,
+     "imports_usd": 7469684528.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2016,
+     "exports_usd": 2045659793.0,
+     "imports_usd": 7495182596.0,
+     "exports_over_imports": 0.27
+    },
+    {
+     "year": 2017,
+     "exports_usd": 2600922511.0,
+     "imports_usd": 8356090845.0,
+     "exports_over_imports": 0.31
+    },
+    {
+     "year": 2018,
+     "exports_usd": 3073772006.0,
+     "imports_usd": 9526055240.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2019,
+     "exports_usd": 3265261889.0,
+     "imports_usd": 10111114883.0,
+     "exports_over_imports": 0.32
+    },
+    {
+     "year": 2020,
+     "exports_usd": 3079261849.0,
+     "imports_usd": 8405457587.0,
+     "exports_over_imports": 0.37
+    },
+    {
+     "year": 2021,
+     "exports_usd": 3942755727.0,
+     "imports_usd": 10418968603.0,
+     "exports_over_imports": 0.38
+    },
+    {
+     "year": 2022,
+     "exports_usd": 5638068408.0,
+     "imports_usd": 14343473258.0,
+     "exports_over_imports": 0.39
+    },
+    {
+     "year": 2023,
+     "exports_usd": 5705957682.0,
+     "imports_usd": 14278621841.0,
+     "exports_over_imports": 0.4
+    },
+    {
+     "year": 2024,
+     "exports_usd": 6091310156.0,
+     "imports_usd": 17091766624.0,
+     "exports_over_imports": 0.36
+    }
+   ]
+  },
+  "JPN": {
+   "name": "Japan",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 694351102557.0,
+   "imports_usd": 622448400668.0,
+   "exports_over_imports": 1.12,
+   "eci": 1.73,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 94254399623.0,
+     "imports_usd": 78169338475.0,
+     "exports_over_imports": 1.21
+    },
+    "Electronics": {
+     "exports_usd": 103035899988.0,
+     "imports_usd": 82638985859.0,
+     "exports_over_imports": 1.25
+    },
+    "Machinery and instruments": {
+     "exports_usd": 158919484298.0,
+     "imports_usd": 92521550927.0,
+     "exports_over_imports": 1.72
+    },
+    "Metals": {
+     "exports_usd": 58682252651.0,
+     "imports_usd": 32452557793.0,
+     "exports_over_imports": 1.81
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 10855500442.0,
+     "imports_usd": 151699997495.0,
+     "exports_over_imports": 0.07
+    },
+    "Other": {
+     "exports_usd": 61312115483.0,
+     "imports_usd": 19887649181.0,
+     "exports_over_imports": 3.08
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 30293232981.0,
+     "imports_usd": 17017734750.0,
+     "exports_over_imports": 1.78
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 8292818728.0,
+     "imports_usd": 40377522935.0,
+     "exports_over_imports": 0.21
+    },
+    "Transport vehicles": {
+     "exports_usd": 156050150927.0,
+     "imports_usd": 27942669494.0,
+     "exports_over_imports": 5.58
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 12655247436.0,
+     "imports_usd": 79740393759.0,
+     "exports_over_imports": 0.16
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.49,
+   "hs2_chapters_net_exported": 35,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 448872894782.0,
+     "imports_usd": 297108201635.0,
+     "exports_over_imports": 1.51
+    },
+    {
+     "year": 1996,
+     "exports_usd": 415067001046.0,
+     "imports_usd": 304725984710.0,
+     "exports_over_imports": 1.36
+    },
+    {
+     "year": 1997,
+     "exports_usd": 425088232214.0,
+     "imports_usd": 296652326803.0,
+     "exports_over_imports": 1.43
+    },
+    {
+     "year": 1998,
+     "exports_usd": 389288723257.0,
+     "imports_usd": 239258113381.0,
+     "exports_over_imports": 1.63
+    },
+    {
+     "year": 1999,
+     "exports_usd": 419217926846.0,
+     "imports_usd": 267860630011.0,
+     "exports_over_imports": 1.57
+    },
+    {
+     "year": 2000,
+     "exports_usd": 483169451549.0,
+     "imports_usd": 325775018057.0,
+     "exports_over_imports": 1.48
+    },
+    {
+     "year": 2001,
+     "exports_usd": 405831566156.0,
+     "imports_usd": 299250201090.0,
+     "exports_over_imports": 1.36
+    },
+    {
+     "year": 2002,
+     "exports_usd": 426045990040.0,
+     "imports_usd": 290714483791.0,
+     "exports_over_imports": 1.47
+    },
+    {
+     "year": 2003,
+     "exports_usd": 481706780937.0,
+     "imports_usd": 329331548547.0,
+     "exports_over_imports": 1.46
+    },
+    {
+     "year": 2004,
+     "exports_usd": 579638685093.0,
+     "imports_usd": 394508878773.0,
+     "exports_over_imports": 1.47
+    },
+    {
+     "year": 2005,
+     "exports_usd": 611315065077.0,
+     "imports_usd": 450644655440.0,
+     "exports_over_imports": 1.36
+    },
+    {
+     "year": 2006,
+     "exports_usd": 659192095073.0,
+     "imports_usd": 494845701414.0,
+     "exports_over_imports": 1.33
+    },
+    {
+     "year": 2007,
+     "exports_usd": 729094705979.0,
+     "imports_usd": 541116045073.0,
+     "exports_over_imports": 1.35
+    },
+    {
+     "year": 2008,
+     "exports_usd": 788659039281.0,
+     "imports_usd": 630778353139.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2009,
+     "exports_usd": 591789836417.0,
+     "imports_usd": 464076675664.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2010,
+     "exports_usd": 768751757005.0,
+     "imports_usd": 586043677072.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2011,
+     "exports_usd": 828776974228.0,
+     "imports_usd": 726760433333.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2012,
+     "exports_usd": 781529911386.0,
+     "imports_usd": 734859122448.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2013,
+     "exports_usd": 699127463939.0,
+     "imports_usd": 708085908032.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2014,
+     "exports_usd": 682895994429.0,
+     "imports_usd": 682863789820.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2015,
+     "exports_usd": 616121508715.0,
+     "imports_usd": 528856083009.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2016,
+     "exports_usd": 654465533575.0,
+     "imports_usd": 510544253357.0,
+     "exports_over_imports": 1.28
+    },
+    {
+     "year": 2017,
+     "exports_usd": 706034153503.0,
+     "imports_usd": 562723668340.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2018,
+     "exports_usd": 746156174385.0,
+     "imports_usd": 617595262427.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2019,
+     "exports_usd": 714778944080.0,
+     "imports_usd": 602543918343.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2020,
+     "exports_usd": 645687334539.0,
+     "imports_usd": 529409738718.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2021,
+     "exports_usd": 758058723181.0,
+     "imports_usd": 632130210584.0,
+     "exports_over_imports": 1.2
+    },
+    {
+     "year": 2022,
+     "exports_usd": 730642531699.0,
+     "imports_usd": 727959241203.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2023,
+     "exports_usd": 727772179414.0,
+     "imports_usd": 629409054402.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2024,
+     "exports_usd": 694351102557.0,
+     "imports_usd": 622448400668.0,
+     "exports_over_imports": 1.12
+    }
+   ]
+  },
+  "KOR": {
+   "name": "Korea, South",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 681355949327.0,
+   "imports_usd": 554557795632.0,
+   "exports_over_imports": 1.23,
+   "eci": 1.599,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 107620357877.0,
+     "imports_usd": 61490223094.0,
+     "exports_over_imports": 1.75
+    },
+    "Electronics": {
+     "exports_usd": 198762014380.0,
+     "imports_usd": 96886177396.0,
+     "exports_over_imports": 2.05
+    },
+    "Machinery and instruments": {
+     "exports_usd": 114754767573.0,
+     "imports_usd": 84131945124.0,
+     "exports_over_imports": 1.36
+    },
+    "Metals": {
+     "exports_usd": 51781110719.0,
+     "imports_usd": 40110270825.0,
+     "exports_over_imports": 1.29
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 52534400591.0,
+     "imports_usd": 134189939119.0,
+     "exports_over_imports": 0.39
+    },
+    "Other": {
+     "exports_usd": 5937993322.0,
+     "imports_usd": 29050494199.0,
+     "exports_over_imports": 0.2
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 8883220580.0,
+     "imports_usd": 11807568644.0,
+     "exports_over_imports": 0.75
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 12122528634.0,
+     "imports_usd": 27065149858.0,
+     "exports_over_imports": 0.45
+    },
+    "Transport vehicles": {
+     "exports_usd": 113280772235.0,
+     "imports_usd": 23872472997.0,
+     "exports_over_imports": 4.75
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 15678783416.0,
+     "imports_usd": 45953554376.0,
+     "exports_over_imports": 0.34
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.49,
+   "hs2_chapters_net_exported": 34,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 122427643740.0,
+     "imports_usd": 121785603975.0,
+     "exports_over_imports": 1.01
+    },
+    {
+     "year": 1996,
+     "exports_usd": 123816079132.0,
+     "imports_usd": 128348611189.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 1997,
+     "exports_usd": 127897739425.0,
+     "imports_usd": 125597005732.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 1998,
+     "exports_usd": 119797531954.0,
+     "imports_usd": 77169004389.0,
+     "exports_over_imports": 1.55
+    },
+    {
+     "year": 1999,
+     "exports_usd": 138021480286.0,
+     "imports_usd": 105216027164.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2000,
+     "exports_usd": 165217909647.0,
+     "imports_usd": 142418544068.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2001,
+     "exports_usd": 146774184531.0,
+     "imports_usd": 122014102579.0,
+     "exports_over_imports": 1.2
+    },
+    {
+     "year": 2002,
+     "exports_usd": 157681550974.0,
+     "imports_usd": 137906314318.0,
+     "exports_over_imports": 1.14
+    },
+    {
+     "year": 2003,
+     "exports_usd": 189525578457.0,
+     "imports_usd": 160258013380.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2004,
+     "exports_usd": 248279311502.0,
+     "imports_usd": 198934942674.0,
+     "exports_over_imports": 1.25
+    },
+    {
+     "year": 2005,
+     "exports_usd": 281071417491.0,
+     "imports_usd": 229744048747.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2006,
+     "exports_usd": 325394323815.0,
+     "imports_usd": 274158597884.0,
+     "exports_over_imports": 1.19
+    },
+    {
+     "year": 2007,
+     "exports_usd": 368320884189.0,
+     "imports_usd": 314836624332.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2008,
+     "exports_usd": 411143491665.0,
+     "imports_usd": 380965857904.0,
+     "exports_over_imports": 1.08
+    },
+    {
+     "year": 2009,
+     "exports_usd": 354443104113.0,
+     "imports_usd": 289909485191.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2010,
+     "exports_usd": 462921090285.0,
+     "imports_usd": 386688079123.0,
+     "exports_over_imports": 1.2
+    },
+    {
+     "year": 2011,
+     "exports_usd": 551126339847.0,
+     "imports_usd": 475663311566.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2012,
+     "exports_usd": 551259355409.0,
+     "imports_usd": 476344210806.0,
+     "exports_over_imports": 1.16
+    },
+    {
+     "year": 2013,
+     "exports_usd": 564558982378.0,
+     "imports_usd": 455779722872.0,
+     "exports_over_imports": 1.24
+    },
+    {
+     "year": 2014,
+     "exports_usd": 585551618686.0,
+     "imports_usd": 478408856721.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2015,
+     "exports_usd": 513871056263.0,
+     "imports_usd": 394225019299.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 2016,
+     "exports_usd": 486256259444.0,
+     "imports_usd": 371408135350.0,
+     "exports_over_imports": 1.31
+    },
+    {
+     "year": 2017,
+     "exports_usd": 556682213813.0,
+     "imports_usd": 431961547769.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 2018,
+     "exports_usd": 600635704392.0,
+     "imports_usd": 486951145253.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 2019,
+     "exports_usd": 531829514623.0,
+     "imports_usd": 452681971739.0,
+     "exports_over_imports": 1.17
+    },
+    {
+     "year": 2020,
+     "exports_usd": 505231111370.0,
+     "imports_usd": 418064611060.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2021,
+     "exports_usd": 644416447930.0,
+     "imports_usd": 547844470370.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2022,
+     "exports_usd": 670691409162.0,
+     "imports_usd": 631481094982.0,
+     "exports_over_imports": 1.06
+    },
+    {
+     "year": 2023,
+     "exports_usd": 643960258640.0,
+     "imports_usd": 558455796220.0,
+     "exports_over_imports": 1.15
+    },
+    {
+     "year": 2024,
+     "exports_usd": 681355949327.0,
+     "imports_usd": 554557795632.0,
+     "exports_over_imports": 1.23
+    }
+   ]
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 69355264450.0,
+   "imports_usd": 72049980088.0,
+   "exports_over_imports": 0.96,
+   "eci": 1.276,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 30180371242.0,
+     "imports_usd": 30308309470.0,
+     "exports_over_imports": 1.0
+    },
+    "Electronics": {
+     "exports_usd": 5394315517.0,
+     "imports_usd": 5907233703.0,
+     "exports_over_imports": 0.91
+    },
+    "Machinery and instruments": {
+     "exports_usd": 5967083394.0,
+     "imports_usd": 5714410723.0,
+     "exports_over_imports": 1.04
+    },
+    "Metals": {
+     "exports_usd": 4954080753.0,
+     "imports_usd": 5647752845.0,
+     "exports_over_imports": 0.88
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 3234583316.0,
+     "imports_usd": 4831665142.0,
+     "exports_over_imports": 0.67
+    },
+    "Other": {
+     "exports_usd": 6701842746.0,
+     "imports_usd": 2104198845.0,
+     "exports_over_imports": 3.18
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 809320659.0,
+     "imports_usd": 960476124.0,
+     "exports_over_imports": 0.84
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 2064736026.0,
+     "imports_usd": 3052378746.0,
+     "exports_over_imports": 0.68
+    },
+    "Transport vehicles": {
+     "exports_usd": 5427902015.0,
+     "imports_usd": 7523294751.0,
+     "exports_over_imports": 0.72
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 4621028782.0,
+     "imports_usd": 6000259739.0,
+     "exports_over_imports": 0.77
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.31,
+   "hs2_chapters_net_exported": 24,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 8145347585.0,
+     "imports_usd": 9040457638.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 1996,
+     "exports_usd": 8130550533.0,
+     "imports_usd": 9162688287.0,
+     "exports_over_imports": 0.89
+    },
+    {
+     "year": 1997,
+     "exports_usd": 8076648100.0,
+     "imports_usd": 9283798057.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 1998,
+     "exports_usd": 8578561203.0,
+     "imports_usd": 9644112284.0,
+     "exports_over_imports": 0.89
+    },
+    {
+     "year": 1999,
+     "exports_usd": 8235544961.0,
+     "imports_usd": 9422131727.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2000,
+     "exports_usd": 8429696171.0,
+     "imports_usd": 9723138542.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2001,
+     "exports_usd": 8755903083.0,
+     "imports_usd": 9750053621.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2002,
+     "exports_usd": 9873835484.0,
+     "imports_usd": 10355442572.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2003,
+     "exports_usd": 12034078057.0,
+     "imports_usd": 12833705827.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2004,
+     "exports_usd": 14238139914.0,
+     "imports_usd": 15853058210.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2005,
+     "exports_usd": 15270535064.0,
+     "imports_usd": 17831339506.0,
+     "exports_over_imports": 0.86
+    },
+    {
+     "year": 2006,
+     "exports_usd": 18670662146.0,
+     "imports_usd": 21387512409.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2007,
+     "exports_usd": 24195018396.0,
+     "imports_usd": 27653120074.0,
+     "exports_over_imports": 0.87
+    },
+    {
+     "year": 2008,
+     "exports_usd": 26586121920.0,
+     "imports_usd": 31474891711.0,
+     "exports_over_imports": 0.84
+    },
+    {
+     "year": 2009,
+     "exports_usd": 20209277937.0,
+     "imports_usd": 22122494196.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2010,
+     "exports_usd": 22912974320.0,
+     "imports_usd": 25208444292.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2011,
+     "exports_usd": 27736981877.0,
+     "imports_usd": 30133142111.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2012,
+     "exports_usd": 26451657079.0,
+     "imports_usd": 27561226699.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2013,
+     "exports_usd": 28143873691.0,
+     "imports_usd": 28558222730.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2014,
+     "exports_usd": 29966465418.0,
+     "imports_usd": 29822493280.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2015,
+     "exports_usd": 25882277986.0,
+     "imports_usd": 26440977503.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2016,
+     "exports_usd": 26554767792.0,
+     "imports_usd": 27825900031.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2017,
+     "exports_usd": 30297576898.0,
+     "imports_usd": 31173557164.0,
+     "exports_over_imports": 0.97
+    },
+    {
+     "year": 2018,
+     "exports_usd": 35024718178.0,
+     "imports_usd": 38151609608.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 2019,
+     "exports_usd": 34786332959.0,
+     "imports_usd": 39480947326.0,
+     "exports_over_imports": 0.88
+    },
+    {
+     "year": 2020,
+     "exports_usd": 33626529083.0,
+     "imports_usd": 37163274326.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2021,
+     "exports_usd": 42061413058.0,
+     "imports_usd": 49333081838.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 2022,
+     "exports_usd": 54191091999.0,
+     "imports_usd": 59969712512.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2023,
+     "exports_usd": 60070041225.0,
+     "imports_usd": 60837672569.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2024,
+     "exports_usd": 69355264450.0,
+     "imports_usd": 72049980088.0,
+     "exports_over_imports": 0.96
+    }
+   ]
+  },
+  "ESP": {
+   "name": "Spain",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 368792425984.0,
+   "imports_usd": 398198793009.0,
+   "exports_over_imports": 0.93,
+   "eci": 0.814,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 68503281341.0,
+     "imports_usd": 64365643379.0,
+     "exports_over_imports": 1.06
+    },
+    "Electronics": {
+     "exports_usd": 20867202296.0,
+     "imports_usd": 35880704310.0,
+     "exports_over_imports": 0.58
+    },
+    "Machinery and instruments": {
+     "exports_usd": 35180114840.0,
+     "imports_usd": 51430410005.0,
+     "exports_over_imports": 0.68
+    },
+    "Metals": {
+     "exports_usd": 30282045354.0,
+     "imports_usd": 27447026650.0,
+     "exports_over_imports": 1.1
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 19271902000.0,
+     "imports_usd": 54305481428.0,
+     "exports_over_imports": 0.35
+    },
+    "Other": {
+     "exports_usd": 3615323378.0,
+     "imports_usd": 12719293384.0,
+     "exports_over_imports": 0.28
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 12638770094.0,
+     "imports_usd": 7935457291.0,
+     "exports_over_imports": 1.59
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 26033001604.0,
+     "imports_usd": 36331716263.0,
+     "exports_over_imports": 0.72
+    },
+    "Transport vehicles": {
+     "exports_usd": 66899157979.0,
+     "imports_usd": 45447695402.0,
+     "exports_over_imports": 1.47
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 85501627098.0,
+     "imports_usd": 62335364897.0,
+     "exports_over_imports": 1.37
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.3,
+   "hs2_chapters_net_exported": 44,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 87022210683.0,
+     "imports_usd": 108280587588.0,
+     "exports_over_imports": 0.8
+    },
+    {
+     "year": 1996,
+     "exports_usd": 96599256453.0,
+     "imports_usd": 115343765432.0,
+     "exports_over_imports": 0.84
+    },
+    {
+     "year": 1997,
+     "exports_usd": 100366868506.0,
+     "imports_usd": 118510797169.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 1998,
+     "exports_usd": 104259966350.0,
+     "imports_usd": 127180680215.0,
+     "exports_over_imports": 0.82
+    },
+    {
+     "year": 1999,
+     "exports_usd": 104481736315.0,
+     "imports_usd": 139288393591.0,
+     "exports_over_imports": 0.75
+    },
+    {
+     "year": 2000,
+     "exports_usd": 107782772821.0,
+     "imports_usd": 146075065900.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2001,
+     "exports_usd": 108431054050.0,
+     "imports_usd": 145677524215.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2002,
+     "exports_usd": 118719634485.0,
+     "imports_usd": 155991044091.0,
+     "exports_over_imports": 0.76
+    },
+    {
+     "year": 2003,
+     "exports_usd": 147102115978.0,
+     "imports_usd": 200481487578.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2004,
+     "exports_usd": 172793430549.0,
+     "imports_usd": 243392314960.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2005,
+     "exports_usd": 183261248756.0,
+     "imports_usd": 272115745235.0,
+     "exports_over_imports": 0.67
+    },
+    {
+     "year": 2006,
+     "exports_usd": 201734591823.0,
+     "imports_usd": 308895603270.0,
+     "exports_over_imports": 0.65
+    },
+    {
+     "year": 2007,
+     "exports_usd": 236241785742.0,
+     "imports_usd": 366458620575.0,
+     "exports_over_imports": 0.64
+    },
+    {
+     "year": 2008,
+     "exports_usd": 264108447114.0,
+     "imports_usd": 384422843593.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2009,
+     "exports_usd": 206490994184.0,
+     "imports_usd": 265735767410.0,
+     "exports_over_imports": 0.78
+    },
+    {
+     "year": 2010,
+     "exports_usd": 232855046621.0,
+     "imports_usd": 292815476532.0,
+     "exports_over_imports": 0.8
+    },
+    {
+     "year": 2011,
+     "exports_usd": 280626402131.0,
+     "imports_usd": 331049536746.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 2012,
+     "exports_usd": 268862831630.0,
+     "imports_usd": 298501598291.0,
+     "exports_over_imports": 0.9
+    },
+    {
+     "year": 2013,
+     "exports_usd": 288244168426.0,
+     "imports_usd": 303593726390.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2014,
+     "exports_usd": 293186090127.0,
+     "imports_usd": 323166647874.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2015,
+     "exports_usd": 256947110933.0,
+     "imports_usd": 276651946464.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2016,
+     "exports_usd": 263344572139.0,
+     "imports_usd": 276380921755.0,
+     "exports_over_imports": 0.95
+    },
+    {
+     "year": 2017,
+     "exports_usd": 289593049908.0,
+     "imports_usd": 308997638036.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2018,
+     "exports_usd": 306638201271.0,
+     "imports_usd": 343354113283.0,
+     "exports_over_imports": 0.89
+    },
+    {
+     "year": 2019,
+     "exports_usd": 297376790592.0,
+     "imports_usd": 326647822091.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 2020,
+     "exports_usd": 281541158504.0,
+     "imports_usd": 283845152667.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2021,
+     "exports_usd": 345080926507.0,
+     "imports_usd": 366326370809.0,
+     "exports_over_imports": 0.94
+    },
+    {
+     "year": 2022,
+     "exports_usd": 379875329875.0,
+     "imports_usd": 428120800830.0,
+     "exports_over_imports": 0.89
+    },
+    {
+     "year": 2023,
+     "exports_usd": 380115436887.0,
+     "imports_usd": 409954858569.0,
+     "exports_over_imports": 0.93
+    },
+    {
+     "year": 2024,
+     "exports_usd": 368792425984.0,
+     "imports_usd": 398198793009.0,
+     "exports_over_imports": 0.93
+    }
+   ]
+  },
+  "SWE": {
+   "name": "Sweden",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 179436758303.0,
+   "imports_usd": 177580684894.0,
+   "exports_over_imports": 1.01,
+   "eci": 1.235,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 28822214815.0,
+     "imports_usd": 24260364070.0,
+     "exports_over_imports": 1.19
+    },
+    "Electronics": {
+     "exports_usd": 16079945657.0,
+     "imports_usd": 18313949975.0,
+     "exports_over_imports": 0.88
+    },
+    "Machinery and instruments": {
+     "exports_usd": 32545858291.0,
+     "imports_usd": 29943703255.0,
+     "exports_over_imports": 1.09
+    },
+    "Metals": {
+     "exports_usd": 17932015148.0,
+     "imports_usd": 15145922427.0,
+     "exports_over_imports": 1.18
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 16137427772.0,
+     "imports_usd": 19499522259.0,
+     "exports_over_imports": 0.83
+    },
+    "Other": {
+     "exports_usd": 2602780697.0,
+     "imports_usd": 13212201178.0,
+     "exports_over_imports": 0.2
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 2591475290.0,
+     "imports_usd": 2358716770.0,
+     "exports_over_imports": 1.1
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 6679570999.0,
+     "imports_usd": 11595054929.0,
+     "exports_over_imports": 0.58
+    },
+    "Transport vehicles": {
+     "exports_usd": 26429930404.0,
+     "imports_usd": 21306826829.0,
+     "exports_over_imports": 1.24
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 29615539230.0,
+     "imports_usd": 21944423202.0,
+     "exports_over_imports": 1.35
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.44,
+   "hs2_chapters_net_exported": 27,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 74700671656.0,
+     "imports_usd": 58982096351.0,
+     "exports_over_imports": 1.27
+    },
+    {
+     "year": 1996,
+     "exports_usd": 78185300455.0,
+     "imports_usd": 60486426077.0,
+     "exports_over_imports": 1.29
+    },
+    {
+     "year": 1997,
+     "exports_usd": 78150697147.0,
+     "imports_usd": 59945603049.0,
+     "exports_over_imports": 1.3
+    },
+    {
+     "year": 1998,
+     "exports_usd": 77999922009.0,
+     "imports_usd": 63622808181.0,
+     "exports_over_imports": 1.23
+    },
+    {
+     "year": 1999,
+     "exports_usd": 74822969245.0,
+     "imports_usd": 61363545443.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2000,
+     "exports_usd": 82798231821.0,
+     "imports_usd": 68735743417.0,
+     "exports_over_imports": 1.2
+    },
+    {
+     "year": 2001,
+     "exports_usd": 74964011702.0,
+     "imports_usd": 61868977829.0,
+     "exports_over_imports": 1.21
+    },
+    {
+     "year": 2002,
+     "exports_usd": 79433542087.0,
+     "imports_usd": 65320244332.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2003,
+     "exports_usd": 97737303744.0,
+     "imports_usd": 79906320041.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2004,
+     "exports_usd": 117580933345.0,
+     "imports_usd": 96380314258.0,
+     "exports_over_imports": 1.22
+    },
+    {
+     "year": 2005,
+     "exports_usd": 126320575754.0,
+     "imports_usd": 107294714866.0,
+     "exports_over_imports": 1.18
+    },
+    {
+     "year": 2006,
+     "exports_usd": 138205233715.0,
+     "imports_usd": 122066185022.0,
+     "exports_over_imports": 1.13
+    },
+    {
+     "year": 2007,
+     "exports_usd": 162765824306.0,
+     "imports_usd": 145027633235.0,
+     "exports_over_imports": 1.12
+    },
+    {
+     "year": 2008,
+     "exports_usd": 175326360116.0,
+     "imports_usd": 158582619344.0,
+     "exports_over_imports": 1.11
+    },
+    {
+     "year": 2009,
+     "exports_usd": 123832896135.0,
+     "imports_usd": 113372603726.0,
+     "exports_over_imports": 1.09
+    },
+    {
+     "year": 2010,
+     "exports_usd": 143637280823.0,
+     "imports_usd": 140942480298.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2011,
+     "exports_usd": 171413849765.0,
+     "imports_usd": 164626249408.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 2012,
+     "exports_usd": 156846796365.0,
+     "imports_usd": 152185610639.0,
+     "exports_over_imports": 1.03
+    },
+    {
+     "year": 2013,
+     "exports_usd": 154293735661.0,
+     "imports_usd": 150627741854.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2014,
+     "exports_usd": 154386523968.0,
+     "imports_usd": 151244167470.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2015,
+     "exports_usd": 128299774157.0,
+     "imports_usd": 129192847652.0,
+     "exports_over_imports": 0.99
+    },
+    {
+     "year": 2016,
+     "exports_usd": 126695075064.0,
+     "imports_usd": 131383633227.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2017,
+     "exports_usd": 142400233103.0,
+     "imports_usd": 141790901853.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2018,
+     "exports_usd": 150031658522.0,
+     "imports_usd": 156883840053.0,
+     "exports_over_imports": 0.96
+    },
+    {
+     "year": 2019,
+     "exports_usd": 148384301792.0,
+     "imports_usd": 147783012641.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2020,
+     "exports_usd": 144536828285.0,
+     "imports_usd": 138817277284.0,
+     "exports_over_imports": 1.04
+    },
+    {
+     "year": 2021,
+     "exports_usd": 176947653859.0,
+     "imports_usd": 174055596880.0,
+     "exports_over_imports": 1.02
+    },
+    {
+     "year": 2022,
+     "exports_usd": 184231337715.0,
+     "imports_usd": 187667976488.0,
+     "exports_over_imports": 0.98
+    },
+    {
+     "year": 2023,
+     "exports_usd": 179908530275.0,
+     "imports_usd": 180116843335.0,
+     "exports_over_imports": 1.0
+    },
+    {
+     "year": 2024,
+     "exports_usd": 179436758303.0,
+     "imports_usd": 177580684894.0,
+     "exports_over_imports": 1.01
+    }
+   ]
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 8054036318.0,
+   "imports_usd": 20503830335.0,
+   "exports_over_imports": 0.39,
+   "eci": -0.922,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 219667592.0,
+     "imports_usd": 2949015330.0,
+     "exports_over_imports": 0.07
+    },
+    "Electronics": {
+     "exports_usd": 33732527.0,
+     "imports_usd": 1355798508.0,
+     "exports_over_imports": 0.02
+    },
+    "Machinery and instruments": {
+     "exports_usd": 76519221.0,
+     "imports_usd": 2183734235.0,
+     "exports_over_imports": 0.04
+    },
+    "Metals": {
+     "exports_usd": 302668997.0,
+     "imports_usd": 2057756242.0,
+     "exports_over_imports": 0.15
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 749890384.0,
+     "imports_usd": 4607509656.0,
+     "exports_over_imports": 0.16
+    },
+    "Other": {
+     "exports_usd": 207850179.0,
+     "imports_usd": 432490154.0,
+     "exports_over_imports": 0.48
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 2946896703.0,
+     "imports_usd": 285176889.0,
+     "exports_over_imports": 10.33
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 301066819.0,
+     "imports_usd": 2243373159.0,
+     "exports_over_imports": 0.13
+    },
+    "Transport vehicles": {
+     "exports_usd": 112830613.0,
+     "imports_usd": 2182512105.0,
+     "exports_over_imports": 0.05
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 3102913283.0,
+     "imports_usd": 2206464057.0,
+     "exports_over_imports": 1.41
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.02,
+   "hs2_chapters_net_exported": 24,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 613059311.0,
+     "imports_usd": 1601435036.0,
+     "exports_over_imports": 0.38
+    },
+    {
+     "year": 1996,
+     "exports_usd": 627593319.0,
+     "imports_usd": 1436606138.0,
+     "exports_over_imports": 0.44
+    },
+    {
+     "year": 1997,
+     "exports_usd": 669852872.0,
+     "imports_usd": 1505632579.0,
+     "exports_over_imports": 0.44
+    },
+    {
+     "year": 1998,
+     "exports_usd": 660402652.0,
+     "imports_usd": 1473212565.0,
+     "exports_over_imports": 0.45
+    },
+    {
+     "year": 1999,
+     "exports_usd": 602907086.0,
+     "imports_usd": 1405179725.0,
+     "exports_over_imports": 0.43
+    },
+    {
+     "year": 2000,
+     "exports_usd": 718122817.0,
+     "imports_usd": 1325409989.0,
+     "exports_over_imports": 0.54
+    },
+    {
+     "year": 2001,
+     "exports_usd": 694075507.0,
+     "imports_usd": 1422257833.0,
+     "exports_over_imports": 0.49
+    },
+    {
+     "year": 2002,
+     "exports_usd": 770986961.0,
+     "imports_usd": 1560915893.0,
+     "exports_over_imports": 0.49
+    },
+    {
+     "year": 2003,
+     "exports_usd": 1090826098.0,
+     "imports_usd": 1915457433.0,
+     "exports_over_imports": 0.57
+    },
+    {
+     "year": 2004,
+     "exports_usd": 1533771936.0,
+     "imports_usd": 2360825414.0,
+     "exports_over_imports": 0.65
+    },
+    {
+     "year": 2005,
+     "exports_usd": 1551072576.0,
+     "imports_usd": 3166502870.0,
+     "exports_over_imports": 0.49
+    },
+    {
+     "year": 2006,
+     "exports_usd": 1739659686.0,
+     "imports_usd": 3751800908.0,
+     "exports_over_imports": 0.46
+    },
+    {
+     "year": 2007,
+     "exports_usd": 2065182035.0,
+     "imports_usd": 5010386230.0,
+     "exports_over_imports": 0.41
+    },
+    {
+     "year": 2008,
+     "exports_usd": 2653776606.0,
+     "imports_usd": 6556692559.0,
+     "exports_over_imports": 0.4
+    },
+    {
+     "year": 2009,
+     "exports_usd": 2493191129.0,
+     "imports_usd": 5666494581.0,
+     "exports_over_imports": 0.44
+    },
+    {
+     "year": 2010,
+     "exports_usd": 2721999199.0,
+     "imports_usd": 7051917043.0,
+     "exports_over_imports": 0.39
+    },
+    {
+     "year": 2011,
+     "exports_usd": 3210471467.0,
+     "imports_usd": 9704344358.0,
+     "exports_over_imports": 0.33
+    },
+    {
+     "year": 2012,
+     "exports_usd": 4739189174.0,
+     "imports_usd": 10701729913.0,
+     "exports_over_imports": 0.44
+    },
+    {
+     "year": 2013,
+     "exports_usd": 4362246375.0,
+     "imports_usd": 13196468495.0,
+     "exports_over_imports": 0.33
+    },
+    {
+     "year": 2014,
+     "exports_usd": 5041708537.0,
+     "imports_usd": 13922222040.0,
+     "exports_over_imports": 0.36
+    },
+    {
+     "year": 2015,
+     "exports_usd": 5135175522.0,
+     "imports_usd": 12174713811.0,
+     "exports_over_imports": 0.42
+    },
+    {
+     "year": 2016,
+     "exports_usd": 4433196512.0,
+     "imports_usd": 9939619187.0,
+     "exports_over_imports": 0.45
+    },
+    {
+     "year": 2017,
+     "exports_usd": 4108542994.0,
+     "imports_usd": 9941334975.0,
+     "exports_over_imports": 0.41
+    },
+    {
+     "year": 2018,
+     "exports_usd": 4720245244.0,
+     "imports_usd": 11999008101.0,
+     "exports_over_imports": 0.39
+    },
+    {
+     "year": 2019,
+     "exports_usd": 4528145535.0,
+     "imports_usd": 12080590172.0,
+     "exports_over_imports": 0.37
+    },
+    {
+     "year": 2020,
+     "exports_usd": 5708082180.0,
+     "imports_usd": 11004830584.0,
+     "exports_over_imports": 0.52
+    },
+    {
+     "year": 2021,
+     "exports_usd": 6792072262.0,
+     "imports_usd": 14471877138.0,
+     "exports_over_imports": 0.47
+    },
+    {
+     "year": 2022,
+     "exports_usd": 7827208288.0,
+     "imports_usd": 19489990935.0,
+     "exports_over_imports": 0.4
+    },
+    {
+     "year": 2023,
+     "exports_usd": 7929629108.0,
+     "imports_usd": 20250315926.0,
+     "exports_over_imports": 0.39
+    },
+    {
+     "year": 2024,
+     "exports_usd": 8054036318.0,
+     "imports_usd": 20503830335.0,
+     "exports_over_imports": 0.39
+    }
+   ]
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "places": 1,
+   "year": 2024,
+   "exports_usd": 448444450606.0,
+   "imports_usd": 691440106855.0,
+   "exports_over_imports": 0.65,
+   "eci": 1.246,
+   "sectors": {
+    "Chemicals and plastics": {
+     "exports_usd": 67490949363.0,
+     "imports_usd": 79997215617.0,
+     "exports_over_imports": 0.84
+    },
+    "Electronics": {
+     "exports_usd": 26780970040.0,
+     "imports_usd": 58060727384.0,
+     "exports_over_imports": 0.46
+    },
+    "Machinery and instruments": {
+     "exports_usd": 104375559658.0,
+     "imports_usd": 101682842945.0,
+     "exports_over_imports": 1.03
+    },
+    "Metals": {
+     "exports_usd": 25369467877.0,
+     "imports_usd": 32835285384.0,
+     "exports_over_imports": 0.77
+    },
+    "Minerals, fuels, ores and salts": {
+     "exports_usd": 32582725516.0,
+     "imports_usd": 66789214881.0,
+     "exports_over_imports": 0.49
+    },
+    "Other": {
+     "exports_usd": 8005251321.0,
+     "imports_usd": 30407054992.0,
+     "exports_over_imports": 0.26
+    },
+    "Stone, glass and ceramics": {
+     "exports_usd": 70244568412.0,
+     "imports_usd": 89369343931.0,
+     "exports_over_imports": 0.79
+    },
+    "Textiles, garments, footwear and furniture": {
+     "exports_usd": 15953420767.0,
+     "imports_usd": 50293320004.0,
+     "exports_over_imports": 0.32
+    },
+    "Transport vehicles": {
+     "exports_usd": 60821405925.0,
+     "imports_usd": 89510532379.0,
+     "exports_over_imports": 0.68
+    },
+    "Vegetables, animals, wood and paper": {
+     "exports_usd": 36820131727.0,
+     "imports_usd": 92494569338.0,
+     "exports_over_imports": 0.4
+    }
+   },
+   "imports_in_net_export_chapters_share": 0.21,
+   "hs2_chapters_net_exported": 18,
+   "hs2_chapters_reported": 97,
+   "series": [
+    {
+     "year": 1995,
+     "exports_usd": 220908440144.0,
+     "imports_usd": 240675889007.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 1996,
+     "exports_usd": 236071819793.0,
+     "imports_usd": 257751531492.0,
+     "exports_over_imports": 0.92
+    },
+    {
+     "year": 1997,
+     "exports_usd": 252415045178.0,
+     "imports_usd": 277734164705.0,
+     "exports_over_imports": 0.91
+    },
+    {
+     "year": 1998,
+     "exports_usd": 243219626435.0,
+     "imports_usd": 286389181363.0,
+     "exports_over_imports": 0.85
+    },
+    {
+     "year": 1999,
+     "exports_usd": 240179039069.0,
+     "imports_usd": 289099683121.0,
+     "exports_over_imports": 0.83
+    },
+    {
+     "year": 2000,
+     "exports_usd": 275015038365.0,
+     "imports_usd": 331768181817.0,
+     "exports_over_imports": 0.83
+    },
+    {
+     "year": 2001,
+     "exports_usd": 260982186695.0,
+     "imports_usd": 317092266164.0,
+     "exports_over_imports": 0.82
+    },
+    {
+     "year": 2002,
+     "exports_usd": 261987133907.0,
+     "imports_usd": 333750902044.0,
+     "exports_over_imports": 0.78
+    },
+    {
+     "year": 2003,
+     "exports_usd": 283444216353.0,
+     "imports_usd": 383763699326.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2004,
+     "exports_usd": 333798955007.0,
+     "imports_usd": 456898809138.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2005,
+     "exports_usd": 363833659032.0,
+     "imports_usd": 475670755840.0,
+     "exports_over_imports": 0.76
+    },
+    {
+     "year": 2006,
+     "exports_usd": 393840567988.0,
+     "imports_usd": 542142838749.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2007,
+     "exports_usd": 432245967364.0,
+     "imports_usd": 615345039858.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2008,
+     "exports_usd": 458807464262.0,
+     "imports_usd": 641961769851.0,
+     "exports_over_imports": 0.71
+    },
+    {
+     "year": 2009,
+     "exports_usd": 345864115682.0,
+     "imports_usd": 497405491623.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2010,
+     "exports_usd": 394135473146.0,
+     "imports_usd": 560457911808.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2011,
+     "exports_usd": 487549057934.0,
+     "imports_usd": 647652770826.0,
+     "exports_over_imports": 0.75
+    },
+    {
+     "year": 2012,
+     "exports_usd": 462128773094.0,
+     "imports_usd": 626750647219.0,
+     "exports_over_imports": 0.74
+    },
+    {
+     "year": 2013,
+     "exports_usd": 518378885095.0,
+     "imports_usd": 600227227407.0,
+     "exports_over_imports": 0.86
+    },
+    {
+     "year": 2014,
+     "exports_usd": 485939386939.0,
+     "imports_usd": 627670440437.0,
+     "exports_over_imports": 0.77
+    },
+    {
+     "year": 2015,
+     "exports_usd": 432449987390.0,
+     "imports_usd": 573571144741.0,
+     "exports_over_imports": 0.75
+    },
+    {
+     "year": 2016,
+     "exports_usd": 381876228058.0,
+     "imports_usd": 593967934042.0,
+     "exports_over_imports": 0.64
+    },
+    {
+     "year": 2017,
+     "exports_usd": 411570938733.0,
+     "imports_usd": 587504147142.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2018,
+     "exports_usd": 446313842316.0,
+     "imports_usd": 615330660793.0,
+     "exports_over_imports": 0.73
+    },
+    {
+     "year": 2019,
+     "exports_usd": 427409365874.0,
+     "imports_usd": 644758411982.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2020,
+     "exports_usd": 367135467988.0,
+     "imports_usd": 596804121701.0,
+     "exports_over_imports": 0.62
+    },
+    {
+     "year": 2021,
+     "exports_usd": 418619942943.0,
+     "imports_usd": 636782095561.0,
+     "exports_over_imports": 0.66
+    },
+    {
+     "year": 2022,
+     "exports_usd": 488303462366.0,
+     "imports_usd": 701154671112.0,
+     "exports_over_imports": 0.7
+    },
+    {
+     "year": 2023,
+     "exports_usd": 457891719779.0,
+     "imports_usd": 665299900413.0,
+     "exports_over_imports": 0.69
+    },
+    {
+     "year": 2024,
+     "exports_usd": 448444450606.0,
+     "imports_usd": 691440106855.0,
+     "exports_over_imports": 0.65
+    }
+   ]
+  }
+ },
+ "not_in_atlas": [],
+ "source": "Atlas of Economic Complexity, Growth Lab at Harvard University: International Trade Data (HS 92), doi:10.7910/DVN/T4CHWJ, version 18 (2026-04-22), tables hs92_country_year, hs92_country_product_year_1 and _2; Classifications doi:10.7910/DVN/3BAL1O"
+}
