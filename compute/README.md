@@ -485,6 +485,13 @@ region that is itself a port or a capital would be wrong in the other direction,
 rather than modelled. The employment year is the latest with a row for the region (2024 for all 14 here); a region
 with nothing in that year or the one before is listed in `not_modelled`.
 
+### countries.json: the bracket one row per country
+
+`api.mjs` also writes `/api/v0/countries.json` at build: for every country the places sit in, the three halves' headline
+figures with their sources and licences (the long detail, the trade series and TiVA's 80 industries, stays in each place's
+JSON), the places the country holds, and whether each place's region is modelled. The site's Countries page, in the Network
+menu beside Data, reads it. Not an index: nothing in it enters a score.
+
 ## The country bracket: what the whole country buys and sells abroad
 
 `compute/atlas.py` reads the Atlas of Economic Complexity's bulk tables (Growth Lab at Harvard University, CC0 on

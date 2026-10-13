@@ -81,7 +81,7 @@ The pages read three live feeds, and the build writes a fourth:
 | `/api/coverage.json` | Airtable, base `appmNQaDGEFE9VcYh`, table `FCI Coverage Tracker` | the 61 pledged places × 8 cells: which registered sources could fill each one, and whether anyone has looked |
 | `/api/cells/<city>.json` | Airtable, same base, table `Observations` (the spine) | what a node has actually measured |
 | `index.json` | [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data), read from `raw.githubusercontent.com` | what each registered source is, its licence, status and reviews |
-| `/api/v0/` | written by `api.mjs` at build, from the registry at its main commit, the tracker, and `compute/results/` | every place's status, FCI or range, DIDO, 1−PITO and ρ: `index.json`, `index.csv`, `places/<slug>.json`, `measured.json` |
+| `/api/v0/` | written by `api.mjs` at build, from the registry at its main commit, the tracker, and `compute/results/` | every place's status, FCI or range, DIDO, 1−PITO and ρ: `index.json`, `index.csv`, `places/<slug>.json`, `measured.json`, `countries.json` (the country bracket, one row per country) |
 
 The pages recompute scores on the live registry, so between deploys a place's open-data count on a page can be
 ahead of `/api/v0/`; every API file names the registry commit it read.
