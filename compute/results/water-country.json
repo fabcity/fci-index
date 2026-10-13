@@ -1,0 +1,530 @@
+{
+ "reads_as": "The country each place sits in, as FAO's AQUASTAT reads its water: of the renewable water the country has in a year, the share that originates inside its own borders (one minus the dependency ratio, the share flowing in from other countries). Beside it, the share of what it has that it withdraws. Water is not bought abroad like goods; this says whose rain it lives on. Resources are long-term averages repeated each year. A country figure, never a city's.",
+ "licence": "FAO AQUASTAT. FAO's Statistical Database Terms of Use (read 2026-10-13) list AQUASTAT in Annex 1 under CC BY 4.0, with the clause against use in the promotion of a commercial enterprise; FAO's data catalogue labels the AQUASTAT Dissemination System dataset CC BY-NC-SA 4.0. Recorded as a conflict for the registry's maintainer; cite FAO, AQUASTAT, https://data.apps.fao.org/aquastat/",
+ "year": 2022,
+ "symbols_mean": "AQUASTAT symbols: I imputed or carried forward, E estimate, A actual (official)",
+ "countries": {
+  "FRA": {
+   "name": "France",
+   "places": 8,
+   "year": 2022,
+   "made_at_home": 0.948,
+   "dependency_ratio": 0.052,
+   "internal_renewable_km3": 200.0,
+   "external_renewable_km3": 11.0,
+   "total_renewable_km3": 211.0,
+   "freshwater_withdrawal_km3": 24.435817,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.116,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "USA": {
+   "name": "United States of America",
+   "places": 7,
+   "year": 2022,
+   "made_at_home": 0.918,
+   "dependency_ratio": 0.082,
+   "internal_renewable_km3": 2818.0,
+   "external_renewable_km3": 251.0,
+   "total_renewable_km3": 3069.0,
+   "freshwater_withdrawal_km3": 387.2834044,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.126,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "BRA": {
+   "name": "Brazil",
+   "places": 5,
+   "year": 2022,
+   "made_at_home": 0.655,
+   "dependency_ratio": 0.345,
+   "internal_renewable_km3": 5661.0,
+   "external_renewable_km3": 2986.0,
+   "total_renewable_km3": 8647.0,
+   "freshwater_withdrawal_km3": 67.93317384,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.008,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "places": 5,
+   "year": 2022,
+   "made_at_home": 1.0,
+   "dependency_ratio": 0.0,
+   "internal_renewable_km3": 2018.7,
+   "external_renewable_km3": 0.0,
+   "total_renewable_km3": 2018.7,
+   "freshwater_withdrawal_km3": 222.635,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.11,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "MEX": {
+   "name": "Mexico",
+   "places": 5,
+   "year": 2022,
+   "made_at_home": 0.885,
+   "dependency_ratio": 0.115,
+   "internal_renewable_km3": 409.0,
+   "external_renewable_km3": 52.888,
+   "total_renewable_km3": 461.888,
+   "freshwater_withdrawal_km3": 89.804,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.194,
+   "symbols": {
+    "dependency_ratio": "E",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "DEU": {
+   "name": "Germany",
+   "places": 3,
+   "year": 2022,
+   "made_at_home": 0.695,
+   "dependency_ratio": 0.305,
+   "internal_renewable_km3": 107.0,
+   "external_renewable_km3": 47.0,
+   "total_renewable_km3": 154.0,
+   "freshwater_withdrawal_km3": 22.950619,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.149,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "AUT": {
+   "name": "Austria",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.708,
+   "dependency_ratio": 0.292,
+   "internal_renewable_km3": 55.0,
+   "external_renewable_km3": 22.7,
+   "total_renewable_km3": 77.7,
+   "freshwater_withdrawal_km3": 3.14,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.04,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "CAN": {
+   "name": "Canada",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.982,
+   "dependency_ratio": 0.018,
+   "internal_renewable_km3": 2850.0,
+   "external_renewable_km3": 52.0,
+   "total_renewable_km3": 2902.0,
+   "freshwater_withdrawal_km3": 36.128,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.012,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "CHL": {
+   "name": "Chile",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.959,
+   "dependency_ratio": 0.041,
+   "internal_renewable_km3": 885.0,
+   "external_renewable_km3": 38.06,
+   "total_renewable_km3": 923.06,
+   "freshwater_withdrawal_km3": 35.368,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.038,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "E"
+   }
+  },
+  "HRV": {
+   "name": "Croatia",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.357,
+   "dependency_ratio": 0.643,
+   "internal_renewable_km3": 37.7,
+   "external_renewable_km3": 67.8,
+   "total_renewable_km3": 105.5,
+   "freshwater_withdrawal_km3": 0.701,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.007,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "GHA": {
+   "name": "Ghana",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.539,
+   "dependency_ratio": 0.461,
+   "internal_renewable_km3": 30.3,
+   "external_renewable_km3": 25.9,
+   "total_renewable_km3": 56.2,
+   "freshwater_withdrawal_km3": 0.12675,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.002,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "IND": {
+   "name": "India",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.695,
+   "dependency_ratio": 0.305,
+   "internal_renewable_km3": 1446.0,
+   "external_renewable_km3": 464.9,
+   "total_renewable_km3": 1910.9,
+   "freshwater_withdrawal_km3": 641.43,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.336,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "E"
+   }
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.121,
+   "dependency_ratio": 0.879,
+   "internal_renewable_km3": 11.0,
+   "external_renewable_km3": 80.0,
+   "total_renewable_km3": 91.0,
+   "freshwater_withdrawal_km3": 8.2343,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.09,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "places": 2,
+   "year": 2022,
+   "made_at_home": 0.872,
+   "dependency_ratio": 0.128,
+   "internal_renewable_km3": 44.8,
+   "external_renewable_km3": 6.55,
+   "total_renewable_km3": 51.35,
+   "freshwater_withdrawal_km3": 20.103,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.391,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "ARG": {
+   "name": "Argentina",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.333,
+   "dependency_ratio": 0.667,
+   "internal_renewable_km3": 292.0,
+   "external_renewable_km3": 584.24,
+   "total_renewable_km3": 876.24,
+   "freshwater_withdrawal_km3": 37.69,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.043,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 1.0,
+   "dependency_ratio": 0.0,
+   "internal_renewable_km3": 78.0,
+   "external_renewable_km3": 0.0,
+   "total_renewable_km3": 78.0,
+   "freshwater_withdrawal_km3": 0.3379,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.004,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "CHN": {
+   "name": "China",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.99,
+   "dependency_ratio": 0.01,
+   "internal_renewable_km3": 2812.9,
+   "external_renewable_km3": 27.32,
+   "total_renewable_km3": 2840.22,
+   "freshwater_withdrawal_km3": 582.24,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.205,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "E"
+   }
+  },
+  "FIN": {
+   "name": "Finland",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.973,
+   "dependency_ratio": 0.027,
+   "internal_renewable_km3": 107.0,
+   "external_renewable_km3": 3.0,
+   "total_renewable_km3": 110.0,
+   "freshwater_withdrawal_km3": 3.0,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.027,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "GEO": {
+   "name": "Georgia",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.918,
+   "dependency_ratio": 0.082,
+   "internal_renewable_km3": 58.13,
+   "external_renewable_km3": 5.2,
+   "total_renewable_km3": 63.33,
+   "freshwater_withdrawal_km3": 1.29338,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.02,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "JPN": {
+   "name": "Japan",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 1.0,
+   "dependency_ratio": 0.0,
+   "internal_renewable_km3": 430.0,
+   "external_renewable_km3": 0.0,
+   "total_renewable_km3": 430.0,
+   "freshwater_withdrawal_km3": 77.0,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.179,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "KOR": {
+   "name": "Korea, South",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.93,
+   "dependency_ratio": 0.07,
+   "internal_renewable_km3": 64.85,
+   "external_renewable_km3": 4.85,
+   "total_renewable_km3": 69.7,
+   "freshwater_withdrawal_km3": 29.197,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.419,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.586,
+   "dependency_ratio": 0.414,
+   "internal_renewable_km3": 18.67,
+   "external_renewable_km3": 13.2,
+   "total_renewable_km3": 31.87,
+   "freshwater_withdrawal_km3": 0.827,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.026,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "A"
+   }
+  },
+  "ESP": {
+   "name": "Spain",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.997,
+   "dependency_ratio": 0.003,
+   "internal_renewable_km3": 111.2,
+   "external_renewable_km3": 0.3,
+   "total_renewable_km3": 111.5,
+   "freshwater_withdrawal_km3": 29.02,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.26,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "SWE": {
+   "name": "Sweden",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.983,
+   "dependency_ratio": 0.017,
+   "internal_renewable_km3": 171.0,
+   "external_renewable_km3": 3.0,
+   "total_renewable_km3": 174.0,
+   "freshwater_withdrawal_km3": 2.483,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.014,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "TZA": {
+   "name": "Tanzania",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.873,
+   "dependency_ratio": 0.127,
+   "internal_renewable_km3": 84.0,
+   "external_renewable_km3": 12.27,
+   "total_renewable_km3": 96.27,
+   "freshwater_withdrawal_km3": 5.184,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.054,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "places": 1,
+   "year": 2022,
+   "made_at_home": 0.986,
+   "dependency_ratio": 0.014,
+   "internal_renewable_km3": 145.0,
+   "external_renewable_km3": 2.0,
+   "total_renewable_km3": 147.0,
+   "freshwater_withdrawal_km3": 8.419,
+   "withdrawal_year": 2022,
+   "withdrawal_share_of_renewable": 0.057,
+   "symbols": {
+    "dependency_ratio": "I",
+    "internal_renewable_km3": "I",
+    "external_renewable_km3": "I",
+    "total_renewable_km3": "I",
+    "freshwater_withdrawal_km3": "I"
+   }
+  }
+ },
+ "not_in_aquastat": [],
+ "source": "FAO AQUASTAT dissemination system, BigQuery endpoint with the published query (variables 4192, 4157, 4182, 4188, 4263, years 2018-2022): https://api.data.apps.fao.org/api/v2/bigquery"
+}
