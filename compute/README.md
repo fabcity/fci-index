@@ -435,10 +435,54 @@ consume, which is the same reason Boeing left trade out of Hamburg's 37.
 
 **What follows for the 58 places without customs data.** A downscaled figure is usable as a bracket for a place that
 makes things, labelled modelled with this table as its error bar, and not usable for a port city or a capital. The
-tracker does not yet say which kind of place each one is, and a NUTS code is needed for the key; both are the next
-step, not this one. Province of Barcelona and Paris as a département are skipped because the employment table stops
-at NUTS2; Boston because its measured exports are in dollars and its key would need a US table; Santiago has no
-measured trade. The Atlas is goods only.
+registry's `places.yaml` now says which kind each place is and which NUTS region a key reads; the next section applies
+the rule. Province of Barcelona and Paris as a département are skipped because the employment table stops at NUTS2;
+Boston because its measured exports are in dollars and its key would need a US table; Santiago has no measured trade.
+The Atlas is goods only.
+
+### Where a key may be applied: the registry's `places.yaml`
+
+The same script reads `places.yaml` from the registry at main's commit (e4684fb at this run), the way
+`api.mjs` reads `index.json`. Each place carries `nuts2` (NUTS 2024, `+` joining the units a place spans: a French
+région is two NUTS2) and `kind`, a list of traits with a `kind_note` saying what was read. The rule, from the check:
+a place with `seaport` or `national-capital` is **refused** (20: accra, amsterdam, barcelona, bhutan, boston, cape-town, georgia, goa, hamburg, kerala, ljubljana, mexico-city, montreal, oakland, paris, santiago-de-chile, seoul, shenzhen, velsen, zagreb); a `country` row carries the
+Atlas bracket itself; a place without a NUTS2 code has **no key** (27, everything outside the EU); the rest are
+**allowed** (14). The territory's traits are kept apart from the place's: Barcelona is a seaport city, but
+Catalonia is a region of eight million with a port in it, and the check found its customs trade follows its factories.
+That is why Catalonia, and only Catalonia, sets the error bar:
+
+| Key | Imports, modelled ÷ measured | Exports, modelled ÷ measured |
+| --- | --- | --- |
+| Employment | 0.76–0.79 | 0.81–0.86 |
+| Population | 0.51–0.54 | 0.56–0.58 |
+
+The 14 allowed places, modelled for 2024 from the Atlas's national figures and Eurostat's employment and population.
+**Each row is the NUTS2 region that holds the place, not the place**: Schwaben for Augsburg, Bretagne for both Brest and
+Rennes (which is why those two read the same), Skåne for Veberöd. Every row is `state: modelled` and carries the error
+bar above; none of them is measured, and none reaches a page unless a maintainer maps it in `api.mjs`.
+
+| Place | NUTS2 region modelled | Employment year | Population key, imports · exports | Employment key, imports · exports |
+| --- | --- | --- | --- | --- |
+| Augsburg | DE27 | 2024 | 26.4 · 31.9 bn EUR | 40.3 · 51.1 bn EUR |
+| Auvergne-Rhône-Alpes | FRK1+FRK2 | 2024 | 76.4 · 65.9 bn EUR | 110.8 · 93.9 bn EUR |
+| Bergisches | DEA1 | 2024 | 72.1 · 87.1 bn EUR | 51.3 · 60.5 bn EUR |
+| Brest | FRH0 | 2024 | 32.2 · 27.8 bn EUR | 30.3 · 25.5 bn EUR |
+| Linz | AT31 | 2024 | 29.0 · 29.6 bn EUR | 49.3 · 52.0 bn EUR |
+| Montpellier | FRJ1 | 2024 | 27.6 · 23.8 bn EUR | 12.9 · 10.0 bn EUR |
+| Occitanie | FRJ1+FRJ2 | 2024 | 57.1 · 49.3 bn EUR | 46.9 · 41.0 bn EUR |
+| Oulu | FI1D | 2024 | 14.9 · 14.8 bn EUR | 14.2 · 14.4 bn EUR |
+| Rennes | FRH0 | 2024 | 32.2 · 27.8 bn EUR | 30.3 · 25.5 bn EUR |
+| Sudburgenland | AT11 | 2024 | 5.7 · 5.8 bn EUR | 3.9 · 3.6 bn EUR |
+| Toulouse | FRJ2 | 2024 | 29.6 · 25.5 bn EUR | 34.0 · 31.0 bn EUR |
+| Valence Romans Agglo | FRK2 | 2024 | 63.7 · 55.0 bn EUR | 94.7 · 79.0 bn EUR |
+| Veberod | SE22 | 2024 | 24.6 · 24.8 bn EUR | 22.9 · 23.2 bn EUR |
+| Zadar | HR03 | 2024 | 13.7 · 7.2 bn EUR | 8.5 · 4.4 bn EUR |
+
+Read with the error bar: Augsburg's region imports about 40 bn EUR by the employment key, and the one region where
+that key was checked came out at 0.76–0.79 of the customs figure, so the customs figure would likely be higher. A
+region that is itself a port or a capital would be wrong in the other direction, which is why those places are refused
+rather than modelled. The employment year is the latest with a row for the region (2024 for all 14 here); a region
+with nothing in that year or the one before is listed in `not_modelled`.
 
 ## The country bracket: what the whole country buys and sells abroad
 
