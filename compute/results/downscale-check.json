@@ -6,6 +6,10 @@
    "territory": "Catalonia",
    "nuts2": "ES51",
    "year": 2019,
+   "kind": [],
+   "place_kind": [
+    "seaport"
+   ],
    "measured": {
     "imports_eur": 92643116500,
     "exports_eur": 73937955200,
@@ -19,6 +23,7 @@
    "keys": {
     "population_share": 0.1625,
     "employment_table": "sbs_r_nuts06_r2 V16110",
+    "employment_year": 2019,
     "employment_by_sector": {
      "Textiles, garments, footwear and furniture": {
       "share": 0.2111,
@@ -144,6 +149,10 @@
    "territory": "Catalonia",
    "nuts2": "ES51",
    "year": 2024,
+   "kind": [],
+   "place_kind": [
+    "seaport"
+   ],
    "measured": {
     "imports_eur": 111365224500,
     "exports_eur": 100268510000,
@@ -157,6 +166,7 @@
    "keys": {
     "population_share": 0.1648,
     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+    "employment_year": 2024,
     "employment_by_sector": {
      "Textiles, garments, footwear and furniture": {
       "share": 0.2024,
@@ -282,6 +292,12 @@
    "territory": "Land Hamburg",
    "nuts2": "DE60",
    "year": 2019,
+   "kind": [
+    "seaport"
+   ],
+   "place_kind": [
+    "seaport"
+   ],
    "measured": {
     "imports_eur": 67498534701,
     "exports_eur": 53375694422,
@@ -295,6 +311,7 @@
    "keys": {
     "population_share": 0.0222,
     "employment_table": "sbs_r_nuts06_r2 V16110",
+    "employment_year": 2019,
     "employment_by_sector": {
      "Textiles, garments, footwear and furniture": {
       "share": 0.0139,
@@ -421,6 +438,12 @@
    "territory": "Land Hamburg",
    "nuts2": "DE60",
    "year": 2024,
+   "kind": [
+    "seaport"
+   ],
+   "place_kind": [
+    "seaport"
+   ],
    "measured": {
     "imports_eur": 73868308854,
     "exports_eur": 56087385962,
@@ -434,6 +457,7 @@
    "keys": {
     "population_share": 0.0222,
     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+    "employment_year": 2024,
     "employment_by_sector": {
      "Textiles, garments, footwear and furniture": {
       "share": 0.0151,
@@ -555,6 +579,12 @@
    "territory": "Île-de-France",
    "nuts2": "FR10",
    "year": 2024,
+   "kind": [
+    "national-capital"
+   ],
+   "place_kind": [
+    "national-capital"
+   ],
    "measured": {
     "imports_eur": 192368678040,
     "exports_eur": 141824872548,
@@ -568,6 +598,7 @@
    "keys": {
     "population_share": 0.1821,
     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+    "employment_year": 2024,
     "employment_by_sector": {
      "Textiles, garments, footwear and furniture": {
       "share": 0.1475,
@@ -732,5 +763,2782 @@
    "why": "No open regional trade source: the Banco Central's terms are revocable (awesome-fabcity-data#50)."
   }
  ],
- "source": "Atlas of Economic Complexity hs92 country_year and country_product_year_1 (CC0); Eurostat demo_r_d2jan, sbs_r_nuts06_r2, sbs_r_nuts2021, ert_bil_eur_a (reuse with acknowledgement, 2011/833/EU); measured rows from compute/trade.py regional_trade, each with its own licence"
+ "error_bar_modelled_over_measured": {
+  "from": [
+   "Catalonia 2019",
+   "Catalonia 2024"
+  ],
+  "population_key": {
+   "imports_eur": [
+    0.51,
+    0.54
+   ],
+   "exports_eur": [
+    0.56,
+    0.58
+   ]
+  },
+  "employment_key": {
+   "imports_eur": [
+    0.76,
+    0.79
+   ],
+   "exports_eur": [
+    0.81,
+    0.86
+   ]
+  }
+ },
+ "places": {
+  "reads_as": "For every tracker place: whether a national figure may be split down to it, and why. Refused for a seaport or a national capital (the check says how wrong that would be), not possible without a NUTS2 code, allowed otherwise. The modelled rows are the NUTS2 region that holds the place, not the place: Schwaben for Augsburg, Bretagne for Brest. They are modelled, never measured, and carry the error bar the check measured for a region that makes things.",
+  "registry_commit": "e4684fb34ec5a07ff1020b00604a620c07ed4f9b",
+  "year": 2024,
+  "counts": {
+   "places": 61,
+   "allowed": 14,
+   "modelled": 14
+  },
+  "eligibility": [
+   {
+    "slug": "accra",
+    "name": "Accra",
+    "country": "Ghana",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "amsterdam",
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "kind": [
+     "national-capital",
+     "seaport"
+    ],
+    "nuts2": "NL32",
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under); a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "augsburg",
+    "name": "Augsburg",
+    "country": "Germany",
+    "kind": [],
+    "nuts2": "DE27",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "auvergne-rhone-alpes",
+    "name": "Auvergne-Rhône-Alpes",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRK1+FRK2",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "bali",
+    "name": "Bali",
+    "country": "Indonesia",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "barcelona",
+    "name": "Barcelona",
+    "country": "Spain",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": "ES51",
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "bas-saint-laurent",
+    "name": "Bas-Saint-Laurent",
+    "country": "Canada",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "belo-horizonte",
+    "name": "Belo Horizonte",
+    "country": "Brazil",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "bergisches",
+    "name": "Bergisches",
+    "country": "Germany",
+    "kind": [],
+    "nuts2": "DEA1",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "bhutan",
+    "name": "Bhutan",
+    "country": "Bhutan",
+    "kind": [
+     "country"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a country row carries the Atlas bracket itself"
+   },
+   {
+    "slug": "boston",
+    "name": "Boston",
+    "country": "United States of America",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "brest",
+    "name": "Brest",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRH0",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: the port is small against the 10 Mt mark"
+   },
+   {
+    "slug": "cambridge",
+    "name": "Cambridge",
+    "country": "United States of America",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "cape-town",
+    "name": "Cape Town",
+    "country": "South Africa",
+    "kind": [
+     "national-capital",
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under); a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "charlotte",
+    "name": "Charlotte",
+    "country": "United States of America",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "cordoba",
+    "name": "Cordoba",
+    "country": "Argentina",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "curitiba",
+    "name": "Curitiba",
+    "country": "Brazil",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "detroit",
+    "name": "Detroit",
+    "country": "United States of America",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "ekurhuleni",
+    "name": "Ekurhuleni",
+    "country": "South Africa",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "georgia",
+    "name": "Georgia",
+    "country": "Georgia",
+    "kind": [
+     "country"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a country row carries the Atlas bracket itself"
+   },
+   {
+    "slug": "goa",
+    "name": "Goa",
+    "country": "India",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "guanajuato",
+    "name": "Guanajuato",
+    "country": "Mexico",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "hamburg",
+    "name": "Hamburg",
+    "country": "Germany",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": "DE60",
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "kamakura",
+    "name": "Kamakura",
+    "country": "Japan",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "kerala",
+    "name": "Kerala",
+    "country": "India",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "kumasi",
+    "name": "Kumasi",
+    "country": "Ghana",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "linz",
+    "name": "Linz",
+    "country": "Austria",
+    "kind": [],
+    "nuts2": "AT31",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: a Danube river port, small against the 10 Mt mark"
+   },
+   {
+    "slug": "ljubljana",
+    "name": "Ljubljana",
+    "country": "Slovenia",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": "SI04",
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "mexico-city",
+    "name": "Mexico City",
+    "country": "Mexico",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "monterrey",
+    "name": "Monterrey",
+    "country": "Mexico",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "montpellier",
+    "name": "Montpellier",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRJ1",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: Sète is outside the territory"
+   },
+   {
+    "slug": "montreal",
+    "name": "Montreal",
+    "country": "Canada",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "oakland",
+    "name": "Oakland",
+    "country": "United States of America",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "occitanie",
+    "name": "Occitanie",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRJ1+FRJ2",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: Sète and Port-La Nouvelle are small against the 10 Mt mark"
+   },
+   {
+    "slug": "oulu",
+    "name": "Oulu",
+    "country": "Finland",
+    "kind": [],
+    "nuts2": "FI1D",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: the port is small against the 10 Mt mark"
+   },
+   {
+    "slug": "papua",
+    "name": "Papua",
+    "country": "Indonesia",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "parepare",
+    "name": "Parepare",
+    "country": "Indonesia",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "paris",
+    "name": "Paris",
+    "country": "France",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": "FR10",
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "pemkab-bangka-tengah",
+    "name": "Pemkab Bangka Tengah",
+    "country": "Indonesia",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "plymouth",
+    "name": "Plymouth",
+    "country": "United Kingdom",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table (the UK left NUTS; ITL 2021 code TLK41 (Plymouth), inside TLK4 (Devon); Eurostat's regional tables carry no UK rows after 2020)"
+   },
+   {
+    "slug": "puebla",
+    "name": "Puebla",
+    "country": "Mexico",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "recife",
+    "name": "Recife",
+    "country": "Brazil",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "renca",
+    "name": "Renca",
+    "country": "Chile",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "rennes",
+    "name": "Rennes",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRH0",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "sacramento",
+    "name": "Sacramento",
+    "country": "United States of America",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "santiago-de-chile",
+    "name": "Santiago de Chile",
+    "country": "Chile",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "sao-paulo",
+    "name": "Sao Paulo",
+    "country": "Brazil",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "seoul",
+    "name": "Seoul",
+    "country": "Korea, South",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   },
+   {
+    "slug": "shenzhen",
+    "name": "Shenzhen",
+    "country": "China",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": null,
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "somerville",
+    "name": "Somerville",
+    "country": "United States of America",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "sorocaba",
+    "name": "Sorocaba",
+    "country": "Brazil",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "sudburgenland",
+    "name": "Sudburgenland",
+    "country": "Austria",
+    "kind": [],
+    "nuts2": "AT11",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "sumedang",
+    "name": "Sumedang",
+    "country": "Indonesia",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "tanga",
+    "name": "Tanga",
+    "country": "Tanzania",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "toulouse",
+    "name": "Toulouse",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRJ2",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "valence-romans-agglo",
+    "name": "Valence Romans Agglo",
+    "country": "France",
+    "kind": [],
+    "nuts2": "FRK2",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "veberod",
+    "name": "Veberod",
+    "country": "Sweden",
+    "kind": [],
+    "nuts2": "SE22",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
+   },
+   {
+    "slug": "velsen",
+    "name": "Velsen",
+    "country": "Netherlands",
+    "kind": [
+     "seaport"
+    ],
+    "nuts2": "NL32",
+    "downscale": false,
+    "why": "refused: a port's customs trade lands for the whole country (the check: Hamburg 3-5x under)"
+   },
+   {
+    "slug": "yucatan",
+    "name": "Yucatan",
+    "country": "Mexico",
+    "kind": [],
+    "nuts2": null,
+    "downscale": false,
+    "why": "no NUTS2 code, and the employment key is a Eurostat regional table"
+   },
+   {
+    "slug": "zadar",
+    "name": "Zadar",
+    "country": "Croatia",
+    "kind": [],
+    "nuts2": "HR03",
+    "downscale": true,
+    "why": "a NUTS2 key and no refusing trait; kind_note: Gaženica port is small against the 10 Mt mark"
+   },
+   {
+    "slug": "zagreb",
+    "name": "Zagreb",
+    "country": "Croatia",
+    "kind": [
+     "national-capital"
+    ],
+    "nuts2": "HR05",
+    "downscale": false,
+    "why": "refused: customs attribute trade to head offices (the check: Île-de-France 2x under)"
+   }
+  ],
+  "modelled": [
+   {
+    "slug": "augsburg",
+    "name": "Augsburg",
+    "country": "Germany",
+    "nuts2": "DE27",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region DE27 that holds Augsburg, not Augsburg itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 26441488706,
+      "exports_eur": 31941098910
+     },
+     "employment_key": {
+      "imports_eur": 40260006997,
+      "exports_eur": 51123116536
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.023,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0308,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0425,
+       "key": "sector divisions",
+       "nace_used": [
+        "C10",
+        "C11",
+        "C12",
+        "C16",
+        "C17"
+       ],
+       "nace_missing": []
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0304,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0339,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B06",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0315,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0339,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C21"
+       ]
+      },
+      "Transport vehicles": {
+       "share": 0.0366,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.05,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0255,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0169,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 1149016394204,
+     "exports_eur": 1388002268145,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "auvergne-rhone-alpes",
+    "name": "Auvergne-Rhône-Alpes",
+    "country": "France",
+    "nuts2": "FRK1+FRK2",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRK1+FRK2 that holds Auvergne-Rhône-Alpes, not Auvergne-Rhône-Alpes itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 76356650647,
+      "exports_eur": 65919290398
+     },
+     "employment_key": {
+      "imports_eur": 110791570621,
+      "exports_eur": 93940926732
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.12,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.1589,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C14"
+       ]
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.1589,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.1332,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.1589,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.2052,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.2087,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0796,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.2236,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.188,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.2091,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "bergisches",
+    "name": "Bergisches",
+    "country": "Germany",
+    "nuts2": "DEA1",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region DEA1 that holds Bergisches, not Bergisches itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 72128895261,
+      "exports_eur": 87131106855
+     },
+     "employment_key": {
+      "imports_eur": 51251022955,
+      "exports_eur": 60453230695
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0628,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0444,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0462,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0401,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0462,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0822,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0606,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0181,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0438,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0324,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0375,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 1149016394204,
+     "exports_eur": 1388002268145,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "brest",
+    "name": "Brest",
+    "country": "France",
+    "nuts2": "FRH0",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRH0 that holds Brest, not Brest itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 32158865920,
+      "exports_eur": 27762999078
+     },
+     "employment_key": {
+      "imports_eur": 30286226451,
+      "exports_eur": 25484967761
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0505,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.041,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C11",
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0387,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C24"
+       ]
+      },
+      "Chemicals and plastics": {
+       "share": 0.0405,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0368,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0456,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0469,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0515,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "linz",
+    "name": "Linz",
+    "country": "Austria",
+    "nuts2": "AT31",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region AT31 that holds Linz, not Linz itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 29003030062,
+      "exports_eur": 29567058830
+     },
+     "employment_key": {
+      "imports_eur": 49306207390,
+      "exports_eur": 51951123083
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.1671,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.2676,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.2787,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.2115,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.2787,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.2839,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.2787,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C21"
+       ]
+      },
+      "Transport vehicles": {
+       "share": 0.3383,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.3632,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.2425,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.1983,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 173575767086,
+     "exports_eur": 176951335977,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "montpellier",
+    "name": "Montpellier",
+    "country": "France",
+    "nuts2": "FRJ1",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRJ1 that holds Montpellier, not Montpellier itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 27586977245,
+      "exports_eur": 23816052024
+     },
+     "employment_key": {
+      "imports_eur": 12926626442,
+      "exports_eur": 9992864428
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0433,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0255,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.023,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0374,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.023,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0152,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0187,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0055,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0177,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0156,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0372,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "occitanie",
+    "name": "Occitanie",
+    "country": "France",
+    "nuts2": "FRJ1+FRJ2",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRJ1+FRJ2 that holds Occitanie, not Occitanie itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 57148089410,
+      "exports_eur": 49336390080
+     },
+     "employment_key": {
+      "imports_eur": 46884273795,
+      "exports_eur": 41032428433
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0898,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0598,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0753,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.09,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0753,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0641,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0526,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.1451,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0404,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0623,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0754,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "oulu",
+    "name": "Oulu",
+    "country": "Finland",
+    "nuts2": "FI1D",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FI1D that holds Oulu, not Oulu itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 14946021167,
+      "exports_eur": 14804866032
+     },
+     "employment_key": {
+      "imports_eur": 14152740169,
+      "exports_eur": 14380122302
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.2271,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C13",
+        "C14",
+        "C15"
+       ]
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.2116,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.313,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C21"
+       ]
+      },
+      "Transport vehicles": {
+       "share": 0.1495,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C28"
+       ]
+      },
+      "Electronics": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C27"
+       ]
+      },
+      "Other": {
+       "share": 0.2101,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C32"
+       ]
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 65810160970,
+     "exports_eur": 65188628186,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "rennes",
+    "name": "Rennes",
+    "country": "France",
+    "nuts2": "FRH0",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRH0 that holds Rennes, not Rennes itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 32158865920,
+      "exports_eur": 27762999078
+     },
+     "employment_key": {
+      "imports_eur": 30286226451,
+      "exports_eur": 25484967761
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0505,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.041,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C11",
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0387,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0586,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C24"
+       ]
+      },
+      "Chemicals and plastics": {
+       "share": 0.0405,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0368,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0456,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0469,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0515,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "sudburgenland",
+    "name": "Sudburgenland",
+    "country": "Austria",
+    "nuts2": "AT11",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region AT11 that holds Sudburgenland, not Sudburgenland itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 5722546903,
+      "exports_eur": 5833834623
+     },
+     "employment_key": {
+      "imports_eur": 3859938212,
+      "exports_eur": 3623001687
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.033,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0402,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0231,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0351,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0231,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B08"
+       ]
+      },
+      "Metals": {
+       "share": 0.0196,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0293,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0143,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0047,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0222,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0298,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 173575767086,
+     "exports_eur": 176951335977,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "toulouse",
+    "name": "Toulouse",
+    "country": "France",
+    "nuts2": "FRJ2",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRJ2 that holds Toulouse, not Toulouse itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 29561112165,
+      "exports_eur": 25520338055
+     },
+     "employment_key": {
+      "imports_eur": 33957647353,
+      "exports_eur": 31039564005
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.0464,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0343,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.0523,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.0526,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.0523,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.0489,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.0339,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.1397,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.0227,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.0467,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.0382,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "valence-romans-agglo",
+    "name": "Valence Romans Agglo",
+    "country": "France",
+    "nuts2": "FRK2",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region FRK2 that holds Valence Romans Agglo, not Valence Romans Agglo itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 63664287111,
+      "exports_eur": 54961874238
+     },
+     "employment_key": {
+      "imports_eur": 94685779466,
+      "exports_eur": 79038409082
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.1,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.1326,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C14"
+       ]
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.1326,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "C12"
+       ]
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.1117,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.1326,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06",
+        "C19"
+       ]
+      },
+      "Metals": {
+       "share": 0.1708,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.1525,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0701,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.2126,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.1733,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.1868,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 636458456632,
+     "exports_eur": 549459535922,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "veberod",
+    "name": "Veberod",
+    "country": "Sweden",
+    "nuts2": "SE22",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region SE22 that holds Veberod, not Veberod itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 24562619665,
+      "exports_eur": 24819348178
+     },
+     "employment_key": {
+      "imports_eur": 22884866968,
+      "exports_eur": 23201407515
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.1497,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.0996,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.1641,
+       "key": "sector divisions",
+       "nace_used": [
+        "C10",
+        "C11",
+        "C12",
+        "C16",
+        "C17"
+       ],
+       "nace_missing": []
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.2154,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.1316,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B06"
+       ]
+      },
+      "Metals": {
+       "share": 0.0918,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.2014,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.0761,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.1571,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.1183,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.1644,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 164061977914,
+     "exports_eur": 165776753791,
+     "usd_per_eur": 1.0824
+    }
+   },
+   {
+    "slug": "zadar",
+    "name": "Zadar",
+    "country": "Croatia",
+    "nuts2": "HR03",
+    "year": 2024,
+    "state": "modelled",
+    "reads_as": "the NUTS2 region HR03 that holds Zadar, not Zadar itself; a national figure split by a key, never measured",
+    "modelled": {
+     "population_key": {
+      "imports_eur": 13691698902,
+      "exports_eur": 7213361935
+     },
+     "employment_key": {
+      "imports_eur": 8507844647,
+      "exports_eur": 4356134626
+     }
+    },
+    "error_bar_modelled_over_measured": {
+     "from": [
+      "Catalonia 2019",
+      "Catalonia 2024"
+     ],
+     "population_key": {
+      "imports_eur": [
+       0.51,
+       0.54
+      ],
+      "exports_eur": [
+       0.56,
+       0.58
+      ]
+     },
+     "employment_key": {
+      "imports_eur": [
+       0.76,
+       0.79
+      ],
+      "exports_eur": [
+       0.81,
+       0.86
+      ]
+     }
+    },
+    "keys": {
+     "population_share": 0.3393,
+     "employment_table": "sbs_r_nuts2021 EMP_LOC_NR",
+     "employment_year": 2024,
+     "employment_by_sector": {
+      "Textiles, garments, footwear and furniture": {
+       "share": 0.1227,
+       "key": "sector divisions",
+       "nace_used": [
+        "C13",
+        "C14",
+        "C15",
+        "C31"
+       ],
+       "nace_missing": []
+      },
+      "Vegetables, animals, wood and paper": {
+       "share": 0.2219,
+       "key": "sector divisions",
+       "nace_used": [
+        "C10",
+        "C11",
+        "C12",
+        "C16",
+        "C17"
+       ],
+       "nace_missing": []
+      },
+      "Stone, glass and ceramics": {
+       "share": 0.3686,
+       "key": "sector divisions",
+       "nace_used": [
+        "C23"
+       ],
+       "nace_missing": []
+      },
+      "Minerals, fuels, ores and salts": {
+       "share": 0.2176,
+       "key": "section C fallback",
+       "nace_used": [
+        "C"
+       ],
+       "nace_missing": [
+        "B05",
+        "B07"
+       ]
+      },
+      "Metals": {
+       "share": 0.1984,
+       "key": "sector divisions",
+       "nace_used": [
+        "C24",
+        "C25"
+       ],
+       "nace_missing": []
+      },
+      "Chemicals and plastics": {
+       "share": 0.169,
+       "key": "sector divisions",
+       "nace_used": [
+        "C20",
+        "C21",
+        "C22"
+       ],
+       "nace_missing": []
+      },
+      "Transport vehicles": {
+       "share": 0.4142,
+       "key": "sector divisions",
+       "nace_used": [
+        "C29",
+        "C30"
+       ],
+       "nace_missing": []
+      },
+      "Machinery and instruments": {
+       "share": 0.1381,
+       "key": "sector divisions",
+       "nace_used": [
+        "C28"
+       ],
+       "nace_missing": []
+      },
+      "Electronics": {
+       "share": 0.1336,
+       "key": "sector divisions",
+       "nace_used": [
+        "C26",
+        "C27"
+       ],
+       "nace_missing": []
+      },
+      "Other": {
+       "share": 0.2936,
+       "key": "sector divisions",
+       "nace_used": [
+        "C32"
+       ],
+       "nace_missing": []
+      }
+     }
+    },
+    "national_atlas": {
+     "imports_eur": 40354395732,
+     "exports_eur": 21260390266,
+     "usd_per_eur": 1.0824
+    }
+   }
+  ],
+  "not_modelled": []
+ },
+ "source": "Atlas of Economic Complexity hs92 country_year and country_product_year_1 (CC0); Eurostat demo_r_d2jan, sbs_r_nuts06_r2, sbs_r_nuts2021, ert_bil_eur_a (reuse with acknowledgement, 2011/833/EU); measured rows from compute/trade.py regional_trade, each with its own licence; places.yaml at awesome-fabcity-data e4684fb"
 }
