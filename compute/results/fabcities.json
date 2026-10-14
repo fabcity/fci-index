@@ -1,0 +1,592 @@
+{
+ "reads_as": "The Fab City members as the Fab Lab network data archive keeps them: the member's official name, the year it pledged, the kind it pledged as and its continent, matched to the Index tracker's places. Where the two disagree, both are kept.",
+ "licence": "Fab City membership facts (names, pledge years, kinds) from the Fab Lab network data archive, maintained by the WG Fablabs & SDGs on gitlab.fabcloud.org; the repository states no licence. Shown as the network's own record of its members.",
+ "source": "gitlab.fabcloud.org/fl-management/fablab-network-data, public/fabnetdata.xlsx, sheet fabcities, commit 3a9d7df0 (2026-10-01, \"monthly update fabnetdata\")",
+ "rows": 61,
+ "members": {
+  "accra": {
+   "member": "Fab City Accra",
+   "pledge": 2026,
+   "kind": "City",
+   "continent": "Africa",
+   "city": "Accra",
+   "country": "Ghana",
+   "sheet_slug": "fc-accra"
+  },
+  "amsterdam": {
+   "member": "Fab City Amsterdam",
+   "pledge": 2016,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Amsterdam",
+   "country": "Netherlands",
+   "sheet_slug": "fc-amsterdam"
+  },
+  "augsburg": {
+   "member": "Fab City Augsburg",
+   "pledge": 2023,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Augsburg",
+   "country": "Germany",
+   "sheet_slug": "fc-augsburg"
+  },
+  "auvergne-rhone-alpes": {
+   "member": "Fab Region Auvergne-Rhône-Alpes",
+   "pledge": 2018,
+   "kind": "Region",
+   "continent": "Europe",
+   "city": "Lyon",
+   "country": "France",
+   "sheet_slug": "fc-auvergne-rhône-alpes"
+  },
+  "bali": {
+   "member": "Fab Region Bali",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "Asia",
+   "city": "Denpasar",
+   "country": "Indonesia",
+   "sheet_slug": "fc-bali",
+   "differs_from_tracker": [
+    "kind: the sheet says Region, the tracker Island"
+   ]
+  },
+  "barcelona": {
+   "member": "Fab City Barcelona",
+   "pledge": 2014,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Barcelona",
+   "country": "Spain",
+   "sheet_slug": "fc-barcelona"
+  },
+  "bas-saint-laurent": {
+   "member": "Fab City Bas-Saint-Laurent",
+   "pledge": 2020,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Bas-Saint-Laurent",
+   "country": "Canada",
+   "sheet_slug": "fc-bas-saint-laurent",
+   "differs_from_tracker": [
+    "kind: the sheet says City, the tracker Region"
+   ]
+  },
+  "belo-horizonte": {
+   "member": "Fab City Belo Horizonte",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Belo Horizonte",
+   "country": "Brazil",
+   "sheet_slug": "fc-belo-horizonte"
+  },
+  "bergisches": {
+   "member": "Fab Region Bergische Städtedreiëck",
+   "pledge": 2025,
+   "kind": "Region",
+   "continent": "Europe",
+   "city": "Solingen, Remscheid, Wuppertal",
+   "country": "Germany",
+   "sheet_slug": "fc-bsd"
+  },
+  "bhutan": {
+   "member": "Fab Country Bhutan",
+   "pledge": 2023,
+   "kind": "Country",
+   "continent": "Asia",
+   "city": "Thimphu",
+   "country": "Bhutan",
+   "sheet_slug": "fc-bhutan"
+  },
+  "boston": {
+   "member": "Fab City Boston",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Boston",
+   "country": "United States of America",
+   "sheet_slug": "fc-boston"
+  },
+  "brest": {
+   "member": "Fab City Brest",
+   "pledge": 2017,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Brest",
+   "country": "France",
+   "sheet_slug": "fc-brest"
+  },
+  "cambridge": {
+   "member": "Fab City Cambridge",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Cambridge",
+   "country": "United States of America",
+   "sheet_slug": "fc-cambridge"
+  },
+  "cape-town": {
+   "member": "Fab City Cape Town",
+   "pledge": 2026,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Cape Town",
+   "country": "Saudi Arabia",
+   "sheet_slug": "fc-cptwn",
+   "differs_from_tracker": [
+    "country: the sheet says Saudi Arabia, the tracker South Africa"
+   ]
+  },
+  "charlotte": {
+   "member": "Fab City Charlotte",
+   "pledge": 2025,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Charlotte",
+   "country": "United States of America",
+   "sheet_slug": "fc-charlotte"
+  },
+  "cordoba": {
+   "member": "Fab City Córdoba",
+   "pledge": 2023,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Córdoba",
+   "country": "Argentina",
+   "sheet_slug": "fc-córdoba"
+  },
+  "curitiba": {
+   "member": "Fab City Curitiba",
+   "pledge": 2017,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Curitiba",
+   "country": "Brazil",
+   "sheet_slug": "fc-curitiba"
+  },
+  "detroit": {
+   "member": "Fab City Detroit",
+   "pledge": 2016,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Detroit",
+   "country": "United States of America",
+   "sheet_slug": "fc-detroit"
+  },
+  "ekurhuleni": {
+   "member": "Fab City Ekurhuleni",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "Africa",
+   "city": "Ekurhuleni",
+   "country": "South Africa",
+   "sheet_slug": "fc-ekurhuleni",
+   "differs_from_tracker": [
+    "kind: the sheet says City, the tracker Region"
+   ]
+  },
+  "georgia": {
+   "member": "Fab Country Georgia",
+   "pledge": 2015,
+   "kind": "Country",
+   "continent": "Asia",
+   "city": "Tbilisi",
+   "country": "Georgia",
+   "sheet_slug": "fc-georgia"
+  },
+  "goa": {
+   "member": "Fab City Makers Asylum Goa",
+   "pledge": 2026,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Goa",
+   "country": "India",
+   "sheet_slug": "fc-goa",
+   "differs_from_tracker": [
+    "kind: the sheet says City, the tracker Region"
+   ]
+  },
+  "guanajuato": {
+   "member": "Fab Region Guanajuato",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "North America",
+   "city": "Guanajuato",
+   "country": "Mexico",
+   "sheet_slug": "fc-guanajuato",
+   "differs_from_tracker": [
+    "kind: the sheet says Region, the tracker City"
+   ]
+  },
+  "hamburg": {
+   "member": "Fab City Hamburg",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Hamburg",
+   "country": "Germany",
+   "sheet_slug": "fc-hamburg"
+  },
+  "kamakura": {
+   "member": "Fab City Kamakura",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Kamakura",
+   "country": "Japan",
+   "sheet_slug": "fc-kamakura"
+  },
+  "kerala": {
+   "member": "Fab City Kerala",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Kerala",
+   "country": "India",
+   "sheet_slug": "fc-kerala",
+   "differs_from_tracker": [
+    "kind: the sheet says City, the tracker Region"
+   ]
+  },
+  "kumasi": {
+   "member": "Fab City Kumasi",
+   "pledge": 2026,
+   "kind": "City",
+   "continent": "Africa",
+   "city": "Kumasi",
+   "country": "Ghana",
+   "sheet_slug": "fc-kumasi"
+  },
+  "linz": {
+   "member": "Fab City Linz",
+   "pledge": 2020,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Linz",
+   "country": "Austria",
+   "sheet_slug": "fc-linz"
+  },
+  "ljubljana": {
+   "member": "Fab City Ljubljana",
+   "pledge": 2022,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Slovenia",
+   "country": "Slovenia",
+   "sheet_slug": "fc-ljubljana"
+  },
+  "mexico-city": {
+   "member": "Fab City Mexico City",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Mexico City",
+   "country": "Mexico",
+   "sheet_slug": "fc-mexico-city"
+  },
+  "monterrey": {
+   "member": "Fab City Monterrey",
+   "pledge": 2026,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Monterrey",
+   "country": "Mexico",
+   "sheet_slug": "fc-monterey"
+  },
+  "montpellier": {
+   "member": "Fab City Montpellier",
+   "pledge": 2021,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Montpellier",
+   "country": "France",
+   "sheet_slug": "fc-montpellier"
+  },
+  "montreal": {
+   "member": "Fab City Montréal",
+   "pledge": 2021,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Montréal",
+   "country": "Canada",
+   "sheet_slug": "fc-montréal"
+  },
+  "oakland": {
+   "member": "Fab City Oakland",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Oakland",
+   "country": "United States of America",
+   "sheet_slug": "fc-oakland"
+  },
+  "occitanie": {
+   "member": "Fab Region Occitanie",
+   "pledge": 2017,
+   "kind": "Region",
+   "continent": "Europe",
+   "city": "Toulouse",
+   "country": "France",
+   "sheet_slug": "fc-occitanie"
+  },
+  "oulu": {
+   "member": "Fab City Oulu",
+   "pledge": 2023,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Oulu",
+   "country": "Finland",
+   "sheet_slug": "fc-oulu"
+  },
+  "papua": {
+   "member": "Fab Region Papua",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "Asia",
+   "city": "Jayapura",
+   "country": "Indonesia",
+   "sheet_slug": "fc-papua"
+  },
+  "parepare": {
+   "member": "Fab City Parepare",
+   "pledge": 2022,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Parepare",
+   "country": "Indonesia",
+   "sheet_slug": "fc-parepare"
+  },
+  "paris": {
+   "member": "Fab City Paris",
+   "pledge": 2016,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Paris",
+   "country": "France",
+   "sheet_slug": "fc-paris"
+  },
+  "pemkab-bangka-tengah": {
+   "member": "Fab Region Pemkab Bangka Tengah",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "Asia",
+   "city": "Pangkal Pinang",
+   "country": "Indonesia",
+   "sheet_slug": "fc-pemkab-bangka-tengah"
+  },
+  "plymouth": {
+   "member": "Fab City Plymouth",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Plymouth",
+   "country": "United Kingdom",
+   "sheet_slug": "fc-plymouth"
+  },
+  "puebla": {
+   "member": "Fab City Puebla",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Puebla",
+   "country": "Mexico",
+   "sheet_slug": "fc-puebla"
+  },
+  "recife": {
+   "member": "Fab City Recife",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Recife",
+   "country": "Brazil",
+   "sheet_slug": "fc-recife"
+  },
+  "renca": {
+   "member": "Fab City Renca",
+   "pledge": 2024,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Renca",
+   "country": "Chile",
+   "sheet_slug": "fc-renca"
+  },
+  "rennes": {
+   "member": "Fab City Rennes",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Rennes",
+   "country": "France",
+   "sheet_slug": "fc-rennes"
+  },
+  "sacramento": {
+   "member": "Fab City Sacramento",
+   "pledge": 2016,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Sacramento",
+   "country": "United States of America",
+   "sheet_slug": "fc-sacramento"
+  },
+  "santiago-de-chile": {
+   "member": "Fab City Santiago",
+   "pledge": 2016,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Santiago",
+   "country": "Chile",
+   "sheet_slug": "fc-santiago"
+  },
+  "sao-paulo": {
+   "member": "Fab City São Paulo",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "South America",
+   "city": "São Paulo",
+   "country": "Brazil",
+   "sheet_slug": "fc-são-paulo"
+  },
+  "seoul": {
+   "member": "Fab City Seoul",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Seoul",
+   "country": "Korea",
+   "sheet_slug": "fc-seoul",
+   "differs_from_tracker": [
+    "country: the sheet says Korea, the tracker Korea, South"
+   ]
+  },
+  "shenzhen": {
+   "member": "Fab City Shenzhen",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "Asia",
+   "city": "Shenzhen",
+   "country": "China",
+   "sheet_slug": "fc-shenzhen"
+  },
+  "somerville": {
+   "member": "Fab City Somerville",
+   "pledge": 2015,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Somerville",
+   "country": "United States of America",
+   "sheet_slug": "fc-somerville"
+  },
+  "sorocaba": {
+   "member": "Fab City Sorocaba",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "South America",
+   "city": "Sorocaba",
+   "country": "Brazil",
+   "sheet_slug": "fc-sorocaba"
+  },
+  "sudburgenland": {
+   "member": "Fab Region Südburgenland",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "Europe",
+   "city": "Südburgenland",
+   "country": "Austria",
+   "sheet_slug": "fc-südburgenland"
+  },
+  "sumedang": {
+   "member": "Fab Region Sumedang",
+   "pledge": 2022,
+   "kind": "Region",
+   "continent": "Asia",
+   "city": "Sumedang",
+   "country": "Indonesia",
+   "sheet_slug": "fc-sumedang",
+   "differs_from_tracker": [
+    "kind: the sheet says Region, the tracker City"
+   ]
+  },
+  "tanga": {
+   "member": "Fab Region Tanga",
+   "pledge": 2024,
+   "kind": "Region",
+   "continent": "Africa",
+   "city": "Tanga",
+   "country": "Tanzania",
+   "sheet_slug": "fc-tanga",
+   "differs_from_tracker": [
+    "kind: the sheet says Region, the tracker City"
+   ]
+  },
+  "toulouse": {
+   "member": "Fab City Toulouse",
+   "pledge": 2017,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Toulouse",
+   "country": "France",
+   "sheet_slug": "fc-toulouse"
+  },
+  "valence-romans-agglo": {
+   "member": "Fab Region Valence Romans Agglo",
+   "pledge": 2020,
+   "kind": "Region",
+   "continent": "Europe",
+   "city": "Valence",
+   "country": "France",
+   "sheet_slug": "fc-valence-romans-agglo"
+  },
+  "veberod": {
+   "member": "Fab City Lund",
+   "pledge": 2021,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Lund",
+   "country": "Sweden",
+   "sheet_slug": "fc-lund"
+  },
+  "velsen": {
+   "member": "Fab City Velsen",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Velsen",
+   "country": "Netherlands",
+   "sheet_slug": "fc-velsen"
+  },
+  "yucatan": {
+   "member": "Fab City Yucatán",
+   "pledge": 2019,
+   "kind": "City",
+   "continent": "North America",
+   "city": "Yucatán",
+   "country": "Mexico",
+   "sheet_slug": "fc-yucatán",
+   "differs_from_tracker": [
+    "kind: the sheet says City, the tracker Region"
+   ]
+  },
+  "zadar": {
+   "member": "Fab City Zadar",
+   "pledge": 2020,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Zadar",
+   "country": "Croatia",
+   "sheet_slug": "fc-zadar"
+  },
+  "zagreb": {
+   "member": "Fab City Zagreb",
+   "pledge": 2018,
+   "kind": "City",
+   "continent": "Europe",
+   "city": "Zagreb",
+   "country": "Croatia",
+   "sheet_slug": "fc-zagreb"
+  }
+ },
+ "sheet_rows_unmatched": [],
+ "places_without_a_row": []
+}

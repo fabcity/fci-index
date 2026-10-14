@@ -17,6 +17,8 @@ python3 compute/water.py --selftest           # no network; the AQUASTAT reading
 python3 compute/water.py                      # one FAO query, writes results/water-country.json
 python3 compute/labs.py --selftest            # no network; the lab directory trimmed to facts on fake records
 python3 compute/labs.py                       # one dated archive freeze, writes results/labs.json
+python3 compute/fabcities.py --selftest       # no network; the members sheet matched to the tracker on fake rows
+python3 compute/fabcities.py                  # the archive's fabnetdata.xlsx, writes results/fabcities.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -808,4 +810,16 @@ email, phone, street address, images. The file's own `licence` says so. The 30 S
 and materials series, the water accounts, TiVA's industries) and each place the country holds with its region bracket. The
 site's country page, city panel and report read it. `measured.json`, which every page loads, now names a place's country
 (`iso`, `name`, `href`) instead of carrying the whole bracket, which took it from 2.0 MB to 97 KB.
+
+## The Fab City members, as the network keeps them
+
+`compute/fabcities.py` reads the `fabcities` sheet of `public/fabnetdata.xlsx` in the same archive (pinned to the file's
+latest commit) and writes `results/fabcities.json`, served as `/api/v0/fabcities.json`: for each of the 61 tracker places,
+the member's official name, the year it pledged, the kind it pledged as and its continent. The sheet has no coordinates,
+so it places nothing the map could not already place. Rows match by slug without the `fc-` prefix and accents, then by
+five aliases checked row by row (`bsd` Bergisches, `cptwn` Cape Town, `lund` Veberöd, `monterey` Monterrey, `santiago`
+Santiago de Chile); all 61 match. Where the sheet and the tracker disagree, both are kept and the difference named: nine
+places pledged as a different kind than the tracker files them (Bali, Bas-Saint-Laurent, Ekurhuleni, Goa, Guanajuato,
+Kerala, Sumedang, Tanga, Yucatán), and the sheet files Cape Town under Saudi Arabia. Neither is corrected here. The map
+shows the pledge in each place's popup and can colour the places by year of pledge.
 
