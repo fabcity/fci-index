@@ -749,8 +749,8 @@ what they keep, with a small surplus exported.
 ### Water: of the renewable water the country has, the share that rises inside it
 
 `compute/water.py` reads FAO AQUASTAT through the dissemination system's query endpoint (registry
-`environmental/bioregion/fao-aquastat`, a **candidate with a licence conflict**: FAO's database terms list AQUASTAT under
-CC BY 4.0, FAO's catalogue labels the dissemination dataset CC BY-NC-SA 4.0, and the maintainer decides which governs) and
+`environmental/bioregion/fao-aquastat`; **CC BY 4.0 under FAO's Statistical Database Terms of Use**, which name AQUASTAT,
+decided by Tomas Diez on 2026-10-14 over FAO's catalogue label of CC BY-NC-SA 4.0) and
 writes `results/water-country.json`. Water is not bought abroad like goods, so "made at home" here is provenance: **one minus
 the dependency ratio**, the share of a country's total renewable water that flows in from other countries. Beside it, the share
 of what it has that it withdraws in a year. Resources are long-term averages AQUASTAT repeats each year; withdrawals carry
