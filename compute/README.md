@@ -15,6 +15,8 @@ python3 compute/materials.py --selftest       # no network; the OECD material fl
 python3 compute/materials.py                  # one OECD SDMX call, writes results/materials-country.json
 python3 compute/water.py --selftest           # no network; the AQUASTAT reading on a fake answer
 python3 compute/water.py                      # one FAO query, writes results/water-country.json
+python3 compute/labs.py --selftest            # no network; the lab directory trimmed to facts on fake records
+python3 compute/labs.py                       # one dated archive freeze, writes results/labs.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
@@ -786,3 +788,24 @@ their own year and symbol (I imputed, E estimate, A actual). `api.mjs` serves it
 Spain's renewable water is its own (0.3 of 111.5 km³ flows in), and it withdraws a quarter of it. The Netherlands lives on the
 Rhine and the Meuse: 88% of its renewable water rises elsewhere. Argentina (the Paraná), Croatia (the Danube basin) and Ghana
 (the Volta) depend on neighbours for a third to two thirds. Korea and South Africa withdraw about 40% of what they have.
+
+## The Fab Lab directory on the network map
+
+`compute/labs.py` reads one dated monthly freeze of the fablabs.io directory from the Fab Lab network data archive
+(gitlab.fabcloud.org, `fl-management/fablab-network-data`, `archive/labs.json/`; the newest on its first eight digits,
+or `LABS_SNAPSHOT` to pin one) and writes `results/labs.json`, which `api.mjs` serves as `/api/v0/labs.json` for the map's
+Fab Labs layer. The records are fablabs.io's, under Terms of Use that are not an open licence: §7.3 forbids distributing
+platform content without fablabs.io's written authorisation, and §8.1 leaves each lab the copyright in what it wrote. Tomas
+Diez, co-owner of fablabs.io, decided on 2026-10-14 that the Index's map shows the directory. So the module keeps the
+directory **facts** only (name, city, country, coordinates to four decimals, kind, the activity status the lab states, and
+the link to its own page) and drops everything a lab authored or that identifies a person: description, blurb, links,
+email, phone, street address, images. The file's own `licence` says so. The 30 September 2026 freeze holds 2,873 records,
+2,637 with a place: 1,829 active, 234 planned, 99 closed and 475 that state no status (corona, empty or none).
+
+## One country in depth: `countries/<ISO>.json`
+
+`api.mjs` writes one file per country with every half untrimmed (the trade series and sectors, FAO's 21 groups, the energy
+and materials series, the water accounts, TiVA's industries) and each place the country holds with its region bracket. The
+site's country page, city panel and report read it. `measured.json`, which every page loads, now names a place's country
+(`iso`, `name`, `href`) instead of carrying the whole bracket, which took it from 2.0 MB to 97 KB.
+
