@@ -194,8 +194,11 @@ const count = (s) => summaries.filter((x) => x.status === s).length;
 if (count("complete") + count("partial") + count("simulated") !== places.length) throw new Error("statuses do not partition the places");
 fs.writeFileSync(path.join(out, "index.json"), JSON.stringify({ ...head, counts: { places: places.length, complete: count("complete"), partial: count("partial"), simulated: count("simulated") },
   statuses: FCI_SCORE.STATUS, places: summaries }, null, 1) + "\n");
-// `places` stays what the pipeline MEASURED; the brackets are modelled or national and live under their own key.
-fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, places: measured, brackets, planet: PLANET }, null, 1) + "\n");
+// `places` stays what the pipeline MEASURED; the brackets are modelled or national and live under their own key. Each page
+// loads this file, so a place's country is named here and its full detail lives once, in countries/<ISO>.json.
+const slimBrackets = Object.fromEntries(Object.entries(brackets).map(([slug, b]) => [slug, { region: b.region,
+  country: b.country.iso ? { iso: b.country.iso, name: b.country.name, href: `${BASE}/api/v0/countries/${b.country.iso}.json` } : b.country }]));
+fs.writeFileSync(path.join(out, "measured.json"), JSON.stringify({ ...head, places: measured, brackets: slimBrackets, planet: PLANET }, null, 1) + "\n");
 
 /* ---- countries.json: the country bracket for every country in the tracker, one row each ------------------------ */
 // The reference table behind /countries: the three national halves (Atlas trade, FAO food, OECD goods) with the places
@@ -225,6 +228,27 @@ fs.writeFileSync(path.join(out, "countries.json"), JSON.stringify({ ...head,
             water: rows.filter((c) => !c.water.not_measured).length },
   countries: rows, not_in_any_source: absent }, null, 1) + "\n");
 console.log(`countries.json: ${rows.length} countries (${absent.length} with no source), ${places.length} places`);
+
+/* ---- countries/<ISO>.json: one country in depth, for the country page, the city page and the report -------------- */
+// Every half untrimmed (the trade series and sectors, FAO's groups, the energy and materials series, the water accounts,
+// TiVA's industries), with each place the country holds and its region bracket. Not an index: no score.
+fs.mkdirSync(path.join(out, "countries"), { recursive: true });
+for (const iso of Object.keys(countries)) {
+  const held = places.filter((p) => brackets[p.slug].country.iso === iso);
+  const { iso: _i, name, places: _p, ...halves } = brackets[held[0].slug].country;
+  fs.writeFileSync(path.join(out, "countries", `${iso}.json`), JSON.stringify({ ...head, iso, name,
+    links: { page: `${BASE}/country?iso=${iso}`, all: `${BASE}/countries`, json: `${BASE}/api/v0/countries/${iso}.json` },
+    places: held.map((p) => ({ slug: p.slug, name: p.name, territory: p.territory, page: `${BASE}/city?locality=${p.slug}`, region_bracket: brackets[p.slug].region })),
+    ...halves }, null, 1) + "\n");
+}
+
+/* ---- labs.json: the Fab Lab directory as facts, for the network map (compute/labs.py) --------------------------- */
+// fablabs.io's records, shown by decision of its co-owner and under its Terms of Use, which are not an open licence;
+// labs.py keeps names, places, kinds and statuses only. The file's own `licence` says so and travels with it.
+const LABS = "compute/results/labs.json";
+const labs = JSON.parse(fs.readFileSync(path.join(HERE, LABS), "utf8"));
+fs.writeFileSync(path.join(out, "labs.json"), JSON.stringify({ format: head.format, generated: head.generated, pipeline: REPO + LABS, ...labs }) + "\n");
+console.log(`labs.json: ${labs.on_the_map} labs from ${labs.snapshot}`);
 const csvCell = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
 const COLS = ["slug", "name", "country", "territory", "status", "fci", "fci_low", "fci_high", "dido", "one_minus_pito", "rho", "cells_open", "cells_measured", "pito_weight_measured_share"];
 fs.writeFileSync(path.join(out, "index.csv"), [COLS.join(","), ...summaries.map((s) => [s.slug, s.name, s.country, s.territory, s.status, s.fci,
