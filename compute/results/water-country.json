@@ -1,6 +1,6 @@
 {
  "reads_as": "The country each place sits in, as FAO's AQUASTAT reads its water: of the renewable water the country has in a year, the share that originates inside its own borders (one minus the dependency ratio, the share flowing in from other countries). Beside it, the share of what it has that it withdraws. Water is not bought abroad like goods; this says whose rain it lives on. Resources are long-term averages repeated each year. A country figure, never a city's.",
- "licence": "FAO AQUASTAT. FAO's Statistical Database Terms of Use (read 2026-10-13) list AQUASTAT in Annex 1 under CC BY 4.0, with the clause against use in the promotion of a commercial enterprise; FAO's data catalogue labels the AQUASTAT Dissemination System dataset CC BY-NC-SA 4.0. Recorded as a conflict for the registry's maintainer; cite FAO, AQUASTAT, https://data.apps.fao.org/aquastat/",
+ "licence": "CC BY 4.0 under FAO's Statistical Database Terms of Use, whose Annex 1 names AQUASTAT, with the clause against use in the promotion of a commercial enterprise (decided by Tomas Diez, 2026-10-14; FAO's data catalogue labels the dissemination dataset CC BY-NC-SA 4.0, read as a catalogue default). Cite FAO, AQUASTAT, https://data.apps.fao.org/aquastat/",
  "year": 2022,
  "symbols_mean": "AQUASTAT symbols: I imputed or carried forward, E estimate, A actual (official)",
  "countries": {

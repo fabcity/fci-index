@@ -4,9 +4,8 @@
     python3 compute/water.py --selftest     # no network: the reading of a fake AQUASTAT answer
     python3 compute/water.py                # one FAO query, write compute/results/water-country.json
 
-FAO AQUASTAT (registry environmental/bioregion/fao-aquastat, candidate: FAO's database terms list AQUASTAT under
-CC BY 4.0, while FAO's own catalogue labels the dissemination dataset CC BY-NC-SA 4.0; the maintainer decides which
-governs, and this module carries both). The dissemination system answers a BigQuery endpoint with a published SQL
+FAO AQUASTAT (registry environmental/bioregion/fao-aquastat; CC BY 4.0 under FAO's Statistical Database Terms of Use,
+which name AQUASTAT, decided by Tomas Diez on 2026-10-14 over the catalogue's CC BY-NC-SA label). The dissemination system answers a BigQuery endpoint with a published SQL
 and four parameters. Water is not traded like goods, so "made at home" here is where the water comes from: one
 minus the DEPENDENCY RATIO, the share of a country's total renewable water resources that flows in from other
 countries. Beside it, how much of what it has the country withdraws in a year. Resources are long-term averages
@@ -31,10 +30,9 @@ API = "https://api.data.apps.fao.org/api/v2/bigquery"
 VARIABLES = {"4192": "dependency_ratio", "4157": "internal_renewable_km3", "4182": "external_renewable_km3",
              "4188": "total_renewable_km3", "4263": "freshwater_withdrawal_km3"}
 YEARS = [2022, 2021, 2020, 2019, 2018]
-LICENCE = ("FAO AQUASTAT. FAO's Statistical Database Terms of Use (read 2026-10-13) list AQUASTAT in Annex 1 under CC BY 4.0, with "
-           "the clause against use in the promotion of a commercial enterprise; FAO's data catalogue labels the AQUASTAT "
-           "Dissemination System dataset CC BY-NC-SA 4.0. Recorded as a conflict for the registry's maintainer; cite FAO, "
-           "AQUASTAT, https://data.apps.fao.org/aquastat/")
+LICENCE = ("CC BY 4.0 under FAO's Statistical Database Terms of Use, whose Annex 1 names AQUASTAT, with the clause against use in "
+           "the promotion of a commercial enterprise (decided by Tomas Diez, 2026-10-14; FAO's data catalogue labels the dissemination "
+           "dataset CC BY-NC-SA 4.0, read as a catalogue default). Cite FAO, AQUASTAT, https://data.apps.fao.org/aquastat/")
 READS_AS = ("The country each place sits in, as FAO's AQUASTAT reads its water: of the renewable water the country has in a year, "
             "the share that originates inside its own borders (one minus the dependency ratio, the share flowing in from other "
             "countries). Beside it, the share of what it has that it withdraws. Water is not bought abroad like goods; this says "
