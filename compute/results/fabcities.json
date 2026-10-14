@@ -131,12 +131,23 @@
    "member": "Fab City Cape Town",
    "pledge": 2026,
    "kind": "City",
-   "continent": "Asia",
+   "continent": "Africa",
    "city": "Cape Town",
-   "country": "Saudi Arabia",
+   "country": "South Africa",
    "sheet_slug": "fc-cptwn",
-   "differs_from_tracker": [
-    "country: the sheet says Saudi Arabia, the tracker South Africa"
+   "corrected": [
+    {
+     "field": "country",
+     "sheet_says": "Saudi Arabia",
+     "now": "South Africa",
+     "by": "Tomas Diez, 2026-10-14: it is Cape Town, South Africa"
+    },
+    {
+     "field": "continent",
+     "sheet_says": "Asia",
+     "now": "Africa",
+     "by": "follows the country: the sheet's Asia came with its Saudi Arabia"
+    }
    ]
   },
   "charlotte": {

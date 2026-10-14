@@ -820,6 +820,6 @@ so it places nothing the map could not already place. Rows match by slug without
 five aliases checked row by row (`bsd` Bergisches, `cptwn` Cape Town, `lund` Veberöd, `monterey` Monterrey, `santiago`
 Santiago de Chile); all 61 match. Where the sheet and the tracker disagree, both are kept and the difference named: nine
 places pledged as a different kind than the tracker files them (Bali, Bas-Saint-Laurent, Ekurhuleni, Goa, Guanajuato,
-Kerala, Sumedang, Tanga, Yucatán), and the sheet files Cape Town under Saudi Arabia. Neither is corrected here. The map
+Kerala, Sumedang, Tanga, Yucatán), and the sheet filed Cape Town under Saudi Arabia, which Tomas Diez corrected on 2026-10-14 (`CORRECTIONS`: the file says South Africa and keeps the sheet's value beside it). The kinds are not corrected here. The map
 shows the pledge in each place's popup and can colour the places by year of pledge.
 

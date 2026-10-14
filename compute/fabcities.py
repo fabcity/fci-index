@@ -10,7 +10,7 @@ name, slug, kind (City, Region, Country), year of pledge, country and continent.
 matches each row to the Index tracker's place (the tracker is the source of record for the list): by its slug
 without the `fc-` prefix and without accents, then by a short alias table checked row by row on 2026-10-14. A row
 or a place that matches nothing is listed, never dropped. Where the sheet and the tracker disagree (kind, country),
-both are kept and the difference named, because neither is corrected here.
+both are kept and the difference named. A value Tomas Diez has ruled on is corrected (CORRECTIONS), the sheet's value kept beside it.
 """
 from __future__ import annotations
 
@@ -34,6 +34,9 @@ ALIAS = {"bsd": "bergisches",            # Fab Region Bergische Städtedreieck: 
          "lund": "veberod",              # Fab City Lund; the tracker names Veberöd, in Lund municipality
          "monterey": "monterrey",        # Fab City Monterrey, Mexico
          "santiago": "santiago-de-chile"}
+# Corrections to the sheet, by Tomas Diez's decision: the corrected value is used, the sheet's value kept beside it.
+CORRECTIONS = {"cape-town": {"country": ("South Africa", "Tomas Diez, 2026-10-14: it is Cape Town, South Africa"),
+                              "continent": ("Africa", "follows the country: the sheet's Asia came with its Saudi Arabia")}}
 READS_AS = ("The Fab City members as the Fab Lab network data archive keeps them: the member's official name, the year it pledged, "
             "the kind it pledged as and its continent, matched to the Index tracker's places. Where the two disagree, both are kept.")
 LICENCE = ("Fab City membership facts (names, pledge years, kinds) from the Fab Lab network data archive, maintained by the WG Fablabs & "
@@ -62,6 +65,9 @@ def match(rows: list[dict], places: dict[str, dict]) -> dict:
             pledge = None
         m = {"member": r.get("Fabcity member"), "pledge": pledge, "kind": r.get("Kind"), "continent": r.get("Continent"),
              "city": r.get("City"), "country": r.get("Country"), "sheet_slug": r.get("Slug")}
+        for field, (value, why) in CORRECTIONS.get(slug, {}).items():
+            m.setdefault("corrected", []).append({"field": field, "sheet_says": m.get(field), "now": value, "by": why})
+            m[field] = value
         differs = [f"kind: the sheet says {m['kind']}, the tracker {p.get('territory')}"] if m["kind"] != p.get("territory") else []
         if m["country"] and p.get("country") and m["country"] != p["country"]:
             differs.append(f"country: the sheet says {m['country']}, the tracker {p['country']}")
@@ -116,8 +122,11 @@ def selftest() -> int:
     check("matched members carry name, pledge year as a number, kind and continent",
           (out["members"]["accra"]["member"], out["members"]["accra"]["pledge"], out["members"]["accra"]["kind"]), ("Fab City Accra", 2026, "City"))
     check("a disagreement on kind or country is named, both kept",
-          (out["members"]["kerala"]["differs_from_tracker"], out["members"]["cape-town"]["differs_from_tracker"]),
-          (["kind: the sheet says City, the tracker Region"], ["country: the sheet says Saudi Arabia, the tracker South Africa"]))
+          (out["members"]["kerala"]["differs_from_tracker"], "differs_from_tracker" in out["members"]["cape-town"]),
+          (["kind: the sheet says City, the tracker Region"], False))
+    check("a correction replaces the sheet's value and keeps it beside: Cape Town is in South Africa",
+          (out["members"]["cape-town"]["country"], out["members"]["cape-town"]["corrected"][0]["sheet_says"], out["members"]["cape-town"]["continent"]),
+          ("South Africa", "Saudi Arabia", "Africa"))
     check("an agreeing row carries no difference", "differs_from_tracker" in out["members"]["accra"], False)
     check("a row with no place, and a place with no row, are listed, never dropped",
           (out["sheet_rows_unmatched"], out["places_without_a_row"]), ([{"sheet_slug": "fc-nowhere", "member": "Fab City Nowhere"}], ["bhutan"]))
