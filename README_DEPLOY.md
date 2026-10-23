@@ -40,7 +40,7 @@ Same-account zone ⇒ CNAME + cert are automatic. If `fab.city` turns out to liv
 
 ## Email + feedback (tier 2/3 — deployment plan §5)
 
-- Cloudflare Email Routing on `fab.city`: alias `index@fab.city` → forward to Tomas (+ methodology co-author when confirmed). The footer mailto on every page is the entire tier-2 feedback mechanism.
+- Contact: Fab City Science, `science@fab.city` (since 23 Oct 2026; it was the `index@fab.city` routing alias). The footer mailto on every page is the entire tier-2 feedback mechanism.
 - Tier-3 form endpoint: `feedback-worker/` (separate tiny Worker → Airtable). Deploy only when tier 3 starts:
 
 ```bash

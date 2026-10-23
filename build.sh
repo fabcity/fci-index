@@ -111,8 +111,8 @@ import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
 import re
 line = ('method v0 · beta · comments: '
-        '<a href="mailto:index@fab.city" style="color:inherit;display:inline;font-size:inherit;'
-        'margin:0;text-decoration:underline;">index@fab.city</a>')   # inline beats the footer's `.foot a{display:block}`
+        'Fab City Science, <a href="mailto:science@fab.city" style="color:inherit;display:inline;font-size:inherit;'
+        'margin:0;text-decoration:underline;">science@fab.city</a>')   # inline beats the footer's `.foot a{display:block}`
 # Inside the dark footer, as a second line of its fine print: after </body> it sat on light
 # paper below the footer, cut off from it. Every page's footer ends `</p></div></footer>`, and
 # .foot__fine is styled the same in all three sites. The redirect stubs have no footer and keep
