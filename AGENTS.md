@@ -13,7 +13,7 @@ want their city's data to improve, and both happen elsewhere. The README is for 
 | "my city has no data", "add a source for X" | [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data) and its `AGENTS.md` | A source is filed there, as a `candidate`, from the person's account. The Index reads that registry live; nothing is added here. |
 | "our node should publish to the Index" | [`planetai-node`](https://github.com/fabcity/planetai-node), `skills/publish-to-index/SKILL.md` | Establish the tier first: one node per pilot writes, a home node never does. The writer is `cells-ingest/` here and needs a per-pilot token issued by hand. |
 | "add a measured result for a place" (trade, waste, material use) | `compute/README.md` | A script in `compute/`, standard-library Python, whose result lands in `compute/results/`. It reaches a score only if `api.mjs`'s `MEASURED` section maps it to a cell, and that mapping is a decision for a maintainer: propose it in the pull request. |
-| "this page is wrong", "a link is broken" | an issue here, or `index@fab.city` | The pages are not in this repository. Say which URL and what it shows. |
+| "this page is wrong", "a link is broken" | an issue here, or Fab City Science at `science@fab.city` | The pages are not in this repository. Say which URL and what it shows. |
 | "change the build, a gate, a Worker" | `README.md` and `README_DEPLOY.md` | A pull request here. Run the build before you open it (below). Deploying is a maintainer's. |
 
 ## Before you open a pull request

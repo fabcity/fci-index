@@ -195,4 +195,4 @@ To wire a pilot end to end, start at [`cells-ingest/BALI.md`](cells-ingest/BALI.
 
 ---
 
-Questions and beta feedback: **index@fab.city**
+Questions and beta feedback: Fab City Science, **science@fab.city**
