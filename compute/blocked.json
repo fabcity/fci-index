@@ -28,6 +28,20 @@
    "holder": "INSEE",
    "ask": "Île-de-France manufacturing turnover by industry with its export share, as Idescat publishes for Catalonia.",
    "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/63"
+  },
+  "goa": {
+   "checked": "2026-11-05",
+   "why": "India publishes openly what Goa's factories make and what its households buy, but not what Goa exports by product. Exports by state of origin sit with DGCI&S, behind a login, paid and not for redistribution, and port figures miss Goa's pharmaceutical exports, which leave through other states' ports.",
+   "holder": "DGCI&S, the Ministry of Commerce's trade statistics office",
+   "ask": "Goa's 2022-23 exports by commodity and state of origin, released for open reuse or published through NIRYAT.",
+   "issue": null
+  },
+  "kerala": {
+   "checked": "2026-11-05",
+   "why": "India publishes openly what Kerala's factories make and what its households buy, but not what Kerala exports by product. Before exports, Kerala's own registered factories could cover at most 47% of the goods its households buy. Exports by state of origin sit with DGCI&S, behind a login, paid and not for redistribution.",
+   "holder": "DGCI&S, the Ministry of Commerce's trade statistics office",
+   "ask": "Kerala's 2022-23 exports by commodity and state of origin, released for open reuse or published through NIRYAT.",
+   "issue": null
   }
  }
 }
