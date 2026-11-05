@@ -1,0 +1,47 @@
+{
+ "note": "Places whose goods index was researched and could not be measured from open data: why, who holds the data, and what to ask for. Read by api.mjs into each place's JSON and the city page. Remove an entry when its cell is measured.",
+ "places": {
+  "tanga": {
+   "checked": "2026-11-05",
+   "why": "Tanzania's statistics office publishes Tanga Region's industrial output only as one total, not by industry, and nobody publishes what the region exports. Its reports are all rights reserved.",
+   "holder": "the National Bureau of Statistics of Tanzania",
+   "ask": "A Tanga Region table from the 2023 Census of Industrial Production: output and exported sales by industry, under an open licence. The census already asks every plant for both.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/104"
+  },
+  "cape-town": {
+   "checked": "2026-11-05",
+   "why": "Nobody publishes openly what the Western Cape exports by where it was made. SARS counts goods by the port they leave from, the provincial series comes from Quantec, which is paid, and Stats SA's provincial tables cannot be resold.",
+   "holder": "Wesgro, the Western Cape Treasury and Stats SA",
+   "ask": "Wesgro or the Western Cape Treasury, who already buy the Quantec series, releasing the province's exports by product under an open licence, and Stats SA allowing reuse of its provincial manufacturing table.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/105"
+  },
+  "bhutan": {
+   "checked": "2026-11-05",
+   "why": "The only open table with production, exports and household spending by product is from 2014, and data that old no longer counts. The newer national accounts and trade statistics are all rights reserved.",
+   "holder": "the National Statistics Bureau of Bhutan",
+   "ask": "The 2017 supply and use table by product under an open licence, or permission to reuse the trade statistics and the 2022 household survey.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/106"
+  },
+  "paris": {
+   "checked": "2026-09-27",
+   "why": "France publishes no open table of what Île-de-France's industry makes together with the share it sells abroad, and the customs figures follow head offices, not factories.",
+   "holder": "INSEE",
+   "ask": "Île-de-France manufacturing turnover by industry with its export share, as Idescat publishes for Catalonia.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/63"
+  },
+  "goa": {
+   "checked": "2026-11-05",
+   "why": "India publishes openly what Goa's factories make and what its households buy, but not what Goa exports by product. Exports by state of origin sit with DGCI&S, behind a login, paid and not for redistribution, and port figures miss Goa's pharmaceutical exports, which leave through other states' ports.",
+   "holder": "DGCI&S, the Ministry of Commerce's trade statistics office",
+   "ask": "Goa's 2022-23 exports by commodity and state of origin, released for open reuse or published through NIRYAT.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/107"
+  },
+  "kerala": {
+   "checked": "2026-11-05",
+   "why": "India publishes openly what Kerala's factories make and what its households buy, but not what Kerala exports by product. Before exports, Kerala's own registered factories could cover at most 47% of the goods its households buy. Exports by state of origin sit with DGCI&S, behind a login, paid and not for redistribution.",
+   "holder": "DGCI&S, the Ministry of Commerce's trade statistics office",
+   "ask": "Kerala's 2022-23 exports by commodity and state of origin, released for open reuse or published through NIRYAT.",
+   "issue": "https://github.com/fabcity/awesome-fabcity-data/issues/108"
+  }
+ }
+}

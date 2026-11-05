@@ -348,10 +348,12 @@ government data under Decreto 8.777/2016, by Tomas Diez's decision, though its s
 | São Paulo | 100.0 (2019) | IBGE production, ComexStat exports, POF | sales to the rest of Brazil; city figures |
 | Recife | 72.4 (2019) | the same, for Pernambuco | the same |
 | Paris | none | | measured production with its export share for Île-de-France (#63) |
-| Bali | none yet | BPS website tables, usable by decision: large/medium industry to 2021, exports by HS chapter | micro and small industry by division (the larger part), the export share, 2022+ |
+| Bali | 50.5 (2016) | BPS Bali's 2016 provincial input-output table, every firm size, read from the website PDF into a committed extract | shipments to the rest of Indonesia; three sectors broader than the recipe; no table after 2016 |
 | Santiago | 83.7 (2019), 71.6 (2022) | INE ENIA production and export income, same plants; EPF | sales to the rest of Chile; the two EPF rounds are not comparable |
 | Charlotte | 48.1 (2022) | 2022 Economic Census shipments, Census exports by NAICS (API key), BEA state PCE, all for North Carolina | sales to the rest of the US; city or metro spending |
 | Boston | 31.9 (2022) | the same three US sources, for Massachusetts | sales to the rest of the US; IT capacity is 2.6× local spending, mostly chips and instruments rather than consumer devices |
+| Kamakura | 84.0 (2020) | Kanagawa's own input-output table: output, exports abroad and household consumption in one table, producer prices | shipments to the rest of Japan (65% of food output); exports are the prefecture's estimate |
+| Puebla | 84.1 (2023) | INEGI 2024 Economic Census, exports by producing establishment (ETEF), ENIGH 2024 spending | sales to the rest of Mexico; pharma and electronics drop out (exports not published at that level) |
 
 ## Next
 

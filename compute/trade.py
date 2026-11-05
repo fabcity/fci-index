@@ -114,6 +114,56 @@ PCE_LINES = {"Food and beverages": [27, 28],                  # food and drink, 
              "Other goods": [9, 11, 12, 15, 16, 17, 22, 41, 42, 45]}   # furniture, glassware, tools, recreation, supplies, books
 US_LICENCE = ("US Census Bureau and BEA: US Government works, no domestic copyright. The Census API terms ask for the "
               "notice: This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.")
+# Kanagawa (for Kamakura): the prefecture's own input-output table, 188 sectors at producer prices, million yen. One
+# table holds output, exports abroad (輸出, kept apart from shipments to other prefectures, 移出) and household
+# consumption, for every firm. The open-data catalogue's copy is CC BY 4.0 by the catalogue's terms; the same file on
+# pref.kanagawa.jp falls under a site policy that only allows quotation, so cite the catalogue.
+KANAGAWA_IO = {2020: ("https://catalog.opendata.pref.kanagawa.jp/dataset/cf270ab1-1e4a-434d-ada0-29e6a5261582/resource/"
+                      "5c652800-9194-4899-800c-488094dd6dbb/download/r2data188.xlsx", "生産者価格評価表（188部門）")}
+# IO rows standing in for each OPEN sector. Food includes feeds (1131, inside ISIC 10), not tobacco (1141).
+KANAGAWA_ROWS = {"Food and beverages": ["1111", "1112", "1113", "1114", "1115", "1116", "1119", "1121", "1129", "1131"],
+                 "Textiles and clothing": ["1511", "1512", "1513", "1514", "1519", "1521", "1522", "1529", "2311", "2312"],
+                 "Chemical products": ["2071"],
+                 "IT and communication": ["3211", "3299", "3411", "3412", "3421"],
+                 "Other goods": ["2511", "2521", "2531", "2591", "2599", "3911", "3919"]}
+# Bali: BPS Bali's 2016 provincial input-output table (Tabel 4), every firm size, exports abroad kept apart from
+# shipments to other provinces. bps.go.id challenges scripts, so a browser-read extract is committed (awesome-fabcity-data#69).
+BALI_IO = "bps-bali-io-2016.json"
+BALI_INDUSTRIES = {"Food and beverages": ["I-13"], "Textiles and clothing": ["I-15", "I-16"], "Chemical products": ["I-19"],
+                   "IT and communication": ["I-23"], "Other goods": ["I-21", "I-27"]}
+# Mexico (Puebla, read as the state): INEGI's 2024 Economic Census (reference year 2023, gross production, M MXN),
+# exports by state of the producing establishment (ETEF, thousand US$, SCIAN subsectors only) and ENIGH household
+# monetary spending (COICOP 2018 in 2024). The same SCIAN codes as US_NAICS. A sector whose exports INEGI does not
+# publish at that level drops out rather than being prorated: 3254 sits inside 325 in ETEF.
+INEGI_CE = "https://www.inegi.org.mx/contenidos/programas/ce/2024/datosabiertos/conjunto_de_datos_ce_{abbr}_2024_csv.zip"
+INEGI_ETEF = "https://www.inegi.org.mx/contenidos/programas/exporta_ef/datosabiertos/conjunto_de_datos_eef_csv.zip"
+INEGI_ENIGH = "https://www.inegi.org.mx/contenidos/programas/enigh/nc/{year}/datosabiertos/conjunto_de_datos_enigh{year}_ns_csv.zip"
+ETEF_CODE = {"3121": "312", "3254": None}   # production code -> the subsector ETEF publishes; None: not published
+# ENIGH 2024 claves are COICOP 2018 subclasses; these class prefixes stand in for each OPEN sector's COICOP groups.
+ENIGH_COICOP = {"Food and beverages": ["011", "012", "021"], "Textiles and clothing": ["0311", "0312", "0313", "0321", "0521"],
+                "Chemical products": ["0611", "0612", "0613"],
+                "IT and communication": ["0811", "0812", "0813", "0814", "0815", "0819", "0911", "0952"],
+                "Other goods": ["0511", "0540", "0551", "0552", "0561", "0912", "0921", "0922", "0931", "0932", "0951",
+                                "0971", "0972", "0973", "0974"]}
+# Items 2024 keeps outside COICOP (catalogos/gastos.csv): 1811xx foods and drinks (181152 pet food is Other goods,
+# 181169 milling a service), 1721xx clothing for children under 2, 171101 and 173121 household goods.
+ENIGH_LEGACY = {"181152": "Other goods", "171101": "Other goods", "173121": "Other goods", "181169": None}
+
+
+def enigh_sector(clave: str) -> str | None:
+    if clave in ENIGH_LEGACY:
+        return ENIGH_LEGACY[clave]
+    if clave.startswith("1811"):
+        return "Food and beverages"
+    if clave.startswith("1721"):
+        return "Textiles and clothing"
+    return next((s for s, ps in ENIGH_COICOP.items() if clave.startswith(tuple(ps))), None)
+
+
+INEGI_LICENCE = ("INEGI Términos de Libre Uso (inegi.org.mx/inegi/terminos.html): commercial use and derived products allowed, "
+                 "credit 'Fuente: INEGI'. Exchange rate: World Bank PA.NUS.FCRF, CC BY 4.0")
+KANAGAWA_LICENCE = ("Kanagawa Prefecture open data catalogue: CC BY 4.0 by default (opendata.pref.kanagawa.jp/terms); "
+                    "credit: 令和2年神奈川県産業連関表、神奈川県、CC BY 4.0")
 
 
 def port(city: str, year: int, get=waste._json) -> dict:
@@ -574,6 +624,82 @@ def us_exports(st: str, year: int, key: str, get=waste._json) -> dict:
     i, j, c = head.index("NAICS"), head.index("ALL_VAL_YR"), head.index("CTY_CODE")
     return {r[i]: float(r[j]) for r in rows if r[c] == "-"}
 
+
+
+def kanagawa_io(year: int, raw=waste._raw) -> dict:
+    """{sector: (output, exports abroad, household consumption)} in million yen, from Kanagawa's IO table."""
+    url, sheet = KANAGAWA_IO[year]
+    rows = waste._xlsx_rows(raw(url), sheet)
+    col = {v.strip(): k for r in rows[:6] for k, v in r.items() if v.strip() in ("県内生産額", "輸出", "家計消費支出")}
+    by = {r.get("A", "").strip(): r for r in rows if r.get("A", "").strip().isdigit()}
+    def total(codes, head):
+        return sum(float(by[c].get(col[head]) or 0) for c in codes)
+    missing = [c for cs in KANAGAWA_ROWS.values() for c in cs if c not in by]
+    if missing or len(col) < 3:
+        raise ValueError(f"Kanagawa IO {year}: rows {missing} or columns {sorted(col)} not found")
+    return {s: (total(cs, "県内生産額"), total(cs, "輸出"), total(cs, "家計消費支出")) for s, cs in KANAGAWA_ROWS.items()}
+
+
+def bali_io(path=None) -> dict:
+    """{sector: (output, exports abroad, household consumption)} in million Rp, from the committed BPS Bali IO extract."""
+    from pathlib import Path
+    d = json.loads((path or Path(__file__).resolve().parent / "data" / BALI_IO).read_text(encoding="utf-8"))
+    ind = d["industries"]
+    return {s: tuple(sum(ind[i][k] for i in codes) for k in ("output", "exports_abroad", "household"))
+            for s, codes in BALI_INDUSTRIES.items()}
+
+
+
+def mx_production(abbr: str, ent: str, raw=waste._raw) -> dict:
+    """{scian: gross production (A111A), M MXN} for one state's total, all strata, from the 2024 Economic Census."""
+    z = zipfile.ZipFile(io.BytesIO(raw(INEGI_CE.format(abbr=abbr))))
+    name = next(n for n in z.namelist() if n.startswith("conjunto_de_datos/") and n.endswith(".csv"))
+    levels = ["SECTOR", "SUBSECTOR", "RAMA", "SUBRAMA", "CLASE"]
+    want = {n for ns in US_NAICS.values() for n in ns} | {"312"}
+    out = {n: None for n in want}
+    for r in csv.DictReader(io.TextIOWrapper(z.open(name), "utf-8-sig")):
+        if r["E03"] != ent or (r["E04"] or "").strip() or (r["ID_ESTRATO"] or "").strip():
+            continue
+        filled = [lv for lv in levels if (r[lv] or "").strip()]
+        code = r[filled[-1]].strip() if filled else ""
+        if code in want and filled[-1] in ("SUBSECTOR", "RAMA"):
+            try:
+                out[code] = float(r["A111A"])
+            except ValueError:
+                out[code] = None                             # withheld (confidential) is None, never zero
+    return out
+
+
+def mx_exports(ent: str, year: int, raw=waste._raw) -> dict:
+    """{scian subsector: exports, thousand US$} for one state and year (ETEF). Confidencial or No disponible is None."""
+    z = zipfile.ZipFile(io.BytesIO(raw(INEGI_ETEF)))
+    name = next(n for n in z.namelist() if "estatal_anual" in n and n.endswith(".csv"))
+    out = {}
+    for r in csv.DictReader(io.TextIOWrapper(z.open(name), "utf-8-sig")):
+        if r["CVE_ENT"] == ent and r["ANIO"] == str(year):
+            out[r["CODIGO_SCIAN"]] = float(r["VAL_USD"]) if r["ESTATUS_CIFRA"] == "Disponible" and r["VAL_USD"] else None
+    return out
+
+
+def mx_spending(ent: str, year: int, raw=waste._raw) -> dict:
+    """{sector: household monetary spending (tipo_gasto G1), M MXN a year} for one state from ENIGH's open microdata:
+    quarterly spending x the household's expansion factor x 4. Read for the COICOP-coded 2024 round only."""
+    z = zipfile.ZipFile(io.BytesIO(raw(INEGI_ENIGH.format(year=year))))
+    def table(t):
+        n = next(n for n in z.namelist() if n.endswith(".csv") and f"/conjunto_de_datos/conjunto_de_datos_{t}_" in n)
+        return csv.DictReader(io.TextIOWrapper(z.open(n), "utf-8-sig"))
+    fac = {(r["folioviv"].strip().zfill(10), r["foliohog"].strip()): float(r["factor"])
+           for r in table("concentradohogar") if r["folioviv"].strip().zfill(10)[:2] == ent}
+    out = {s: 0.0 for s in ENIGH_COICOP}
+    for t in ("gastoshogar", "gastospersona"):
+        for r in table(t):
+            k = (r["folioviv"].strip().zfill(10), r["foliohog"].strip())
+            if k not in fac or r["tipo_gasto"] != "G1" or not r["gasto_tri"].strip():
+                continue
+            s = enigh_sector(r["clave"])
+            if s:
+                out[s] += float(r["gasto_tri"]) * fac[k] * 4 / 1e6
+    return out
 
 if __name__ == "__main__":
     import sys

@@ -355,6 +355,106 @@ def us_trade_adjusted(city: str, state: str, st: str, fips: str, year: int = 202
             "licence": trade.US_LICENCE}
 
 
+
+KAMAKURA_READS_AS = ("Kamakura, read as Kanagawa: the prefecture's own input-output table, output against household "
+                     "consumption at producer prices, and with exports abroad taken out. An UPPER bound on self-supply: "
+                     "shipments to the rest of Japan count as local (65% of Kanagawa's food output leaves the prefecture). "
+                     "Exports are the prefecture's own estimate from its goods-flow survey, not customs records, and "
+                     "include purchases by non-residents. 2020 is a pandemic year; the 2015 table gives 85.2.")
+
+
+BALI_READS_AS = ("Bali, read as the province: BPS Bali's 2016 input-output table, output against household consumption "
+                 "(goods from all origins) at producer prices, and with exports abroad taken out, every firm size. An UPPER "
+                 "bound on self-supply: shipments to the rest of Indonesia count as local. Exports abroad include what "
+                 "foreign visitors buy in Bali, by the national-accounts rule. 2016 is the latest provincial table.")
+ID_DIFFERS = {"Chemical products": "pharmaceuticals inside chemicals (KBLI 20-21, one IO industry)",
+              "IT and communication": "electronics inside metal products and electrical equipment (KBLI 25-27)",
+              "Other goods": "includes repair and installation of machinery (KBLI 33), so capacity is overstated"}
+
+
+def bali_trade_adjusted(path=None) -> dict:
+    """Bali: output against household consumption from BPS Bali's 2016 provincial IO table, and with exports abroad
+    taken out. Every firm, one table, producer prices on both sides. Weighted by that consumption."""
+    io_ = trade.bali_io(path)
+    spend = {s: v[2] for s, v in io_.items()}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()},
+                        {s: (v[0] * 1000, v[1] * 1000) for s, v in io_.items()}, {s: [s] for s in io_})
+    for s, why in ID_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Bali", "territory": "Bali (province)", "year": 2016, "currency": "IDR (M Rp in the sector rows)",
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": "BPS Provinsi Bali, Tabel Input Output Provinsi Bali Tahun 2016, Tabel 4 (total transactions, producer "
+                      "prices), committed extract compute/data/" + trade.BALI_IO,
+            "licence": "BPS website terms, attribution; website tables usable by maintainer decision (awesome-fabcity-data#66)"}
+
+
+PUEBLA_READS_AS = ("Puebla, read as the state: what its establishments produce (2024 Economic Census, reference year 2023) "
+                   "against what its households spend (ENIGH 2024, monetary spending), and with the state's exports by "
+                   "producing establishment (ETEF 2023) taken out. An UPPER bound on self-supply: sales to the rest of "
+                   "Mexico count as local. Production is at producer prices and spending at purchasers' prices. Maquila "
+                   "plants report processing income, not the value of the goods, while exports carry full value.")
+MX_DIFFERS = {"Chemical products": "INEGI publishes exports for all chemicals (325), not pharmaceuticals (3254), so the "
+                                   "sector drops out rather than being prorated",
+              "IT and communication": "exports of 334 are not published for the state, so the sector drops out",
+              "Textiles and clothing": "leather (316) exports are confidential, so 316 drops out"}
+
+
+def puebla_trade_adjusted(year: int = 2023, spend_year: int = 2024, raw=waste._raw, get=waste._json) -> dict:
+    """Puebla: INEGI's census production against ENIGH household spending, with ETEF exports taken out, converted at
+    the World Bank's annual rate. A goods index over the sectors with exports published, weighted by that spending."""
+    prod, usd = trade.mx_production("pue", "21", raw), trade.mx_exports("21", year, raw)
+    spend, rate = trade.mx_spending("21", spend_year, raw), trade.wb_rate("MEX", year, get)
+    def abroad(n):
+        e = trade.ETEF_CODE.get(n, n)
+        if n == "3121" and prod.get("312") != prod.get("3121"):
+            return None                                       # 312 carries tobacco too, so it cannot stand for 3121
+        return None if e is None or usd.get(e) is None else usd[e] * rate
+    divisions = {n: (v * 1000, abroad(n)) for n, v in prod.items() if v is not None and n != "312"}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()}, divisions, trade.US_NAICS)
+    for s, why in MX_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Puebla", "territory": "Puebla (state)", "year": year, "spending_year": spend_year,
+            "currency": "MXN (M MXN in the sector rows)", "mxn_per_usd": rate,
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": f"INEGI Censos Económicos 2024 (reference {year}, producción bruta total); INEGI Exportaciones por "
+                      f"Entidad Federativa {year}; INEGI ENIGH {spend_year}; World Bank PA.NUS.FCRF {year}",
+            "licence": trade.INEGI_LICENCE}
+
+
+JP_DIFFERS = {"Food and beverages": "includes animal feeds (inside ISIC 10); consumption at producer prices",
+              "Chemical products": "household consumption is out-of-pocket only: medicines dispensed under insurance are "
+                                   "booked to the medical sector",
+              "IT and communication": "electronic parts and ICT equipment; measuring and optical instruments left out"}
+
+
+def kamakura_trade_adjusted(year: int = 2020, raw=waste._raw) -> dict:
+    """Kanagawa (for Kamakura): output against household consumption from the prefecture's own IO table, and with
+    exports abroad taken out. Every firm, one table, producer prices on both sides. Weighted by that consumption."""
+    io_ = trade.kanagawa_io(year, raw)
+    spend = {s: v[2] for s, v in io_.items()}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()},
+                        {s: (v[0] * 1000, v[1] * 1000) for s, v in io_.items()}, {s: [s] for s in io_})
+    for s, why in JP_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Kamakura", "territory": "Kanagawa (prefecture)", "year": year,
+            "currency": "JPY (M JPY in the sector rows)",
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": f"Kanagawa Prefecture, {year} input-output table (188 sectors, producer prices), open data catalogue: "
+                      f"{trade.KANAGAWA_IO[year][0]}",
+            "licence": trade.KANAGAWA_LICENCE}
+
 def run() -> None:
     res = HERE / "results"
     res.mkdir(exist_ok=True)
@@ -433,6 +533,9 @@ def run() -> None:
                     "count as local. Spending is the EPF round nearest the year, in its own prices.",
         "rows": [santiago_trade_adjusted(2019, "VIII"), santiago_trade_adjusted(2022, "IX")]}
     out["us_trade_adjusted"] = {"reads_as": US_READS_AS, "rows": [us_trade_adjusted(*p) for p in US_PLACES]}
+    out["kamakura_trade_adjusted"] = {"reads_as": KAMAKURA_READS_AS, "rows": [kamakura_trade_adjusted()]}
+    out["bali_trade_adjusted"] = {"reads_as": BALI_READS_AS, "rows": [bali_trade_adjusted()]}
+    out["puebla_trade_adjusted"] = {"reads_as": PUEBLA_READS_AS, "rows": [puebla_trade_adjusted()]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -878,6 +981,53 @@ def selftest() -> int:
         check("Charlotte: a NAICS missing from the exports reply stops the run", False, True)
     except ValueError:
         check("Charlotte: a NAICS missing from the exports reply stops the run", True, True)
+    # Kanagawa IO: codes in column A, heads in the first rows; fake workbook through the real reader.
+    real_rows = waste._xlsx_rows
+    head = [{}, {}, {"Z": "県内生産額"}, {"X": "家計消費支出", "Y": "輸出"}]
+    body = [{"A": c, "Z": "2", "Y": "1", "X": "4"} for cs in trade.KANAGAWA_ROWS.values() for c in cs]
+    waste._xlsx_rows = lambda b, sh: head + body
+    try:
+        kn = kamakura_trade_adjusted(2020, raw=lambda u: b"")
+        food = trade.kanagawa_io(2020, raw=lambda u: b"")["Food and beverages"]
+        waste._xlsx_rows = lambda b, sh: head + body[1:]
+        try:
+            trade.kanagawa_io(2020, raw=lambda u: b"")
+            gone = False
+        except ValueError:
+            gone = True
+    finally:
+        waste._xlsx_rows = real_rows
+    check("Kanagawa IO: ten food rows summed, output 20, exports 10, consumption 40 (M JPY)", food, (20.0, 10.0, 40.0))
+    check("Kamakura: (2 - 1) / 4 per row in every sector, so 25.0; a missing IO row stops the run",
+          (kn["goods_trade_adjusted_index"], kn["goods_capacity_index"], gone), (25.0, 50.0, True))
+    fake_bali = Path(__file__).resolve().parent / "results" / "_selftest_bali.json"
+    fake_bali.write_text(json.dumps({"industries": {i: {"output": 3, "exports_abroad": 1, "household": 4}
+                                     for i in ("I-13", "I-15", "I-16", "I-19", "I-21", "I-23", "I-27")}}))
+    try:
+        bl = bali_trade_adjusted(fake_bali)
+    finally:
+        fake_bali.unlink()
+    check("Bali IO: two industries summed into textiles, (6 - 2) / 8; one into food, (3 - 1) / 4",
+          (bl["sectors"]["Textiles and clothing"]["trade_adjusted"], bl["sectors"]["Food and beverages"]["trade_adjusted"]), (0.5, 0.5))
+    # Puebla: unpublished exports drop a code out, never a prorated share; 312 stands for 3121 only without tobacco.
+    mx_prod = {n: 10.0 for ns in trade.US_NAICS.values() for n in ns} | {"312": 10.0}
+    real = (trade.mx_production, trade.mx_exports, trade.mx_spending, trade.wb_rate)
+    trade.mx_production = lambda a, e, raw: mx_prod
+    trade.mx_exports = lambda e, y, raw: {n: 1000.0 for n in ("311", "312", "313", "314", "315", "327", "339")} | {"316": None, "325": 5000.0}
+    trade.mx_spending = lambda e, y, raw: {s: 40.0 for s in trade.ENIGH_COICOP}
+    trade.wb_rate = lambda iso, y, get: 2.0
+    try:
+        pu = puebla_trade_adjusted(2023, 2024)
+        mx_prod["312"] = 30.0
+        pu2 = puebla_trade_adjusted(2023, 2024)
+    finally:
+        trade.mx_production, trade.mx_exports, trade.mx_spending, trade.wb_rate = real
+    fs = pu["sectors"]
+    check("Puebla: pharma (3254) drops out, never prorated from 325; 316 confidential drops out of textiles",
+          (fs["Chemical products"]["capacity"], fs["Textiles and clothing"]["nace_missing"]), (None, ["316"]))
+    check("Puebla: food is (10 + 10) M made, 2 + 2 M abroad (1,000 k US$ x 2), against 40 M",
+          round(fs["Food and beverages"]["trade_adjusted"], 3), 0.4)
+    check("Puebla: with tobacco in 312, beverages lose their export figure", pu2["sectors"]["Food and beverages"]["nace_missing"], ["3121"])
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 

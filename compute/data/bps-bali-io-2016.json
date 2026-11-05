@@ -1,0 +1,44 @@
+{
+ "what": "BPS Provinsi Bali, Tabel Input Output Provinsi Bali Tahun 2016 (TA 2021), Tabel 4: total transactions at producer prices, million Rp. Columns 6001 output, 3071 exports abroad, 3011 household consumption (all origins). Read in a browser from the website PDF (pp. 115-121), because bps.go.id challenges scripts; every value checked against the PDF text on 2026-11-05.",
+ "source": "https://bali.bps.go.id/id/publication/2021/12/30/a13e15a3adfa94abcf3aa0bd/publikasi-tabel-input-output-provinsi-bali-tahun-2016-tahun-anggaran-2021.html",
+ "licence": "BPS website terms: use, redistribution and derivatives with attribution (bps.go.id/id/term-of-use); BPS website tables are usable by maintainer decision (awesome-fabcity-data#15, #66)",
+ "year": 2016,
+ "unit": "million Rp",
+ "industries": {
+  "I-13": {
+   "output": 10077641,
+   "exports_abroad": 1626793,
+   "household": 16780225
+  },
+  "I-15": {
+   "output": 3434179,
+   "exports_abroad": 2362310,
+   "household": 1492114
+  },
+  "I-16": {
+   "output": 1179234,
+   "exports_abroad": 500495,
+   "household": 658595
+  },
+  "I-19": {
+   "output": 252667,
+   "exports_abroad": 198601,
+   "household": 835654
+  },
+  "I-21": {
+   "output": 2026225,
+   "exports_abroad": 437546,
+   "household": 95117
+  },
+  "I-23": {
+   "output": 649375,
+   "exports_abroad": 591954,
+   "household": 2281144
+  },
+  "I-27": {
+   "output": 5845788,
+   "exports_abroad": 1021547,
+   "household": 1573905
+  }
+ }
+}
