@@ -349,7 +349,9 @@ government data under Decreto 8.777/2016, by Tomas Diez's decision, though its s
 | Recife | 72.4 (2019) | the same, for Pernambuco | the same |
 | Paris | none | | measured production with its export share for Île-de-France (#63) |
 | Bali | none yet | BPS website tables, usable by decision: large/medium industry to 2021, exports by HS chapter | micro and small industry by division (the larger part), the export share, 2022+ |
-| Boston, Santiago | none | | measured production by industry for the metro or region |
+| Santiago | 83.7 (2019), 71.6 (2022) | INE ENIA production and export income, same plants; EPF | sales to the rest of Chile; the two EPF rounds are not comparable |
+| Charlotte | 48.1 (2022) | 2022 Economic Census shipments, Census exports by NAICS (API key), BEA state PCE, all for North Carolina | sales to the rest of the US; city or metro spending |
+| Boston | none | | the same three US sources would serve Massachusetts; not run yet |
 
 ## Next
 

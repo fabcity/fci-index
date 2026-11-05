@@ -308,6 +308,50 @@ def santiago_trade_adjusted(year: int, edition: str, inputs=None, pop=waste.popu
             "licence": trade.CL_LICENCE}
 
 
+US_DIFFERS = {"Food and beverages": "beverages without tobacco (NAICS 3121, not 312)",
+              "Textiles and clothing": "consumption is clothing and footwear: BEA counts household textiles inside "
+                                       "furniture and furnishings",
+              "Chemical products": "consumption is pharmaceutical and other medical products; therapeutic appliances "
+                                   "left out",
+              "IT and communication": "consumption includes recorded media, which BEA keeps on the equipment line"}
+
+
+CHARLOTTE_READS_AS = ("Charlotte, read as North Carolina (no city or metro figures for spending exist): what the state's "
+                      "plants ship against what its households buy, and with the state's exports taken out. An UPPER bound "
+                      "on self-supply: sales to the rest of the US count as local. Exports are by state of origin of "
+                      "movement, a proxy for where goods were made. Shipments are at producers' prices and spending at "
+                      "purchasers' prices, so trade and transport margins sit in the denominator.")
+
+
+def charlotte_trade_adjusted(year: int = 2022, key: str | None = None, raw=waste._raw, get=waste._json) -> dict:
+    """North Carolina (for Charlotte): what its plants ship (Economic Census) against what its households buy (BEA
+    state PCE), and with the state's exports by NAICS taken out. A goods index over the five sectors, weighted by that
+    spending, as for Brazil."""
+    key = trade.census_key() if key is None else key
+    if not key:
+        return {"city": "Charlotte", "year": year,
+                "no_data": "Census exports by NAICS need an API key: set CENSUS_API_KEY or ~/.config/census/key"}
+    prod, usd = trade.us_production("37", year, raw), trade.us_exports("NC", year, key, get)
+    spend = trade.us_spending("NC", year, raw)
+    missing = [n for n, v in prod.items() if v is not None and n not in usd]
+    if missing:
+        raise ValueError(f"Census exports returned no row for NAICS {missing}; an absent row is not zero")
+    divisions = {n: (v, usd[n] / 1000) for n, v in prod.items() if v is not None}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()}, divisions, trade.US_NAICS)
+    for s, why in US_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Charlotte", "territory": "North Carolina (state)", "year": year,
+            "currency": "USD (M US$ in the sector rows)",
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": f"US Census Bureau {year} Economic Census, manufacturing (EC{year % 100}31BASIC, value of shipments); "
+                      f"Census exports by NAICS and state of origin of movement, {year}; BEA SAPCE3 {year}",
+            "licence": trade.US_LICENCE}
+
+
 def run() -> None:
     res = HERE / "results"
     res.mkdir(exist_ok=True)
@@ -385,6 +429,7 @@ def run() -> None:
                     "establishments' export income taken out. An UPPER bound on self-supply: sales to the rest of Chile "
                     "count as local. Spending is the EPF round nearest the year, in its own prices.",
         "rows": [santiago_trade_adjusted(2019, "VIII"), santiago_trade_adjusted(2022, "IX")]}
+    out["charlotte_trade_adjusted"] = {"reads_as": CHARLOTTE_READS_AS, "rows": [charlotte_trade_adjusted()]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -800,6 +845,36 @@ def selftest() -> int:
     check("materials: DMC total and per person read from Idescat's CSV", (m["dmc_t"], m["dmc_t_per_capita"]), (55317163.0, 7.2))
     check("materials: a file for another year is no data, never that year's figure",
           "no_data" in trade.materials(2023, raw=cfm), True)
+    # North Carolina: Economic Census .dat, BEA SAPCE3 csv and the Census exports table, all fake.
+    hdr = "#GEOTYPE|ST|GEOCOMP|NAICS2022|RCPTOT|RCPTOT_F\n"
+    dat = hdr + "02|37|00|311|1000|\n02|37|00|3121|500|\n02|37|01|311|99999|\n02|25|00|311|77|\n02|37|00|334|0|D\n"
+    def us_raw(u):
+        b = io.BytesIO()
+        with _zf.ZipFile(b, "w") as z:
+            if "EC22" in u:
+                z.writestr("EC2231BASIC.dat", dat)
+            else:
+                z.writestr("SAPCE3_NC_1997_2025.csv", "LineCode,Description,2022\n" + "".join(
+                    f"{n},x,{3.0 if n in (27, 28) else 1.0}\n" for ns in trade.PCE_LINES.values() for n in ns) + ",note,\n")
+        return b.getvalue()
+    pr = trade.us_production("37", 2022, raw=us_raw)
+    check("US production: the state's all-establishment row only; a withheld cell (D) is None, never zero",
+          (pr["311"], pr["3121"], pr["334"]), (1000.0, 500.0, None))
+    check("BEA PCE: food is lines 27 + 28, million US$", trade.us_spending("NC", 2022, raw=us_raw)["Food and beverages"], 6.0)
+    ex_rows = lambda u: [["ALL_VAL_YR", "NAICS", "CTY_CODE", "STATE", "time"], ["300000", "311", "-", "NC", "2022-12"],
+                         ["999", "311", "1220", "NC", "2022-12"]] + [["0", n, "-", "NC", "2022-12"] for n in ("3121", "313", "314", "315", "316", "3254", "327", "339")]
+    check("US exports: the all-countries row (CTY_CODE '-'), not a country's", trade.us_exports("NC", 2022, "k", get=ex_rows)["311"], 300000.0)
+    nc = charlotte_trade_adjusted(2022, key="k", raw=us_raw, get=ex_rows)
+    f = nc["sectors"]["Food and beverages"]
+    check("Charlotte: 1.5 M US$ made, 0.3 M sold abroad, against 6 M spent; IT withheld drops out",
+          (f["measured_meur"], f["sold_abroad_meur"], round(f["trade_adjusted"], 3), nc["sectors"]["IT and communication"]["capacity"]),
+          (1.5, 0.3, 0.2, None))
+    check("Charlotte: no key is no data, never a capacity-only number", "no_data" in charlotte_trade_adjusted(2022, key="", raw=us_raw), True)
+    try:
+        charlotte_trade_adjusted(2022, key="k", raw=us_raw, get=lambda u: ex_rows(u)[:2])
+        check("Charlotte: a NAICS missing from the exports reply stops the run", False, True)
+    except ValueError:
+        check("Charlotte: a NAICS missing from the exports reply stops the run", True, True)
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 
