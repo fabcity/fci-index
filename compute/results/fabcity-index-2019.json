@@ -2057,6 +2057,101 @@
    }
   ]
  },
+ "kamakura_trade_adjusted": {
+  "reads_as": "Kamakura, read as Kanagawa: the prefecture's own input-output table, output against household consumption at producer prices, and with exports abroad taken out. An UPPER bound on self-supply: shipments to the rest of Japan count as local (65% of Kanagawa's food output leaves the prefecture). Exports are the prefecture's own estimate from its goods-flow survey, not customs records, and include purchases by non-residents. 2020 is a pandemic year; the 2015 table gives 85.2.",
+  "rows": [
+   {
+    "city": "Kamakura",
+    "territory": "Kanagawa (prefecture)",
+    "year": 2020,
+    "currency": "JPY (M JPY in the sector rows)",
+    "goods_capacity_index": 84.5,
+    "goods_trade_adjusted_index": 84.0,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 1862478.0,
+      "sold_abroad_meur": 12804.0,
+      "domestic_meur": 1849674.0,
+      "consumption_meur": 1992930.0,
+      "capacity": 0.9345426081197031,
+      "trade_adjusted": 0.9281178967650645,
+      "raw_capacity": 0.93,
+      "raw_trade_adjusted": 0.93,
+      "nace_used": [
+       "Food and beverages"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "includes animal feeds (inside ISIC 10); consumption at producer prices"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 41289.0,
+      "sold_abroad_meur": 1881.0,
+      "domestic_meur": 39408.0,
+      "consumption_meur": 372267.0,
+      "capacity": 0.11091232905414662,
+      "trade_adjusted": 0.10585950406563031,
+      "raw_capacity": 0.11,
+      "raw_trade_adjusted": 0.11,
+      "nace_used": [
+       "Textiles and clothing"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 423767.0,
+      "sold_abroad_meur": 38830.0,
+      "domestic_meur": 384937.0,
+      "consumption_meur": 72766.0,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 5.82,
+      "raw_trade_adjusted": 5.29,
+      "nace_used": [
+       "Chemical products"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "household consumption is out-of-pocket only: medicines dispensed under insurance are booked to the medical sector"
+     },
+     "IT and communication": {
+      "measured_meur": 917335.0,
+      "sold_abroad_meur": 94787.0,
+      "domestic_meur": 822548.0,
+      "consumption_meur": 382578.0,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 2.4,
+      "raw_trade_adjusted": 2.15,
+      "nace_used": [
+       "IT and communication"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "electronic parts and ICT equipment; measuring and optical instruments left out"
+     },
+     "Other goods": {
+      "measured_meur": 371776.0,
+      "sold_abroad_meur": 68096.0,
+      "domestic_meur": 303680.0,
+      "consumption_meur": 150993.0,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 2.46,
+      "raw_trade_adjusted": 2.01,
+      "nace_used": [
+       "Other goods"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "Kanagawa Prefecture, 2020 input-output table (188 sectors, producer prices), open data catalogue: https://catalog.opendata.pref.kanagawa.jp/dataset/cf270ab1-1e4a-434d-ada0-29e6a5261582/resource/5c652800-9194-4899-800c-488094dd6dbb/download/r2data188.xlsx",
+    "licence": "Kanagawa Prefecture open data catalogue: CC BY 4.0 by default (opendata.pref.kanagawa.jp/terms); credit: 令和2年神奈川県産業連関表、神奈川県、CC BY 4.0"
+   }
+  ]
+ },
  "material_flows": {
   "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
   "rows": [

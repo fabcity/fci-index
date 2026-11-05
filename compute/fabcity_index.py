@@ -355,6 +355,40 @@ def us_trade_adjusted(city: str, state: str, st: str, fips: str, year: int = 202
             "licence": trade.US_LICENCE}
 
 
+
+KAMAKURA_READS_AS = ("Kamakura, read as Kanagawa: the prefecture's own input-output table, output against household "
+                     "consumption at producer prices, and with exports abroad taken out. An UPPER bound on self-supply: "
+                     "shipments to the rest of Japan count as local (65% of Kanagawa's food output leaves the prefecture). "
+                     "Exports are the prefecture's own estimate from its goods-flow survey, not customs records, and "
+                     "include purchases by non-residents. 2020 is a pandemic year; the 2015 table gives 85.2.")
+
+
+JP_DIFFERS = {"Food and beverages": "includes animal feeds (inside ISIC 10); consumption at producer prices",
+              "Chemical products": "household consumption is out-of-pocket only: medicines dispensed under insurance are "
+                                   "booked to the medical sector",
+              "IT and communication": "electronic parts and ICT equipment; measuring and optical instruments left out"}
+
+
+def kamakura_trade_adjusted(year: int = 2020, raw=waste._raw) -> dict:
+    """Kanagawa (for Kamakura): output against household consumption from the prefecture's own IO table, and with
+    exports abroad taken out. Every firm, one table, producer prices on both sides. Weighted by that consumption."""
+    io_ = trade.kanagawa_io(year, raw)
+    spend = {s: v[2] for s, v in io_.items()}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()},
+                        {s: (v[0] * 1000, v[1] * 1000) for s, v in io_.items()}, {s: [s] for s in io_})
+    for s, why in JP_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Kamakura", "territory": "Kanagawa (prefecture)", "year": year,
+            "currency": "JPY (M JPY in the sector rows)",
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": f"Kanagawa Prefecture, {year} input-output table (188 sectors, producer prices), open data catalogue: "
+                      f"{trade.KANAGAWA_IO[year][0]}",
+            "licence": trade.KANAGAWA_LICENCE}
+
 def run() -> None:
     res = HERE / "results"
     res.mkdir(exist_ok=True)
@@ -433,6 +467,7 @@ def run() -> None:
                     "count as local. Spending is the EPF round nearest the year, in its own prices.",
         "rows": [santiago_trade_adjusted(2019, "VIII"), santiago_trade_adjusted(2022, "IX")]}
     out["us_trade_adjusted"] = {"reads_as": US_READS_AS, "rows": [us_trade_adjusted(*p) for p in US_PLACES]}
+    out["kamakura_trade_adjusted"] = {"reads_as": KAMAKURA_READS_AS, "rows": [kamakura_trade_adjusted()]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -878,6 +913,25 @@ def selftest() -> int:
         check("Charlotte: a NAICS missing from the exports reply stops the run", False, True)
     except ValueError:
         check("Charlotte: a NAICS missing from the exports reply stops the run", True, True)
+    # Kanagawa IO: codes in column A, heads in the first rows; fake workbook through the real reader.
+    real_rows = waste._xlsx_rows
+    head = [{}, {}, {"Z": "県内生産額"}, {"X": "家計消費支出", "Y": "輸出"}]
+    body = [{"A": c, "Z": "2", "Y": "1", "X": "4"} for cs in trade.KANAGAWA_ROWS.values() for c in cs]
+    waste._xlsx_rows = lambda b, sh: head + body
+    try:
+        kn = kamakura_trade_adjusted(2020, raw=lambda u: b"")
+        food = trade.kanagawa_io(2020, raw=lambda u: b"")["Food and beverages"]
+        waste._xlsx_rows = lambda b, sh: head + body[1:]
+        try:
+            trade.kanagawa_io(2020, raw=lambda u: b"")
+            gone = False
+        except ValueError:
+            gone = True
+    finally:
+        waste._xlsx_rows = real_rows
+    check("Kanagawa IO: ten food rows summed, output 20, exports 10, consumption 40 (M JPY)", food, (20.0, 10.0, 40.0))
+    check("Kamakura: (2 - 1) / 4 per row in every sector, so 25.0; a missing IO row stops the run",
+          (kn["goods_trade_adjusted_index"], kn["goods_capacity_index"], gone), (25.0, 50.0, True))
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 

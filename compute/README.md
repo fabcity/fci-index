@@ -352,6 +352,7 @@ government data under Decreto 8.777/2016, by Tomas Diez's decision, though its s
 | Santiago | 83.7 (2019), 71.6 (2022) | INE ENIA production and export income, same plants; EPF | sales to the rest of Chile; the two EPF rounds are not comparable |
 | Charlotte | 48.1 (2022) | 2022 Economic Census shipments, Census exports by NAICS (API key), BEA state PCE, all for North Carolina | sales to the rest of the US; city or metro spending |
 | Boston | 31.9 (2022) | the same three US sources, for Massachusetts | sales to the rest of the US; IT capacity is 2.6× local spending, mostly chips and instruments rather than consumer devices |
+| Kamakura | 84.0 (2020) | Kanagawa's own input-output table: output, exports abroad and household consumption in one table, producer prices | shipments to the rest of Japan (65% of food output); exports are the prefecture's estimate |
 
 ## Next
 

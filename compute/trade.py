@@ -114,6 +114,20 @@ PCE_LINES = {"Food and beverages": [27, 28],                  # food and drink, 
              "Other goods": [9, 11, 12, 15, 16, 17, 22, 41, 42, 45]}   # furniture, glassware, tools, recreation, supplies, books
 US_LICENCE = ("US Census Bureau and BEA: US Government works, no domestic copyright. The Census API terms ask for the "
               "notice: This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.")
+# Kanagawa (for Kamakura): the prefecture's own input-output table, 188 sectors at producer prices, million yen. One
+# table holds output, exports abroad (輸出, kept apart from shipments to other prefectures, 移出) and household
+# consumption, for every firm. The open-data catalogue's copy is CC BY 4.0 by the catalogue's terms; the same file on
+# pref.kanagawa.jp falls under a site policy that only allows quotation, so cite the catalogue.
+KANAGAWA_IO = {2020: ("https://catalog.opendata.pref.kanagawa.jp/dataset/cf270ab1-1e4a-434d-ada0-29e6a5261582/resource/"
+                      "5c652800-9194-4899-800c-488094dd6dbb/download/r2data188.xlsx", "生産者価格評価表（188部門）")}
+# IO rows standing in for each OPEN sector. Food includes feeds (1131, inside ISIC 10), not tobacco (1141).
+KANAGAWA_ROWS = {"Food and beverages": ["1111", "1112", "1113", "1114", "1115", "1116", "1119", "1121", "1129", "1131"],
+                 "Textiles and clothing": ["1511", "1512", "1513", "1514", "1519", "1521", "1522", "1529", "2311", "2312"],
+                 "Chemical products": ["2071"],
+                 "IT and communication": ["3211", "3299", "3411", "3412", "3421"],
+                 "Other goods": ["2511", "2521", "2531", "2591", "2599", "3911", "3919"]}
+KANAGAWA_LICENCE = ("Kanagawa Prefecture open data catalogue: CC BY 4.0 by default (opendata.pref.kanagawa.jp/terms); "
+                    "credit: 令和2年神奈川県産業連関表、神奈川県、CC BY 4.0")
 
 
 def port(city: str, year: int, get=waste._json) -> dict:
@@ -574,6 +588,20 @@ def us_exports(st: str, year: int, key: str, get=waste._json) -> dict:
     i, j, c = head.index("NAICS"), head.index("ALL_VAL_YR"), head.index("CTY_CODE")
     return {r[i]: float(r[j]) for r in rows if r[c] == "-"}
 
+
+
+def kanagawa_io(year: int, raw=waste._raw) -> dict:
+    """{sector: (output, exports abroad, household consumption)} in million yen, from Kanagawa's IO table."""
+    url, sheet = KANAGAWA_IO[year]
+    rows = waste._xlsx_rows(raw(url), sheet)
+    col = {v.strip(): k for r in rows[:6] for k, v in r.items() if v.strip() in ("県内生産額", "輸出", "家計消費支出")}
+    by = {r.get("A", "").strip(): r for r in rows if r.get("A", "").strip().isdigit()}
+    def total(codes, head):
+        return sum(float(by[c].get(col[head]) or 0) for c in codes)
+    missing = [c for cs in KANAGAWA_ROWS.values() for c in cs if c not in by]
+    if missing or len(col) < 3:
+        raise ValueError(f"Kanagawa IO {year}: rows {missing} or columns {sorted(col)} not found")
+    return {s: (total(cs, "県内生産額"), total(cs, "輸出"), total(cs, "家計消費支出")) for s, cs in KANAGAWA_ROWS.items()}
 
 if __name__ == "__main__":
     import sys
