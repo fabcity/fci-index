@@ -1859,6 +1859,107 @@
    }
   ]
  },
+ "charlotte_trade_adjusted": {
+  "reads_as": "Charlotte, read as North Carolina (no city or metro figures for spending exist): what the state's plants ship against what its households buy, and with the state's exports taken out. An UPPER bound on self-supply: sales to the rest of the US count as local. Exports are by state of origin of movement, a proxy for where goods were made. Shipments are at producers' prices and spending at purchasers' prices, so trade and transport margins sit in the denominator.",
+  "rows": [
+   {
+    "city": "Charlotte",
+    "territory": "North Carolina (state)",
+    "year": 2022,
+    "currency": "USD (M US$ in the sector rows)",
+    "goods_capacity_index": 58.9,
+    "goods_trade_adjusted_index": 48.1,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 35207.4,
+      "sold_abroad_meur": 1504.3,
+      "domestic_meur": 33703.1,
+      "consumption_meur": 44565.4,
+      "capacity": 0.7900162457870904,
+      "trade_adjusted": 0.7562607480915688,
+      "raw_capacity": 0.79,
+      "raw_trade_adjusted": 0.76,
+      "nace_used": [
+       "311",
+       "3121"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "beverages without tobacco (NAICS 3121, not 312)"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 9609.3,
+      "sold_abroad_meur": 2295.9,
+      "domestic_meur": 7313.4,
+      "consumption_meur": 15273.5,
+      "capacity": 0.6291492454250827,
+      "trade_adjusted": 0.478829788784496,
+      "raw_capacity": 0.63,
+      "raw_trade_adjusted": 0.48,
+      "nace_used": [
+       "313",
+       "314",
+       "315",
+       "316"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is clothing and footwear: BEA counts household textiles inside furniture and furnishings"
+     },
+     "Chemical products": {
+      "measured_meur": 21731.2,
+      "sold_abroad_meur": 9442.0,
+      "domestic_meur": 12289.2,
+      "consumption_meur": 19010.9,
+      "capacity": 1.0,
+      "trade_adjusted": 0.6464289538107086,
+      "raw_capacity": 1.14,
+      "raw_trade_adjusted": 0.65,
+      "nace_used": [
+       "3254"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is pharmaceutical and other medical products; therapeutic appliances left out"
+     },
+     "IT and communication": {
+      "measured_meur": 4919.0,
+      "sold_abroad_meur": 2409.4,
+      "domestic_meur": 2509.6,
+      "consumption_meur": 15675.3,
+      "capacity": 0.3138071998622036,
+      "trade_adjusted": 0.16010144067418167,
+      "raw_capacity": 0.31,
+      "raw_trade_adjusted": 0.16,
+      "nace_used": [
+       "334"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption includes recorded media, which BEA keeps on the equipment line"
+     },
+     "Other goods": {
+      "measured_meur": 9200.4,
+      "sold_abroad_meur": 1320.5,
+      "domestic_meur": 7879.8,
+      "consumption_meur": 37832.5,
+      "capacity": 0.24318651952686182,
+      "trade_adjusted": 0.2082823533205577,
+      "raw_capacity": 0.24,
+      "raw_trade_adjusted": 0.21,
+      "nace_used": [
+       "327",
+       "339"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "US Census Bureau 2022 Economic Census, manufacturing (EC2231BASIC, value of shipments); Census exports by NAICS and state of origin of movement, 2022; BEA SAPCE3 2022",
+    "licence": "US Census Bureau and BEA: US Government works, no domestic copyright. The Census API terms ask for the notice: This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau."
+   }
+  ]
+ },
  "material_flows": {
   "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
   "rows": [

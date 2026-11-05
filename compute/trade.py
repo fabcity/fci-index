@@ -95,6 +95,25 @@ NO_DATA = {
     "Boston": "US Census trade by port (porths) needs an API key, which this pipeline does not hold.",
     "Santiago": "Chile's customs declarations (Servicio Nacional de Aduanas) are monthly RAR/ZIP files, not read yet.",
 }
+# North Carolina (for Charlotte), read at state level: the Economic Census for what its plants ship, BEA's state PCE for
+# what its households buy, and Census exports by NAICS for what leaves the country. The exports API needs a key, read
+# from CENSUS_API_KEY or ~/.config/census/key and never written anywhere.
+US_CENSUS_EC = "https://www2.census.gov/programs-surveys/economic-census/data/{year}/sector31/EC{yy}31BASIC.zip"
+BEA_PCE = "https://apps.bea.gov/regional/zip/SAPCE.zip"
+US_EXPORTS = ("https://api.census.gov/data/timeseries/intltrade/exports/statenaics?get=ALL_VAL_YR,NAICS,CTY_CODE"
+              "&STATE={st}&time={year}-12&key={key}")
+# The NAICS standing in for each OPEN sector's NACE divisions. Beverages alone (3121): tobacco (3122) is a large
+# industry in North Carolina, and Boeing's sector is food and drink.
+US_NAICS = {"Food and beverages": ["311", "3121"], "Textiles and clothing": ["313", "314", "315", "316"],
+            "Chemical products": ["3254"], "IT and communication": ["334"], "Other goods": ["327", "339"]}
+# BEA SAPCE3 line codes standing in for each sector's COICOP groups.
+PCE_LINES = {"Food and beverages": [27, 28],                  # food and drink, alcohol included, off-premises
+             "Textiles and clothing": [30],                   # clothing and footwear
+             "Chemical products": [40],                       # pharmaceutical and other medical products
+             "IT and communication": [14, 24],                # video, audio, photo and IT equipment; phones
+             "Other goods": [9, 11, 12, 15, 16, 17, 22, 41, 42, 45]}   # furniture, glassware, tools, recreation, supplies, books
+US_LICENCE = ("US Census Bureau and BEA: US Government works, no domestic copyright. The Census API terms ask for the "
+              "notice: This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.")
 
 
 def port(city: str, year: int, get=waste._json) -> dict:
@@ -517,6 +536,43 @@ def gateway(years: list[int]) -> list[dict]:
                                  "error": f"{type(e).__name__}: {e}"[:200]})
     rows += [{"city": city, "year": None, "no_data": why} for city, why in NO_DATA.items()]
     return rows
+
+
+def us_production(fips: str, year: int, raw=waste._raw) -> dict:
+    """{naics: value of shipments, thousand US$} for one state, all establishments, from the Economic Census basic file.
+    A withheld or unavailable cell (flag D, N, S or X) is None, never zero."""
+    z = zipfile.ZipFile(io.BytesIO(raw(US_CENSUS_EC.format(year=year, yy=year % 100))))
+    dat = next(n for n in z.namelist() if n.endswith(".dat"))
+    want = {n for ns in US_NAICS.values() for n in ns}
+    out = {n: None for n in want}
+    for r in csv.DictReader(io.TextIOWrapper(z.open(dat), "latin-1"), delimiter="|"):
+        if r["#GEOTYPE"] == "02" and r["ST"] == fips and r["GEOCOMP"] == "00" and r["NAICS2022"] in want:
+            out[r["NAICS2022"]] = None if r["RCPTOT_F"] in ("D", "N", "S", "X") else float(r["RCPTOT"])
+    return out
+
+
+def us_spending(st: str, year: int, raw=waste._raw) -> dict:
+    """{sector: household spending, million US$} for one state from BEA SAPCE3, PCE by type of product."""
+    z = zipfile.ZipFile(io.BytesIO(raw(BEA_PCE)))
+    name = next(n for n in z.namelist() if n.startswith(f"SAPCE3_{st}_"))
+    lines = {int(r["LineCode"]): float(r[str(year)]) for r in csv.DictReader(io.TextIOWrapper(z.open(name), "latin-1"))
+             if (r.get("LineCode") or "").strip().isdigit()}
+    return {s: sum(lines[n] for n in ns) for s, ns in PCE_LINES.items()}
+
+
+def census_key() -> str | None:
+    import os
+    from pathlib import Path
+    p = Path.home() / ".config" / "census" / "key"
+    return os.environ.get("CENSUS_API_KEY") or (p.read_text().strip() if p.exists() else None)
+
+
+def us_exports(st: str, year: int, key: str, get=waste._json) -> dict:
+    """{naics: exports to all countries in the year, US$} for one state of origin of movement (December's year-to-date).
+    A code the API does not return is missing, not zero: the caller has to see it."""
+    head, *rows = get(US_EXPORTS.format(st=st, year=year, key=key))
+    i, j, c = head.index("NAICS"), head.index("ALL_VAL_YR"), head.index("CTY_CODE")
+    return {r[i]: float(r[j]) for r in rows if r[c] == "-"}
 
 
 if __name__ == "__main__":
