@@ -170,6 +170,10 @@ const PLANET = {
   ].map(([label, status]) => ({ label, status })),
 };
 
+// Places researched and found blocked: why there is no number and what to ask for (compute/blocked.json).
+const BLOCKED = JSON.parse(fs.readFileSync(path.join(HERE, "compute/blocked.json"), "utf8")).places;
+for (const [slug, b] of Object.entries(BLOCKED)) place(measured, slug).blocked = b;
+
 /* ---- scores ----------------------------------------------------------------------------------------------- */
 const sources = FCI_SCORE.sourcesByPlace(registry);
 const places = tracker.localities.map((l) => ({ slug: l.slug, name: l.name, country: l.country, territory: l.territory }));
@@ -189,7 +193,7 @@ for (const p of places) {
   const ok = sc.status === "simulated" ? sc.fci == null && sc.fci_range[0] === 0 && sc.fci_range[1] === sc.dido && !Object.keys(m.cells).length
                                        : Math.abs(sc.fci - sc.dido * sc.one_minus_pito) < 0.002 && sc.cells_measured === Object.keys(m.cells).length;
   if (!ok) throw new Error(`${p.slug}: score and label disagree (${JSON.stringify({ status: sc.status, fci: sc.fci, dido: sc.dido })})`);
-  const actions = FCI_SCORE.actions(sc, p);
+  const actions = FCI_SCORE.actions(sc, p, m.blocked);
   const links = { page: `${BASE}/city?locality=${p.slug}`, report: `${BASE}/report?locality=${p.slug}`, json: `${BASE}/api/v0/places/${p.slug}.json` };
   const { cells, ...summary } = sc;
   summaries.push({ ...p, ...summary, links });
@@ -197,7 +201,7 @@ for (const p of places) {
   const country_bracket = bracketOf(p.country), region_bracket = regionOf(p.slug);
   brackets[p.slug] = { country: country_bracket, region: region_bracket };
   fs.writeFileSync(path.join(out, "places", `${p.slug}.json`), JSON.stringify({ ...head, place: p, score: summary, actions,
-    cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, region_bracket, planet: PLANET, links }, null, 1) + "\n");
+    blocked: m.blocked || null, cells: cells.map((c) => ({ ...c, sources: c.sources.map((s) => s.id) })), indicators: m.indicators, boundaries: m.boundaries, country_bracket, region_bracket, planet: PLANET, links }, null, 1) + "\n");
 }
 const count = (s) => summaries.filter((x) => x.status === s).length;
 if (count("complete") + count("partial") + count("simulated") !== places.length) throw new Error("statuses do not partition the places");
