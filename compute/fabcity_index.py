@@ -392,6 +392,43 @@ def bali_trade_adjusted(path=None) -> dict:
             "licence": "BPS website terms, attribution; website tables usable by maintainer decision (awesome-fabcity-data#66)"}
 
 
+PUEBLA_READS_AS = ("Puebla, read as the state: what its establishments produce (2024 Economic Census, reference year 2023) "
+                   "against what its households spend (ENIGH 2024, monetary spending), and with the state's exports by "
+                   "producing establishment (ETEF 2023) taken out. An UPPER bound on self-supply: sales to the rest of "
+                   "Mexico count as local. Production is at producer prices and spending at purchasers' prices. Maquila "
+                   "plants report processing income, not the value of the goods, while exports carry full value.")
+MX_DIFFERS = {"Chemical products": "INEGI publishes exports for all chemicals (325), not pharmaceuticals (3254), so the "
+                                   "sector drops out rather than being prorated",
+              "IT and communication": "exports of 334 are not published for the state, so the sector drops out",
+              "Textiles and clothing": "leather (316) exports are confidential, so 316 drops out"}
+
+
+def puebla_trade_adjusted(year: int = 2023, spend_year: int = 2024, raw=waste._raw, get=waste._json) -> dict:
+    """Puebla: INEGI's census production against ENIGH household spending, with ETEF exports taken out, converted at
+    the World Bank's annual rate. A goods index over the sectors with exports published, weighted by that spending."""
+    prod, usd = trade.mx_production("pue", "21", raw), trade.mx_exports("21", year, raw)
+    spend, rate = trade.mx_spending("21", spend_year, raw), trade.wb_rate("MEX", year, get)
+    def abroad(n):
+        e = trade.ETEF_CODE.get(n, n)
+        if n == "3121" and prod.get("312") != prod.get("3121"):
+            return None                                       # 312 carries tobacco too, so it cannot stand for 3121
+        return None if e is None or usd.get(e) is None else usd[e] * rate
+    divisions = {n: (v * 1000, abroad(n)) for n, v in prod.items() if v is not None and n != "312"}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()}, divisions, trade.US_NAICS)
+    for s, why in MX_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Puebla", "territory": "Puebla (state)", "year": year, "spending_year": spend_year,
+            "currency": "MXN (M MXN in the sector rows)", "mxn_per_usd": rate,
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": f"INEGI Censos Económicos 2024 (reference {year}, producción bruta total); INEGI Exportaciones por "
+                      f"Entidad Federativa {year}; INEGI ENIGH {spend_year}; World Bank PA.NUS.FCRF {year}",
+            "licence": trade.INEGI_LICENCE}
+
+
 JP_DIFFERS = {"Food and beverages": "includes animal feeds (inside ISIC 10); consumption at producer prices",
               "Chemical products": "household consumption is out-of-pocket only: medicines dispensed under insurance are "
                                    "booked to the medical sector",
@@ -498,6 +535,7 @@ def run() -> None:
     out["us_trade_adjusted"] = {"reads_as": US_READS_AS, "rows": [us_trade_adjusted(*p) for p in US_PLACES]}
     out["kamakura_trade_adjusted"] = {"reads_as": KAMAKURA_READS_AS, "rows": [kamakura_trade_adjusted()]}
     out["bali_trade_adjusted"] = {"reads_as": BALI_READS_AS, "rows": [bali_trade_adjusted()]}
+    out["puebla_trade_adjusted"] = {"reads_as": PUEBLA_READS_AS, "rows": [puebla_trade_adjusted()]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -971,6 +1009,25 @@ def selftest() -> int:
         fake_bali.unlink()
     check("Bali IO: two industries summed into textiles, (6 - 2) / 8; one into food, (3 - 1) / 4",
           (bl["sectors"]["Textiles and clothing"]["trade_adjusted"], bl["sectors"]["Food and beverages"]["trade_adjusted"]), (0.5, 0.5))
+    # Puebla: unpublished exports drop a code out, never a prorated share; 312 stands for 3121 only without tobacco.
+    mx_prod = {n: 10.0 for ns in trade.US_NAICS.values() for n in ns} | {"312": 10.0}
+    real = (trade.mx_production, trade.mx_exports, trade.mx_spending, trade.wb_rate)
+    trade.mx_production = lambda a, e, raw: mx_prod
+    trade.mx_exports = lambda e, y, raw: {n: 1000.0 for n in ("311", "312", "313", "314", "315", "327", "339")} | {"316": None, "325": 5000.0}
+    trade.mx_spending = lambda e, y, raw: {s: 40.0 for s in trade.ENIGH_COICOP}
+    trade.wb_rate = lambda iso, y, get: 2.0
+    try:
+        pu = puebla_trade_adjusted(2023, 2024)
+        mx_prod["312"] = 30.0
+        pu2 = puebla_trade_adjusted(2023, 2024)
+    finally:
+        trade.mx_production, trade.mx_exports, trade.mx_spending, trade.wb_rate = real
+    fs = pu["sectors"]
+    check("Puebla: pharma (3254) drops out, never prorated from 325; 316 confidential drops out of textiles",
+          (fs["Chemical products"]["capacity"], fs["Textiles and clothing"]["nace_missing"]), (None, ["316"]))
+    check("Puebla: food is (10 + 10) M made, 2 + 2 M abroad (1,000 k US$ x 2), against 40 M",
+          round(fs["Food and beverages"]["trade_adjusted"], 3), 0.4)
+    check("Puebla: with tobacco in 312, beverages lose their export figure", pu2["sectors"]["Food and beverages"]["nace_missing"], ["3121"])
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 

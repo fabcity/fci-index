@@ -91,6 +91,7 @@ const goods = [
   ...[results.hamburg_trade_adjusted].filter((b) => !b.no_data).map((b) => ({ slug: "hamburg", territory: "Land Hamburg", ref: "fabcity/fci-index#23", ...b })),
   ...results.brazil_trade_adjusted.rows.map((b) => ({ slug: { "São Paulo": "sao-paulo", Recife: "recife" }[b.city], ref: "fabcity/fci-index#25", ...b })),
   ...(results.santiago_trade_adjusted ? results.santiago_trade_adjusted.rows : []).map((b) => ({ slug: "santiago-de-chile", ref: "fabcity/fci-index#29", ...b })),
+  ...(results.puebla_trade_adjusted ? results.puebla_trade_adjusted.rows : []).map((b) => ({ slug: "puebla", ref: "fabcity/fci-index#49", ...b })),
   ...(results.bali_trade_adjusted ? results.bali_trade_adjusted.rows : []).map((b) => ({ slug: "bali", ref: "fabcity/fci-index#49", ...b })),
   ...(results.kamakura_trade_adjusted ? results.kamakura_trade_adjusted.rows : []).map((b) => ({ slug: "kamakura", ref: "fabcity/fci-index#49", ...b })),
   ...(results.us_trade_adjusted ? results.us_trade_adjusted.rows : []).filter((b) => !b.no_data).map((b) => ({ slug: b.city.toLowerCase(), ref: { Charlotte: "fabcity/fci-index#47" }[b.city] || "fabcity/fci-index#48", ...b })),
@@ -101,6 +102,7 @@ const UPPER = { barcelona: "sales to the rest of Spain still count as local", ha
                 charlotte: "sales to the rest of the US still count as local; read as North Carolina state",
                 boston: "sales to the rest of the US still count as local; read as Massachusetts state",
                 kamakura: "shipments to the rest of Japan still count as local; read as Kanagawa prefecture",
+                puebla: "sales to the rest of Mexico still count as local; read as Puebla state; spending is ENIGH 2024",
                 bali: "shipments to the rest of Indonesia still count as local; foreign visitors' purchases count as exports; 2016, the latest provincial table" };
 // Places whose goods series change household survey between years: a trend across them is not like for like.
 const SURVEY_BREAK = { "santiago-de-chile": "the two years use different household budget surveys (2016-17 and 2021-22) and product codes" };

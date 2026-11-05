@@ -2247,6 +2247,109 @@
    }
   ]
  },
+ "puebla_trade_adjusted": {
+  "reads_as": "Puebla, read as the state: what its establishments produce (2024 Economic Census, reference year 2023) against what its households spend (ENIGH 2024, monetary spending), and with the state's exports by producing establishment (ETEF 2023) taken out. An UPPER bound on self-supply: sales to the rest of Mexico count as local. Production is at producer prices and spending at purchasers' prices. Maquila plants report processing income, not the value of the goods, while exports carry full value.",
+  "rows": [
+   {
+    "city": "Puebla",
+    "territory": "Puebla (state)",
+    "year": 2023,
+    "spending_year": 2024,
+    "currency": "MXN (M MXN in the sector rows)",
+    "mxn_per_usd": 17.7587166666666,
+    "goods_capacity_index": 98.0,
+    "goods_trade_adjusted_index": 84.1,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 82700.2,
+      "sold_abroad_meur": 17355.4,
+      "domestic_meur": 65344.8,
+      "consumption_meur": 85251.6,
+      "capacity": 0.9700721107381761,
+      "trade_adjusted": 0.7664938618136649,
+      "raw_capacity": 0.97,
+      "raw_trade_adjusted": 0.77,
+      "nace_used": [
+       "311",
+       "3121"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 40257.2,
+      "sold_abroad_meur": 11625.2,
+      "domestic_meur": 28632.0,
+      "consumption_meur": 17355.5,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 2.32,
+      "raw_trade_adjusted": 1.65,
+      "nace_used": [
+       "313",
+       "314",
+       "315"
+      ],
+      "nace_missing": [
+       "316"
+      ],
+      "state": "measured, partial",
+      "differs_from_boeing": "leather (316) exports are confidential, so 316 drops out"
+     },
+     "Chemical products": {
+      "measured_meur": 0.0,
+      "sold_abroad_meur": 0.0,
+      "domestic_meur": 0.0,
+      "consumption_meur": 5109.8,
+      "capacity": null,
+      "trade_adjusted": null,
+      "raw_capacity": null,
+      "raw_trade_adjusted": null,
+      "nace_used": [],
+      "nace_missing": [
+       "3254"
+      ],
+      "state": "no data",
+      "differs_from_boeing": "INEGI publishes exports for all chemicals (325), not pharmaceuticals (3254), so the sector drops out rather than being prorated"
+     },
+     "IT and communication": {
+      "measured_meur": 0.0,
+      "sold_abroad_meur": 0.0,
+      "domestic_meur": 0.0,
+      "consumption_meur": 3277.9,
+      "capacity": null,
+      "trade_adjusted": null,
+      "raw_capacity": null,
+      "raw_trade_adjusted": null,
+      "nace_used": [],
+      "nace_missing": [
+       "334"
+      ],
+      "state": "no data",
+      "differs_from_boeing": "exports of 334 are not published for the state, so the sector drops out"
+     },
+     "Other goods": {
+      "measured_meur": 25517.7,
+      "sold_abroad_meur": 682.9,
+      "domestic_meur": 24834.8,
+      "consumption_meur": 22232.3,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 1.15,
+      "raw_trade_adjusted": 1.12,
+      "nace_used": [
+       "327",
+       "339"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "INEGI Censos Económicos 2024 (reference 2023, producción bruta total); INEGI Exportaciones por Entidad Federativa 2023; INEGI ENIGH 2024; World Bank PA.NUS.FCRF 2023",
+    "licence": "INEGI Términos de Libre Uso (inegi.org.mx/inegi/terminos.html): commercial use and derived products allowed, credit 'Fuente: INEGI'. Exchange rate: World Bank PA.NUS.FCRF, CC BY 4.0"
+   }
+  ]
+ },
  "material_flows": {
   "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
   "rows": [
