@@ -1859,8 +1859,8 @@
    }
   ]
  },
- "charlotte_trade_adjusted": {
-  "reads_as": "Charlotte, read as North Carolina (no city or metro figures for spending exist): what the state's plants ship against what its households buy, and with the state's exports taken out. An UPPER bound on self-supply: sales to the rest of the US count as local. Exports are by state of origin of movement, a proxy for where goods were made. Shipments are at producers' prices and spending at purchasers' prices, so trade and transport margins sit in the denominator.",
+ "us_trade_adjusted": {
+  "reads_as": "US places, read as their states (no city or metro figures for spending exist): what the state's plants ship against what its households buy, and with the state's exports taken out. An UPPER bound on self-supply: sales to the rest of the US count as local. Exports are by state of origin of movement, a proxy for where goods were made. Shipments are at producers' prices and spending at purchasers' prices, so trade and transport margins sit in the denominator.",
   "rows": [
    {
     "city": "Charlotte",
@@ -1947,6 +1947,103 @@
       "trade_adjusted": 0.2082823533205577,
       "raw_capacity": 0.24,
       "raw_trade_adjusted": 0.21,
+      "nace_used": [
+       "327",
+       "339"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     }
+    },
+    "source": "US Census Bureau 2022 Economic Census, manufacturing (EC2231BASIC, value of shipments); Census exports by NAICS and state of origin of movement, 2022; BEA SAPCE3 2022",
+    "licence": "US Census Bureau and BEA: US Government works, no domestic copyright. The Census API terms ask for the notice: This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau."
+   },
+   {
+    "city": "Boston",
+    "territory": "Massachusetts (state)",
+    "year": 2022,
+    "currency": "USD (M US$ in the sector rows)",
+    "goods_capacity_index": 41.4,
+    "goods_trade_adjusted_index": 31.9,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 12654.3,
+      "sold_abroad_meur": 378.0,
+      "domestic_meur": 12276.3,
+      "consumption_meur": 33421.4,
+      "capacity": 0.3786291717282938,
+      "trade_adjusted": 0.3673198766060069,
+      "raw_capacity": 0.38,
+      "raw_trade_adjusted": 0.37,
+      "nace_used": [
+       "311",
+       "3121"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "beverages without tobacco (NAICS 3121, not 312)"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 1208.0,
+      "sold_abroad_meur": 283.7,
+      "domestic_meur": 924.4,
+      "consumption_meur": 10817.8,
+      "capacity": 0.1116703950895746,
+      "trade_adjusted": 0.08544902540257725,
+      "raw_capacity": 0.11,
+      "raw_trade_adjusted": 0.09,
+      "nace_used": [
+       "313",
+       "314",
+       "315"
+      ],
+      "nace_missing": [
+       "316"
+      ],
+      "state": "measured, partial",
+      "differs_from_boeing": "consumption is clothing and footwear: BEA counts household textiles inside furniture and furnishings"
+     },
+     "Chemical products": {
+      "measured_meur": 10303.2,
+      "sold_abroad_meur": 4955.7,
+      "domestic_meur": 5347.5,
+      "consumption_meur": 14370.4,
+      "capacity": 0.7169718309859155,
+      "trade_adjusted": 0.3721189608500808,
+      "raw_capacity": 0.72,
+      "raw_trade_adjusted": 0.37,
+      "nace_used": [
+       "3254"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption is pharmaceutical and other medical products; therapeutic appliances left out"
+     },
+     "IT and communication": {
+      "measured_meur": 23260.4,
+      "sold_abroad_meur": 7369.0,
+      "domestic_meur": 15891.4,
+      "consumption_meur": 9043.6,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 2.57,
+      "raw_trade_adjusted": 1.76,
+      "nace_used": [
+       "334"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "consumption includes recorded media, which BEA keeps on the equipment line"
+     },
+     "Other goods": {
+      "measured_meur": 7008.3,
+      "sold_abroad_meur": 3579.0,
+      "domestic_meur": 3429.3,
+      "consumption_meur": 29573.6,
+      "capacity": 0.2369778789190359,
+      "trade_adjusted": 0.11595939371601699,
+      "raw_capacity": 0.24,
+      "raw_trade_adjusted": 0.12,
       "nace_used": [
        "327",
        "339"

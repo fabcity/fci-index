@@ -351,7 +351,7 @@ government data under Decreto 8.777/2016, by Tomas Diez's decision, though its s
 | Bali | none yet | BPS website tables, usable by decision: large/medium industry to 2021, exports by HS chapter | micro and small industry by division (the larger part), the export share, 2022+ |
 | Santiago | 83.7 (2019), 71.6 (2022) | INE ENIA production and export income, same plants; EPF | sales to the rest of Chile; the two EPF rounds are not comparable |
 | Charlotte | 48.1 (2022) | 2022 Economic Census shipments, Census exports by NAICS (API key), BEA state PCE, all for North Carolina | sales to the rest of the US; city or metro spending |
-| Boston | none | | the same three US sources would serve Massachusetts; not run yet |
+| Boston | 31.9 (2022) | the same three US sources, for Massachusetts | sales to the rest of the US; IT capacity is 2.6× local spending, mostly chips and instruments rather than consumer devices |
 
 ## Next
 
