@@ -363,6 +363,35 @@ KAMAKURA_READS_AS = ("Kamakura, read as Kanagawa: the prefecture's own input-out
                      "include purchases by non-residents. 2020 is a pandemic year; the 2015 table gives 85.2.")
 
 
+BALI_READS_AS = ("Bali, read as the province: BPS Bali's 2016 input-output table, output against household consumption "
+                 "(goods from all origins) at producer prices, and with exports abroad taken out, every firm size. An UPPER "
+                 "bound on self-supply: shipments to the rest of Indonesia count as local. Exports abroad include what "
+                 "foreign visitors buy in Bali, by the national-accounts rule. 2016 is the latest provincial table.")
+ID_DIFFERS = {"Chemical products": "pharmaceuticals inside chemicals (KBLI 20-21, one IO industry)",
+              "IT and communication": "electronics inside metal products and electrical equipment (KBLI 25-27)",
+              "Other goods": "includes repair and installation of machinery (KBLI 33), so capacity is overstated"}
+
+
+def bali_trade_adjusted(path=None) -> dict:
+    """Bali: output against household consumption from BPS Bali's 2016 provincial IO table, and with exports abroad
+    taken out. Every firm, one table, producer prices on both sides. Weighted by that consumption."""
+    io_ = trade.bali_io(path)
+    spend = {s: v[2] for s, v in io_.items()}
+    secs = trade_adjust({s: {"consumption_meur": v} for s, v in spend.items()},
+                        {s: (v[0] * 1000, v[1] * 1000) for s, v in io_.items()}, {s: [s] for s in io_})
+    for s, why in ID_DIFFERS.items():
+        secs[s]["differs_from_boeing"] = why
+    def goods(k):
+        rows = [{"ratio": o[k], "weight": spend[s]} for s, o in secs.items() if o[k] is not None]
+        return round(index(rows), 1) if rows else None
+    return {"city": "Bali", "territory": "Bali (province)", "year": 2016, "currency": "IDR (M Rp in the sector rows)",
+            "goods_capacity_index": goods("capacity"), "goods_trade_adjusted_index": goods("trade_adjusted"),
+            "sectors": secs,
+            "source": "BPS Provinsi Bali, Tabel Input Output Provinsi Bali Tahun 2016, Tabel 4 (total transactions, producer "
+                      "prices), committed extract compute/data/" + trade.BALI_IO,
+            "licence": "BPS website terms, attribution; website tables usable by maintainer decision (awesome-fabcity-data#66)"}
+
+
 JP_DIFFERS = {"Food and beverages": "includes animal feeds (inside ISIC 10); consumption at producer prices",
               "Chemical products": "household consumption is out-of-pocket only: medicines dispensed under insurance are "
                                    "booked to the medical sector",
@@ -468,6 +497,7 @@ def run() -> None:
         "rows": [santiago_trade_adjusted(2019, "VIII"), santiago_trade_adjusted(2022, "IX")]}
     out["us_trade_adjusted"] = {"reads_as": US_READS_AS, "rows": [us_trade_adjusted(*p) for p in US_PLACES]}
     out["kamakura_trade_adjusted"] = {"reads_as": KAMAKURA_READS_AS, "rows": [kamakura_trade_adjusted()]}
+    out["bali_trade_adjusted"] = {"reads_as": BALI_READS_AS, "rows": [bali_trade_adjusted()]}
     out["material_flows"] = {
         "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person "
                     "safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials "
@@ -932,6 +962,15 @@ def selftest() -> int:
     check("Kanagawa IO: ten food rows summed, output 20, exports 10, consumption 40 (M JPY)", food, (20.0, 10.0, 40.0))
     check("Kamakura: (2 - 1) / 4 per row in every sector, so 25.0; a missing IO row stops the run",
           (kn["goods_trade_adjusted_index"], kn["goods_capacity_index"], gone), (25.0, 50.0, True))
+    fake_bali = Path(__file__).resolve().parent / "results" / "_selftest_bali.json"
+    fake_bali.write_text(json.dumps({"industries": {i: {"output": 3, "exports_abroad": 1, "household": 4}
+                                     for i in ("I-13", "I-15", "I-16", "I-19", "I-21", "I-23", "I-27")}}))
+    try:
+        bl = bali_trade_adjusted(fake_bali)
+    finally:
+        fake_bali.unlink()
+    check("Bali IO: two industries summed into textiles, (6 - 2) / 8; one into food, (3 - 1) / 4",
+          (bl["sectors"]["Textiles and clothing"]["trade_adjusted"], bl["sectors"]["Food and beverages"]["trade_adjusted"]), (0.5, 0.5))
     print(f"\nfabcity_index selftest: {bad} failed.")
     return 1 if bad else 0
 

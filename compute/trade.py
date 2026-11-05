@@ -126,6 +126,11 @@ KANAGAWA_ROWS = {"Food and beverages": ["1111", "1112", "1113", "1114", "1115", 
                  "Chemical products": ["2071"],
                  "IT and communication": ["3211", "3299", "3411", "3412", "3421"],
                  "Other goods": ["2511", "2521", "2531", "2591", "2599", "3911", "3919"]}
+# Bali: BPS Bali's 2016 provincial input-output table (Tabel 4), every firm size, exports abroad kept apart from
+# shipments to other provinces. bps.go.id challenges scripts, so a browser-read extract is committed (awesome-fabcity-data#69).
+BALI_IO = "bps-bali-io-2016.json"
+BALI_INDUSTRIES = {"Food and beverages": ["I-13"], "Textiles and clothing": ["I-15", "I-16"], "Chemical products": ["I-19"],
+                   "IT and communication": ["I-23"], "Other goods": ["I-21", "I-27"]}
 KANAGAWA_LICENCE = ("Kanagawa Prefecture open data catalogue: CC BY 4.0 by default (opendata.pref.kanagawa.jp/terms); "
                     "credit: 令和2年神奈川県産業連関表、神奈川県、CC BY 4.0")
 
@@ -602,6 +607,16 @@ def kanagawa_io(year: int, raw=waste._raw) -> dict:
     if missing or len(col) < 3:
         raise ValueError(f"Kanagawa IO {year}: rows {missing} or columns {sorted(col)} not found")
     return {s: (total(cs, "県内生産額"), total(cs, "輸出"), total(cs, "家計消費支出")) for s, cs in KANAGAWA_ROWS.items()}
+
+
+def bali_io(path=None) -> dict:
+    """{sector: (output, exports abroad, household consumption)} in million Rp, from the committed BPS Bali IO extract."""
+    from pathlib import Path
+    d = json.loads((path or Path(__file__).resolve().parent / "data" / BALI_IO).read_text(encoding="utf-8"))
+    ind = d["industries"]
+    return {s: tuple(sum(ind[i][k] for i in codes) for k in ("output", "exports_abroad", "household"))
+            for s, codes in BALI_INDUSTRIES.items()}
+
 
 if __name__ == "__main__":
     import sys

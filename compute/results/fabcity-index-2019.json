@@ -2152,6 +2152,101 @@
    }
   ]
  },
+ "bali_trade_adjusted": {
+  "reads_as": "Bali, read as the province: BPS Bali's 2016 input-output table, output against household consumption (goods from all origins) at producer prices, and with exports abroad taken out, every firm size. An UPPER bound on self-supply: shipments to the rest of Indonesia count as local. Exports abroad include what foreign visitors buy in Bali, by the national-accounts rule. 2016 is the latest provincial table.",
+  "rows": [
+   {
+    "city": "Bali",
+    "territory": "Bali (province)",
+    "year": 2016,
+    "currency": "IDR (M Rp in the sector rows)",
+    "goods_capacity_index": 62.4,
+    "goods_trade_adjusted_index": 50.5,
+    "sectors": {
+     "Food and beverages": {
+      "measured_meur": 10077641.0,
+      "sold_abroad_meur": 1626793.0,
+      "domestic_meur": 8450848.0,
+      "consumption_meur": 16780225,
+      "capacity": 0.6005665001512197,
+      "trade_adjusted": 0.5036194687496741,
+      "raw_capacity": 0.6,
+      "raw_trade_adjusted": 0.5,
+      "nace_used": [
+       "Food and beverages"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Textiles and clothing": {
+      "measured_meur": 4613413.0,
+      "sold_abroad_meur": 2862805.0,
+      "domestic_meur": 1750608.0,
+      "consumption_meur": 2150709,
+      "capacity": 1.0,
+      "trade_adjusted": 0.8139678589711579,
+      "raw_capacity": 2.15,
+      "raw_trade_adjusted": 0.81,
+      "nace_used": [
+       "Textiles and clothing"
+      ],
+      "nace_missing": [],
+      "state": "measured"
+     },
+     "Chemical products": {
+      "measured_meur": 252667.0,
+      "sold_abroad_meur": 198601.0,
+      "domestic_meur": 54066.0,
+      "consumption_meur": 835654,
+      "capacity": 0.30235839234898654,
+      "trade_adjusted": 0.06469902615197198,
+      "raw_capacity": 0.3,
+      "raw_trade_adjusted": 0.06,
+      "nace_used": [
+       "Chemical products"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "pharmaceuticals inside chemicals (KBLI 20-21, one IO industry)"
+     },
+     "IT and communication": {
+      "measured_meur": 649375.0,
+      "sold_abroad_meur": 591954.0,
+      "domestic_meur": 57421.0,
+      "consumption_meur": 2281144,
+      "capacity": 0.28467076168799516,
+      "trade_adjusted": 0.025172018951894314,
+      "raw_capacity": 0.28,
+      "raw_trade_adjusted": 0.03,
+      "nace_used": [
+       "IT and communication"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "electronics inside metal products and electrical equipment (KBLI 25-27)"
+     },
+     "Other goods": {
+      "measured_meur": 7872013.0,
+      "sold_abroad_meur": 1459093.0,
+      "domestic_meur": 6412920.0,
+      "consumption_meur": 1669022,
+      "capacity": 1.0,
+      "trade_adjusted": 1.0,
+      "raw_capacity": 4.72,
+      "raw_trade_adjusted": 3.84,
+      "nace_used": [
+       "Other goods"
+      ],
+      "nace_missing": [],
+      "state": "measured",
+      "differs_from_boeing": "includes repair and installation of machinery (KBLI 33), so capacity is overstated"
+     }
+    },
+    "source": "BPS Provinsi Bali, Tabel Input Output Provinsi Bali Tahun 2016, Tabel 4 (total transactions, producer prices), committed extract compute/data/bps-bali-io-2016.json",
+    "licence": "BPS website terms, attribution; website tables usable by maintainer decision (awesome-fabcity-data#66)"
+   }
+  ]
+ },
  "material_flows": {
   "reads_as": "Domestic material consumption per person, the one material-use measure with a published per-person safe level (about 6-8 t by 2050: UNEP IRP 2011, Bringezu 2015). DMC leaves out the raw materials embodied in imports, so for an importing region it is a floor on its footprint, not the footprint.",
   "rows": [
