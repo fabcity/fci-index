@@ -15,6 +15,15 @@ another repository, and it says which.
 - https://index.fab.city/api/v0/measured.json: what the open calculation measured, and which cell it scores.
 - https://index.fab.city/method: the method, with a worked example.
 
+## For an agent, directly
+
+- https://index.fab.city/mcp: the Index as an MCP server (Streamable HTTP, no account). Tools: list_places, get_place,
+  list_sources, get_source, review_queue, cell_definition, how_to_contribute. Prompts: review_source, add_source.
+  Claude Code: `claude mcp add --transport http fab-city-index https://index.fab.city/mcp`. How to connect from
+  other agents: https://index.fab.city/operate/agent
+- https://index.fab.city/operate/add-source?locality=<slug>: file an open dataset for a place as a candidate, by hand
+  or from an agent's reply. https://index.fab.city/operate/source-review?locality=<slug>: read one for a real place.
+
 ## This repository
 
 - [AGENTS.md](https://raw.githubusercontent.com/fabcity/fci-index/main/AGENTS.md): the routing table, the build and self-tests, and the rules a page or an answer must keep.

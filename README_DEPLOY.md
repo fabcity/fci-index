@@ -58,3 +58,16 @@ Pages keeps every deployment: dashboard → Deployments → "Rollback to this de
 - **Staging before production, always.** Tier 2 sees `index.fab.city`, never a `.pages.dev` URL.
 - v0 labels, mock pills, ρ "protocol pending" qualifiers ship as-is — they are the design, not an apology. When methodology v1 lands, the swap is a data.js edit + redeploy.
 - Before tier 2 goes out: `/operate/` gets its "demonstration workbench — accounts arrive with M+2" banner reviewed, and the stale-date pass re-checked (done 2026-06-06).
+
+## Filing from the site (`/api/submit`)
+
+`functions/api/submit.js` opens a GitHub issue in `fabcity/awesome-fabcity-data` for a review or a candidate source
+written out on the site, so a contributor needs no GitHub account. It needs one secret on the Pages project, a
+fine-grained token with *Issues: read and write* on that one repository and nothing else:
+
+```
+wrangler pages secret put GITHUB_TOKEN --project-name fci-index
+```
+
+Without it the route answers 503 and both pages fall back to filing from the person's own account. `/mcp` needs
+nothing: it reads the public API and the public registry.

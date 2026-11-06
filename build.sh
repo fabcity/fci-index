@@ -222,12 +222,14 @@ cat > "$OUT/_redirects" <<'REDIR'
 /atlas/map         /city            301
 /atlas/map.html    /city            301
 REDIR
-# Pages Functions run only on the workbench's protected act pages (functions/operate/
-# _middleware.js sends their pages.dev copies to the Access-guarded custom domain).
+# Pages Functions run on the workbench's protected act pages (functions/operate/_middleware.js sends
+# their pages.dev copies to the Access-guarded custom domain), on /mcp (functions/mcp.js, the Index as
+# an MCP server) and on /api/submit (functions/api/submit.js, a review or a source filed from the site).
 # Everything else stays static, so _redirects keeps applying to it.
 cat > "$OUT/_routes.json" <<'ROUTES'
-{ "version": 1, "include": ["/operate/intake*", "/operate/review-queue*", "/operate/sovereignty*"], "exclude": [] }
+{ "version": 1, "include": ["/operate/intake*", "/operate/review-queue*", "/operate/sovereignty*", "/mcp", "/api/submit"], "exclude": [] }
 ROUTES
+for f in functions/mcp.js functions/api/submit.js; do node --check "$f" || { echo "FAIL: $f does not parse"; exit 1; }; done
 
 NREDIR=$(grep -c '^/' "$OUT/_redirects")
 echo "wrote _redirects: ${NREDIR} rules"
