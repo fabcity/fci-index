@@ -1,10 +1,11 @@
 /* POST /api/submit: a review or a candidate source, written out on the site, becomes a GitHub issue in
    awesome-fabcity-data without the person needing a GitHub account. The issue is opened by the Index's own
    token (a Pages secret, GITHUB_TOKEN, scoped to issues on that one repository); the person's name and
-   organisation are in the body, which is the same shape the registry's workflows parse. A review titled
-   "review: <entry>" becomes a pull request by itself; a source titled "source: <id>" waits for a maintainer
-   until the registry grows the matching workflow. Without the secret this answers 503, and the pages fall
-   back to filing from the person's own account. */
+   organisation are in the body, which is the same shape the registry's workflows parse. Both become pull
+   requests by themselves: a review titled "review: <entry>" through review-to-pr.yml, a source titled
+   "source: <id>" through source-to-pr.yml (awesome-fabcity-data#109), which writes the candidate entry from
+   the fields and only cross-checks the "### Entry (YAML)" block. Without the secret this answers 503, and the
+   pages fall back to filing from the person's own account. */
 const REPO = "fabcity/awesome-fabcity-data";
 const RATE = new Map();   /* ponytail: per-isolate, per-IP; fine for the handful of people who file in a day */
 
