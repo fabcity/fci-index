@@ -19,6 +19,8 @@ python3 compute/labs.py --selftest            # no network; the lab directory tr
 python3 compute/labs.py                       # one dated archive freeze, writes results/labs.json
 python3 compute/fabcities.py --selftest       # no network; the members sheet matched to the tracker on fake rows
 python3 compute/fabcities.py                  # the archive's fabnetdata.xlsx, writes results/fabcities.json
+python3 compute/v1_stubs.py --selftest        # Method v1 proposal, in review: the ownership and local-model readers, stubs only
+node compute/v1_effect.mjs ../fci-3-prototype # v1 proposal: every place under v0 and v1 (needs the v1 branch), writes results/v1-effect.json
 ```
 
 Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's

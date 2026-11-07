@@ -1,0 +1,85 @@
+diff --git a/method.html b/method.html
+index ac7110e..659338b 100644
+--- a/method.html
++++ b/method.html
+@@ -38,6 +38,7 @@
+ 
+       <p class="page-header__deck">
+         The formula is settled. The weights and the rule for ρ are v0 and under review; the open points are in §7.
++        A proposal for v1 is with the reviewers, at the end of §4.
+       </p>
+     </div>
+   </header>
+@@ -173,6 +174,64 @@
+         its data in years. A place that stops updating its data moves down the ranking every year, and its page says how much
+         each measurement still counts.
+       </p>
++
++      <div id="v1">
++      <h3>Proposed for v1, in review</h3>
++      <p>
++        <strong>Two indicators read inside cells.</strong> Today a cell enters DIDO as 1 or 0, it has an open source for
++        the place or it doesn't. We are proposing that some cells read more than that, starting with two shares, each
++        between 0 and 1.
++      </p>
++      <ul>
++        <li><strong>Production capacity owned locally</strong> (<span class="mono">capacity_ownership_share</span>). Of the
++          machines mapped in a place, the share owned by local public bodies, cooperatives, residents or firms owned in the
++          place. It is read in Economic × Community, Economic × City and Governance × City.</li>
++        <li><strong>Nodes running models under local control</strong> (<span class="mono">local_model_share</span>). Of the
++          design and production nodes a place reports, the share whose AI runs on hardware the node controls, or on
++          open-weight models it can inspect and retrain. It is read in Social × City, Governance × City and Governance × Region.</li>
++      </ul>
++      <p>A cell's DIDO term becomes</p>
++      <div class="method-formula" style="font-size: clamp(1rem, 1.8vw, 1.4rem); padding: 1.25rem;">
++        $$ d_c \;=\; \Big(1 - \sum_i w_{ci}\Big)\, o_c \;+\; \sum_i w_{ci}\, x_i\, f_i $$
++      </div>
++      <p>
++        where $o_c$ is the v0 yes or no, $x_i$ is the place's share and $f_i$ is the same age discount as above. DIDO is still
++        the mean of $d_c$ over the twenty cells with the v0 weights, so the formula, PITO and ρ stay as they are.
++      </p>
++      <p>
++        Inside a cell, each indicator the registry lists for it counts the same. A cell with
++        $n$ listed indicators gives a new one $1/(n+1)$, and the yes or no keeps the rest, because it already stands for
++        those $n$. That gives 1/4 in Economic × Community, Social × City and Governance × Region, 1/5 in Economic × City,
++        and 1/7 each in Governance × City, which takes both.
++      </p>
++      <p>
++        The numbers would come from the places. A lab or a city reports each of its nodes, how many machines, who owns
++        them, where its models run, and the date, in a node report whose schema is in the
++        <a href="https://github.com/fabcity/awesome-fabcity-data">registry</a>. The fablabs.io directory and Open Know-Where
++        say where machines are, but neither says who owns them, and no directory says where a node's models run.
++      </p>
++      <p>
++        Scores go down before they go up. Until a place reports, both shares count as nothing inside their
++        cells, the way a cell with no open data counts today, and the coverage page lists them as unmeasured everywhere.
++        On the registry and data of 6 November 2026, 41 of the 61 places would lose some DIDO. Barcelona would lose the most,
++        0.084 (0.621 to 0.537), and Boston and São Paulo would swap places in the ranking. A place that reports a share of 1
++        in cells where it already has open data would get its v0 score back. Paris's 37.58 and Hamburg's 37.00 are results of other studies and none of this changes them.
++      </p>
++      <p>
++        The proposal touches six things already marked v0 or under review, and the reviewers have to settle each one.
++      </p>
++      <ol>
++        <li>The weights in §3 are v0. The weights inside a cell are a new layer on top of them, and Economic × Community is
++          one of the three cells whose v0 split already needs a better argument.</li>
++        <li>Missing data counting 0 in DIDO is a v0 rule. This carries it from cells down to the indicators inside them.</li>
++        <li>The age discount is v0 and works only on PITO today. Here it would work inside DIDO for the first time.</li>
++        <li>The top of this section describes DIDO as a mean of graded cell scores, while the Index as built reads each
++          cell as 1 or 0. This is a first step towards the graded version, and the text and the code should end up saying the same thing.</li>
++        <li>Governance × City lists ρ among its indicators, so ρ is one of the five its yes or no stands for when the weights
++          are counted. ρ itself and its rule are untouched.</li>
++        <li>A place is labelled complete when every cell has open data. Whether complete should also need these shares is open.</li>
++      </ol>
++      </div>
+     </div>
+   </section>
+ 
+@@ -232,6 +291,7 @@
+         <li><strong>The ρ rule is drafted on the node;</strong> how ρ is weighted across scales, and what counts when a council says no, are open.</li>
+         <li><strong>Vivanco's matrix is a working paper and a 2025 thesis,</strong> not yet peer reviewed on its own.</li>
+         <li><strong>Utopies' LOCAL SHIFT and LOCAL FOOTPRINT are proprietary;</strong> we cite the published method and the 2018 numbers, not their simulator.</li>
++        <li><strong>A v1 proposal is with the reviewers,</strong> two indicators read inside cells (<a href="#v1">§4</a>). Until it is accepted every score on this site is v0.</li>
+       </ol>
+     </div>
+   </section>

@@ -1,0 +1,1285 @@
+{
+ "format": "fci-v1-effect-0",
+ "generated": "2026-11-07T02:37:13.264Z",
+ "scored_in": 2026,
+ "api_generated": "2026-11-06T14:35:04.330Z",
+ "registry_commit": "c182d49cc1e4ac857bb6558f004db5349ed00a3e",
+ "reads_as": "Each place's DIDO and FCI under Method v0 (as published) and under the v1 proposal on the day it would start, when no place has reported either new indicator, so both count 0 inside their cells. A simulated place's FCI is a range.",
+ "dido_weight_total": 12.399999999999999,
+ "cells_touched": {
+  "Economic|Community": 0.25,
+  "Economic|City": 0.2,
+  "Governance|City": 0.2857142857142857,
+  "Social|City": 0.25,
+  "Governance|Region": 0.25
+ },
+ "largest_possible_dido_drop": 0.084,
+ "places_open_in_all_touched_cells": [
+  "barcelona"
+ ],
+ "places_whose_dido_falls": 41,
+ "places": [
+  {
+   "slug": "barcelona",
+   "name": "Barcelona",
+   "status": "partial",
+   "cells_open": 13,
+   "dido_v0": 0.621,
+   "dido_v1_day_one": 0.537,
+   "dido_change": -0.084,
+   "dido_v1_full_report": 0.621,
+   "fci_v0": 0.454,
+   "fci_v1_day_one": 0.393,
+   "rank_v0": 1,
+   "rank_v1_day_one": 1
+  },
+  {
+   "slug": "boston",
+   "name": "Boston",
+   "status": "partial",
+   "cells_open": 10,
+   "dido_v0": 0.444,
+   "dido_v1_day_one": 0.374,
+   "dido_change": -0.07,
+   "dido_v1_full_report": 0.458,
+   "fci_v0": 0.113,
+   "fci_v1_day_one": 0.095,
+   "rank_v0": 4,
+   "rank_v1_day_one": 5
+  },
+  {
+   "slug": "amsterdam",
+   "name": "Amsterdam",
+   "status": "simulated",
+   "cells_open": 5,
+   "dido_v0": 0.298,
+   "dido_v1_day_one": 0.229,
+   "dido_change": -0.069,
+   "dido_v1_full_report": 0.313,
+   "fci_v0": [
+    0,
+    0.298
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.229
+   ],
+   "rank_v0": 11,
+   "rank_v1_day_one": 11
+  },
+  {
+   "slug": "charlotte",
+   "name": "Charlotte",
+   "status": "partial",
+   "cells_open": 13,
+   "dido_v0": 0.613,
+   "dido_v1_day_one": 0.552,
+   "dido_change": -0.061,
+   "dido_v1_full_report": 0.636,
+   "fci_v0": 0.236,
+   "fci_v1_day_one": 0.213,
+   "rank_v0": 2,
+   "rank_v1_day_one": 2
+  },
+  {
+   "slug": "bali",
+   "name": "Bali",
+   "status": "partial",
+   "cells_open": 8,
+   "dido_v0": 0.363,
+   "dido_v1_day_one": 0.308,
+   "dido_change": -0.055,
+   "dido_v1_full_report": 0.391,
+   "fci_v0": 0.037,
+   "fci_v1_day_one": 0.031,
+   "rank_v0": 9,
+   "rank_v1_day_one": 9
+  },
+  {
+   "slug": "montreal",
+   "name": "Montreal",
+   "status": "simulated",
+   "cells_open": 5,
+   "dido_v0": 0.258,
+   "dido_v1_day_one": 0.207,
+   "dido_change": -0.051,
+   "dido_v1_full_report": 0.29,
+   "fci_v0": [
+    0,
+    0.258
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.207
+   ],
+   "rank_v0": 12,
+   "rank_v1_day_one": 12
+  },
+  {
+   "slug": "plymouth",
+   "name": "Plymouth",
+   "status": "simulated",
+   "cells_open": 4,
+   "dido_v0": 0.226,
+   "dido_v1_day_one": 0.175,
+   "dido_change": -0.051,
+   "dido_v1_full_report": 0.258,
+   "fci_v0": [
+    0,
+    0.226
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.175
+   ],
+   "rank_v0": 14,
+   "rank_v1_day_one": 14
+  },
+  {
+   "slug": "hamburg",
+   "name": "Hamburg",
+   "status": "partial",
+   "cells_open": 7,
+   "dido_v0": 0.282,
+   "dido_v1_day_one": 0.233,
+   "dido_change": -0.049,
+   "dido_v1_full_report": 0.317,
+   "fci_v0": 0.073,
+   "fci_v1_day_one": 0.06,
+   "rank_v0": 8,
+   "rank_v1_day_one": 8
+  },
+  {
+   "slug": "paris",
+   "name": "Paris",
+   "status": "simulated",
+   "cells_open": 5,
+   "dido_v0": 0.25,
+   "dido_v1_day_one": 0.201,
+   "dido_change": -0.049,
+   "dido_v1_full_report": 0.284,
+   "fci_v0": [
+    0,
+    0.25
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.201
+   ],
+   "rank_v0": 13,
+   "rank_v1_day_one": 13
+  },
+  {
+   "slug": "recife",
+   "name": "Recife",
+   "status": "partial",
+   "cells_open": 5,
+   "dido_v0": 0.298,
+   "dido_v1_day_one": 0.249,
+   "dido_change": -0.049,
+   "dido_v1_full_report": 0.333,
+   "fci_v0": 0.108,
+   "fci_v1_day_one": 0.09,
+   "rank_v0": 6,
+   "rank_v1_day_one": 6
+  },
+  {
+   "slug": "santiago-de-chile",
+   "name": "Santiago de Chile",
+   "status": "partial",
+   "cells_open": 9,
+   "dido_v0": 0.363,
+   "dido_v1_day_one": 0.314,
+   "dido_change": -0.049,
+   "dido_v1_full_report": 0.397,
+   "fci_v0": 0.208,
+   "fci_v1_day_one": 0.18,
+   "rank_v0": 3,
+   "rank_v1_day_one": 3
+  },
+  {
+   "slug": "velsen",
+   "name": "Velsen",
+   "status": "simulated",
+   "cells_open": 4,
+   "dido_v0": 0.218,
+   "dido_v1_day_one": 0.171,
+   "dido_change": -0.047,
+   "dido_v1_full_report": 0.255,
+   "fci_v0": [
+    0,
+    0.218
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.171
+   ],
+   "rank_v0": 15,
+   "rank_v1_day_one": 15
+  },
+  {
+   "slug": "zagreb",
+   "name": "Zagreb",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.161,
+   "dido_v1_day_one": 0.118,
+   "dido_change": -0.043,
+   "dido_v1_full_report": 0.202,
+   "fci_v0": [
+    0,
+    0.161
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.118
+   ],
+   "rank_v0": 16,
+   "rank_v1_day_one": 18
+  },
+  {
+   "slug": "augsburg",
+   "name": "Augsburg",
+   "status": "simulated",
+   "cells_open": 3,
+   "dido_v0": 0.145,
+   "dido_v1_day_one": 0.114,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.198,
+   "fci_v0": [
+    0,
+    0.145
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.114
+   ],
+   "rank_v0": 19,
+   "rank_v1_day_one": 19
+  },
+  {
+   "slug": "belo-horizonte",
+   "name": "Belo Horizonte",
+   "status": "simulated",
+   "cells_open": 3,
+   "dido_v0": 0.153,
+   "dido_v1_day_one": 0.122,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.206,
+   "fci_v0": [
+    0,
+    0.153
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.122
+   ],
+   "rank_v0": 17,
+   "rank_v1_day_one": 17
+  },
+  {
+   "slug": "bergisches",
+   "name": "Bergisches",
+   "status": "simulated",
+   "cells_open": 3,
+   "dido_v0": 0.145,
+   "dido_v1_day_one": 0.114,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.198,
+   "fci_v0": [
+    0,
+    0.145
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.114
+   ],
+   "rank_v0": 19,
+   "rank_v1_day_one": 19
+  },
+  {
+   "slug": "ljubljana",
+   "name": "Ljubljana",
+   "status": "simulated",
+   "cells_open": 3,
+   "dido_v0": 0.145,
+   "dido_v1_day_one": 0.114,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.198,
+   "fci_v0": [
+    0,
+    0.145
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.114
+   ],
+   "rank_v0": 19,
+   "rank_v1_day_one": 19
+  },
+  {
+   "slug": "renca",
+   "name": "Renca",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.121,
+   "dido_v1_day_one": 0.09,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.173,
+   "fci_v0": [
+    0,
+    0.121
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.09
+   ],
+   "rank_v0": 22,
+   "rank_v1_day_one": 23
+  },
+  {
+   "slug": "rennes",
+   "name": "Rennes",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.121,
+   "dido_v1_day_one": 0.09,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.173,
+   "fci_v0": [
+    0,
+    0.121
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.09
+   ],
+   "rank_v0": 22,
+   "rank_v1_day_one": 23
+  },
+  {
+   "slug": "toulouse",
+   "name": "Toulouse",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.121,
+   "dido_v1_day_one": 0.09,
+   "dido_change": -0.031,
+   "dido_v1_full_report": 0.173,
+   "fci_v0": [
+    0,
+    0.121
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.09
+   ],
+   "rank_v0": 22,
+   "rank_v1_day_one": 23
+  },
+  {
+   "slug": "bas-saint-laurent",
+   "name": "Bas-Saint-Laurent",
+   "status": "simulated",
+   "cells_open": 3,
+   "dido_v0": 0.153,
+   "dido_v1_day_one": 0.125,
+   "dido_change": -0.028,
+   "dido_v1_full_report": 0.209,
+   "fci_v0": [
+    0,
+    0.153
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.125
+   ],
+   "rank_v0": 17,
+   "rank_v1_day_one": 16
+  },
+  {
+   "slug": "kamakura",
+   "name": "Kamakura",
+   "status": "partial",
+   "cells_open": 4,
+   "dido_v0": 0.177,
+   "dido_v1_day_one": 0.149,
+   "dido_change": -0.028,
+   "dido_v1_full_report": 0.233,
+   "fci_v0": 0.089,
+   "fci_v1_day_one": 0.075,
+   "rank_v0": 7,
+   "rank_v1_day_one": 7
+  },
+  {
+   "slug": "monterrey",
+   "name": "Monterrey",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.121,
+   "dido_v1_day_one": 0.093,
+   "dido_change": -0.028,
+   "dido_v1_full_report": 0.176,
+   "fci_v0": [
+    0,
+    0.121
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.093
+   ],
+   "rank_v0": 22,
+   "rank_v1_day_one": 22
+  },
+  {
+   "slug": "sao-paulo",
+   "name": "Sao Paulo",
+   "status": "partial",
+   "cells_open": 4,
+   "dido_v0": 0.218,
+   "dido_v1_day_one": 0.192,
+   "dido_change": -0.026,
+   "dido_v1_full_report": 0.275,
+   "fci_v0": 0.109,
+   "fci_v1_day_one": 0.096,
+   "rank_v0": 5,
+   "rank_v1_day_one": 4
+  },
+  {
+   "slug": "cambridge",
+   "name": "Cambridge",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.058,
+   "dido_change": -0.023,
+   "dido_v1_full_report": 0.141,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.058
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 37
+  },
+  {
+   "slug": "linz",
+   "name": "Linz",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.113,
+   "dido_v1_day_one": 0.09,
+   "dido_change": -0.023,
+   "dido_v1_full_report": 0.173,
+   "fci_v0": [
+    0,
+    0.113
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.09
+   ],
+   "rank_v0": 26,
+   "rank_v1_day_one": 23
+  },
+  {
+   "slug": "somerville",
+   "name": "Somerville",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.058,
+   "dido_change": -0.023,
+   "dido_v1_full_report": 0.141,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.058
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 37
+  },
+  {
+   "slug": "auvergne-rhone-alpes",
+   "name": "Auvergne-Rhône-Alpes",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "cape-town",
+   "name": "Cape Town",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "cordoba",
+   "name": "Cordoba",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "ekurhuleni",
+   "name": "Ekurhuleni",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "seoul",
+   "name": "Seoul",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "zadar",
+   "name": "Zadar",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.081,
+   "dido_v1_day_one": 0.06,
+   "dido_change": -0.021,
+   "dido_v1_full_report": 0.144,
+   "fci_v0": [
+    0,
+    0.081
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.06
+   ],
+   "rank_v0": 28,
+   "rank_v1_day_one": 31
+  },
+  {
+   "slug": "bhutan",
+   "name": "Bhutan",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.097,
+   "dido_v1_day_one": 0.077,
+   "dido_change": -0.02,
+   "dido_v1_full_report": 0.16,
+   "fci_v0": [
+    0,
+    0.097
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.077
+   ],
+   "rank_v0": 27,
+   "rank_v1_day_one": 27
+  },
+  {
+   "slug": "curitiba",
+   "name": "Curitiba",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.073,
+   "dido_v1_day_one": 0.065,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.148,
+   "fci_v0": [
+    0,
+    0.073
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.065
+   ],
+   "rank_v0": 36,
+   "rank_v1_day_one": 28
+  },
+  {
+   "slug": "guanajuato",
+   "name": "Guanajuato",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.04,
+   "dido_v1_day_one": 0.032,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.116,
+   "fci_v0": [
+    0,
+    0.04
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.032
+   ],
+   "rank_v0": 41,
+   "rank_v1_day_one": 41
+  },
+  {
+   "slug": "mexico-city",
+   "name": "Mexico City",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.04,
+   "dido_v1_day_one": 0.032,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.116,
+   "fci_v0": [
+    0,
+    0.04
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.032
+   ],
+   "rank_v0": 41,
+   "rank_v1_day_one": 41
+  },
+  {
+   "slug": "puebla",
+   "name": "Puebla",
+   "status": "partial",
+   "cells_open": 1,
+   "dido_v0": 0.04,
+   "dido_v1_day_one": 0.032,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.116,
+   "fci_v0": 0.031,
+   "fci_v1_day_one": 0.024,
+   "rank_v0": 10,
+   "rank_v1_day_one": 10
+  },
+  {
+   "slug": "sorocaba",
+   "name": "Sorocaba",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.073,
+   "dido_v1_day_one": 0.065,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.148,
+   "fci_v0": [
+    0,
+    0.073
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.065
+   ],
+   "rank_v0": 36,
+   "rank_v1_day_one": 28
+  },
+  {
+   "slug": "veberod",
+   "name": "Veberod",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.04,
+   "dido_v1_day_one": 0.032,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.116,
+   "fci_v0": [
+    0,
+    0.04
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.032
+   ],
+   "rank_v0": 41,
+   "rank_v1_day_one": 41
+  },
+  {
+   "slug": "yucatan",
+   "name": "Yucatan",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.073,
+   "dido_v1_day_one": 0.065,
+   "dido_change": -0.008,
+   "dido_v1_full_report": 0.148,
+   "fci_v0": [
+    0,
+    0.073
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.065
+   ],
+   "rank_v0": 36,
+   "rank_v1_day_one": 28
+  },
+  {
+   "slug": "accra",
+   "name": "Accra",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "brest",
+   "name": "Brest",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "detroit",
+   "name": "Detroit",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "georgia",
+   "name": "Georgia",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "goa",
+   "name": "Goa",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "kerala",
+   "name": "Kerala",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "kumasi",
+   "name": "Kumasi",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "montpellier",
+   "name": "Montpellier",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "oakland",
+   "name": "Oakland",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "occitanie",
+   "name": "Occitanie",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.048,
+   "dido_v1_day_one": 0.048,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.132,
+   "fci_v0": [
+    0,
+    0.048
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.048
+   ],
+   "rank_v0": 40,
+   "rank_v1_day_one": 40
+  },
+  {
+   "slug": "oulu",
+   "name": "Oulu",
+   "status": "simulated",
+   "cells_open": 2,
+   "dido_v0": 0.056,
+   "dido_v1_day_one": 0.056,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.14,
+   "fci_v0": [
+    0,
+    0.056
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.056
+   ],
+   "rank_v0": 39,
+   "rank_v1_day_one": 39
+  },
+  {
+   "slug": "papua",
+   "name": "Papua",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "parepare",
+   "name": "Parepare",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "pemkab-bangka-tengah",
+   "name": "Pemkab Bangka Tengah",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "sacramento",
+   "name": "Sacramento",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "shenzhen",
+   "name": "Shenzhen",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "sudburgenland",
+   "name": "Sudburgenland",
+   "status": "simulated",
+   "cells_open": 1,
+   "dido_v0": 0.032,
+   "dido_v1_day_one": 0.032,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.116,
+   "fci_v0": [
+    0,
+    0.032
+   ],
+   "fci_v1_day_one": [
+    0,
+    0.032
+   ],
+   "rank_v0": 44,
+   "rank_v1_day_one": 41
+  },
+  {
+   "slug": "sumedang",
+   "name": "Sumedang",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "tanga",
+   "name": "Tanga",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  },
+  {
+   "slug": "valence-romans-agglo",
+   "name": "Valence Romans Agglo",
+   "status": "simulated",
+   "cells_open": 0,
+   "dido_v0": 0,
+   "dido_v1_day_one": 0,
+   "dido_change": 0,
+   "dido_v1_full_report": 0.084,
+   "fci_v0": [
+    0,
+    0
+   ],
+   "fci_v1_day_one": [
+    0,
+    0
+   ],
+   "rank_v0": 45,
+   "rank_v1_day_one": 45
+  }
+ ],
+ "rank_changes": [
+  {
+   "slug": "boston",
+   "from": 4,
+   "to": 5
+  },
+  {
+   "slug": "zagreb",
+   "from": 16,
+   "to": 18
+  },
+  {
+   "slug": "renca",
+   "from": 22,
+   "to": 23
+  },
+  {
+   "slug": "rennes",
+   "from": 22,
+   "to": 23
+  },
+  {
+   "slug": "toulouse",
+   "from": 22,
+   "to": 23
+  },
+  {
+   "slug": "bas-saint-laurent",
+   "from": 17,
+   "to": 16
+  },
+  {
+   "slug": "sao-paulo",
+   "from": 5,
+   "to": 4
+  },
+  {
+   "slug": "cambridge",
+   "from": 28,
+   "to": 37
+  },
+  {
+   "slug": "linz",
+   "from": 26,
+   "to": 23
+  },
+  {
+   "slug": "somerville",
+   "from": 28,
+   "to": 37
+  },
+  {
+   "slug": "auvergne-rhone-alpes",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "cape-town",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "cordoba",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "ekurhuleni",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "seoul",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "zadar",
+   "from": 28,
+   "to": 31
+  },
+  {
+   "slug": "curitiba",
+   "from": 36,
+   "to": 28
+  },
+  {
+   "slug": "sorocaba",
+   "from": 36,
+   "to": 28
+  },
+  {
+   "slug": "yucatan",
+   "from": 36,
+   "to": 28
+  },
+  {
+   "slug": "sudburgenland",
+   "from": 44,
+   "to": 41
+  }
+ ]
+}
