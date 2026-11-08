@@ -19,9 +19,12 @@ python3 compute/labs.py --selftest            # no network; the lab directory tr
 python3 compute/labs.py                       # one dated archive freeze, writes results/labs.json
 python3 compute/fabcities.py --selftest       # no network; the members sheet matched to the tracker on fake rows
 python3 compute/fabcities.py                  # the archive's fabnetdata.xlsx, writes results/fabcities.json
+python3 compute/bioregions.py --selftest      # no network; the map layers' slimming and the shares on toy shapes
+python3 compute/bioregions.py ../fci-3-prototype  # RESOLVE ecoregions + HydroBASINS level 4 (~190 MB, cached; needs duckdb),
+                                              # writes the site's data/ecoregions.geojson, data/basins.geojson and results/bioregions.json
 ```
 
-Standard-library Python only. This is the worked example the method page says is owed. It takes Niels Boeing's
+Standard-library Python only, except `bioregions.py`, which clips and simplifies polygons with DuckDB's spatial extension. This is the worked example the method page says is owed. It takes Niels Boeing's
 Hamburg recipe (*The Fab City Index*, Springer 2024, ch. 9, CC-BY), states it as code, checks it reproduces
 his published score, and re-derives as much of it as open data allows. Results reach the site only through
 `api.mjs` (see *From results to the site*).
