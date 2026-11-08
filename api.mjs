@@ -269,6 +269,14 @@ const FABCITIES = "compute/results/fabcities.json";
 const fabcities = JSON.parse(fs.readFileSync(path.join(HERE, FABCITIES), "utf8"));
 fs.writeFileSync(path.join(out, "fabcities.json"), JSON.stringify({ format: head.format, generated: head.generated, pipeline: REPO + FABCITIES, ...fabcities }) + "\n");
 console.log(`fabcities.json: ${Object.keys(fabcities.members).length} members, ${fabcities.sheet_rows_unmatched.length} sheet rows unmatched`);
+
+/* ---- bioregions.json: the ecoregion and river basin around every place and country (compute/bioregions.py) ------- */
+// Context, never a cell: RESOLVE Ecoregions 2017 and HydroBASINS level 4. The map draws the same shapes from the site's
+// data/ecoregions.geojson and data/basins.geojson, which the same script writes.
+const BIOREGIONS = "compute/results/bioregions.json";
+const bioregions = JSON.parse(fs.readFileSync(path.join(HERE, BIOREGIONS), "utf8"));
+fs.writeFileSync(path.join(out, "bioregions.json"), JSON.stringify({ format: head.format, generated: head.generated, pipeline: REPO + BIOREGIONS, ...bioregions }) + "\n");
+console.log(`bioregions.json: ${Object.keys(bioregions.places).length} places, ${Object.keys(bioregions.countries).length} countries`);
 const csvCell = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
 const COLS = ["slug", "name", "country", "territory", "status", "fci", "fci_low", "fci_high", "dido", "one_minus_pito", "rho", "cells_open", "cells_measured", "pito_weight_measured_share"];
 fs.writeFileSync(path.join(out, "index.csv"), [COLS.join(","), ...summaries.map((s) => [s.slug, s.name, s.country, s.territory, s.status, s.fci,

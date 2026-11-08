@@ -1,0 +1,5062 @@
+{
+ "reads_as": "The terrestrial ecoregion and the river basin (HydroBASINS level 4) each place's published centre sits in, and the ecoregions and basins each country's land falls in. Context for a place, never a cell or a score.",
+ "does_not_claim": "An ecoregion is the vegetation a place would carry without people, at continental scale; a city inside a forest ecoregion is not a forest. Its Nature Needs Half category is from forest loss to 2015 and protected areas in 2016. Country shares are on Natural Earth 1:110m outlines, so small islands and coasts are rough. A centre that falls in the sea takes the nearest shape and says so.",
+ "licence": {
+  "ecoregions": "RESOLVE Ecoregions 2017, Dinerstein et al. (2017) BioScience 67(6): 534-545, doi:10.1093/biosci/bix014. CC-BY 4.0. Simplified for the web by the Fab City Index.",
+  "basins": "River basins at HydroBASINS level 4 (Lehner & Grill 2013, Hydrological Processes 27(15): 2171-2186), as published in HydroATLAS/BasinATLAS v1.0 (Linke et al. 2019, Scientific Data 6: 283) under CC-BY 4.0. Simplified for the web by the Fab City Index. Data available at www.hydrosheds.org."
+ },
+ "sources": {
+  "ecoregions": "https://storage.googleapis.com/teow2016/Ecoregions2017.zip",
+  "basins": "https://data.hydrosheds.org/file/HydroBASINS/standard/hybas_<region>_lev04_v1c.zip"
+ },
+ "places": {
+  "accra": {
+   "ecoregion": {
+    "id": 44,
+    "name": "Guinean forest-savanna",
+    "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+    "realm": "Afrotropic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 1040023310,
+    "pfaf": 1451,
+    "area_km2": 74783,
+    "how": "inside"
+   }
+  },
+  "amsterdam": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040023020,
+    "pfaf": 2327,
+    "area_km2": 90032,
+    "how": "inside"
+   }
+  },
+  "augsburg": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040539930,
+    "pfaf": 2279,
+    "area_km2": 211260,
+    "how": "inside"
+   }
+  },
+  "auvergne-rhone-alpes": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040016230,
+    "pfaf": 2160,
+    "area_km2": 310600,
+    "how": "inside"
+   }
+  },
+  "bali": {
+   "ecoregion": {
+    "id": 229,
+    "name": "Eastern Java-Bali montane rain forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 5040007690,
+    "pfaf": 5150,
+    "area_km2": 140535,
+    "how": "inside"
+   }
+  },
+  "barcelona": {
+   "ecoregion": {
+    "id": 799,
+    "name": "Northeast Spain and Southern France Mediterranean forests",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040016230,
+    "pfaf": 2160,
+    "area_km2": 310600,
+    "how": "inside"
+   }
+  },
+  "bas-saint-laurent": {
+   "ecoregion": {
+    "id": 338,
+    "name": "New England-Acadian forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040034530,
+    "pfaf": 7260,
+    "area_km2": 198962,
+    "how": "inside"
+   }
+  },
+  "belo-horizonte": {
+   "ecoregion": {
+    "id": 443,
+    "name": "Bahia interior forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040639920,
+    "pfaf": 6349,
+    "area_km2": 107020,
+    "how": "inside"
+   }
+  },
+  "bergisches": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040023010,
+    "pfaf": 2326,
+    "area_km2": 163122,
+    "how": "inside"
+   }
+  },
+  "bhutan": {
+   "ecoregion": {
+    "id": 306,
+    "name": "Eastern Himalayan broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040960200,
+    "pfaf": 4525,
+    "area_km2": 185348,
+    "how": "inside"
+   }
+  },
+  "boston": {
+   "ecoregion": {
+    "id": 339,
+    "name": "Northeast US Coastal forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040038340,
+    "pfaf": 7311,
+    "area_km2": 107440,
+    "how": "inside"
+   }
+  },
+  "brest": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040021040,
+    "pfaf": 2323,
+    "area_km2": 48373,
+    "how": "inside"
+   }
+  },
+  "cambridge": {
+   "ecoregion": {
+    "id": 339,
+    "name": "Northeast US Coastal forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040038340,
+    "pfaf": 7311,
+    "area_km2": 107440,
+    "how": "inside"
+   }
+  },
+  "cape-town": {
+   "ecoregion": {
+    "id": 90,
+    "name": "Renosterveld shrubland",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Afrotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 1040015030,
+    "pfaf": 1260,
+    "area_km2": 111328,
+    "how": "inside"
+   }
+  },
+  "charlotte": {
+   "ecoregion": {
+    "id": 330,
+    "name": "Appalachian Piedmont forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040043160,
+    "pfaf": 7324,
+    "area_km2": 39730,
+    "how": "inside"
+   }
+  },
+  "cordoba": {
+   "ecoregion": {
+    "id": 575,
+    "name": "Espinal",
+    "biome": "Temperate Grasslands, Savannas & Shrublands",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040040460,
+    "pfaf": 6440,
+    "area_km2": 308236,
+    "how": "inside"
+   }
+  },
+  "curitiba": {
+   "ecoregion": {
+    "id": 440,
+    "name": "Araucaria moist forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040814830,
+    "pfaf": 6425,
+    "area_km2": 275289,
+    "how": "inside"
+   }
+  },
+  "detroit": {
+   "ecoregion": {
+    "id": 342,
+    "name": "Southern Great Lakes forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040402430,
+    "pfaf": 7255,
+    "area_km2": 263811,
+    "how": "inside"
+   }
+  },
+  "ekurhuleni": {
+   "ecoregion": {
+    "id": 81,
+    "name": "Highveld grasslands",
+    "biome": "Montane Grasslands & Shrublands",
+    "realm": "Afrotropic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 1041629370,
+    "pfaf": 1279,
+    "area_km2": 197513,
+    "how": "inside"
+   }
+  },
+  "georgia": {
+   "ecoregion": {
+    "id": 727,
+    "name": "Eastern Anatolian montane steppe",
+    "biome": "Temperate Grasslands, Savannas & Shrublands",
+    "realm": "Palearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040070050,
+    "pfaf": 2846,
+    "area_km2": 189819,
+    "how": "inside"
+   }
+  },
+  "goa": {
+   "ecoregion": {
+    "id": 242,
+    "name": "Malabar Coast moist forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040029530,
+    "pfaf": 4540,
+    "area_km2": 316846,
+    "how": "inside"
+   }
+  },
+  "guanajuato": {
+   "ecoregion": {
+    "id": 427,
+    "name": "Central Mexican matorral",
+    "biome": "Deserts & Xeric Shrublands",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040006390,
+    "pfaf": 7714,
+    "area_km2": 134072,
+    "how": "inside"
+   }
+  },
+  "hamburg": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040024170,
+    "pfaf": 2328,
+    "area_km2": 138383,
+    "how": "inside"
+   }
+  },
+  "kamakura": {
+   "ecoregion": {
+    "id": 682,
+    "name": "Taiheiyo evergreen forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040039450,
+    "pfaf": 4130,
+    "area_km2": 295818,
+    "how": "inside"
+   }
+  },
+  "kerala": {
+   "ecoregion": {
+    "id": 270,
+    "name": "South Western Ghats moist deciduous forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040029530,
+    "pfaf": 4540,
+    "area_km2": 316846,
+    "how": "inside"
+   }
+  },
+  "kumasi": {
+   "ecoregion": {
+    "id": 11,
+    "name": "Eastern Guinean forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Afrotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 1040023310,
+    "pfaf": 1451,
+    "area_km2": 74783,
+    "how": "inside"
+   }
+  },
+  "linz": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040539930,
+    "pfaf": 2279,
+    "area_km2": 211260,
+    "how": "inside"
+   }
+  },
+  "ljubljana": {
+   "ecoregion": {
+    "id": 674,
+    "name": "Pannonian mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040555780,
+    "pfaf": 2274,
+    "area_km2": 95461,
+    "how": "inside"
+   }
+  },
+  "mexico-city": {
+   "ecoregion": {
+    "id": 427,
+    "name": "Central Mexican matorral",
+    "biome": "Deserts & Xeric Shrublands",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040049990,
+    "pfaf": 7532,
+    "area_km2": 153218,
+    "how": "inside"
+   }
+  },
+  "monterrey": {
+   "ecoregion": {
+    "id": 436,
+    "name": "Tamaulipan matorral",
+    "biome": "Deserts & Xeric Shrublands",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040049270,
+    "pfaf": 7521,
+    "area_km2": 571791,
+    "how": "inside"
+   }
+  },
+  "montpellier": {
+   "ecoregion": {
+    "id": 799,
+    "name": "Northeast Spain and Southern France Mediterranean forests",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040016230,
+    "pfaf": 2160,
+    "area_km2": 310600,
+    "how": "inside"
+   }
+  },
+  "montreal": {
+   "ecoregion": {
+    "id": 334,
+    "name": "Eastern Great Lakes lowland forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040374950,
+    "pfaf": 7253,
+    "area_km2": 56632,
+    "how": "inside"
+   }
+  },
+  "oakland": {
+   "ecoregion": {
+    "id": 423,
+    "name": "California interior chaparral and woodlands",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Nearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040013180,
+    "pfaf": 7743,
+    "area_km2": 11374,
+    "how": "inside"
+   }
+  },
+  "occitanie": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040020320,
+    "pfaf": 2321,
+    "area_km2": 126054,
+    "how": "inside"
+   }
+  },
+  "oulu": {
+   "ecoregion": {
+    "id": 717,
+    "name": "Scandinavian and Russian taiga",
+    "biome": "Boreal Forests/Taiga",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040029950,
+    "pfaf": 2437,
+    "area_km2": 21435,
+    "how": "inside"
+   }
+  },
+  "papua": {
+   "ecoregion": {
+    "id": 149,
+    "name": "Northern New Guinea montane rain forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Australasia",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 5040046910,
+    "pfaf": 5316,
+    "area_km2": 79016,
+    "how": "inside"
+   }
+  },
+  "parepare": {
+   "ecoregion": {
+    "id": 156,
+    "name": "Sulawesi lowland rain forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Australasia",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 5040031240,
+    "pfaf": 5250,
+    "area_km2": 196242,
+    "how": "inside"
+   }
+  },
+  "paris": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040022150,
+    "pfaf": 2324,
+    "area_km2": 73248,
+    "how": "inside"
+   }
+  },
+  "pemkab-bangka-tengah": {
+   "ecoregion": {
+    "id": 281,
+    "name": "Sundaland heath forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 5040006900,
+    "pfaf": 5140,
+    "area_km2": 17361,
+    "how": "inside"
+   }
+  },
+  "plymouth": {
+   "ecoregion": {
+    "id": 651,
+    "name": "Celtic broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040048790,
+    "pfaf": 2330,
+    "area_km2": 232575,
+    "how": "inside"
+   }
+  },
+  "puebla": {
+   "ecoregion": {
+    "id": 610,
+    "name": "Tehuacán Valley matorral",
+    "biome": "Deserts & Xeric Shrublands",
+    "realm": "Neotropic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040005410,
+    "pfaf": 7712,
+    "area_km2": 116984,
+    "how": "inside"
+   }
+  },
+  "recife": {
+   "ecoregion": {
+    "id": 616,
+    "name": "Southern Atlantic Brazilian mangroves",
+    "biome": "Mangroves",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040009770,
+    "pfaf": 6330,
+    "area_km2": 287165,
+    "how": "inside"
+   }
+  },
+  "renca": {
+   "ecoregion": {
+    "id": 596,
+    "name": "Chilean Matorral",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040027000,
+    "pfaf": 6625,
+    "area_km2": 121076,
+    "how": "inside"
+   }
+  },
+  "rennes": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040021040,
+    "pfaf": 2323,
+    "area_km2": 48373,
+    "how": "inside"
+   }
+  },
+  "sacramento": {
+   "ecoregion": {
+    "id": 385,
+    "name": "California Central Valley grasslands",
+    "biome": "Temperate Grasslands, Savannas & Shrublands",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040013550,
+    "pfaf": 7744,
+    "area_km2": 156295,
+    "how": "inside"
+   }
+  },
+  "santiago-de-chile": {
+   "ecoregion": {
+    "id": 596,
+    "name": "Chilean Matorral",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040027000,
+    "pfaf": 6625,
+    "area_km2": 121076,
+    "how": "inside"
+   }
+  },
+  "sao-paulo": {
+   "ecoregion": {
+    "id": 500,
+    "name": "Serra do Mar coastal forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040752460,
+    "pfaf": 6427,
+    "area_km2": 207663,
+    "how": "inside"
+   }
+  },
+  "seoul": {
+   "ecoregion": {
+    "id": 655,
+    "name": "Central Korean deciduous forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040005050,
+    "pfaf": 4242,
+    "area_km2": 25245,
+    "how": "inside"
+   }
+  },
+  "shenzhen": {
+   "ecoregion": {
+    "id": 268,
+    "name": "South China-Vietnam subtropical evergreen forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 4040012290,
+    "pfaf": 4363,
+    "area_km2": 18090,
+    "how": "inside"
+   }
+  },
+  "somerville": {
+   "ecoregion": {
+    "id": 339,
+    "name": "Northeast US Coastal forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Nearctic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040038340,
+    "pfaf": 7311,
+    "area_km2": 107440,
+    "how": "inside"
+   }
+  },
+  "sorocaba": {
+   "ecoregion": {
+    "id": 439,
+    "name": "Alto Paraná Atlantic forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Neotropic",
+    "nnh": "Nature Imperiled",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 6040752460,
+    "pfaf": 6427,
+    "area_km2": 207663,
+    "how": "inside"
+   }
+  },
+  "sudburgenland": {
+   "ecoregion": {
+    "id": 674,
+    "name": "Pannonian mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040539930,
+    "pfaf": 2279,
+    "area_km2": 211260,
+    "how": "inside"
+   }
+  },
+  "sumedang": {
+   "ecoregion": {
+    "id": 288,
+    "name": "Western Java montane rain forests",
+    "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+    "realm": "Indomalayan",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 5040007690,
+    "pfaf": 5150,
+    "area_km2": 140535,
+    "how": "inside"
+   }
+  },
+  "tanga": {
+   "ecoregion": {
+    "id": 57,
+    "name": "Southern Acacia-Commiphora bushlands and thickets",
+    "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+    "realm": "Afrotropic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 1040008480,
+    "pfaf": 1173,
+    "area_km2": 211436,
+    "how": "inside"
+   }
+  },
+  "toulouse": {
+   "ecoregion": {
+    "id": 686,
+    "name": "Western European broadleaf forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040020320,
+    "pfaf": 2321,
+    "area_km2": 126054,
+    "how": "inside"
+   }
+  },
+  "valence-romans-agglo": {
+   "ecoregion": {
+    "id": 799,
+    "name": "Northeast Spain and Southern France Mediterranean forests",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040016230,
+    "pfaf": 2160,
+    "area_km2": 310600,
+    "how": "inside"
+   }
+  },
+  "veberod": {
+   "ecoregion": {
+    "id": 647,
+    "name": "Baltic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040031500,
+    "pfaf": 2447,
+    "area_km2": 114417,
+    "how": "inside"
+   }
+  },
+  "velsen": {
+   "ecoregion": {
+    "id": 664,
+    "name": "European Atlantic mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040023020,
+    "pfaf": 2327,
+    "area_km2": 90032,
+    "how": "inside"
+   }
+  },
+  "yucatan": {
+   "ecoregion": {
+    "id": 551,
+    "name": "Yucatán dry forests",
+    "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+    "realm": "Neotropic",
+    "nnh": "Nature Could Reach Half Protected",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 7040050930,
+    "pfaf": 7537,
+    "area_km2": 382832,
+    "how": "inside"
+   }
+  },
+  "zadar": {
+   "ecoregion": {
+    "id": 794,
+    "name": "Illyrian deciduous forests",
+    "biome": "Mediterranean Forests, Woodlands & Scrub",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040009230,
+    "pfaf": 2130,
+    "area_km2": 293802,
+    "how": "inside"
+   }
+  },
+  "zagreb": {
+   "ecoregion": {
+    "id": 674,
+    "name": "Pannonian mixed forests",
+    "biome": "Temperate Broadleaf & Mixed Forests",
+    "realm": "Palearctic",
+    "nnh": "Nature Could Recover",
+    "how": "inside"
+   },
+   "basin": {
+    "id": 2040555780,
+    "pfaf": 2274,
+    "area_km2": 95461,
+    "how": "inside"
+   }
+  }
+ },
+ "countries": {
+  "ARG": {
+   "ecoregions": [
+    {
+     "id": 578,
+     "name": "Patagonian steppe",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.194
+    },
+    {
+     "id": 569,
+     "name": "Dry Chaco",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.177
+    },
+    {
+     "id": 576,
+     "name": "Humid Pampas",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.142
+    },
+    {
+     "id": 577,
+     "name": "Low Monte",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.128
+    },
+    {
+     "id": 575,
+     "name": "Espinal",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.108
+    },
+    {
+     "id": 571,
+     "name": "Humid Chaco",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.059
+    },
+    {
+     "id": 592,
+     "name": "High Monte",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.042
+    },
+    {
+     "id": 595,
+     "name": "Southern Andean steppe",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.034
+    },
+    {
+     "id": 588,
+     "name": "Central Andean puna",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.032
+    },
+    {
+     "id": 504,
+     "name": "Southern Andean Yungas",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.017
+    },
+    {
+     "id": 563,
+     "name": "Valdivian temperate forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Neotropic",
+     "share": 0.015
+    },
+    {
+     "id": 585,
+     "name": "Paraná flooded savanna",
+     "biome": "Flooded Grasslands & Savannas",
+     "realm": "Neotropic",
+     "share": 0.013
+    },
+    {
+     "id": 561,
+     "name": "Magellanic subpolar forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Neotropic",
+     "share": 0.01
+    }
+   ],
+   "basins": [
+    {
+     "id": 6040040460,
+     "pfaf": 6440,
+     "area_km2": 308236,
+     "share": 0.111
+    },
+    {
+     "id": 6040870370,
+     "pfaf": 6422,
+     "area_km2": 225844,
+     "share": 0.081
+    },
+    {
+     "id": 6040814820,
+     "pfaf": 6424,
+     "area_km2": 1159401,
+     "share": 0.08
+    },
+    {
+     "id": 6040040510,
+     "pfaf": 6510,
+     "area_km2": 193457,
+     "share": 0.07
+    },
+    {
+     "id": 6040870380,
+     "pfaf": 6423,
+     "area_km2": 160808,
+     "share": 0.058
+    },
+    {
+     "id": 6040016970,
+     "pfaf": 6421,
+     "area_km2": 148492,
+     "share": 0.054
+    },
+    {
+     "id": 6040020000,
+     "pfaf": 6534,
+     "area_km2": 137938,
+     "share": 0.049
+    },
+    {
+     "id": 6040019090,
+     "pfaf": 6532,
+     "area_km2": 136083,
+     "share": 0.049
+    },
+    {
+     "id": 6040040500,
+     "pfaf": 6530,
+     "area_km2": 131646,
+     "share": 0.048
+    },
+    {
+     "id": 6040020960,
+     "pfaf": 6537,
+     "area_km2": 102533,
+     "share": 0.037
+    },
+    {
+     "id": 6040017380,
+     "pfaf": 6512,
+     "area_km2": 86109,
+     "share": 0.031
+    },
+    {
+     "id": 6040913910,
+     "pfaf": 6525,
+     "area_km2": 78538,
+     "share": 0.028
+    },
+    {
+     "id": 6040040470,
+     "pfaf": 6640,
+     "area_km2": 326937,
+     "share": 0.022
+    },
+    {
+     "id": 6040933800,
+     "pfaf": 6523,
+     "area_km2": 58969,
+     "share": 0.021
+    },
+    {
+     "id": 6040016760,
+     "pfaf": 6418,
+     "area_km2": 266133,
+     "share": 0.02
+    },
+    {
+     "id": 6040877660,
+     "pfaf": 6526,
+     "area_km2": 55089,
+     "share": 0.019
+    },
+    {
+     "id": 6040019100,
+     "pfaf": 6533,
+     "area_km2": 45421,
+     "share": 0.016
+    },
+    {
+     "id": 6040021220,
+     "pfaf": 6539,
+     "area_km2": 53135,
+     "share": 0.016
+    },
+    {
+     "id": 6040018290,
+     "pfaf": 6519,
+     "area_km2": 43879,
+     "share": 0.015
+    },
+    {
+     "id": 6040933820,
+     "pfaf": 6522,
+     "area_km2": 41851,
+     "share": 0.015
+    },
+    {
+     "id": 6040862860,
+     "pfaf": 6529,
+     "area_km2": 37026,
+     "share": 0.013
+    },
+    {
+     "id": 6040040530,
+     "pfaf": 6520,
+     "area_km2": 35292,
+     "share": 0.013
+    },
+    {
+     "id": 6040913900,
+     "pfaf": 6524,
+     "area_km2": 31858,
+     "share": 0.011
+    },
+    {
+     "id": 6040020950,
+     "pfaf": 6536,
+     "area_km2": 30054,
+     "share": 0.011
+    },
+    {
+     "id": 6040020010,
+     "pfaf": 6535,
+     "area_km2": 29899,
+     "share": 0.011
+    }
+   ]
+  },
+  "AUT": {
+   "ecoregions": [
+    {
+     "id": 689,
+     "name": "Alps conifer and mixed forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.574
+    },
+    {
+     "id": 686,
+     "name": "Western European broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.225
+    },
+    {
+     "id": 674,
+     "name": "Pannonian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.175
+    },
+    {
+     "id": 654,
+     "name": "Central European mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.025
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040539930,
+     "pfaf": 2279,
+     "area_km2": 211260,
+     "share": 0.694
+    },
+    {
+     "id": 2040540100,
+     "pfaf": 2278,
+     "area_km2": 40250,
+     "share": 0.254
+    },
+    {
+     "id": 2040023010,
+     "pfaf": 2326,
+     "area_km2": 163122,
+     "share": 0.031
+    },
+    {
+     "id": 2040024170,
+     "pfaf": 2328,
+     "area_km2": 138383,
+     "share": 0.019
+    }
+   ]
+  },
+  "BRA": {
+   "ecoregions": [
+    {
+     "id": 567,
+     "name": "Cerrado",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.224
+    },
+    {
+     "id": 525,
+     "name": "Caatinga",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.086
+    },
+    {
+     "id": 476,
+     "name": "Madeira-Tapajós moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.078
+    },
+    {
+     "id": 511,
+     "name": "Uatumã-Trombetas moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.056
+    },
+    {
+     "id": 481,
+     "name": "Mato Grosso tropical dry forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.049
+    },
+    {
+     "id": 439,
+     "name": "Alto Paraná Atlantic forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.044
+    },
+    {
+     "id": 507,
+     "name": "Tapajós-Xingu moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.04
+    },
+    {
+     "id": 505,
+     "name": "Southwest Amazon moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.038
+    },
+    {
+     "id": 518,
+     "name": "Xingu-Tocantins-Araguaia moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.031
+    },
+    {
+     "id": 474,
+     "name": "Juruá-Purus moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.029
+    },
+    {
+     "id": 473,
+     "name": "Japurá-Solimões-Negro moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.027
+    },
+    {
+     "id": 443,
+     "name": "Bahia interior forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.027
+    },
+    {
+     "id": 440,
+     "name": "Araucaria moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.025
+    },
+    {
+     "id": 508,
+     "name": "Tocantins/Pindare moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.023
+    },
+    {
+     "id": 497,
+     "name": "Purus-Madeira moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.02
+    },
+    {
+     "id": 574,
+     "name": "Uruguayan savanna",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.02
+    },
+    {
+     "id": 496,
+     "name": "Purus várzea",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.017
+    },
+    {
+     "id": 540,
+     "name": "Maranhão Babaçu forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.017
+    },
+    {
+     "id": 584,
+     "name": "Pantanal",
+     "biome": "Flooded Grasslands & Savannas",
+     "realm": "Neotropic",
+     "share": 0.016
+    },
+    {
+     "id": 524,
+     "name": "Brazilian Atlantic dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.014
+    },
+    {
+     "id": 442,
+     "name": "Bahia coastal forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.013
+    },
+    {
+     "id": 500,
+     "name": "Serra do Mar coastal forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.012
+    },
+    {
+     "id": 466,
+     "name": "Guianan piedmont moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.01
+    }
+   ],
+   "basins": [
+    {
+     "id": 6040280410,
+     "pfaf": 6229,
+     "area_km2": 2216665,
+     "share": 0.112
+    },
+    {
+     "id": 6040280400,
+     "pfaf": 6228,
+     "area_km2": 714738,
+     "share": 0.068
+    },
+    {
+     "id": 6040285990,
+     "pfaf": 6226,
+     "area_km2": 1368850,
+     "share": 0.065
+    },
+    {
+     "id": 6040239820,
+     "pfaf": 6222,
+     "area_km2": 513292,
+     "share": 0.06
+    },
+    {
+     "id": 6040262220,
+     "pfaf": 6224,
+     "area_km2": 494533,
+     "share": 0.058
+    },
+    {
+     "id": 6040262110,
+     "pfaf": 6225,
+     "area_km2": 390551,
+     "share": 0.046
+    },
+    {
+     "id": 6040814820,
+     "pfaf": 6424,
+     "area_km2": 1159401,
+     "share": 0.042
+    },
+    {
+     "id": 6040345000,
+     "pfaf": 6244,
+     "area_km2": 308335,
+     "share": 0.036
+    },
+    {
+     "id": 6040009770,
+     "pfaf": 6330,
+     "area_km2": 287165,
+     "share": 0.034
+    },
+    {
+     "id": 6040008320,
+     "pfaf": 6310,
+     "area_km2": 272960,
+     "share": 0.032
+    },
+    {
+     "id": 6040709810,
+     "pfaf": 6428,
+     "area_km2": 223584,
+     "share": 0.026
+    },
+    {
+     "id": 6040011780,
+     "pfaf": 6341,
+     "area_km2": 211925,
+     "share": 0.025
+    },
+    {
+     "id": 6040752460,
+     "pfaf": 6427,
+     "area_km2": 207663,
+     "share": 0.024
+    },
+    {
+     "id": 6040814830,
+     "pfaf": 6425,
+     "area_km2": 275289,
+     "share": 0.024
+    },
+    {
+     "id": 6040239720,
+     "pfaf": 6223,
+     "area_km2": 201635,
+     "share": 0.024
+    },
+    {
+     "id": 6040016760,
+     "pfaf": 6418,
+     "area_km2": 266133,
+     "share": 0.02
+    },
+    {
+     "id": 6040011790,
+     "pfaf": 6351,
+     "area_km2": 157644,
+     "share": 0.019
+    },
+    {
+     "id": 6040709820,
+     "pfaf": 6429,
+     "area_km2": 143482,
+     "share": 0.017
+    },
+    {
+     "id": 6040527680,
+     "pfaf": 6249,
+     "area_km2": 134698,
+     "share": 0.016
+    },
+    {
+     "id": 6040007010,
+     "pfaf": 6230,
+     "area_km2": 108835,
+     "share": 0.013
+    },
+    {
+     "id": 6040639920,
+     "pfaf": 6349,
+     "area_km2": 107020,
+     "share": 0.013
+    },
+    {
+     "id": 6040345180,
+     "pfaf": 6245,
+     "area_km2": 104557,
+     "share": 0.012
+    },
+    {
+     "id": 6040752470,
+     "pfaf": 6426,
+     "area_km2": 101741,
+     "share": 0.012
+    },
+    {
+     "id": 6040014330,
+     "pfaf": 6411,
+     "area_km2": 94497,
+     "share": 0.011
+    }
+   ]
+  },
+  "BTN": {
+   "ecoregions": [
+    {
+     "id": 306,
+     "name": "Eastern Himalayan broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Indomalayan",
+     "share": 0.415
+    },
+    {
+     "id": 309,
+     "name": "Eastern Himalayan subalpine conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Indomalayan",
+     "share": 0.271
+    },
+    {
+     "id": 751,
+     "name": "Eastern Himalayan alpine shrub and meadows",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.187
+    },
+    {
+     "id": 233,
+     "name": "Himalayan subtropical broadleaf forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.096
+    },
+    {
+     "id": 302,
+     "name": "Himalayan subtropical pine forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Indomalayan",
+     "share": 0.019
+    }
+   ],
+   "basins": [
+    {
+     "id": 4040960200,
+     "pfaf": 4525,
+     "area_km2": 185348,
+     "share": 0.988
+    },
+    {
+     "id": 4040838850,
+     "pfaf": 4529,
+     "area_km2": 257277,
+     "share": 0.012
+    }
+   ]
+  },
+  "CAN": {
+   "ecoregions": [
+    {
+     "id": 414,
+     "name": "Canadian Middle Arctic Tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.095
+    },
+    {
+     "id": 413,
+     "name": "Canadian Low Arctic tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.085
+    },
+    {
+     "id": 377,
+     "name": "Midwest Canadian Shield forests",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.078
+    },
+    {
+     "id": 374,
+     "name": "Eastern Canadian Shield taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.078
+    },
+    {
+     "id": 379,
+     "name": "Northern Canadian Shield taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.066
+    },
+    {
+     "id": 412,
+     "name": "Canadian High Arctic tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.06
+    },
+    {
+     "id": 376,
+     "name": "Mid-Canada Boreal Plains forests",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.059
+    },
+    {
+     "id": 373,
+     "name": "Eastern Canadian forests",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.048
+    },
+    {
+     "id": 382,
+     "name": "Southern Hudson Bay taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.038
+    },
+    {
+     "id": 381,
+     "name": "Northwest Territories taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.035
+    },
+    {
+     "id": 333,
+     "name": "Eastern Canadian Forest-Boreal transition",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.033
+    },
+    {
+     "id": 378,
+     "name": "Muskwa-Slave Lake taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.031
+    },
+    {
+     "id": 419,
+     "name": "Ogilvie-MacKenzie alpine tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.03
+    },
+    {
+     "id": 370,
+     "name": "Central Canadian Shield forests",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.028
+    },
+    {
+     "id": 383,
+     "name": "Watson Highlands taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.025
+    },
+    {
+     "id": 396,
+     "name": "Northern Shortgrass prairie",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.023
+    },
+    {
+     "id": 386,
+     "name": "Canadian Aspen forests and parklands",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.02
+    },
+    {
+     "id": 361,
+     "name": "Northern Rockies conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.019
+    },
+    {
+     "id": 380,
+     "name": "Northern Cordillera forests",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.018
+    },
+    {
+     "id": 338,
+     "name": "New England-Acadian forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.016
+    },
+    {
+     "id": 350,
+     "name": "Central British Columbia Mountain forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.015
+    },
+    {
+     "id": 345,
+     "name": "Alberta-British Columbia foothills forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.013
+    },
+    {
+     "id": 349,
+     "name": "British Columbia coastal conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.011
+    },
+    {
+     "id": 355,
+     "name": "Fraser Plateau and Basin conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.011
+    }
+   ],
+   "basins": [
+    {
+     "id": 7040192560,
+     "pfaf": 7122,
+     "area_km2": 586387,
+     "share": 0.044
+    },
+    {
+     "id": 7040021740,
+     "pfaf": 7118,
+     "area_km2": 302496,
+     "share": 0.031
+    },
+    {
+     "id": 8040307380,
+     "pfaf": 8229,
+     "area_km2": 298817,
+     "share": 0.031
+    },
+    {
+     "id": 8040307300,
+     "pfaf": 8228,
+     "area_km2": 292499,
+     "share": 0.03
+    },
+    {
+     "id": 8040038870,
+     "pfaf": 8520,
+     "area_km2": 316277,
+     "share": 0.03
+    },
+    {
+     "id": 8040252760,
+     "pfaf": 8224,
+     "area_km2": 275685,
+     "share": 0.028
+    },
+    {
+     "id": 8040264670,
+     "pfaf": 8226,
+     "area_km2": 267548,
+     "share": 0.028
+    },
+    {
+     "id": 8040018120,
+     "pfaf": 8324,
+     "area_km2": 244856,
+     "share": 0.025
+    },
+    {
+     "id": 7040033480,
+     "pfaf": 7240,
+     "area_km2": 233624,
+     "share": 0.024
+    },
+    {
+     "id": 7040016260,
+     "pfaf": 7832,
+     "area_km2": 230829,
+     "share": 0.024
+    },
+    {
+     "id": 8040051550,
+     "pfaf": 8630,
+     "area_km2": 246234,
+     "share": 0.024
+    },
+    {
+     "id": 7040025570,
+     "pfaf": 7219,
+     "area_km2": 226570,
+     "share": 0.022
+    },
+    {
+     "id": 8040032840,
+     "pfaf": 8510,
+     "area_km2": 236695,
+     "share": 0.022
+    },
+    {
+     "id": 8040024130,
+     "pfaf": 8420,
+     "area_km2": 225882,
+     "share": 0.022
+    },
+    {
+     "id": 7040022850,
+     "pfaf": 7135,
+     "area_km2": 202211,
+     "share": 0.021
+    },
+    {
+     "id": 8040009560,
+     "pfaf": 8221,
+     "area_km2": 198883,
+     "share": 0.02
+    },
+    {
+     "id": 8040219290,
+     "pfaf": 8129,
+     "area_km2": 196663,
+     "share": 0.019
+    },
+    {
+     "id": 7040034530,
+     "pfaf": 7260,
+     "area_km2": 198962,
+     "share": 0.017
+    },
+    {
+     "id": 8040252610,
+     "pfaf": 8225,
+     "area_km2": 164321,
+     "share": 0.017
+    },
+    {
+     "id": 8040183070,
+     "pfaf": 8222,
+     "area_km2": 162691,
+     "share": 0.017
+    },
+    {
+     "id": 8040013490,
+     "pfaf": 8319,
+     "area_km2": 167484,
+     "share": 0.016
+    },
+    {
+     "id": 7040194860,
+     "pfaf": 7124,
+     "area_km2": 153257,
+     "share": 0.016
+    },
+    {
+     "id": 8040009570,
+     "pfaf": 8230,
+     "area_km2": 154444,
+     "share": 0.016
+    },
+    {
+     "id": 7040402320,
+     "pfaf": 7254,
+     "area_km2": 147406,
+     "share": 0.015
+    },
+    {
+     "id": 7040028670,
+     "pfaf": 7226,
+     "area_km2": 135537,
+     "share": 0.014
+    },
+    {
+     "id": 7040024290,
+     "pfaf": 7136,
+     "area_km2": 134727,
+     "share": 0.014
+    },
+    {
+     "id": 7040016270,
+     "pfaf": 7833,
+     "area_km2": 140022,
+     "share": 0.012
+    },
+    {
+     "id": 8040183170,
+     "pfaf": 8223,
+     "area_km2": 118763,
+     "share": 0.012
+    },
+    {
+     "id": 8040013480,
+     "pfaf": 8318,
+     "area_km2": 118552,
+     "share": 0.012
+    },
+    {
+     "id": 7040392520,
+     "pfaf": 7259,
+     "area_km2": 214028,
+     "share": 0.012
+    },
+    {
+     "id": 7040059990,
+     "pfaf": 7230,
+     "area_km2": 114323,
+     "share": 0.011
+    },
+    {
+     "id": 7040024580,
+     "pfaf": 7138,
+     "area_km2": 107727,
+     "share": 0.011
+    },
+    {
+     "id": 7040022270,
+     "pfaf": 7132,
+     "area_km2": 107550,
+     "share": 0.011
+    },
+    {
+     "id": 7040022240,
+     "pfaf": 7121,
+     "area_km2": 107600,
+     "share": 0.011
+    },
+    {
+     "id": 7040379430,
+     "pfaf": 7826,
+     "area_km2": 269628,
+     "share": 0.011
+    },
+    {
+     "id": 7040022840,
+     "pfaf": 7134,
+     "area_km2": 101172,
+     "share": 0.01
+    },
+    {
+     "id": 7040402430,
+     "pfaf": 7255,
+     "area_km2": 263811,
+     "share": 0.01
+    },
+    {
+     "id": 7040029460,
+     "pfaf": 7231,
+     "area_km2": 103117,
+     "share": 0.01
+    }
+   ]
+  },
+  "CHL": {
+   "ecoregions": [
+    {
+     "id": 563,
+     "name": "Valdivian temperate forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Neotropic",
+     "share": 0.278
+    },
+    {
+     "id": 596,
+     "name": "Chilean Matorral",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Neotropic",
+     "share": 0.202
+    },
+    {
+     "id": 561,
+     "name": "Magellanic subpolar forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Neotropic",
+     "share": 0.181
+    },
+    {
+     "id": 598,
+     "name": "Atacama desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Neotropic",
+     "share": 0.145
+    },
+    {
+     "id": 587,
+     "name": "Central Andean dry puna",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.115
+    },
+    {
+     "id": 595,
+     "name": "Southern Andean steppe",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.043
+    },
+    {
+     "id": 578,
+     "name": "Patagonian steppe",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Neotropic",
+     "share": 0.035
+    }
+   ],
+   "basins": [
+    {
+     "id": 6040027000,
+     "pfaf": 6625,
+     "area_km2": 121076,
+     "share": 0.156
+    },
+    {
+     "id": 6040021870,
+     "pfaf": 6611,
+     "area_km2": 92302,
+     "share": 0.117
+    },
+    {
+     "id": 6040028300,
+     "pfaf": 6627,
+     "area_km2": 77888,
+     "share": 0.101
+    },
+    {
+     "id": 6040040470,
+     "pfaf": 6640,
+     "area_km2": 326937,
+     "share": 0.087
+    },
+    {
+     "id": 6040026140,
+     "pfaf": 6621,
+     "area_km2": 60208,
+     "share": 0.076
+    },
+    {
+     "id": 6040035990,
+     "pfaf": 6610,
+     "area_km2": 74851,
+     "share": 0.064
+    },
+    {
+     "id": 6040029050,
+     "pfaf": 6629,
+     "area_km2": 40639,
+     "share": 0.052
+    },
+    {
+     "id": 6040024070,
+     "pfaf": 6615,
+     "area_km2": 39208,
+     "share": 0.048
+    },
+    {
+     "id": 6040029040,
+     "pfaf": 6628,
+     "area_km2": 36060,
+     "share": 0.047
+    },
+    {
+     "id": 6040025420,
+     "pfaf": 6619,
+     "area_km2": 49783,
+     "share": 0.045
+    },
+    {
+     "id": 6040026750,
+     "pfaf": 6622,
+     "area_km2": 24252,
+     "share": 0.032
+    },
+    {
+     "id": 6040026990,
+     "pfaf": 6624,
+     "area_km2": 21105,
+     "share": 0.028
+    },
+    {
+     "id": 6040024060,
+     "pfaf": 6614,
+     "area_km2": 29292,
+     "share": 0.026
+    },
+    {
+     "id": 6040028290,
+     "pfaf": 6626,
+     "area_km2": 18467,
+     "share": 0.024
+    },
+    {
+     "id": 6040026760,
+     "pfaf": 6623,
+     "area_km2": 15445,
+     "share": 0.02
+    },
+    {
+     "id": 6040025140,
+     "pfaf": 6617,
+     "area_km2": 13028,
+     "share": 0.016
+    },
+    {
+     "id": 6040025130,
+     "pfaf": 6616,
+     "area_km2": 12294,
+     "share": 0.015
+    },
+    {
+     "id": 6040021220,
+     "pfaf": 6539,
+     "area_km2": 53135,
+     "share": 0.012
+    },
+    {
+     "id": 6040025410,
+     "pfaf": 6618,
+     "area_km2": 13162,
+     "share": 0.011
+    }
+   ]
+  },
+  "CHN": {
+   "ecoregions": [
+    {
+     "id": 843,
+     "name": "Taklimakan desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.08
+    },
+    {
+     "id": 236,
+     "name": "Jian Nan subtropical evergreen forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.071
+    },
+    {
+     "id": 750,
+     "name": "Central Tibetan Plateau alpine steppe",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.067
+    },
+    {
+     "id": 734,
+     "name": "Mongolian-Manchurian grassland",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.063
+    },
+    {
+     "id": 765,
+     "name": "Southeast Tibet shrublands and meadows",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.049
+    },
+    {
+     "id": 808,
+     "name": "Alashan Plateau semi-desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.049
+    },
+    {
+     "id": 657,
+     "name": "Changjiang Plain evergreen forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.047
+    },
+    {
+     "id": 667,
+     "name": "Huang He Plain mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.046
+    },
+    {
+     "id": 759,
+     "name": "North Tibetan Plateau-Kunlun Mountains alpine desert",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.04
+    },
+    {
+     "id": 653,
+     "name": "Central China Loess Plateau mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.039
+    },
+    {
+     "id": 669,
+     "name": "Manchurian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.038
+    },
+    {
+     "id": 768,
+     "name": "Tibetan Plateau alpine shrublands and meadows",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.029
+    },
+    {
+     "id": 642,
+     "name": "Guizhou Plateau broadleaf and mixed forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Palearctic",
+     "share": 0.029
+    },
+    {
+     "id": 643,
+     "name": "Yunnan Plateau subtropical evergreen forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Palearctic",
+     "share": 0.026
+    },
+    {
+     "id": 827,
+     "name": "Junggar Basin semi-desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.026
+    },
+    {
+     "id": 673,
+     "name": "Northeast China Plain deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.025
+    },
+    {
+     "id": 761,
+     "name": "Ordos Plateau steppe",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.023
+    },
+    {
+     "id": 767,
+     "name": "Tian Shan montane steppe and meadows",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.021
+    },
+    {
+     "id": 835,
+     "name": "Qaidam Basin semi-desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.021
+    },
+    {
+     "id": 268,
+     "name": "South China-Vietnam subtropical evergreen forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.019
+    },
+    {
+     "id": 659,
+     "name": "Daba Mountains evergreen forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.018
+    },
+    {
+     "id": 693,
+     "name": "Da Hinggan-Dzhagdy Mountains conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.016
+    },
+    {
+     "id": 256,
+     "name": "Northern Indochina subtropical forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.016
+    },
+    {
+     "id": 677,
+     "name": "Qin Ling Mountains deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.013
+    },
+    {
+     "id": 824,
+     "name": "Eastern Gobi desert steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.011
+    },
+    {
+     "id": 697,
+     "name": "Hengduan Mountains subalpine conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.011
+    },
+    {
+     "id": 680,
+     "name": "Sichuan Basin evergreen broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.011
+    }
+   ],
+   "basins": [
+    {
+     "id": 4040783120,
+     "pfaf": 4349,
+     "area_km2": 1025899,
+     "share": 0.109
+    },
+    {
+     "id": 4040186800,
+     "pfaf": 4224,
+     "area_km2": 552626,
+     "share": 0.059
+    },
+    {
+     "id": 4040012990,
+     "pfaf": 4366,
+     "area_km2": 403805,
+     "share": 0.042
+    },
+    {
+     "id": 4040050270,
+     "pfaf": 4830,
+     "area_km2": 326657,
+     "share": 0.035
+    },
+    {
+     "id": 4040783330,
+     "pfaf": 4348,
+     "area_km2": 261184,
+     "share": 0.028
+    },
+    {
+     "id": 4040548370,
+     "pfaf": 4327,
+     "area_km2": 248039,
+     "share": 0.026
+    },
+    {
+     "id": 4040838850,
+     "pfaf": 4529,
+     "area_km2": 257277,
+     "share": 0.026
+    },
+    {
+     "id": 4040007410,
+     "pfaf": 4316,
+     "area_km2": 215965,
+     "share": 0.023
+    },
+    {
+     "id": 4040416430,
+     "pfaf": 4824,
+     "area_km2": 213833,
+     "share": 0.023
+    },
+    {
+     "id": 4040009890,
+     "pfaf": 4350,
+     "area_km2": 212335,
+     "share": 0.022
+    },
+    {
+     "id": 4040578830,
+     "pfaf": 4329,
+     "area_km2": 195359,
+     "share": 0.021
+    },
+    {
+     "id": 4040006570,
+     "pfaf": 4248,
+     "area_km2": 192300,
+     "share": 0.021
+    },
+    {
+     "id": 4040050980,
+     "pfaf": 4920,
+     "area_km2": 192062,
+     "share": 0.02
+    },
+    {
+     "id": 4040449990,
+     "pfaf": 4823,
+     "area_km2": 177778,
+     "share": 0.019
+    },
+    {
+     "id": 4040694190,
+     "pfaf": 4342,
+     "area_km2": 172078,
+     "share": 0.018
+    },
+    {
+     "id": 4040095320,
+     "pfaf": 4229,
+     "area_km2": 338916,
+     "share": 0.018
+    },
+    {
+     "id": 4040748300,
+     "pfaf": 4346,
+     "area_km2": 165306,
+     "share": 0.018
+    },
+    {
+     "id": 4041043580,
+     "pfaf": 4429,
+     "area_km2": 231768,
+     "share": 0.018
+    },
+    {
+     "id": 4040773260,
+     "pfaf": 4344,
+     "area_km2": 162424,
+     "share": 0.017
+    },
+    {
+     "id": 4040007860,
+     "pfaf": 4330,
+     "area_km2": 161390,
+     "share": 0.017
+    },
+    {
+     "id": 4040050410,
+     "pfaf": 4810,
+     "area_km2": 144281,
+     "share": 0.015
+    },
+    {
+     "id": 4040023060,
+     "pfaf": 4454,
+     "area_km2": 266292,
+     "share": 0.015
+    },
+    {
+     "id": 4040627620,
+     "pfaf": 4322,
+     "area_km2": 135140,
+     "share": 0.014
+    },
+    {
+     "id": 4040050550,
+     "pfaf": 4320,
+     "area_km2": 115687,
+     "share": 0.012
+    },
+    {
+     "id": 4040462930,
+     "pfaf": 4829,
+     "area_km2": 113685,
+     "share": 0.012
+    },
+    {
+     "id": 4040438130,
+     "pfaf": 4826,
+     "area_km2": 103679,
+     "share": 0.011
+    },
+    {
+     "id": 4040050280,
+     "pfaf": 4820,
+     "area_km2": 101428,
+     "share": 0.011
+    }
+   ]
+  },
+  "DEU": {
+   "ecoregions": [
+    {
+     "id": 686,
+     "name": "Western European broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.55
+    },
+    {
+     "id": 664,
+     "name": "European Atlantic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.223
+    },
+    {
+     "id": 654,
+     "name": "Central European mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.136
+    },
+    {
+     "id": 647,
+     "name": "Baltic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.084
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040023010,
+     "pfaf": 2326,
+     "area_km2": 163122,
+     "share": 0.294
+    },
+    {
+     "id": 2040024170,
+     "pfaf": 2328,
+     "area_km2": 138383,
+     "share": 0.245
+    },
+    {
+     "id": 2040023020,
+     "pfaf": 2327,
+     "area_km2": 90032,
+     "share": 0.196
+    },
+    {
+     "id": 2040539930,
+     "pfaf": 2279,
+     "area_km2": 211260,
+     "share": 0.154
+    },
+    {
+     "id": 2040024230,
+     "pfaf": 2410,
+     "area_km2": 76317,
+     "share": 0.083
+    },
+    {
+     "id": 2040022160,
+     "pfaf": 2325,
+     "area_km2": 76121,
+     "share": 0.013
+    },
+    {
+     "id": 2040026060,
+     "pfaf": 2422,
+     "area_km2": 118790,
+     "share": 0.012
+    }
+   ]
+  },
+  "ESP": {
+   "ecoregions": [
+    {
+     "id": 793,
+     "name": "Iberian sclerophyllous and semi-deciduous forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.57
+    },
+    {
+     "id": 648,
+     "name": "Cantabrian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.123
+    },
+    {
+     "id": 800,
+     "name": "Northwest Iberian montane forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.094
+    },
+    {
+     "id": 792,
+     "name": "Iberian conifer forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.07
+    },
+    {
+     "id": 805,
+     "name": "Southwest Iberian Mediterranean sclerophyllous and mixed forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.061
+    },
+    {
+     "id": 799,
+     "name": "Northeast Spain and Southern France Mediterranean forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.054
+    },
+    {
+     "id": 676,
+     "name": "Pyrenees conifer and mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.023
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040016230,
+     "pfaf": 2160,
+     "area_km2": 310600,
+     "share": 0.362
+    },
+    {
+     "id": 2040019150,
+     "pfaf": 2318,
+     "area_km2": 97240,
+     "share": 0.164
+    },
+    {
+     "id": 2040018360,
+     "pfaf": 2312,
+     "area_km2": 57026,
+     "share": 0.116
+    },
+    {
+     "id": 2040018840,
+     "pfaf": 2316,
+     "area_km2": 71139,
+     "share": 0.115
+    },
+    {
+     "id": 2040018460,
+     "pfaf": 2314,
+     "area_km2": 66927,
+     "share": 0.113
+    },
+    {
+     "id": 2040019160,
+     "pfaf": 2319,
+     "area_km2": 60292,
+     "share": 0.107
+    },
+    {
+     "id": 2040018240,
+     "pfaf": 2311,
+     "area_km2": 5870,
+     "share": 0.012
+    },
+    {
+     "id": 2040018370,
+     "pfaf": 2313,
+     "area_km2": 5061,
+     "share": 0.01
+    }
+   ]
+  },
+  "FIN": {
+   "ecoregions": [
+    {
+     "id": 717,
+     "name": "Scandinavian and Russian taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Palearctic",
+     "share": 0.979
+    },
+    {
+     "id": 780,
+     "name": "Scandinavian Montane Birch forest and grasslands",
+     "biome": "Tundra",
+     "realm": "Palearctic",
+     "share": 0.013
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040028670,
+     "pfaf": 2435,
+     "area_km2": 100516,
+     "share": 0.283
+    },
+    {
+     "id": 2040028310,
+     "pfaf": 2432,
+     "area_km2": 285333,
+     "share": 0.191
+    },
+    {
+     "id": 2040030060,
+     "pfaf": 2438,
+     "area_km2": 53538,
+     "share": 0.15
+    },
+    {
+     "id": 2040028660,
+     "pfaf": 2434,
+     "area_km2": 26798,
+     "share": 0.08
+    },
+    {
+     "id": 2040029940,
+     "pfaf": 2436,
+     "area_km2": 25804,
+     "share": 0.072
+    },
+    {
+     "id": 2040029950,
+     "pfaf": 2437,
+     "area_km2": 21435,
+     "share": 0.063
+    },
+    {
+     "id": 2040030100,
+     "pfaf": 2442,
+     "area_km2": 40545,
+     "share": 0.041
+    },
+    {
+     "id": 2040039390,
+     "pfaf": 2522,
+     "area_km2": 17832,
+     "share": 0.04
+    },
+    {
+     "id": 2040037990,
+     "pfaf": 2521,
+     "area_km2": 74796,
+     "share": 0.036
+    },
+    {
+     "id": 2040041120,
+     "pfaf": 2526,
+     "area_km2": 41492,
+     "share": 0.019
+    },
+    {
+     "id": 2040028320,
+     "pfaf": 2433,
+     "area_km2": 9293,
+     "share": 0.015
+    }
+   ]
+  },
+  "FRA": {
+   "ecoregions": [
+    {
+     "id": 664,
+     "name": "European Atlantic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.369
+    },
+    {
+     "id": 686,
+     "name": "Western European broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.31
+    },
+    {
+     "id": 465,
+     "name": "Guianan lowland moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.131
+    },
+    {
+     "id": 799,
+     "name": "Northeast Spain and Southern France Mediterranean forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.089
+    },
+    {
+     "id": 648,
+     "name": "Cantabrian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.032
+    },
+    {
+     "id": 689,
+     "name": "Alps conifer and mixed forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.027
+    },
+    {
+     "id": 676,
+     "name": "Pyrenees conifer and mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.023
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040020320,
+     "pfaf": 2321,
+     "area_km2": 126054,
+     "share": 0.199
+    },
+    {
+     "id": 2040016230,
+     "pfaf": 2160,
+     "area_km2": 310600,
+     "share": 0.189
+    },
+    {
+     "id": 2040021030,
+     "pfaf": 2322,
+     "area_km2": 116722,
+     "share": 0.186
+    },
+    {
+     "id": 2040022150,
+     "pfaf": 2324,
+     "area_km2": 73248,
+     "share": 0.117
+    },
+    {
+     "id": 6040005500,
+     "pfaf": 6167,
+     "area_km2": 96410,
+     "share": 0.089
+    },
+    {
+     "id": 2040021040,
+     "pfaf": 2323,
+     "area_km2": 48373,
+     "share": 0.074
+    },
+    {
+     "id": 2040022160,
+     "pfaf": 2325,
+     "area_km2": 76121,
+     "share": 0.05
+    },
+    {
+     "id": 6040005490,
+     "pfaf": 6166,
+     "area_km2": 66409,
+     "share": 0.045
+    },
+    {
+     "id": 2040023010,
+     "pfaf": 2326,
+     "area_km2": 163122,
+     "share": 0.035
+    },
+    {
+     "id": 2040047500,
+     "pfaf": 2180,
+     "area_km2": 33397,
+     "share": 0.013
+    }
+   ]
+  },
+  "GBR": {
+   "ecoregions": [
+    {
+     "id": 651,
+     "name": "Celtic broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.653
+    },
+    {
+     "id": 663,
+     "name": "English Lowlands beech forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.196
+    },
+    {
+     "id": 691,
+     "name": "Caledon conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.097
+    },
+    {
+     "id": 672,
+     "name": "North Atlantic moist mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.054
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040048790,
+     "pfaf": 2330,
+     "area_km2": 232575,
+     "share": 0.95
+    },
+    {
+     "id": 2040054200,
+     "pfaf": 2340,
+     "area_km2": 85561,
+     "share": 0.05
+    }
+   ]
+  },
+  "GEO": {
+   "ecoregions": [
+    {
+     "id": 650,
+     "name": "Caucasus mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.715
+    },
+    {
+     "id": 812,
+     "name": "Azerbaijan shrub desert and steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Palearctic",
+     "share": 0.11
+    },
+    {
+     "id": 665,
+     "name": "Euxine-Colchic broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.092
+    },
+    {
+     "id": 727,
+     "name": "Eastern Anatolian montane steppe",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.082
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040070050,
+     "pfaf": 2846,
+     "area_km2": 189819,
+     "share": 0.518
+    },
+    {
+     "id": 2040005130,
+     "pfaf": 2219,
+     "area_km2": 30077,
+     "share": 0.426
+    },
+    {
+     "id": 2040005120,
+     "pfaf": 2218,
+     "area_km2": 22012,
+     "share": 0.017
+    },
+    {
+     "id": 2040069150,
+     "pfaf": 2844,
+     "area_km2": 42927,
+     "share": 0.016
+    },
+    {
+     "id": 2040005690,
+     "pfaf": 2220,
+     "area_km2": 105556,
+     "share": 0.015
+    }
+   ]
+  },
+  "GHA": {
+   "ecoregions": [
+    {
+     "id": 62,
+     "name": "West Sudanian savanna",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.376
+    },
+    {
+     "id": 11,
+     "name": "Eastern Guinean forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Afrotropic",
+     "share": 0.331
+    },
+    {
+     "id": 44,
+     "name": "Guinean forest-savanna",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.287
+    }
+   ],
+   "basins": [
+    {
+     "id": 1040023310,
+     "pfaf": 1451,
+     "area_km2": 74783,
+     "share": 0.286
+    },
+    {
+     "id": 1040873650,
+     "pfaf": 1444,
+     "area_km2": 111518,
+     "share": 0.207
+    },
+    {
+     "id": 1040915980,
+     "pfaf": 1443,
+     "area_km2": 35568,
+     "share": 0.148
+    },
+    {
+     "id": 1040873640,
+     "pfaf": 1445,
+     "area_km2": 52495,
+     "share": 0.141
+    },
+    {
+     "id": 1040023300,
+     "pfaf": 1441,
+     "area_km2": 35848,
+     "share": 0.132
+    },
+    {
+     "id": 1040915990,
+     "pfaf": 1442,
+     "area_km2": 75691,
+     "share": 0.067
+    }
+   ]
+  },
+  "HRV": {
+   "ecoregions": [
+    {
+     "id": 674,
+     "name": "Pannonian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.582
+    },
+    {
+     "id": 660,
+     "name": "Dinaric Mountains mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.206
+    },
+    {
+     "id": 794,
+     "name": "Illyrian deciduous forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.203
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040555780,
+     "pfaf": 2274,
+     "area_km2": 95461,
+     "share": 0.441
+    },
+    {
+     "id": 2040009230,
+     "pfaf": 2130,
+     "area_km2": 293802,
+     "share": 0.365
+    },
+    {
+     "id": 2040540100,
+     "pfaf": 2278,
+     "area_km2": 40250,
+     "share": 0.145
+    },
+    {
+     "id": 2040548700,
+     "pfaf": 2277,
+     "area_km2": 5906,
+     "share": 0.036
+    },
+    {
+     "id": 2040539930,
+     "pfaf": 2279,
+     "area_km2": 211260,
+     "share": 0.013
+    }
+   ]
+  },
+  "IDN": {
+   "ecoregions": [
+    {
+     "id": 219,
+     "name": "Borneo lowland rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.165
+    },
+    {
+     "id": 278,
+     "name": "Sumatran lowland rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.137
+    },
+    {
+     "id": 156,
+     "name": "Sulawesi lowland rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.053
+    },
+    {
+     "id": 280,
+     "name": "Sumatran peat swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.05
+    },
+    {
+     "id": 220,
+     "name": "Borneo montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.046
+    },
+    {
+     "id": 155,
+     "name": "Southern New Guinea lowland rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.044
+    },
+    {
+     "id": 157,
+     "name": "Sulawesi montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.044
+    },
+    {
+     "id": 139,
+     "name": "Central Range Papuan montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.043
+    },
+    {
+     "id": 279,
+     "name": "Sumatran montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.042
+    },
+    {
+     "id": 161,
+     "name": "Vogelkop-Aru lowland rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.038
+    },
+    {
+     "id": 281,
+     "name": "Sundaland heath forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.038
+    },
+    {
+     "id": 148,
+     "name": "Northern New Guinea lowland rain and freshwater swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.034
+    },
+    {
+     "id": 154,
+     "name": "Southern New Guinea freshwater swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.03
+    },
+    {
+     "id": 230,
+     "name": "Eastern Java-Bali rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.026
+    },
+    {
+     "id": 221,
+     "name": "Borneo peat swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.026
+    },
+    {
+     "id": 289,
+     "name": "Western Java rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.023
+    },
+    {
+     "id": 273,
+     "name": "Southwest Borneo freshwater swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.02
+    },
+    {
+     "id": 288,
+     "name": "Western Java montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.015
+    },
+    {
+     "id": 163,
+     "name": "Lesser Sundas deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.014
+    },
+    {
+     "id": 322,
+     "name": "Sunda Shelf mangroves",
+     "biome": "Mangroves",
+     "realm": "Indomalayan",
+     "share": 0.012
+    },
+    {
+     "id": 160,
+     "name": "Vogelkop montane rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Australasia",
+     "share": 0.012
+    },
+    {
+     "id": 217,
+     "name": "New Guinea mangroves",
+     "biome": "Mangroves",
+     "realm": "Australasia",
+     "share": 0.011
+    },
+    {
+     "id": 277,
+     "name": "Sumatran freshwater swamp forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.01
+    }
+   ],
+   "basins": [
+    {
+     "id": 5040041880,
+     "pfaf": 5315,
+     "area_km2": 326140,
+     "share": 0.168
+    },
+    {
+     "id": 5040031240,
+     "pfaf": 5250,
+     "area_km2": 196242,
+     "share": 0.097
+    },
+    {
+     "id": 5040000010,
+     "pfaf": 5111,
+     "area_km2": 161855,
+     "share": 0.088
+    },
+    {
+     "id": 5040015830,
+     "pfaf": 5213,
+     "area_km2": 133913,
+     "share": 0.076
+    },
+    {
+     "id": 5040007690,
+     "pfaf": 5150,
+     "area_km2": 140535,
+     "share": 0.074
+    },
+    {
+     "id": 5040017830,
+     "pfaf": 5217,
+     "area_km2": 245530,
+     "share": 0.058
+    },
+    {
+     "id": 5040017030,
+     "pfaf": 5214,
+     "area_km2": 83879,
+     "share": 0.046
+    },
+    {
+     "id": 5040046910,
+     "pfaf": 5316,
+     "area_km2": 79016,
+     "share": 0.045
+    },
+    {
+     "id": 5040021180,
+     "pfaf": 5218,
+     "area_km2": 76430,
+     "share": 0.044
+    },
+    {
+     "id": 5040015820,
+     "pfaf": 5212,
+     "area_km2": 60621,
+     "share": 0.035
+    },
+    {
+     "id": 5040005140,
+     "pfaf": 5118,
+     "area_km2": 54847,
+     "share": 0.032
+    },
+    {
+     "id": 5040005150,
+     "pfaf": 5119,
+     "area_km2": 48402,
+     "share": 0.027
+    },
+    {
+     "id": 5040004800,
+     "pfaf": 5116,
+     "area_km2": 42681,
+     "share": 0.025
+    },
+    {
+     "id": 5040004230,
+     "pfaf": 5115,
+     "area_km2": 40839,
+     "share": 0.023
+    },
+    {
+     "id": 5040011800,
+     "pfaf": 5160,
+     "area_km2": 53151,
+     "share": 0.02
+    },
+    {
+     "id": 5040021190,
+     "pfaf": 5219,
+     "area_km2": 33146,
+     "share": 0.018
+    },
+    {
+     "id": 5040003700,
+     "pfaf": 5113,
+     "area_km2": 31206,
+     "share": 0.016
+    },
+    {
+     "id": 5040037270,
+     "pfaf": 5320,
+     "area_km2": 39095,
+     "share": 0.016
+    },
+    {
+     "id": 5040017040,
+     "pfaf": 5215,
+     "area_km2": 46483,
+     "share": 0.013
+    },
+    {
+     "id": 5040004810,
+     "pfaf": 5117,
+     "area_km2": 21274,
+     "share": 0.012
+    },
+    {
+     "id": 5040004220,
+     "pfaf": 5114,
+     "area_km2": 20389,
+     "share": 0.012
+    },
+    {
+     "id": 5040046920,
+     "pfaf": 5317,
+     "area_km2": 32184,
+     "share": 0.011
+    },
+    {
+     "id": 5040015660,
+     "pfaf": 5211,
+     "area_km2": 19957,
+     "share": 0.011
+    },
+    {
+     "id": 5040003690,
+     "pfaf": 5112,
+     "area_km2": 19228,
+     "share": 0.011
+    },
+    {
+     "id": 5040038940,
+     "pfaf": 5330,
+     "area_km2": 28035,
+     "share": 0.01
+    }
+   ]
+  },
+  "IND": {
+   "ecoregions": [
+    {
+     "id": 228,
+     "name": "East Deccan moist deciduous forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.109
+    },
+    {
+     "id": 315,
+     "name": "Deccan thorn scrub forests",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Indomalayan",
+     "share": 0.108
+    },
+    {
+     "id": 295,
+     "name": "Khathiar-Gir dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.086
+    },
+    {
+     "id": 287,
+     "name": "Upper Gangetic Plains moist deciduous forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.085
+    },
+    {
+     "id": 314,
+     "name": "Aravalli west thorn scrub forests",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Indomalayan",
+     "share": 0.078
+    },
+    {
+     "id": 290,
+     "name": "Central Deccan Plateau dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.077
+    },
+    {
+     "id": 296,
+     "name": "Narmada Valley dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.055
+    },
+    {
+     "id": 318,
+     "name": "Thar desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Indomalayan",
+     "share": 0.052
+    },
+    {
+     "id": 238,
+     "name": "Lower Gangetic Plains moist deciduous forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.047
+    },
+    {
+     "id": 292,
+     "name": "Chhota-Nagpur dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.039
+    },
+    {
+     "id": 298,
+     "name": "South Deccan Plateau dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.026
+    },
+    {
+     "id": 297,
+     "name": "North Deccan dry deciduous forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.019
+    },
+    {
+     "id": 249,
+     "name": "Mizoram-Manipur-Kachin rain forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.018
+    },
+    {
+     "id": 222,
+     "name": "Brahmaputra Valley semi-evergreen forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.018
+    },
+    {
+     "id": 306,
+     "name": "Eastern Himalayan broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Indomalayan",
+     "share": 0.017
+    },
+    {
+     "id": 754,
+     "name": "Karakoram-West Tibetan Plateau alpine steppe",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Palearctic",
+     "share": 0.015
+    },
+    {
+     "id": 253,
+     "name": "North Western Ghats moist deciduous forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.015
+    },
+    {
+     "id": 308,
+     "name": "Western Himalayan broadleaf forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Indomalayan",
+     "share": 0.015
+    },
+    {
+     "id": 244,
+     "name": "Meghalaya subtropical forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Indomalayan",
+     "share": 0.013
+    },
+    {
+     "id": 302,
+     "name": "Himalayan subtropical pine forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Indomalayan",
+     "share": 0.013
+    }
+   ],
+   "basins": [
+    {
+     "id": 4040960480,
+     "pfaf": 4524,
+     "area_km2": 954206,
+     "share": 0.242
+    },
+    {
+     "id": 4040027780,
+     "pfaf": 4534,
+     "area_km2": 310377,
+     "share": 0.099
+    },
+    {
+     "id": 4040029530,
+     "pfaf": 4540,
+     "area_km2": 316846,
+     "share": 0.098
+    },
+    {
+     "id": 4040033430,
+     "pfaf": 4558,
+     "area_km2": 400311,
+     "share": 0.092
+    },
+    {
+     "id": 4040027940,
+     "pfaf": 4536,
+     "area_km2": 258784,
+     "share": 0.082
+    },
+    {
+     "id": 4040025460,
+     "pfaf": 4531,
+     "area_km2": 205062,
+     "share": 0.053
+    },
+    {
+     "id": 4040027950,
+     "pfaf": 4537,
+     "area_km2": 143865,
+     "share": 0.045
+    },
+    {
+     "id": 4040027100,
+     "pfaf": 4532,
+     "area_km2": 135525,
+     "share": 0.043
+    },
+    {
+     "id": 4040794730,
+     "pfaf": 4564,
+     "area_km2": 290471,
+     "share": 0.041
+    },
+    {
+     "id": 4040960200,
+     "pfaf": 4525,
+     "area_km2": 185348,
+     "share": 0.034
+    },
+    {
+     "id": 4040028760,
+     "pfaf": 4538,
+     "area_km2": 78369,
+     "share": 0.025
+    },
+    {
+     "id": 4040027110,
+     "pfaf": 4533,
+     "area_km2": 57148,
+     "share": 0.017
+    },
+    {
+     "id": 4040975160,
+     "pfaf": 4522,
+     "area_km2": 85401,
+     "share": 0.014
+    },
+    {
+     "id": 4040028770,
+     "pfaf": 4539,
+     "area_km2": 45137,
+     "share": 0.014
+    },
+    {
+     "id": 4040607420,
+     "pfaf": 4569,
+     "area_km2": 72730,
+     "share": 0.012
+    }
+   ]
+  },
+  "JPN": {
+   "ecoregions": [
+    {
+     "id": 682,
+     "name": "Taiheiyo evergreen forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.37
+    },
+    {
+     "id": 671,
+     "name": "Nihonkai montane deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.23
+    },
+    {
+     "id": 698,
+     "name": "Hokkaido montane conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.123
+    },
+    {
+     "id": 683,
+     "name": "Taiheiyo montane deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.117
+    },
+    {
+     "id": 666,
+     "name": "Hokkaido deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.072
+    },
+    {
+     "id": 670,
+     "name": "Nihonkai evergreen forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.055
+    },
+    {
+     "id": 699,
+     "name": "Honshu alpine conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.032
+    }
+   ],
+   "basins": [
+    {
+     "id": 4040039450,
+     "pfaf": 4130,
+     "area_km2": 295818,
+     "share": 0.787
+    },
+    {
+     "id": 4040037060,
+     "pfaf": 4120,
+     "area_km2": 85506,
+     "share": 0.213
+    }
+   ]
+  },
+  "KOR": {
+   "ecoregions": [
+    {
+     "id": 655,
+     "name": "Central Korean deciduous forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.816
+    },
+    {
+     "id": 681,
+     "name": "Southern Korea evergreen forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.121
+    },
+    {
+     "id": 669,
+     "name": "Manchurian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.062
+    }
+   ],
+   "basins": [
+    {
+     "id": 4040003020,
+     "pfaf": 4241,
+     "area_km2": 99062,
+     "share": 0.732
+    },
+    {
+     "id": 4040005050,
+     "pfaf": 4242,
+     "area_km2": 25245,
+     "share": 0.236
+    },
+    {
+     "id": 4040005060,
+     "pfaf": 4243,
+     "area_km2": 53777,
+     "share": 0.032
+    }
+   ]
+  },
+  "MEX": {
+   "ecoregions": [
+    {
+     "id": 428,
+     "name": "Chihuahuan desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.156
+    },
+    {
+     "id": 326,
+     "name": "Sierra Madre Occidental pine-oak forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Nearctic",
+     "share": 0.111
+    },
+    {
+     "id": 432,
+     "name": "Meseta Central matorral",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.065
+    },
+    {
+     "id": 435,
+     "name": "Sonoran desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.054
+    },
+    {
+     "id": 559,
+     "name": "Trans-Mexican Volcanic Belt pine-oak forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Neotropic",
+     "share": 0.047
+    },
+    {
+     "id": 494,
+     "name": "Petén-Veracruz moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.043
+    },
+    {
+     "id": 545,
+     "name": "Sinaloan dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.04
+    },
+    {
+     "id": 426,
+     "name": "Baja California desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.04
+    },
+    {
+     "id": 437,
+     "name": "Tamaulipan mezquital",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.037
+    },
+    {
+     "id": 519,
+     "name": "Yucatán moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.035
+    },
+    {
+     "id": 514,
+     "name": "Veracruz moist forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.035
+    },
+    {
+     "id": 522,
+     "name": "Balsas dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.032
+    },
+    {
+     "id": 558,
+     "name": "Sierra Madre del Sur pine-oak forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Neotropic",
+     "share": 0.031
+    },
+    {
+     "id": 327,
+     "name": "Sierra Madre Oriental pine-oak forests",
+     "biome": "Tropical & Subtropical Coniferous Forests",
+     "realm": "Nearctic",
+     "share": 0.031
+    },
+    {
+     "id": 427,
+     "name": "Central Mexican matorral",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.031
+    },
+    {
+     "id": 324,
+     "name": "Sonoran-Sinaloan subtropical dry forest",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Nearctic",
+     "share": 0.026
+    },
+    {
+     "id": 551,
+     "name": "Yucatán dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.025
+    },
+    {
+     "id": 547,
+     "name": "Southern Pacific dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.022
+    },
+    {
+     "id": 521,
+     "name": "Bajío dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.019
+    },
+    {
+     "id": 534,
+     "name": "Jalisco dry forests",
+     "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+     "realm": "Neotropic",
+     "share": 0.013
+    }
+   ],
+   "basins": [
+    {
+     "id": 7040049270,
+     "pfaf": 7521,
+     "area_km2": 571791,
+     "share": 0.125
+    },
+    {
+     "id": 7040073640,
+     "pfaf": 7522,
+     "area_km2": 174938,
+     "share": 0.09
+    },
+    {
+     "id": 7040049990,
+     "pfaf": 7532,
+     "area_km2": 153218,
+     "share": 0.079
+    },
+    {
+     "id": 7040050930,
+     "pfaf": 7537,
+     "area_km2": 382832,
+     "share": 0.071
+    },
+    {
+     "id": 7040006390,
+     "pfaf": 7714,
+     "area_km2": 134072,
+     "share": 0.069
+    },
+    {
+     "id": 7040008720,
+     "pfaf": 7741,
+     "area_km2": 177194,
+     "share": 0.065
+    },
+    {
+     "id": 7040005410,
+     "pfaf": 7712,
+     "area_km2": 116984,
+     "share": 0.06
+    },
+    {
+     "id": 7040006400,
+     "pfaf": 7715,
+     "area_km2": 116167,
+     "share": 0.06
+    },
+    {
+     "id": 7040007840,
+     "pfaf": 7719,
+     "area_km2": 116228,
+     "share": 0.055
+    },
+    {
+     "id": 7040000010,
+     "pfaf": 7711,
+     "area_km2": 227172,
+     "share": 0.047
+    },
+    {
+     "id": 7040073660,
+     "pfaf": 7523,
+     "area_km2": 102070,
+     "share": 0.044
+    },
+    {
+     "id": 7040050920,
+     "pfaf": 7536,
+     "area_km2": 127388,
+     "share": 0.04
+    },
+    {
+     "id": 7040007830,
+     "pfaf": 7718,
+     "area_km2": 77326,
+     "share": 0.035
+    },
+    {
+     "id": 7040049280,
+     "pfaf": 7531,
+     "area_km2": 61535,
+     "share": 0.031
+    },
+    {
+     "id": 7040005420,
+     "pfaf": 7713,
+     "area_km2": 61110,
+     "share": 0.031
+    },
+    {
+     "id": 7040050000,
+     "pfaf": 7533,
+     "area_km2": 42722,
+     "share": 0.021
+    },
+    {
+     "id": 7040050640,
+     "pfaf": 7534,
+     "area_km2": 39662,
+     "share": 0.02
+    },
+    {
+     "id": 7040007380,
+     "pfaf": 7716,
+     "area_km2": 34844,
+     "share": 0.018
+    },
+    {
+     "id": 7040050650,
+     "pfaf": 7535,
+     "area_km2": 33731,
+     "share": 0.017
+    },
+    {
+     "id": 7040007390,
+     "pfaf": 7717,
+     "area_km2": 25273,
+     "share": 0.013
+    }
+   ]
+  },
+  "NLD": {
+   "ecoregions": [
+    {
+     "id": 664,
+     "name": "European Atlantic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 1.0
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040023020,
+     "pfaf": 2327,
+     "area_km2": 90032,
+     "share": 0.602
+    },
+    {
+     "id": 2040022160,
+     "pfaf": 2325,
+     "area_km2": 76121,
+     "share": 0.285
+    },
+    {
+     "id": 2040023010,
+     "pfaf": 2326,
+     "area_km2": 163122,
+     "share": 0.112
+    }
+   ]
+  },
+  "SVN": {
+   "ecoregions": [
+    {
+     "id": 674,
+     "name": "Pannonian mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.554
+    },
+    {
+     "id": 660,
+     "name": "Dinaric Mountains mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.204
+    },
+    {
+     "id": 689,
+     "name": "Alps conifer and mixed forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Palearctic",
+     "share": 0.194
+    },
+    {
+     "id": 794,
+     "name": "Illyrian deciduous forests",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Palearctic",
+     "share": 0.048
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040555780,
+     "pfaf": 2274,
+     "area_km2": 95461,
+     "share": 0.608
+    },
+    {
+     "id": 2040540100,
+     "pfaf": 2278,
+     "area_km2": 40250,
+     "share": 0.252
+    },
+    {
+     "id": 2040009230,
+     "pfaf": 2130,
+     "area_km2": 293802,
+     "share": 0.14
+    }
+   ]
+  },
+  "SWE": {
+   "ecoregions": [
+    {
+     "id": 717,
+     "name": "Scandinavian and Russian taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Palearctic",
+     "share": 0.593
+    },
+    {
+     "id": 679,
+     "name": "Sarmatic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.262
+    },
+    {
+     "id": 780,
+     "name": "Scandinavian Montane Birch forest and grasslands",
+     "biome": "Tundra",
+     "realm": "Palearctic",
+     "share": 0.126
+    },
+    {
+     "id": 647,
+     "name": "Baltic mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Palearctic",
+     "share": 0.019
+    }
+   ],
+   "basins": [
+    {
+     "id": 2040030110,
+     "pfaf": 2443,
+     "area_km2": 132915,
+     "share": 0.289
+    },
+    {
+     "id": 2040031500,
+     "pfaf": 2447,
+     "area_km2": 114417,
+     "share": 0.238
+    },
+    {
+     "id": 2040031070,
+     "pfaf": 2445,
+     "area_km2": 72159,
+     "share": 0.159
+    },
+    {
+     "id": 2040033320,
+     "pfaf": 2448,
+     "area_km2": 49859,
+     "share": 0.097
+    },
+    {
+     "id": 2040031060,
+     "pfaf": 2444,
+     "area_km2": 31436,
+     "share": 0.07
+    },
+    {
+     "id": 2040031490,
+     "pfaf": 2446,
+     "area_km2": 28435,
+     "share": 0.064
+    },
+    {
+     "id": 2040030100,
+     "pfaf": 2442,
+     "area_km2": 40545,
+     "share": 0.057
+    },
+    {
+     "id": 2040033330,
+     "pfaf": 2449,
+     "area_km2": 6208,
+     "share": 0.014
+    },
+    {
+     "id": 2040033480,
+     "pfaf": 2510,
+     "area_km2": 241416,
+     "share": 0.011
+    }
+   ]
+  },
+  "TZA": {
+   "ecoregions": [
+    {
+     "id": 42,
+     "name": "Dry miombo woodlands",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.36
+    },
+    {
+     "id": 57,
+     "name": "Southern Acacia-Commiphora bushlands and thickets",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.242
+    },
+    {
+     "id": 39,
+     "name": "Central Zambezian wet miombo woodlands",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.184
+    },
+    {
+     "id": 25,
+     "name": "Northern Swahili coastal forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Afrotropic",
+     "share": 0.053
+    },
+    {
+     "id": 76,
+     "name": "Zambezian flooded grasslands",
+     "biome": "Flooded Grasslands & Savannas",
+     "realm": "Afrotropic",
+     "share": 0.04
+    },
+    {
+     "id": 61,
+     "name": "Victoria Basin forest-savanna",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.032
+    },
+    {
+     "id": 51,
+     "name": "Northern Acacia-Commiphora bushlands and thickets",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.024
+    },
+    {
+     "id": 87,
+     "name": "Southern Rift Montane forest-grassland",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.02
+    },
+    {
+     "id": 28,
+     "name": "Southern Swahili coastal forests and woodlands",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Afrotropic",
+     "share": 0.015
+    },
+    {
+     "id": 9,
+     "name": "Eastern Arc forests",
+     "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+     "realm": "Afrotropic",
+     "share": 0.012
+    }
+   ],
+   "basins": [
+    {
+     "id": 1040009450,
+     "pfaf": 1174,
+     "area_km2": 204076,
+     "share": 0.218
+    },
+    {
+     "id": 1041259950,
+     "pfaf": 1328,
+     "area_km2": 266511,
+     "share": 0.176
+    },
+    {
+     "id": 1040008480,
+     "pfaf": 1173,
+     "area_km2": 211436,
+     "share": 0.146
+    },
+    {
+     "id": 1040837890,
+     "pfaf": 1729,
+     "area_km2": 552625,
+     "share": 0.128
+    },
+    {
+     "id": 1040040370,
+     "pfaf": 1160,
+     "area_km2": 79610,
+     "share": 0.082
+    },
+    {
+     "id": 1040040440,
+     "pfaf": 1151,
+     "area_km2": 64130,
+     "share": 0.068
+    },
+    {
+     "id": 1040009460,
+     "pfaf": 1175,
+     "area_km2": 56549,
+     "share": 0.057
+    },
+    {
+     "id": 1040010030,
+     "pfaf": 1176,
+     "area_km2": 155318,
+     "share": 0.051
+    },
+    {
+     "id": 1040041020,
+     "pfaf": 1152,
+     "area_km2": 54919,
+     "share": 0.039
+    },
+    {
+     "id": 1041472390,
+     "pfaf": 1222,
+     "area_km2": 161059,
+     "share": 0.034
+    }
+   ]
+  },
+  "USA": {
+   "ecoregions": [
+    {
+     "id": 399,
+     "name": "Southeast US conifer savannas",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.056
+    },
+    {
+     "id": 396,
+     "name": "Northern Shortgrass prairie",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.054
+    },
+    {
+     "id": 402,
+     "name": "Western shortgrass prairie",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.053
+    },
+    {
+     "id": 375,
+     "name": "Interior Alaska-Yukon lowland taiga",
+     "biome": "Boreal Forests/Taiga",
+     "realm": "Nearctic",
+     "share": 0.044
+    },
+    {
+     "id": 388,
+     "name": "Central Tallgrass prairie",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.037
+    },
+    {
+     "id": 430,
+     "name": "Great Basin shrub steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.033
+    },
+    {
+     "id": 429,
+     "name": "Colorado Plateau shrublands",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.031
+    },
+    {
+     "id": 389,
+     "name": "Central-Southern US mixed grasslands",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.03
+    },
+    {
+     "id": 387,
+     "name": "Central US forest-grasslands transition",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.025
+    },
+    {
+     "id": 344,
+     "name": "Western Great Lakes forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.023
+    },
+    {
+     "id": 342,
+     "name": "Southern Great Lakes forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.022
+    },
+    {
+     "id": 428,
+     "name": "Chihuahuan desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.022
+    },
+    {
+     "id": 434,
+     "name": "Snake-Columbia shrub steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.021
+    },
+    {
+     "id": 329,
+     "name": "Appalachian mixed mesophytic forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.02
+    },
+    {
+     "id": 367,
+     "name": "South Central Rockies forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.019
+    },
+    {
+     "id": 338,
+     "name": "New England-Acadian forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.018
+    },
+    {
+     "id": 330,
+     "name": "Appalachian Piedmont forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.018
+    },
+    {
+     "id": 331,
+     "name": "Appalachian-Blue Ridge forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.018
+    },
+    {
+     "id": 363,
+     "name": "Piney Woods",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.017
+    },
+    {
+     "id": 409,
+     "name": "Beringia lowland tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.016
+    },
+    {
+     "id": 353,
+     "name": "Colorado Rockies forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.016
+    },
+    {
+     "id": 405,
+     "name": "Alaska-St. Elias Range tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.015
+    },
+    {
+     "id": 343,
+     "name": "Upper Midwest US forest-savanna transition",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.015
+    },
+    {
+     "id": 386,
+     "name": "Canadian Aspen forests and parklands",
+     "biome": "Temperate Grasslands, Savannas & Shrublands",
+     "realm": "Nearctic",
+     "share": 0.015
+    },
+    {
+     "id": 411,
+     "name": "Brooks-British Range tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.015
+    },
+    {
+     "id": 438,
+     "name": "Wyoming Basin shrub steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.014
+    },
+    {
+     "id": 433,
+     "name": "Mojave desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.014
+    },
+    {
+     "id": 408,
+     "name": "Arctic foothills tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.014
+    },
+    {
+     "id": 336,
+     "name": "Interior Plateau US Hardwood Forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.013
+    },
+    {
+     "id": 435,
+     "name": "Sonoran desert",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Nearctic",
+     "share": 0.013
+    },
+    {
+     "id": 416,
+     "name": "Interior Yukon-Alaska alpine tundra",
+     "biome": "Tundra",
+     "realm": "Nearctic",
+     "share": 0.012
+    },
+    {
+     "id": 337,
+     "name": "Mississippi lowland forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.012
+    },
+    {
+     "id": 346,
+     "name": "Arizona Mountains forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.012
+    },
+    {
+     "id": 340,
+     "name": "Ozark Highlands mixed forests",
+     "biome": "Temperate Broadleaf & Mixed Forests",
+     "realm": "Nearctic",
+     "share": 0.012
+    },
+    {
+     "id": 361,
+     "name": "Northern Rockies conifer forests",
+     "biome": "Temperate Conifer Forests",
+     "realm": "Nearctic",
+     "share": 0.011
+    }
+   ],
+   "basins": [
+    {
+     "id": 7040569640,
+     "pfaf": 7429,
+     "area_km2": 1381472,
+     "share": 0.142
+    },
+    {
+     "id": 7040612640,
+     "pfaf": 7426,
+     "area_km2": 528052,
+     "share": 0.056
+    },
+    {
+     "id": 7040569650,
+     "pfaf": 7428,
+     "area_km2": 446352,
+     "share": 0.048
+    },
+    {
+     "id": 7040686450,
+     "pfaf": 7424,
+     "area_km2": 414788,
+     "share": 0.044
+    },
+    {
+     "id": 7040049270,
+     "pfaf": 7521,
+     "area_km2": 571791,
+     "share": 0.035
+    },
+    {
+     "id": 7040043170,
+     "pfaf": 7325,
+     "area_km2": 259084,
+     "share": 0.027
+    },
+    {
+     "id": 7040741760,
+     "pfaf": 7422,
+     "area_km2": 239522,
+     "share": 0.025
+    },
+    {
+     "id": 7040388740,
+     "pfaf": 7829,
+     "area_km2": 191670,
+     "share": 0.02
+    },
+    {
+     "id": 7040392650,
+     "pfaf": 7258,
+     "area_km2": 184280,
+     "share": 0.02
+    },
+    {
+     "id": 7040379430,
+     "pfaf": 7826,
+     "area_km2": 269628,
+     "share": 0.018
+    },
+    {
+     "id": 7040402430,
+     "pfaf": 7255,
+     "area_km2": 263811,
+     "share": 0.017
+    },
+    {
+     "id": 7040013550,
+     "pfaf": 7744,
+     "area_km2": 156295,
+     "share": 0.017
+    },
+    {
+     "id": 7040192560,
+     "pfaf": 7122,
+     "area_km2": 586387,
+     "share": 0.016
+    },
+    {
+     "id": 7040707810,
+     "pfaf": 7722,
+     "area_km2": 155896,
+     "share": 0.016
+    },
+    {
+     "id": 7040073620,
+     "pfaf": 7738,
+     "area_km2": 136255,
+     "share": 0.015
+    },
+    {
+     "id": 7040686540,
+     "pfaf": 7425,
+     "area_km2": 125574,
+     "share": 0.013
+    },
+    {
+     "id": 8040004910,
+     "pfaf": 8118,
+     "area_km2": 123079,
+     "share": 0.013
+    },
+    {
+     "id": 7040048300,
+     "pfaf": 7516,
+     "area_km2": 118642,
+     "share": 0.013
+    },
+    {
+     "id": 7040707710,
+     "pfaf": 7723,
+     "area_km2": 117077,
+     "share": 0.012
+    },
+    {
+     "id": 7040585110,
+     "pfaf": 7729,
+     "area_km2": 115604,
+     "share": 0.012
+    },
+    {
+     "id": 7040048420,
+     "pfaf": 7519,
+     "area_km2": 115496,
+     "share": 0.012
+    },
+    {
+     "id": 8040176200,
+     "pfaf": 8124,
+     "area_km2": 114607,
+     "share": 0.012
+    },
+    {
+     "id": 8040002270,
+     "pfaf": 8115,
+     "area_km2": 121885,
+     "share": 0.012
+    },
+    {
+     "id": 7040046590,
+     "pfaf": 7328,
+     "area_km2": 112529,
+     "share": 0.012
+    },
+    {
+     "id": 7040048410,
+     "pfaf": 7518,
+     "area_km2": 110769,
+     "share": 0.012
+    },
+    {
+     "id": 7040038340,
+     "pfaf": 7311,
+     "area_km2": 107440,
+     "share": 0.011
+    },
+    {
+     "id": 7040042040,
+     "pfaf": 7321,
+     "area_km2": 100884,
+     "share": 0.011
+    },
+    {
+     "id": 7040392520,
+     "pfaf": 7259,
+     "area_km2": 214028,
+     "share": 0.011
+    },
+    {
+     "id": 8040005520,
+     "pfaf": 8131,
+     "area_km2": 96579,
+     "share": 0.01
+    }
+   ]
+  },
+  "ZAF": {
+   "ecoregions": [
+    {
+     "id": 81,
+     "name": "Highveld grasslands",
+     "biome": "Montane Grasslands & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.187
+    },
+    {
+     "id": 97,
+     "name": "Kalahari xeric savanna",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.143
+    },
+    {
+     "id": 101,
+     "name": "Nama Karoo shrublands",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.134
+    },
+    {
+     "id": 38,
+     "name": "Central bushveld",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.097
+    },
+    {
+     "id": 94,
+     "name": "Gariep Karoo",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.09
+    },
+    {
+     "id": 41,
+     "name": "Drakensberg grasslands",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.08
+    },
+    {
+     "id": 110,
+     "name": "Succulent Karoo xeric shrublands",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.047
+    },
+    {
+     "id": 89,
+     "name": "Fynbos shrubland",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Afrotropic",
+     "share": 0.039
+    },
+    {
+     "id": 48,
+     "name": "Limpopo lowveld",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.037
+    },
+    {
+     "id": 40,
+     "name": "Drakensberg Escarpment savanna and thicket",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.029
+    },
+    {
+     "id": 88,
+     "name": "Albany thickets",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Afrotropic",
+     "share": 0.028
+    },
+    {
+     "id": 102,
+     "name": "Namaqualand-Richtersveld steppe",
+     "biome": "Deserts & Xeric Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.027
+    },
+    {
+     "id": 65,
+     "name": "Zambezian mopane woodlands",
+     "biome": "Tropical & Subtropical Grasslands, Savannas & Shrublands",
+     "realm": "Afrotropic",
+     "share": 0.023
+    },
+    {
+     "id": 90,
+     "name": "Renosterveld shrubland",
+     "biome": "Mediterranean Forests, Woodlands & Scrub",
+     "realm": "Afrotropic",
+     "share": 0.023
+    }
+   ],
+   "basins": [
+    {
+     "id": 1040012820,
+     "pfaf": 1255,
+     "area_km2": 212505,
+     "share": 0.168
+    },
+    {
+     "id": 1041629370,
+     "pfaf": 1279,
+     "area_km2": 197513,
+     "share": 0.163
+    },
+    {
+     "id": 1041624310,
+     "pfaf": 1274,
+     "area_km2": 361381,
+     "share": 0.099
+    },
+    {
+     "id": 1040015030,
+     "pfaf": 1260,
+     "area_km2": 111328,
+     "share": 0.09
+    },
+    {
+     "id": 1041626200,
+     "pfaf": 1276,
+     "area_km2": 85063,
+     "share": 0.07
+    },
+    {
+     "id": 1041548760,
+     "pfaf": 1249,
+     "area_km2": 133111,
+     "share": 0.068
+    },
+    {
+     "id": 1041576130,
+     "pfaf": 1244,
+     "area_km2": 81485,
+     "share": 0.06
+    },
+    {
+     "id": 1041629430,
+     "pfaf": 1278,
+     "area_km2": 98764,
+     "share": 0.059
+    },
+    {
+     "id": 1041626210,
+     "pfaf": 1277,
+     "area_km2": 71225,
+     "share": 0.059
+    },
+    {
+     "id": 1040014920,
+     "pfaf": 1258,
+     "area_km2": 45083,
+     "share": 0.037
+    },
+    {
+     "id": 1040014490,
+     "pfaf": 1256,
+     "area_km2": 34806,
+     "share": 0.028
+    },
+    {
+     "id": 1041576090,
+     "pfaf": 1245,
+     "area_km2": 77221,
+     "share": 0.023
+    },
+    {
+     "id": 1041620260,
+     "pfaf": 1273,
+     "area_km2": 68986,
+     "share": 0.023
+    },
+    {
+     "id": 1040012680,
+     "pfaf": 1252,
+     "area_km2": 46725,
+     "share": 0.02
+    },
+    {
+     "id": 1040012810,
+     "pfaf": 1254,
+     "area_km2": 30280,
+     "share": 0.015
+    },
+    {
+     "id": 1040014930,
+     "pfaf": 1259,
+     "area_km2": 15664,
+     "share": 0.012
+    }
+   ]
+  }
+ }
+}
