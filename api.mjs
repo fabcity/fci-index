@@ -123,8 +123,10 @@ for (const slug of new Set(goods.map((g) => g.slug))) {
   });
 }
 
-// Environmental|City and |Region: residual municipal waste and separate collection. Not a cell score: no
-// method turns kilograms into s_c yet, so these are indicators the report follows, never inputs to the FCI.
+// Environmental|City and |Region: residual municipal waste and separate collection. Since method v0.1 (Tomas,
+// 21 Nov 2026) the share collected separately is the cell's score s_c: what is not sorted is what the place
+// sends out as trash. `since` keeps it out of the v0 figure pages show beside the new one. The kilograms stay
+// indicators the report follows.
 const WASTE = { Barcelona: ["barcelona", "City"], "Catalonia (region)": ["barcelona", "Region"], Paris: ["paris", "City"],
                 "Santiago (comuna)": ["santiago-de-chile", "City"], "Region Metropolitana (region)": ["santiago-de-chile", "Region"], Hamburg: ["hamburg", "City"] };
 for (const [name, [slug, scale]] of Object.entries(WASTE)) {
@@ -133,6 +135,16 @@ for (const [name, [slug, scale]] of Object.entries(WASTE)) {
   const base = { cell: `Environmental|${scale}`, territory: name.replace(/ \((region|comuna)\)$/, ""), counts: rows[0].counts, source: rows[0].source, licence: rows[0].licence, pipeline: "fabcity/fci-index compute/waste.py" };
   const santiago = slug === "santiago-de-chile";
   const caveat = santiago ? "tonnes declared by operators; the total changes with who declares, so years are not comparable" : null;
+  const sorted = rows.filter((r) => r.recovery_share != null);
+  if (sorted.length) {
+    const last = sorted[sorted.length - 1];
+    place(measured, slug).cells[`Environmental|${scale}`] = {
+      s: Math.round(last.recovery_share * 1000) / 1000, year: last.year, territory: base.territory, since: "v0.1",
+      what: "waste sorted: the share of municipal waste collected separately",
+      caveat: caveat || "collected separately is not the same as recycled", source: base.source, licence: base.licence, pipeline: base.pipeline,
+      series: sorted.map((r) => ({ year: r.year, s: Math.round(r.recovery_share * 1000) / 1000 })),
+    };
+  }
   place(measured, slug).indicators.push(
     { id: `residual-waste-${scale.toLowerCase()}`, label: "Residual municipal waste per person", unit: "kg per person per year", better: "lower", caveat, comparable_across_years: !santiago, ...base,
       series: rows.filter((r) => r.residual_kg_per_capita != null).map((r) => ({ year: r.year, value: r.residual_kg_per_capita })) },
