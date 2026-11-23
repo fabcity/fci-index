@@ -104,13 +104,14 @@ else
   echo "note: node not found — skipping JS syntax check"
 fi
 
-# Beta feedback line on every page (tier-2 mechanism) + Plausible on --prod only.
+# Prototype notice at the top of every page, feedback line in every footer (tier-2 mechanism),
+# and Plausible on --prod only.
 # python3, not perl: the strings contain @ and quotes that perl -e interpolates away.
 FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
 import re
-line = ('method v0 · beta · comments: '
+line = ('method v0 · prototype · comments: '
         'Fab City Science, <a href="mailto:science@fab.city" style="color:inherit;display:inline;font-size:inherit;'
         'margin:0;text-decoration:underline;">science@fab.city</a>')   # inline beats the footer's `.foot a{display:block}`
 # Inside the dark footer, as a second line of its fine print: after </body> it sat on light
@@ -121,8 +122,15 @@ in_footer = '<p class="foot__fine" style="margin-top:0.5rem;">' + line + '</p>'
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
             'font-size:0.72rem;color:#8a857c;">' + line + '</div>')
 foot_end = re.compile(r'(</p>)(\s*</div>\s*</footer>)')
+# The site is a prototype of Index 3.0 (Tomas, 23 Nov 2026), and a reader has to see that before
+# any number. It goes before the nav, which is sticky, so the notice scrolls away and the nav stays.
+notice = ('<div class="proto-note" role="note" style="background:var(--fc-ink,#171717);'
+          'color:var(--fc-paper,#F9F5F2);font-size:0.82rem;line-height:1.45;padding:0.55rem 1.25rem;'
+          'text-align:center;">This site is a prototype. We are developing the Fab City Index 3.0 with '
+          'the cities of the network, and the numbers shown here are a test of the data and the method.</div>')
+nav_open = '<header class="nav"'
 plausible = '<script defer data-domain="index.fab.city" src="https://plausible.io/js/script.js"></script>'
-n = footed = 0
+n = footed = noted = 0
 for dp, _, fns in os.walk(out):
     for fn in fns:
         if not fn.endswith(".html"):
@@ -131,7 +139,12 @@ for dp, _, fns in os.walk(out):
         html = open(p, encoding="utf-8").read()
         # Guard on the line itself: method.html's "Comment on the method" card is a mailto to the
         # same address, and guarding on the address kept the line off that page.
-        if "method v0 · beta" not in html:
+        if 'class="proto-note"' not in html and nav_open in html:
+            html = html.replace(nav_open, notice + "\n" + nav_open, 1)
+            noted += 1
+        if '<footer class="foot' in html and 'class="proto-note"' not in html:
+            raise SystemExit(f"FAIL: {p} is a full page (it has a .foot footer) with no prototype notice: no {nav_open}> to put it before")
+        if "method v0 · prototype" not in html:
             if '<footer class="foot' in html:
                 html, k = foot_end.subn(r"\1\n" + in_footer + r"\2", html, count=1)
                 if k != 1:
@@ -143,7 +156,7 @@ for dp, _, fns in os.walk(out):
             html = html.replace("</head>", plausible + "\n</head>", 1)
         open(p, "w", encoding="utf-8").write(html)
         n += 1
-print(f"injected feedback line into {n} pages ({footed} in the footer)" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
+print(f"prototype notice on {noted} pages; injected feedback line into {n} pages ({footed} in the footer)" + (" + Plausible (prod)" if prod else " (staging — no analytics)"))
 PYEOF
 
 # Version every local script and stylesheet by its content. Pages serve js/ and css/ with
