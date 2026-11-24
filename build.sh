@@ -19,11 +19,11 @@ for d in fci-3-prototype fci-ingestion-tool; do
 done
 
 # ---- token gate -------------------------------------------------------------------------
-# The three sites each carry css/tokens.css, the Fab City foundation. They are copies, so the
+# The two sites each carry css/tokens.css, the Fab City foundation. They are copies, so the
 # only thing stopping them drifting is this check — and they HAD drifted: --rule-soft was
-# #EFEAE4 in the prototype and #E6E1D1 in the atlas, two hairlines on one site, with the type
-# scale and font stacks disagreeing three ways. Nothing noticed for three months.
-# This runs on every build because that is the one place all three repos are visible at once.
+# #EFEAE4 in the prototype and #E6E1D1 in the atlas (a third site until 24 Nov 2026), two hairlines on
+# one site, with the type scale and font stacks disagreeing three ways. Nothing noticed for three months.
+# This runs on every build because that is the one place both repos are visible at once.
 sums=$(md5 -q "$SRC"/fci-3-prototype/css/tokens.css \
                 "$SRC"/fci-ingestion-tool/css/tokens.css 2>/dev/null \
        || md5sum "$SRC"/fci-{3-prototype,ingestion-tool}/css/tokens.css | cut -d' ' -f1)
@@ -32,7 +32,7 @@ if [ "$(echo "$sums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
 fi
 echo "token foundation: 2 copies, identical"
 
-# The header, section bar and phone menu live in css/nav.css, also copied into all three
+# The header, section bar and phone menu live in css/nav.css, also copied into both
 # sites. A drifted copy shows a different menu depending on which site you are on, which is
 # the exact confusion the one-menu work removed.
 navsums=$(md5 -q "$SRC"/fci-3-prototype/css/nav.css \
@@ -61,10 +61,10 @@ tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*'
 find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
   perl -pi -e 's|\.\./fci-3-prototype/|/|g; s|\.\./fci-ingestion-tool/|/operate/|g' "$f"
 done
-# Strategy-doc links that pointed at workspace .md files have no web home yet — route them to the methodology page
+# Strategy-doc links that pointed at workspace .md files have no web home yet — route them to the method page
 # (grep guarded: zero matches is the healthy state after the 2026-06-07e public-register pass, and pipefail would kill the build)
 { grep -rl '\.\./FCI_3\.0_' "$OUT" --include='*.html' 2>/dev/null || true; } | while read -r f; do
-  perl -pi -e 's|\.\./FCI_3\.0_[A-Za-z_0-9.-]+\.md|/methodology.html|g' "$f"
+  perl -pi -e 's|\.\./FCI_3\.0_[A-Za-z_0-9.-]+\.md|/method.html|g' "$f"
 done
 
 # Strip internal editorial comments from the deployable tree (2026-07-10 pass).

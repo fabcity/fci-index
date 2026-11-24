@@ -20,7 +20,7 @@ come from [`planetai-node`](https://github.com/fabcity/planetai-node). Working w
 
 Read this before cloning and expecting to build.
 
-**The pages live in three other repos.** `build.sh` assembles `public/` from three private repos,
+**The pages live in two other repos.** `build.sh` assembles `public/` from two private repos,
 each checked out as a sibling of this one in the FAB CITY workspace:
 
 | repo, checked out at | becomes | surface |
@@ -28,9 +28,9 @@ each checked out as a sibling of this one in the FAB CITY workspace:
 | [`fabcity/fci-3-prototype`](https://github.com/fabcity/fci-3-prototype) → `../fci-3-prototype/` | `/` | the public site: home, places, method, data and API |
 | [`fabcity/fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) → `../fci-ingestion-tool/` | `/operate/` | the place pages (`city-data`), add a source, source review, your agent, and the team's sign-in pages (intake, review, sovereignty) |
 
-So a clone of this repo alone cannot rebuild the site. `build.sh` checks for all three and exits if
+So a clone of this repo alone cannot rebuild the site. `build.sh` checks for both and exits if
 any is missing. It reads their **working trees as they are**, uncommitted changes included, so pull
-all three before a production build. The three site repos take direct pushes to `main`; this one
+both before a production build. The two site repos take direct pushes to `main`; this one
 merges through pull requests.
 
 **`public/` is generated and gitignored.** Edit the site repos, never `public/`; the build drops a
@@ -64,7 +64,7 @@ public/               generated. gitignored. do not edit.
 ```
 
 **The build fails rather than ship** if any of these break: `api.mjs` cannot read the registry or the
-tracker, the three `css/tokens.css` copies stop being identical, the three `css/nav.css` copies drift, a page uses an undefined token or a
+tracker, the two `css/tokens.css` copies stop being identical, the two `css/nav.css` copies drift, a page uses an undefined token or a
 `window.FCI` export that does not exist, a page loses its structure, an internal link points at
 nothing, a cross-link is left unrewritten, or the redirect rule count changes. Each gate exists
 because something got past the others.

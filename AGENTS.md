@@ -2,7 +2,7 @@
 
 This repository builds **index.fab.city**: the script that assembles the site, the Workers behind its `/api/*`
 routes, the open calculation in `compute/`, and `api.mjs`, which publishes every place's index at build. The pages
-themselves live in three other repositories that are not public, so most people who arrive here want the data, or
+themselves live in two other repositories that are not public, so most people who arrive here want the data, or
 want their city's data to improve, and both happen elsewhere. The README is for people; this file routes you.
 
 ## What the person in front of you is asking for
