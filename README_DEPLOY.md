@@ -1,13 +1,13 @@
 # FCI 3.0 — Deploy Runbook
 
-One Cloudflare Pages project, one domain, three routes (per the FCI 3.0 deployment plan, §0, approved 6 June 2026; that plan is a workspace document, not in this repo):
+One Cloudflare Pages project, one domain, two routes (the FCI 3.0 deployment plan, §0, approved 6 June 2026, had three; `/atlas` left the build on 24 Nov 2026 and redirects to `/method`):
 
 | Route | Source folder | Surface |
 |---|---|---|
 | `index.fab.city/` | `../fci-3-prototype/` | Public prototype |
 | `index.fab.city/operate/` | `../fci-ingestion-tool/` | Place pages and the tools they link to |
 
-The three site repos, checked out beside this one, are canonical — edit there, never in `public/`. `build.sh` assembles, rewrites cross-links, injects the beta feedback line (and Plausible, on `--prod`), versions every script and stylesheet link by content, writes `/api/v0/` with `api.mjs`, and runs every gate. Pull all three and this repo first: it builds their working trees as they are.
+The two site repos, checked out beside this one, are canonical — edit there, never in `public/`. `build.sh` assembles, rewrites cross-links, injects the beta feedback line (and Plausible, on `--prod`), versions every script and stylesheet link by content, writes `/api/v0/` with `api.mjs`, and runs every gate. Pull all three and this repo first: it builds their working trees as they are.
 
 **Build in the checkout that has `main` checked out**, never one on another branch: an old branch's `build.sh` lacks gates and redirects that main has, and a deploy from it ships without them.
 
