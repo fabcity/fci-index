@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
-# FCI 3.0 — assembles the three static sites into one deployable tree (public/).
+# FCI 3.0 — assembles the two static sites into one deployable tree (public/).
 #   ./build.sh           → staging build (no analytics)
 #   ./build.sh --prod    → production build (injects Plausible)
-# Routes:  /  = fci-3-prototype   /atlas = fci-matryoshka-viz   /operate = fci-ingestion-tool
+# Routes:  /  = fci-3-prototype   /operate = fci-ingestion-tool
+# (/atlas, fci-matryoshka-viz, left the build on 2026-11-24: its technical notes redirect to /method.)
 # Cross-links between the sites are relative (../fci-*/...) in source; rewritten to route paths here.
 # 2026-06-06 — see FCI_3.0_Deployment_Plan_2026-06-06.md §1.
 set -euo pipefail
 cd "$(dirname "$0")"
-SRC=".."                      # the FAB CITY workspace root, where the three site folders live
+SRC=".."                      # the FAB CITY workspace root, where the two site folders live
 OUT="${FCI_OUT:-public}"      # overridable for sandboxed verification runs
 
 PROD=0
 [ "${1:-}" = "--prod" ] && PROD=1
 
-for d in fci-3-prototype fci-matryoshka-viz fci-ingestion-tool; do
+for d in fci-3-prototype fci-ingestion-tool; do
   [ -d "$SRC/$d" ] || { echo "missing $SRC/$d — run from fci-index/ inside the FAB CITY workspace"; exit 1; }
 done
 
@@ -23,43 +24,42 @@ done
 # #EFEAE4 in the prototype and #E6E1D1 in the atlas, two hairlines on one site, with the type
 # scale and font stacks disagreeing three ways. Nothing noticed for three months.
 # This runs on every build because that is the one place all three repos are visible at once.
-sums=$(md5 -q "$SRC"/fci-3-prototype/css/tokens.css "$SRC"/fci-matryoshka-viz/css/tokens.css \
+sums=$(md5 -q "$SRC"/fci-3-prototype/css/tokens.css \
                 "$SRC"/fci-ingestion-tool/css/tokens.css 2>/dev/null \
-       || md5sum "$SRC"/fci-{3-prototype,matryoshka-viz,ingestion-tool}/css/tokens.css | cut -d' ' -f1)
+       || md5sum "$SRC"/fci-{3-prototype,ingestion-tool}/css/tokens.css | cut -d' ' -f1)
 if [ "$(echo "$sums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
-  echo "FAIL: the three css/tokens.css copies are not identical — the foundation has drifted"; exit 1
+  echo "FAIL: the two css/tokens.css copies are not identical — the foundation has drifted"; exit 1
 fi
-echo "token foundation: 3 copies, identical"
+echo "token foundation: 2 copies, identical"
 
 # The header, section bar and phone menu live in css/nav.css, also copied into all three
 # sites. A drifted copy shows a different menu depending on which site you are on, which is
 # the exact confusion the one-menu work removed.
-navsums=$(md5 -q "$SRC"/fci-3-prototype/css/nav.css "$SRC"/fci-matryoshka-viz/css/nav.css \
+navsums=$(md5 -q "$SRC"/fci-3-prototype/css/nav.css \
                   "$SRC"/fci-ingestion-tool/css/nav.css 2>/dev/null \
-         || md5sum "$SRC"/fci-{3-prototype,matryoshka-viz,ingestion-tool}/css/nav.css | cut -d' ' -f1)
+         || md5sum "$SRC"/fci-{3-prototype,ingestion-tool}/css/nav.css | cut -d' ' -f1)
 if [ "$(echo "$navsums" | sort -u | wc -l | tr -d ' ')" != "1" ]; then
-  echo "FAIL: the three css/nav.css copies are not identical, the menu has drifted"; exit 1
+  echo "FAIL: the two css/nav.css copies are not identical, the menu has drifted"; exit 1
 fi
-echo "menu stylesheet: 3 copies, identical"
+echo "menu stylesheet: 2 copies, identical"
 
 # A renamed token that lost its definition is invisible: the property falls back to inherited
 # or initial, so a colour quietly becomes black and nothing errors. Cheap to assert, so assert it.
-python3 check_exports.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
+python3 check_exports.py "$SRC/fci-3-prototype" "$SRC/fci-ingestion-tool" \
   || { echo "FAIL: a page script reads something data.js does not export"; exit 1; }
 
-python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-matryoshka-viz" "$SRC/fci-ingestion-tool" \
+python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-ingestion-tool" \
   || { echo "FAIL: a var(--token) does not resolve"; exit 1; }
 
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
-mkdir -p "$OUT/atlas" "$OUT/operate"
+mkdir -p "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
 tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
-tar -C "$SRC/fci-matryoshka-viz" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/atlas" -xf -
 tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/operate" -xf -
 
 # Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
 find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
-  perl -pi -e 's|\.\./fci-3-prototype/|/|g; s|\.\./fci-matryoshka-viz/|/atlas/|g; s|\.\./fci-ingestion-tool/|/operate/|g' "$f"
+  perl -pi -e 's|\.\./fci-3-prototype/|/|g; s|\.\./fci-ingestion-tool/|/operate/|g' "$f"
 done
 # Strategy-doc links that pointed at workspace .md files have no web home yet — route them to the methodology page
 # (grep guarded: zero matches is the healthy state after the 2026-06-07e public-register pass, and pipefail would kill the build)
@@ -111,12 +111,12 @@ FCI_OUT_DIR="$OUT" FCI_PROD="$PROD" python3 - <<'PYEOF'
 import os
 out, prod = os.environ["FCI_OUT_DIR"], os.environ["FCI_PROD"] == "1"
 import re
-line = ('method v0 · prototype · comments: '
+line = ('prototype · comments: '
         'Fab City Science, <a href="mailto:science@fab.city" style="color:inherit;display:inline;font-size:inherit;'
         'margin:0;text-decoration:underline;">science@fab.city</a>')   # inline beats the footer's `.foot a{display:block}`
 # Inside the dark footer, as a second line of its fine print: after </body> it sat on light
 # paper below the footer, cut off from it. Every page's footer ends `</p></div></footer>`, and
-# .foot__fine is styled the same in all three sites. The redirect stubs have no footer and keep
+# .foot__fine is styled the same in both sites. The redirect stubs have no footer and keep
 # the line before </body>.
 in_footer = '<p class="foot__fine" style="margin-top:0.5rem;">' + line + '</p>'
 feedback = ('<div style="max-width:72rem;margin:0 auto;padding:0.4rem 1.5rem 1.6rem;'
@@ -127,7 +127,7 @@ foot_end = re.compile(r'(</p>)(\s*</div>\s*</footer>)')
 notice = ('<div class="proto-note" role="note" style="background:var(--fc-ink,#171717);'
           'color:var(--fc-paper,#F9F5F2);font-size:0.82rem;line-height:1.45;padding:0.55rem 1.25rem;'
           'text-align:center;">This site is a prototype. We are developing the Fab City Index 3.0 with '
-          'the cities of the network, and the numbers shown here are a test of the data and the method.</div>')
+          'the cities of the network.</div>')
 nav_open = '<header class="nav"'
 plausible = '<script defer data-domain="index.fab.city" src="https://plausible.io/js/script.js"></script>'
 n = footed = noted = 0
@@ -144,7 +144,7 @@ for dp, _, fns in os.walk(out):
             noted += 1
         if '<footer class="foot' in html and 'class="proto-note"' not in html:
             raise SystemExit(f"FAIL: {p} is a full page (it has a .foot footer) with no prototype notice: no {nav_open}> to put it before")
-        if "method v0 · prototype" not in html:
+        if "prototype · comments:" not in html:
             if '<footer class="foot' in html:
                 html, k = foot_end.subn(r"\1\n" + in_footer + r"\2", html, count=1)
                 if k != 1:
@@ -197,7 +197,7 @@ PYEOF
 # Consolidation guard (CANONICAL.md): the build output must never be edited by hand
 cat > "$OUT/DO-NOT-EDIT.txt" <<'EOF'
 GENERATED TREE — do not edit anything in this folder.
-Source of truth: the fci-3-prototype, fci-matryoshka-viz and fci-ingestion-tool
+Source of truth: the fci-3-prototype and fci-ingestion-tool
 folders in the FAB CITY workspace root. Rebuild with: ./build.sh
 (see CANONICAL.md at the workspace root)
 EOF
@@ -211,29 +211,55 @@ LEFTOVER=$( (grep -rl '\.\./fci-' "$OUT" 2>/dev/null || true) | wc -l | tr -d ' 
 # 301 because the pages are gone for good.
 cat > "$OUT/_redirects" <<'REDIR'
 # generated by build.sh — do not edit here, edit build.sh
-/city-barcelona    /cities  301
-/city-boston       /cities  301
-/city-bali         /cities  301
-/city-santiago     /cities  301
-/city-barcelona.html  /cities  301
-/city-boston.html     /cities  301
-/city-bali.html       /cities  301
-/city-santiago.html   /cities  301
-# 2026-09-25: methodology, phase and lineage became the four-band Method page
-# (method.html: #how, #scores, #lineage, #adds-up); "How it is built" keeps
-# /constellation. The old files stay as meta-refresh stubs for anywhere these
-# rules do not run. A destination may carry a fragment.
-/methodology.html  /method#how      301
-/methodology       /method#how      301
-/phase.html        /method#scores   301
-/phase             /method#scores   301
-/lineage.html      /method#lineage  301
-/lineage           /method#lineage  301
-/how-it-is-built   /constellation   301
-# 2026-09-27: the atlas map became the city page. city.html reads ?place= as well as
-# ?locality=, so an old /atlas/map?place=<slug> link lands on that place.
-/atlas/map         /city            301
-/atlas/map.html    /city            301
+# 2026-09-24: the four per-city pages became cities.html + one page per place.
+/city-barcelona                /cities              301
+/city-boston                   /cities              301
+/city-bali                     /cities              301
+/city-santiago                 /cities              301
+/city-barcelona.html           /cities              301
+/city-boston.html              /cities              301
+/city-bali.html                /cities              301
+/city-santiago.html            /cities              301
+# 2026-11-24: the site without scores. Each cut page goes to the page that now says what it said.
+# A query string carries through, so /city?place=bali lands on Bali's readings. /report was one
+# place's printable report (the API's links.report still points there), so it goes to the place page too.
+/map                           /cities              301
+/map.html                      /cities              301
+/ranking                       /cities              301
+/ranking.html                  /cities              301
+/countries                     /cities              301
+/countries.html                /cities              301
+/country                       /cities              301
+/country.html                  /cities              301
+/report                        /operate/city-data   301
+/report.html                   /operate/city-data   301
+/city                          /operate/city-data   301
+/city.html                     /operate/city-data   301
+/atlas/map                     /operate/city-data   301
+/atlas/map.html                /operate/city-data   301
+/atlas                         /method              301
+/atlas/*                       /method              301
+/matrix                        /method              301
+/matrix.html                   /method              301
+/constellation                 /method              301
+/constellation.html            /method              301
+/methodology                   /method              301
+/methodology.html              /method              301
+/phase                         /method              301
+/phase.html                    /method              301
+/lineage                       /method              301
+/lineage.html                  /method              301
+/how-it-is-built               /method              301
+/operate                       /operate/city-data   301
+/operate/                      /operate/city-data   301
+/operate/index                 /operate/city-data   301
+/operate/index.html            /operate/city-data   301
+/operate/matrix-coverage       /operate/city-data   301
+/operate/matrix-coverage.html  /operate/city-data   301
+/operate/sources               /operate/city-data   301
+/operate/sources.html          /operate/city-data   301
+/operate/cell-detail           /operate/city-data   301
+/operate/cell-detail.html      /operate/city-data   301
 REDIR
 # Pages Functions run on the workbench's protected act pages (functions/operate/_middleware.js sends
 # their pages.dev copies to the Access-guarded custom domain), on /mcp (functions/mcp.js, the Index as
@@ -248,7 +274,47 @@ NREDIR=$(grep -c '^/' "$OUT/_redirects")
 echo "wrote _redirects: ${NREDIR} rules"
 # A rule dropped by an edit fails silently: the old URL becomes a 200 with the homepage.
 # Change this number in the same commit that adds or removes a rule.
-[ "$NREDIR" = "17" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 17"; exit 1; }
+[ "$NREDIR" = "45" ] || { echo "FAIL: _redirects has ${NREDIR} rules, expected 45"; exit 1; }
+
+# Every redirect lands on a page that exists, and every page it replaces is really gone. A target
+# that 404s, or a cut page left behind in a repo, both look fine on the live site until someone
+# follows the link. And no page loads the v0.1 scoring: the site shows no scores until Index 3.0
+# runs on real data (Tomas, 24 Nov 2026). js/fci-score.js stays for api.mjs.
+FCI_OUT_DIR="$OUT" python3 - <<'PYEOF' || exit 1
+import os, sys
+out = os.environ["FCI_OUT_DIR"]
+bad = []
+def page(p):
+    p = p.split("#")[0].split("?")[0].strip("/")
+    return [os.path.join(out, p + ".html"), os.path.join(out, p, "index.html")]
+for line in open(os.path.join(out, "_redirects"), encoding="utf-8"):
+    if not line.startswith("/"):
+        continue
+    src, dst = line.split()[:2]
+    if not any(os.path.isfile(f) for f in page(dst)):
+        bad.append(f"{src} -> {dst}: the target is not a page in the build")
+    s0 = src.strip("/")
+    if src.endswith("/*"):
+        left = [os.path.join(out, s0[:-2])]                      # the whole folder
+    elif src.endswith(".html"):
+        left = [os.path.join(out, s0)]
+    elif src.endswith("/"):
+        left = [os.path.join(out, s0, "index.html")]
+    else:
+        left = [os.path.join(out, s0 + ".html"), os.path.join(out, s0, "index.html")]
+    if any(os.path.exists(f) for f in left):
+        bad.append(f"{src}: the page it replaces is still in the build")
+for dp, _, fns in os.walk(out):
+    for fn in fns:
+        if fn.endswith(".html") and "fci-score.js" in open(os.path.join(dp, fn), encoding="utf-8").read():
+            bad.append(f"{os.path.relpath(os.path.join(dp, fn), out)} loads fci-score.js: no page shows a score")
+if bad:
+    print("FAIL: redirects or scores:", file=sys.stderr)
+    for b in bad[:30]:
+        print("  " + b, file=sys.stderr)
+    sys.exit(1)
+print("redirects: every target exists, every replaced page is gone; no page loads the scoring")
+PYEOF
 
 # The public API, /api/v0/: every place's score, cells, indicators and next actions as JSON, and a CSV
 # (api.mjs, with the pages' own js/fci-score.js). It reads the registry and the tracker over the network,

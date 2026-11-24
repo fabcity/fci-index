@@ -19,8 +19,8 @@ want their city's data to improve, and both happen elsewhere. The README is for 
 
 ## Before you open a pull request
 
-The build needs the three page repositories checked out beside this one (`../fci-3-prototype`,
-`../fci-matryoshka-viz`, `../fci-ingestion-tool`), which only maintainers can clone. With them:
+The build needs the two page repositories checked out beside this one (`../fci-3-prototype`,
+`../fci-ingestion-tool`), which only maintainers can clone. With them:
 
 ```
 FCI_OUT=/tmp/fci-check ./build.sh      # assembles elsewhere; every gate; ends "unrewritten cross-links: 0 (must be 0)"

@@ -25,9 +25,8 @@ each checked out as a sibling of this one in the FAB CITY workspace:
 
 | repo, checked out at | becomes | surface |
 |---|---|---|
-| [`fabcity/fci-3-prototype`](https://github.com/fabcity/fci-3-prototype) → `../fci-3-prototype/` | `/` | the public site: cities, city, map, ranking, matrix, method |
-| [`fabcity/fci-matryoshka-viz`](https://github.com/fabcity/fci-matryoshka-viz) → `../fci-matryoshka-viz/` | `/atlas/` | the aggregation atlas |
-| [`fabcity/fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) → `../fci-ingestion-tool/` | `/operate/` | the workbench: bench, coverage, sources, source review, intake, review, sovereignty |
+| [`fabcity/fci-3-prototype`](https://github.com/fabcity/fci-3-prototype) → `../fci-3-prototype/` | `/` | the public site: home, places, method, data and API |
+| [`fabcity/fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) → `../fci-ingestion-tool/` | `/operate/` | the place pages (`city-data`), add a source, source review, your agent, and the team's sign-in pages (intake, review, sovereignty) |
 
 So a clone of this repo alone cannot rebuild the site. `build.sh` checks for all three and exits if
 any is missing. It reads their **working trees as they are**, uncommitted changes included, so pull
@@ -42,7 +41,7 @@ merges through pull requests.
 ## Layout
 
 ```
-build.sh              assembles the three sites into public/, rewrites cross-links, strips
+build.sh              assembles the two sites into public/, rewrites cross-links, strips
                       internal comments, injects the feedback line, writes _redirects and
                       _routes.json, and runs the gates below
 check_tokens.py       every var(--…) a page uses is defined, build.sh's own markup included
@@ -105,8 +104,8 @@ cells-worker/worker.js            newest row per cell → fci-cells-v0
 index.fab.city/api/cells/<city>.json
       │
       ▼
-fci-3-prototype/js/city.js        city.html?locality=<slug> shows whether a node
-                                  has ever reported a reading for that place
+(no page reads it since 24 Nov 2026; the cut city.html used to show whether a node
+                                  had ever reported a reading for that place)
 ```
 
 `/api/coverage.json` is served from a KV cache (`COVERAGE`) and refreshed in the background after
@@ -187,7 +186,7 @@ should be too.
 
 | repo | what it does |
 |---|---|
-| [`fci-3-prototype`](https://github.com/fabcity/fci-3-prototype), [`fci-matryoshka-viz`](https://github.com/fabcity/fci-matryoshka-viz), [`fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) | the pages. See the first section. |
+| [`fci-3-prototype`](https://github.com/fabcity/fci-3-prototype), [`fci-ingestion-tool`](https://github.com/fabcity/fci-ingestion-tool) | the pages. See the first section. ([`fci-matryoshka-viz`](https://github.com/fabcity/fci-matryoshka-viz), the atlas, left the build on 24 Nov 2026; `/atlas/*` redirects to `/method`.) |
 | [`planetai-node`](https://github.com/fabcity/planetai-node) | the node. Computes the cells this Index serves. `ARCHITECTURE.md` §2 is the tier contract. |
 | [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data) | the open-data source registry. The site reads its generated `index.json` at runtime; reviews arrive through its source-review issue form. |
 
