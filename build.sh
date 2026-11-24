@@ -221,7 +221,8 @@ cat > "$OUT/_redirects" <<'REDIR'
 /city-bali.html                /cities              301
 /city-santiago.html            /cities              301
 # 2026-11-24: the site without scores. Each cut page goes to the page that now says what it said.
-# A query string carries through, so /city?place=bali lands on Bali's readings.
+# A query string carries through, so /city?place=bali lands on Bali's readings. /report was one
+# place's printable report (the API's links.report still points there), so it goes to the place page too.
 /map                           /cities              301
 /map.html                      /cities              301
 /ranking                       /cities              301
@@ -230,8 +231,8 @@ cat > "$OUT/_redirects" <<'REDIR'
 /countries.html                /cities              301
 /country                       /cities              301
 /country.html                  /cities              301
-/report                        /cities              301
-/report.html                   /cities              301
+/report                        /operate/city-data   301
+/report.html                   /operate/city-data   301
 /city                          /operate/city-data   301
 /city.html                     /operate/city-data   301
 /atlas/map                     /operate/city-data   301
