@@ -1,13 +1,20 @@
 # fci-index
 
 > The Fab City Index (index.fab.city): how far a city has got toward producing nearly everything it consumes by
-> 2054, across twenty cells (four pillars by five scales). This repository builds the site and publishes every
-> place's index as open data at build time. Scores CC BY 4.0; each input keeps its own licence. Methodology v0.
+> 2054. It is being rebuilt as Index 3.0 with the cities of the network: this year every place is asked for the same
+> fourteen readings, and the site shows no score for now. This repository builds the site and publishes the earlier
+> method's (v0.1) figures as open data at build time. Each input keeps its own licence.
 
 If you are an agent working for somebody, start with AGENTS.md: most requests are answered by the API or belong in
 another repository, and it says which.
 
 ## The data
+
+- https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/index.json: the collection the Index reads, with the fourteen readings, every source, the figures cities send and the places.
+- https://index.fab.city/data: the collection, what is computed today and the API, in plain words.
+- https://index.fab.city/operate/city-data?place=<slug>: one place's page, with its fourteen readings and where to send them.
+
+The /api/v0/ files below carry the earlier method (v0.1), twenty cells and a score the site no longer shows.
 
 - https://index.fab.city/api/v0/index.json: all 61 places with status (complete, partial, simulated), FCI or range, DIDO, 1−PITO, ρ.
 - https://index.fab.city/api/v0/index.csv: the same, as CSV.
@@ -17,8 +24,9 @@ another repository, and it says which.
 
 ## For an agent, directly
 
-- https://index.fab.city/mcp: the Index as an MCP server (Streamable HTTP, no account). Tools: list_places, get_place,
-  list_sources, get_source, review_queue, cell_definition, how_to_contribute. Prompts: review_source, add_source.
+- https://index.fab.city/mcp: the Index as an MCP server (Streamable HTTP, no account). For the fourteen readings:
+  tools list_readings and get_reading, prompt find_reading. From the earlier method: list_places, get_place,
+  list_sources, get_source, review_queue, cell_definition, how_to_contribute; prompts review_source, add_source.
   Claude Code: `claude mcp add --transport http fab-city-index https://index.fab.city/mcp`. How to connect from
   other agents: https://index.fab.city/operate/agent
 - https://index.fab.city/operate/add-source?locality=<slug>: file an open dataset for a place as a candidate, by hand

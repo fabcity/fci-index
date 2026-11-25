@@ -10,15 +10,20 @@ const REGISTRY = "https://raw.githubusercontent.com/fabcity/awesome-fabcity-data
 const PILLARS = ["Environmental", "Social", "Economic", "Governance"];
 const SCALES = ["Community", "City", "Region", "Bioregion", "Planet"];
 
-const INSTRUCTIONS = `The Fab City Index measures how far each of 61 pledged cities and regions has got toward making
-what it consumes, across twenty cells (four pillars by five scales). Scores are CC BY 4.0; each source keeps its
-own licence. Rules an answer must keep: a "simulated" place has a range [0, DIDO], never one number; absence is not
-zero (a cell with no source, one checked and found empty, one nobody looked at, and one not followed per place are
-four different states); a cell can hold several sources, so "N of 20" counts cells, never sources. To improve a
-place's data, a person files a candidate source (prompt add_source) or reads one for a real place (prompt
-review_source); you do the research, they file it in their name.`;
+export const INSTRUCTIONS = `The Fab City Index is being rebuilt as Index 3.0 with the cities of the network. This year it asks
+each of its 61 places for the same fourteen readings (list_readings). get_reading gives one reading for one place: its
+state, the figures and sources the collection holds for it, and a brief for finding it. A state is one of seven:
+checked, figure sent, held by the city, not held anywhere, source sent, in the registry, to review, and not looked for
+yet, which is not zero. The site shows no score for now. The other tools describe the earlier twenty-cell method
+(v0.1), whose scores the site no longer shows; use them for sources and cells, never to rank places. A person sends
+what you find in their own name: you do the research, they read it and send it (prompt find_reading).`;
 
-const TOOLS = [
+export const TOOLS = [
+  { name: "list_readings", description: "The fourteen readings the Index asks every place for: what each one asks, in which unit and for which years, why it matters, and who in a city usually holds it.",
+    inputSchema: { type: "object", properties: {} } },
+  { name: "get_reading", description: "One reading for one place: its state (the same seven as the place page), the figures sent, the sources in the collection tagged for it, the brief for finding it and the page to send it from. Without a reading, all fourteen for the place with their states.",
+    inputSchema: { type: "object", properties: { place: { type: "string", description: "The place's slug, e.g. charlotte, santiago-de-chile" },
+      reading: { type: "string", description: "R1 to R14; omit for all fourteen" } }, required: ["place"] } },
   { name: "list_places", description: "Every place in the Index with its status (complete, partial, simulated), index or range, and DIDO.",
     inputSchema: { type: "object", properties: { status: { type: "string", enum: ["complete", "partial", "simulated"] } } } },
   { name: "get_place", description: "One place: its score and label, its twenty cells with the sources that name it, what would move it, and why it has no number if it is blocked.",
@@ -36,7 +41,9 @@ const TOOLS = [
     inputSchema: { type: "object", properties: {} } },
 ];
 
-const PROMPTS = [
+export const PROMPTS = [
+  { name: "find_reading", description: "Look for one of the fourteen readings for a place, or for every reading it has not answered yet, and bring back what the person sends.",
+    arguments: [{ name: "place", description: "the place's slug", required: true }, { name: "reading", description: "R1 to R14; omit for every open one", required: false }] },
   { name: "review_source", description: "Read one registered source for a real place and write the review the person files.",
     arguments: [{ name: "entry", description: "registry id, e.g. environmental/city/openaq", required: true },
                 { name: "territory", description: "the real place it is read for", required: true }] },
@@ -55,8 +62,72 @@ const trimEntry = (e) => ({ id: e.id, name: e.name, status: e.status, url: e.url
   reviews: (e.reviews || []).length, review_url: `${SITE}/operate/source-review?entry=${encodeURIComponent(e.id)}` });
 const names = (e, place) => (e.places || []).includes(place) || (e.pilot_relevance || []).some((p) => p === place || (p === "santiago" && place === "santiago-de-chile"));
 
+// The fourteen readings, stated exactly as the place page states them (fci-ingestion-tool js/city-data.js; tests/mcp.test.mjs
+// checks the two agree). A source counts for a reading only when tagged for it (reading-r1 ...).
+const USABLE = ["usable", "usable-with-caveats"];
+const ANSWERED = ["checked", "figure sent", "held by the city", "not held anywhere", "source sent"];
+const slugOf = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const figuresFor = (r, slug, reg) => (reg.observations || []).filter((o) => o.place === slug && o.reading === r.id).flatMap((o) => o.figures || []);
+const taggedFor = (r, slug, reg) => (reg.entries || []).filter((e) => (e.places || []).includes(slug) && (e.tags || []).includes("reading-" + String(r.id).toLowerCase()));
+export function statusFor(r, slug, reg) {
+  const states = figuresFor(r, slug, reg).map((f) => f.state), has = (s) => states.includes(s);
+  const entries = taggedFor(r, slug, reg), sent = (e) => (e.tags || []).includes("city-sent");
+  const reviewed = (e) => (e.reviews || []).some((v) => USABLE.includes(v.verdict) && slugOf(v.territory) === slug);
+  if (has("live") || entries.some((e) => sent(e) && reviewed(e))) return "checked";
+  if (has("candidate")) return "figure sent";
+  if (has("held")) return "held by the city";
+  if (has("not-held")) return "not held anywhere";
+  if (entries.some(sent)) return "source sent";
+  if (entries.some((e) => e.status === "live" || e.status === "candidate")) return "in the registry, to review";
+  return "not looked for yet";
+}
+const yearsText = (y) => { y = (y || []).map(String); return y.length > 1 ? y.slice(0, -1).join(", ") + " and " + y[y.length - 1] : y.join(""); };
+// the reading's own brief, filled for the place, word for word as the place page fills it
+const briefFor = (r, p) => {
+  const name = String(r.name || ""), fill = { place_name: p.name, place_slug: p.slug, unit: r.unit, reading_name: name.charAt(0).toLowerCase() + name.slice(1),
+    years: r.years === "latest" ? "the latest years held" : yearsText(r.years) };
+  return String(r.prompt || "").replace(/\{(place_name|place_slug|years|reading_name|unit)\}/g, (m, k) => fill[k]);
+};
+const placeOf = (reg, slug) => {
+  const s = String(slug || "").toLowerCase().trim(), p = [...(reg.places || []), ...(reg.fictional || [])].find((x) => x.slug === s);
+  if (!p) throw new Error(`no place with the slug "${s}"; list_places has every slug`);
+  return p;
+};
+const pageOf = (p) => `${SITE}/operate/city-data?place=${encodeURIComponent(p.slug)}`;
+
+export function readingFor(reg, slug, rid) {
+  const p = placeOf(reg, slug), rs = reg.readings || [];
+  const row = (r) => { const state = statusFor(r, p.slug, reg); return { id: r.id, name: r.name, state, answered: ANSWERED.includes(state) }; };
+  if (!rid) {
+    const rows = rs.map(row);
+    return { place: { slug: p.slug, name: p.name }, answered: rows.filter((x) => x.answered).length, of: rows.length, readings: rows, page: pageOf(p) };
+  }
+  const r = rs.find((x) => x.id.toLowerCase() === String(rid).toLowerCase().trim());
+  if (!r) throw new Error(`no reading "${rid}"; the readings are ${rs[0] && rs[0].id} to ${rs[rs.length - 1] && rs[rs.length - 1].id}`);
+  const { prompt: _brief, ...reading } = r;
+  return { place: { slug: p.slug, name: p.name }, reading, ...row(r), figures: figuresFor(r, p.slug, reg), sources: taggedFor(r, p.slug, reg).map(trimEntry),
+           brief: briefFor(r, p), send: `${pageOf(p)}#${r.id}` };
+}
+
+// the find_reading prompt: one reading's brief, or the readings a place has not answered yet, to take one at a time
+export function findReadingText(reg, slug, rid) {
+  if (rid) return readingFor(reg, slug, rid).brief;
+  const all = readingFor(reg, slug), open = all.readings.filter((r) => !r.answered);
+  if (!open.length) return `Every one of the ${all.of} readings for ${all.place.name} has an answer. Read them with get_reading and tell me which figures still lack a year or a source.`;
+  return `Look for the readings ${all.place.name} has not answered yet in the Fab City Index, one at a time. For each one, call get_reading with place "${all.place.slug}" and the reading's id, follow its brief, and show me what you found and the evidence before you start the next. File nothing yourself. I read it and send it from ${all.page}.
+
+Still open, ${open.length} of ${all.of}:
+${open.map((r) => `- ${r.id} ${r.name} (${r.state})`).join("\n")}`;
+}
+
 async function call(name, a = {}) {
   switch (name) {
+    case "list_readings": {
+      const reg = await registry();
+      return { registry_generated: reg.generated, count: (reg.readings || []).length, readings: (reg.readings || []).map(({ prompt: _brief, ...r }) => r) };
+    }
+    case "get_reading":
+      return readingFor(await registry(), a.place, a.reading);
     case "list_places": {
       const d = await getJSON(`${SITE}/api/v0/index.json`);
       const rows = (d.places || d).filter((p) => !a.status || p.status === a.status);
@@ -106,13 +177,17 @@ async function call(name, a = {}) {
   }
 }
 
-const HOW = `Two ways to improve a place's data, both filed by a person in their own name.
+const HOW = `The Index asks every place for fourteen readings (list_readings). Three ways to help, each done by a person in their own name.
 
-1. Review a source: read one registered source for a real place and record what you found (licence, endpoint,
+1. Send a reading: find a figure, or a source that holds it, for one reading of one place (get_reading gives its brief,
+   prompt find_reading sets the work), and send it from the place's page, ${SITE}/operate/city-data?place=<slug>.
+   "Nobody here counts this" is an answer too.
+
+2. Review a source: read one registered source for a real place and record what you found (licence, endpoint,
    admin-code, vintage, field-fit) with a verdict: usable, usable-with-caveats or unusable. A usable verdict turns a
    candidate live. Page: ${SITE}/operate/source-review?locality=<slug>. Guide: https://github.com/fabcity/awesome-fabcity-data/blob/main/REVIEWING.md
 
-2. Add a source: find an open dataset for an empty cell of a place and file it as a candidate. Page:
+3. Add a source: find an open dataset for an empty cell of a place and file it as a candidate. Page:
    ${SITE}/operate/add-source?locality=<slug>. Guide: https://github.com/fabcity/awesome-fabcity-data/blob/main/CONTRIBUTING.md
 
 Four rules when an agent helps: the person is the contributor and files it; name the agent in "assisted by"; an
@@ -120,6 +195,7 @@ agent files a candidate, never live; evidence, not claims: every licence sentenc
 the publisher, with the URL. Both pages take the agent's reply pasted back and fill the form from it.`;
 
 function prompt(name, a = {}) {
+  if (name === "find_reading") return registry().then((reg) => [{ role: "user", content: { type: "text", text: findReadingText(reg, a.place, a.reading) } }]);
   if (name === "review_source") return [{ role: "user", content: { type: "text", text:
 `Review one source for the Fab City Index registry (github.com/fabcity/awesome-fabcity-data), for ${a.territory || "<territory>"}.
 I am the reviewer and responsible for the verdict: do the work, show me your findings and the finished review, and file nothing until I say so.
@@ -210,7 +286,7 @@ async function handle(msg) {
     let result;
     switch (method) {
       case "initialize": result = { protocolVersion: PROTOCOL, capabilities: { tools: {}, prompts: {} },
-        serverInfo: { name: "fab-city-index", version: "0.1" }, instructions: INSTRUCTIONS }; break;
+        serverInfo: { name: "fab-city-index", version: "0.2" }, instructions: INSTRUCTIONS }; break;
       case "ping": result = {}; break;
       case "tools/list": result = { tools: TOOLS }; break;
       case "tools/call": {
@@ -223,7 +299,7 @@ async function handle(msg) {
       case "prompts/list": result = { prompts: PROMPTS }; break;
       case "prompts/get": {
         if (!PROMPTS.some((p) => p.name === params.name)) return rpcError(id, -32602, `unknown prompt ${params.name}`);
-        result = { description: PROMPTS.find((p) => p.name === params.name).description, messages: prompt(params.name, params.arguments || {}) }; break;
+        result = { description: PROMPTS.find((p) => p.name === params.name).description, messages: await prompt(params.name, params.arguments || {}) }; break;
       }
       default: return rpcError(id, -32601, `method not found: ${method}`);
     }
