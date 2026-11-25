@@ -55,8 +55,9 @@ rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — ove
 mkdir -p "$OUT/operate"
 # tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion.
 # statement/ is the statement page's source text, which the page is built from: it is not served.
-tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='statement' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
-tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/operate" -xf -
+# scripts/ holds the tools that write pages and data (statement.py, guide.py, land.mjs): they are not served.
+tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='statement' --exclude='./scripts' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
+tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='./scripts' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/operate" -xf -
 
 # Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
 find "$OUT" \( -name '*.html' -o -name '*.js' \) | while read -r f; do
