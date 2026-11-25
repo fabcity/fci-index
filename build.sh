@@ -53,8 +53,9 @@ python3 check_tokens.py "$SRC/fci-3-prototype" "$SRC/fci-ingestion-tool" \
 
 rm -rf "$OUT" 2>/dev/null || echo "note: could not clear $OUT (sandbox?) — overwriting in place"
 mkdir -p "$OUT/operate"
-# tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion
-tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
+# tar-pipe copy with README excluded at source (repo docs, not pages) — avoids any post-copy deletion.
+# statement/ is the statement page's source text, which the page is built from: it is not served.
+tar -C "$SRC/fci-3-prototype"   --exclude='README.md' --exclude='statement' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT" -xf -
 tar -C "$SRC/fci-ingestion-tool" --exclude='README.md' --exclude='.fuse_hidden*' --exclude='.git' --exclude='.gitignore' -cf - . | tar -C "$OUT/operate" -xf -
 
 # Rewrite the relative cross-links to route paths (perl -pi: portable across macOS/Linux sed dialects)
@@ -324,6 +325,10 @@ cat > "$OUT/_headers" <<'HEADERS'
 /api/v0/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300
+/statement
+  X-Robots-Tag: noindex
+/statement.html
+  X-Robots-Tag: noindex
 HEADERS
 
 # Structural sanity. A page with two <!DOCTYPE>s, or one that has grown by two orders of
