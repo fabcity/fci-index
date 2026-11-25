@@ -11,7 +11,7 @@ want their city's data to improve, and both happen elsewhere. The README is for 
 |---|---|---|
 | "what is my city's index?", "give me the data", "can I use it in my report?" | `https://index.fab.city/api/v0/` | Read `index.json` (all 61 places), `index.csv`, or `places/<slug>.json`. Quote the `status` with the number: a `simulated` place has a range `[0, DIDO]`, never one score. Scores are CC BY 4.0; each input keeps its own licence. Never compute a score yourself from a page. |
 | "my city has no data", "add a source for X" | `https://index.fab.city/operate/add-source?locality=<slug>`, or [`awesome-fabcity-data`](https://github.com/fabcity/awesome-fabcity-data) and its `AGENTS.md` | A source is filed as a `candidate` in the person's name: the page writes the entry and sends it (or opens it from their GitHub account); an agent's reply in the page's shape fills the form. The Index reads that registry live; nothing is added here. |
-| "connect the Index to my agent", "is there an MCP?" | `https://index.fab.city/mcp` (`functions/mcp.js`) | Streamable HTTP, stateless, no account: seven read tools and two prompts over the same `/api/v0/` and registry. How to connect: `https://index.fab.city/operate/agent`. |
+| "connect the Index to my agent", "is there an MCP?" | `https://index.fab.city/mcp` (`functions/mcp.js`) | Streamable HTTP, stateless, no account: nine read tools and three prompts over the same `/api/v0/` and registry. `list_readings`, `get_reading` and `find_reading` work on the fourteen readings, stated as the place page states them; the rest are the earlier twenty-cell method. How to connect: `https://index.fab.city/operate/agent`. |
 | "our node should publish to the Index" | [`planetai-node`](https://github.com/fabcity/planetai-node), `skills/publish-to-index/SKILL.md` | Establish the tier first: one node per pilot writes, a home node never does. The writer is `cells-ingest/` here and needs a per-pilot token issued by hand. |
 | "add a measured result for a place" (trade, waste, material use) | `compute/README.md` | A script in `compute/`, standard-library Python, whose result lands in `compute/results/`. It reaches a score only if `api.mjs`'s `MEASURED` section maps it to a cell, and that mapping is a decision for a maintainer: propose it in the pull request. |
 | "this page is wrong", "a link is broken" | an issue here, or Fab City Science at `science@fab.city` | The pages are not in this repository. Say which URL and what it shows. |
@@ -26,6 +26,7 @@ The build needs the two page repositories checked out beside this one (`../fci-3
 FCI_OUT=/tmp/fci-check ./build.sh      # assembles elsewhere; every gate; ends "unrewritten cross-links: 0 (must be 0)"
 python3 compute/fabcity_index.py --selftest   # no network; must reproduce Hamburg's 37
 node cells-worker/test.mjs             # when you touched the cells worker
+node --test tests/mcp.test.mjs         # when you touched functions/mcp.js (reads ../fci-ingestion-tool)
 ```
 
 Without them, say so in the pull request: a change to `compute/` can be checked on its own with its self-test.
